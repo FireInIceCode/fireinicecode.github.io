@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>`点分治 dp`标签下的文章 | FireBlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="博客 信息竞赛 OI kdw fireinice" >
+    <meta name="description" content="博客 信息竞赛 OI kdw fireinice" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="FireBlog" type="application/atom+xml" >
+    
+    
+    <link rel="icon" href="/blog/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css?v=1652706538313.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/blog/js/html5.js"></script>
+
+    <![endif]-->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a target="_blank" rel="noopener" href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/blog/">
+                <div class="cover">
+                    <span class="name">FireBlog</span>
+                    <span class="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav iconfont icon-nav" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/index.html" class="item ">
+                <a href="/blog/" title="首页" class="iconfont icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/index.html" class="item ">
+                <a href="/blog/archives/" title="归档" class="iconfont icon-archives">&nbsp;归档</a>
+            </li>
+            
+            <li rel="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/index.html" class="item ">
+                <a href="/blog/about/" title="关于" class="iconfont icon-staff">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/index.html" class="item ">
+                <a href="/blog/comment/" title="留言" class="iconfont icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/fire.jpg" alt="avatar" title="FireInIce" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `点分治 dp`标签下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+            <a href="javascript: void(0);" class="cat">未分类</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://fireinicecode.github.io/blog/2022/05/16/%E7%82%B9%E5%88%86%E6%B2%BB%E4%BC%98%E5%8C%96%E6%A0%91%E4%B8%8A%E8%BF%9E%E9%80%9A%E5%9D%97DP/">
+    		点分治优化树上连通块DP
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        FireInIce 发表于
+        <time datetime="2022-05-16T12:25:25.214Z">2022-05-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/" title="点分治 dp">点分治 dp</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="qyc博客学习2-点分治优化树上连通块dp"><a class="markdownIt-Anchor" href="#qyc博客学习2-点分治优化树上连通块dp"></a> qyc博客学习2-点分治优化树上连通块DP</h1>
+<p>qyc只摆了一个优化连通块背包dp的例题,所以我理解并不透彻(</p>
+<h4 id="概念"><a class="markdownIt-Anchor" href="#概念"></a> 概念</h4>
+<p>有时我们处理树上连通块,由于在树上,对于包含根的连通块,连通块若不包含父亲则一定不能包含儿子,根据这个性质,我们可以把dp进行不重不漏的划分,选这个父亲的方案或不选的方案,从而可以直接将对应状态直接合并来代替困难的dp合并.</p>
+<p>既然划分成选或不选根,就容易理解通过点分治进行根的选取从而达到优化效果了</p>
+<p>适用于解决合并困难而插入一个点较简单的计数dp (也可能不是计数?但这种划分还能怎么用没见过)</p>
+<h4 id="例题tree-cutting-hdu-5909-virtual-judge-vjudgenet"><a class="markdownIt-Anchor" href="#例题tree-cutting-hdu-5909-virtual-judge-vjudgenet"></a> 例题<a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-5909">Tree Cutting - HDU 5909 - Virtual Judge (vjudge.net)</a>:</h4>
+<h5 id="题意"><a class="markdownIt-Anchor" href="#题意"></a> 题意:</h5>
+<p>点有点权,对每一个k求点权亦或和为k的连通块个数</p>
+<h5 id="解法"><a class="markdownIt-Anchor" href="#解法"></a> 解法:</h5>
+<p>首先对于每个分治部分处理:</p>
+<p>dp[j]为当前亦或和为j的连通块个数</p>
+<p>一开始dp[j]全为空,dp[0]=1,即都不选时亦或和为0</p>
+<p>dfs当前点分治的部分,进入一个节点就有两种情况</p>
+<ul>
+<li>
+<p>不选这个节点,则这个点的儿子也不能选了,那么答案仍然是是其父亲传下来的dp[j],我们叫他dp0[j]</p>
+</li>
+<li>
+<p>选这个节点,那么我们把父亲传下来的答案dp[j]=dp[j^w],w为当前点权,即相当于选上了这个点的影响,然后继续dfs,在这个修改后的dp[]上算子孙的答案,给儿孙们处理完了叫它dp1[j]</p>
+</li>
+</ul>
+<p>最后这个点的答案就为dp[j]=dp0[j]+dp1[j],可以发现正好对应了所有情况.</p>
+<p>对于每个分治重心,dfs相当于带着dp[]在树上转一圈,便得到了这个分治部分的答案.</p>
+<p>我们还需要给dp[0]–,因为这个分治重心需要强制选,否则所有节点均不选的情况会在每个分治重心都算一次,我们把它剔除,合并完所有分治重心的答案后再dp[0]++</p>
+<p>然后我们要把所有分治重心的答案合并,因为每个分治重心的答案都是不互相包含的,所以就直接各个重心答案对应位置相加即最终答案.</p>
+<p>给一份代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1600</span>,P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b?a:b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> u,v,next;</span><br><span class="line">&#125; edges[N*<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> head[N],ecnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v)</span></span>&#123;</span><br><span class="line">    edges[++ecnt].u=u;</span><br><span class="line">    edges[ecnt].v=v;</span><br><span class="line">    edges[ecnt].next=head[u];</span><br><span class="line">    head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> w[N];</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> rt,rtmaxson,total;</span><br><span class="line"><span class="type">int</span> siz[N];</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">findroot</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> f)</span></span>&#123;</span><br><span class="line">    siz[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> maxp=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="type">int</span> v=edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]||v==f)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">findroot</span>(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        maxp=<span class="built_in">max</span>(maxp,siz[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    maxp=<span class="built_in">max</span>(maxp,total-siz[u]);</span><br><span class="line">    <span class="keyword">if</span>(maxp&lt;rtmaxson)&#123;</span><br><span class="line">        rtmaxson=maxp;</span><br><span class="line">        rt=u;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> dp[N],cdp[N][N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        cdp[u][i]=dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="comment">// dp[i^w[u]]=(cdp[u][i^w[u]]+cdp[u][i])%P;</span></span><br><span class="line">        dp[i^w[u]]=cdp[u][i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="type">int</span> v=edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(v==f||vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        dp[i]=(dp[i]+cdp[u][i])%P;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> adp[N][N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfz</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> f)</span></span>&#123;</span><br><span class="line">    dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(u,<span class="number">0</span>);</span><br><span class="line">    dp[<span class="number">0</span>]--;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        adp[u][i]=dp[i];</span><br><span class="line">        dp[i]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[u]=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="type">int</span> v=edges[i].v;</span><br><span class="line">        <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">        total=siz[v];</span><br><span class="line">        rt=<span class="number">0</span>,rtmaxson=<span class="number">1e9</span>;</span><br><span class="line">        <span class="built_in">findroot</span>(v,<span class="number">0</span>);</span><br><span class="line">        <span class="built_in">dfz</span>(rt,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> t)</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;w[i];</span><br><span class="line">    ecnt=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="built_in">sizeof</span>(head));</span><br><span class="line">    <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="built_in">sizeof</span>(vis));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> u,v;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v);</span><br><span class="line">        <span class="built_in">add_edge</span>(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">    rt=<span class="number">0</span>,total=n,rtmaxson=<span class="number">1e9</span>;</span><br><span class="line">    <span class="built_in">findroot</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">    <span class="built_in">dfz</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m;j++)&#123;</span><br><span class="line">            dp[j]=(dp[j]+adp[i][j])%P;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        cout&lt;&lt;dp[i];</span><br><span class="line">        <span class="keyword">if</span>(i!=m<span class="number">-1</span>)cout&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">solve</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ps"><a class="markdownIt-Anchor" href="#ps"></a> PS:</h4>
+<p>HDU难用极了,建议写完直接用我的拍一拍就行了</p>
+<p>如果你想在HDU上过这个题,注意一下几点</p>
+<ul>
+<li>
+<p>CE:HDU不支持(结构体名){…}的创建结构体方法,且iostream里并没有min/max</p>
+</li>
+<li>
+<p>PE(Presentation Error):最恶心的地方,每一行末尾不能有空格,但整个程序最后要有一个空行</p>
+</li>
+<li>
+<p>WA:你写错了</p>
+</li>
+</ul>
+<h4 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考:</h4>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/YouAreDalao/shu-fen-zhi-notes">树分治学习笔记 - ShanLunjiaJian的blog - 洛谷博客 (luogu.com.cn)</a>包含这个内容,不过不如下面那个详细</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/YouAreDalao/dian-fen-zhi-you-hua-dp">点分治优化dp学习笔记 - ShanLunjiaJian的blog - 洛谷博客 (luogu.com.cn)</a>对此有更抽象泛华的解释</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45539557/article/details/115713573">hdu5909 （点分治+dfs序上树形DP_TeJoy的博客-CSDN博客</a>讲了一种dfs序满足连通块限制的trick</p>
+
+            
+            <p class="more">
+                <a href="https://fireinicecode.github.io/blog/2022/05/16/%E7%82%B9%E5%88%86%E6%B2%BB%E4%BC%98%E5%8C%96%E6%A0%91%E4%B8%8A%E8%BF%9E%E9%80%9A%E5%9D%97DP/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://fireinicecode.github.io/blog/2022/05/16/%E7%82%B9%E5%88%86%E6%B2%BB%E4%BC%98%E5%8C%96%E6%A0%91%E4%B8%8A%E8%BF%9E%E9%80%9A%E5%9D%97DP/" title="点分治优化树上连通块DP">
+                
+                    <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+
+            </div>
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/blog/tags/%E9%A2%98%E8%A7%A3/" title="题解">题解 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%88%B7%E9%A2%98/" title="刷题">刷题 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%9B%BE%E8%AE%BA-%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%8D%95%E7%BA%AF%E5%BD%A2/" title="图论 网络流 单纯形">图论 网络流 单纯形 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/" title="复习 模板">复习 模板 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/" title="点分治 dp">点分治 dp (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://shanlunjiajian.github.io" target="_blank" title="QYC神仙">QYC</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2014-2022
+    
+
+    <a href="/blog/">The Force is with You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/blog/js/main.js?v=1652706538314.js"></script>
+
+
+</body>
+</html>

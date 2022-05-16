@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>BZOJ4985评分 | FireBlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="博客 信息竞赛 OI kdw fireinice" >
+    <meta name="description" content="博客 信息竞赛 OI kdw fireinice" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="FireBlog" type="application/atom+xml" >
+    
+    
+    <link rel="icon" href="/blog/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css?v=1652706538294.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/blog/js/html5.js"></script>
+
+    <![endif]-->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a target="_blank" rel="noopener" href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/blog/">
+                <div class="cover">
+                    <span class="name">FireBlog</span>
+                    <span class="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav iconfont icon-nav" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/blog/2022/05/16/BZOJ4985%E8%AF%84%E5%88%86/index.html" class="item ">
+                <a href="/blog/" title="首页" class="iconfont icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/BZOJ4985%E8%AF%84%E5%88%86/index.html" class="item ">
+                <a href="/blog/archives/" title="归档" class="iconfont icon-archives">&nbsp;归档</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/BZOJ4985%E8%AF%84%E5%88%86/index.html" class="item ">
+                <a href="/blog/about/" title="关于" class="iconfont icon-staff">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/BZOJ4985%E8%AF%84%E5%88%86/index.html" class="item ">
+                <a href="/blog/comment/" title="留言" class="iconfont icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/fire.jpg" alt="avatar" title="FireInIce" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>BZOJ4985评分</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        FireInIce 发表于
+        <time datetime="2022-05-16T12:25:12.370Z">2022-05-16</time>
+    </p>
+    <div id="JELON__articlePostContent" class="post-content">
+        <h1 id="bzoj4985评分"><a class="markdownIt-Anchor" href="#bzoj4985评分"></a> BZOJ4985评分</h1>
+<p>也许是qyc博客上最水的题之一?</p>
+<h5 id="简单题意"><a class="markdownIt-Anchor" href="#简单题意"></a> 简单题意:</h5>
+<p>有n个数排成一队,其中有m个数位置已经确定(是位置,即这个数第几个,而不是相对顺序),剩下一些数任意安排,每次从队头取出三个,取其中位数放到队尾,最后只剩下一个数(题目保证),使这个数最大.</p>
+<h5 id="做法"><a class="markdownIt-Anchor" href="#做法"></a> 做法:</h5>
+<p>二分答案设为x,一个队列里的数为要让队列这个位置&gt;x最少需要几个不确定的数大于x,初始时,如果这个位置已经确定则为INF(该数小于x)或0(该数&gt;=x),然后模拟这个过程,每次取出三个队首元素,push进去其中两个小的之和(只有至少两个&gt;=x中位数才&gt;=x).</p>
+<p>实现细节:push进两个元素的和和INF取个min,不然容易爆</p>
+<p>贴一段代码(</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">500</span>,INF=<span class="number">1e12</span>;</span><br><span class="line"><span class="type">int</span> a[N],uc[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        q.<span class="built_in">push</span>((a[i]==<span class="number">0</span>)?<span class="number">1</span>:(a[i]&gt;=x?<span class="number">0</span>:INF));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> xcnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++)&#123;</span><br><span class="line">        xcnt+=uc[i]&gt;=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q.<span class="built_in">size</span>()!=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> a=q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> b=q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> c=q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> nw=a+b+c-<span class="built_in">max</span>(a,<span class="built_in">max</span>(b,c));</span><br><span class="line">        q.<span class="built_in">push</span>(<span class="built_in">min</span>(nw,INF));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> q.<span class="built_in">front</span>()&lt;=xcnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> p,d;</span><br><span class="line">        cin&gt;&gt;p&gt;&gt;d;</span><br><span class="line">        a[d]=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-m;i++)&#123;</span><br><span class="line">        cin&gt;&gt;uc[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> l=<span class="number">1</span>,r=INF;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">        <span class="type">int</span> mid=(l+r+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(mid))&#123;</span><br><span class="line">            l=mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            r=mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><s>立志看懂qyc博客,至少这个题是个不错的开始</s></p>
+<p>参考:<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/YouAreDalao/pingfen-zuotibiji">BZOJ4985 评分 做题笔记 - ShanLunjiaJian的blog - 洛谷博客 (luogu.com.cn)</a></p>
+
+    </div>
+    <p class="eof">-- EOF --</p>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/blog/tags/%E9%A2%98%E8%A7%A3/" title="题解">题解</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=FireInIce个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/blog/2022/05/16/%E7%82%B9%E5%88%86%E6%B2%BB%E4%BC%98%E5%8C%96%E6%A0%91%E4%B8%8A%E8%BF%9E%E9%80%9A%E5%9D%97DP/">
+            
+                点分治优化树上连通块DP
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/blog/2022/05/16/Forest%E9%A2%98%E8%A7%A3/">
+            
+                无标题
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+
+
+            </div>
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/blog/tags/%E9%A2%98%E8%A7%A3/" title="题解">题解 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%88%B7%E9%A2%98/" title="刷题">刷题 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%9B%BE%E8%AE%BA-%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%8D%95%E7%BA%AF%E5%BD%A2/" title="图论 网络流 单纯形">图论 网络流 单纯形 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/" title="复习 模板">复习 模板 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/" title="点分治 dp">点分治 dp (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://shanlunjiajian.github.io" target="_blank" title="QYC神仙">QYC</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2014-2022
+    
+
+    <a href="/blog/">The Force is with You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/blog/js/main.js?v=1652706538295.js"></script>
+
+
+</body>
+</html>

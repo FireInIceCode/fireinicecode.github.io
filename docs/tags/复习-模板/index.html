@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>`复习 模板`标签下的文章 | FireBlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="博客 信息竞赛 OI kdw fireinice" >
+    <meta name="description" content="博客 信息竞赛 OI kdw fireinice" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="FireBlog" type="application/atom+xml" >
+    
+    
+    <link rel="icon" href="/blog/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css?v=1652706538312.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/blog/js/html5.js"></script>
+
+    <![endif]-->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a target="_blank" rel="noopener" href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/blog/">
+                <div class="cover">
+                    <span class="name">FireBlog</span>
+                    <span class="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav iconfont icon-nav" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/index.html" class="item ">
+                <a href="/blog/" title="首页" class="iconfont icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/index.html" class="item ">
+                <a href="/blog/archives/" title="归档" class="iconfont icon-archives">&nbsp;归档</a>
+            </li>
+            
+            <li rel="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/index.html" class="item ">
+                <a href="/blog/about/" title="关于" class="iconfont icon-staff">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/index.html" class="item ">
+                <a href="/blog/comment/" title="留言" class="iconfont icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/fire.jpg" alt="avatar" title="FireInIce" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `复习 模板`标签下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+            <a href="javascript: void(0);" class="cat">未分类</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://fireinicecode.github.io/blog/2022/05/16/%E6%A8%A1%E6%9D%BF%E5%A4%8D%E4%B9%A0/">
+    		模板复习
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        FireInIce 发表于
+        <time datetime="2022-05-16T12:24:39.956Z">2022-05-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/" title="复习 模板">复习 模板</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="省选复习"><a class="markdownIt-Anchor" href="#省选复习"></a> 省选复习</h1>
+<h2 id="图论"><a class="markdownIt-Anchor" href="#图论"></a> 图论</h2>
+<h3 id="tarjan"><a class="markdownIt-Anchor" href="#tarjan"></a> tarjan:</h3>
+<ul>
+<li>
+<p>割点</p>
+<ul>
+<li>
+<p>条件:对于点u存在儿子v使low[v]&gt;=dfn[u] (实现时low可以算u的dfn,也对)</p>
+</li>
+<li>
+<p>感性理解:说明v的子树内除了u之外没有其他方法走到外面</p>
+</li>
+<li>
+<p>注意:对于dfs树的根(开始dfs的节点),要通过统计子树个数方法判断(&gt;1则为割点)</p>
+</li>
+<li>
+<p>代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> rt=<span class="number">0</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(rt==<span class="number">0</span>)rt=u;</span><br><span class="line">  dfn[u]=low[u]=++dcnt;</span><br><span class="line">  <span class="type">int</span> children=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> v:G[u])&#123;</span><br><span class="line">      <span class="keyword">if</span>(dfn[v])&#123;</span><br><span class="line">          low[u]=min(low[u],dfn[v]);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      dfs(v,rt);</span><br><span class="line">      children++;</span><br><span class="line">      low[u]=min(low[u],low[v]);</span><br><span class="line">      <span class="keyword">if</span>(u!=rt&amp;&amp;low[v]&gt;=dfn[u])&#123;</span><br><span class="line">          <span class="comment">//说明是割点</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(children&gt;<span class="number">1</span>&amp;&amp;u==rt)&#123;</span><br><span class="line">      <span class="comment">//说明是割点</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>割边</p>
+<ul>
+<li>条件:对于边e:u-&gt;v,low[v]&gt;=dfn[u]</li>
+<li>理解:同割点</li>
+<li>实现:简单不放</li>
+</ul>
+</li>
+<li>
+<p>强联通分量</p>
+<ul>
+<li>条件:dfs时八店入栈,在dfn[u]=low[v]时,要退出dfs时若满足条件一直弹栈到把自己也弹了,弹出部分都是同一scc</li>
+<li>理解:同一强联通分量在dfs中是连续的一块,在栈里也是</li>
+<li>细节:low不更新横叉边指向的点(已经被访问却在栈外)</li>
+</ul>
+</li>
+</ul>
+<h3 id="差分约束"><a class="markdownIt-Anchor" href="#差分约束"></a> 差分约束</h3>
+<h4 id="细节"><a class="markdownIt-Anchor" href="#细节"></a> 细节:</h4>
+<ol>
+<li>
+<p>最短路是满足条件的最大解,最长路是最小解</p>
+</li>
+<li>
+<p>建立隐藏条件边</p>
+</li>
+<li>
+<p>相等条件双向连边</p>
+</li>
+</ol>
+<h2 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h2>
+<h3 id="sam"><a class="markdownIt-Anchor" href="#sam"></a> SAM</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e6</span>+<span class="number">500</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> nxt[<span class="number">27</span>];</span><br><span class="line">    <span class="type">int</span> len,link;</span><br><span class="line">&#125; ns[N*<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> root,last,scnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    root=<span class="number">0</span>;</span><br><span class="line">    ns[<span class="number">0</span>].link=<span class="number">-1</span>;</span><br><span class="line">    ns[<span class="number">0</span>].len=<span class="number">0</span>;</span><br><span class="line">    last=root;</span><br><span class="line">    scnt=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> cur=++scnt;</span><br><span class="line">    ns[cur].len=ns[last].len+<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> p=last;</span><br><span class="line">    last=cur;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="number">-1</span>&amp;&amp;!ns[p].nxt[c])&#123;</span><br><span class="line">        ns[p].nxt[c]=cur;</span><br><span class="line">        p=ns[p].link;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p==<span class="number">-1</span>)&#123;</span><br><span class="line">        ns[cur].link=root;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> q=ns[p].nxt[c];</span><br><span class="line">    <span class="keyword">if</span>(ns[p].len+<span class="number">1</span>==ns[q].len)&#123;</span><br><span class="line">        ns[cur].link=q;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> clone=++scnt;</span><br><span class="line">    ns[clone].len=ns[p].len+<span class="number">1</span>;</span><br><span class="line">    ns[clone].link=ns[q].link;</span><br><span class="line">    <span class="built_in">memcpy</span>(ns[clone].nxt,ns[q].nxt,<span class="built_in">sizeof</span>(ns[clone].nxt));</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="number">-1</span>&amp;&amp;ns[p].nxt[c]==q)&#123;</span><br><span class="line">        ns[p].nxt[c]=clone;</span><br><span class="line">        p=ns[p].link;</span><br><span class="line">    &#125;</span><br><span class="line">    ns[q].link=ns[cur].link=clone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="细节-2"><a class="markdownIt-Anchor" href="#细节-2"></a> 细节:</h4>
+<ol>
+<li>记得初始化</li>
+<li>记得p=ns[p].link的挑父亲</li>
+<li>记得数组开2倍</li>
+</ol>
+<h2 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h2>
+<h3 id="lct"><a class="markdownIt-Anchor" href="#lct"></a> LCT</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">500</span>;</span><br><span class="line"><span class="type">int</span> fa[N],ch[N][<span class="number">2</span>],val[N],xors[N];</span><br><span class="line"><span class="type">bool</span> rev[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">notroot</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ch[fa[x]][<span class="number">0</span>]==x||ch[fa[x]][<span class="number">1</span>]==x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">refresh</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    xors[x]=xors[ch[x][<span class="number">0</span>]]^xors[ch[x][<span class="number">1</span>]]^val[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">tag_rev</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="built_in">swap</span>(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">    rev[x]^=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!rev[x])<span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">tag_rev</span>(ch[x][<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">tag_rev</span>(ch[x][<span class="number">1</span>]);</span><br><span class="line">    rev[x]=<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> f=fa[x],gf=fa[f],k1=<span class="built_in">chk</span>(x),k2=<span class="built_in">chk</span>(f);</span><br><span class="line">    fa[x]=gf;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">notroot</span>(f))ch[gf][k2]=x;</span><br><span class="line">    <span class="keyword">if</span>(ch[x][k1^<span class="number">1</span>])fa[ch[x][k1^<span class="number">1</span>]]=f;</span><br><span class="line">    ch[f][k1]=ch[x][k1^<span class="number">1</span>];</span><br><span class="line">    fa[f]=x;</span><br><span class="line">    ch[x][k1^<span class="number">1</span>]=f;</span><br><span class="line">    <span class="built_in">refresh</span>(f);</span><br><span class="line">    <span class="built_in">refresh</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> stk[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">splay</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> scnt=<span class="number">0</span>,tmp=x;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">notroot</span>(tmp))&#123;</span><br><span class="line">        stk[++scnt]=tmp;</span><br><span class="line">        tmp=fa[tmp];</span><br><span class="line">    &#125;</span><br><span class="line">    stk[++scnt]=tmp;</span><br><span class="line">    <span class="keyword">while</span>(scnt)<span class="built_in">pushdown</span>(stk[scnt--]);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">notroot</span>(x))&#123;</span><br><span class="line">        <span class="type">int</span> f=fa[x];</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">notroot</span>(f))&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">chk</span>(f)==<span class="built_in">chk</span>(x))&#123;</span><br><span class="line">                <span class="built_in">rotate</span>(f);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">rotate</span>(x);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">rotate</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">access</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> y=<span class="number">0</span>;x;y=x,x=fa[x])&#123;</span><br><span class="line">        <span class="built_in">splay</span>(x);</span><br><span class="line">        ch[x][<span class="number">1</span>]=y;</span><br><span class="line">        <span class="built_in">refresh</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">changeroot</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="built_in">access</span>(x);</span><br><span class="line">    <span class="built_in">splay</span>(x);</span><br><span class="line">    <span class="built_in">tag_rev</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">findroot</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="built_in">access</span>(x);</span><br><span class="line">    <span class="built_in">splay</span>(x);</span><br><span class="line">    <span class="built_in">pushdown</span>(x);</span><br><span class="line">    <span class="keyword">while</span>(ch[x][<span class="number">0</span>])&#123;</span><br><span class="line">        x=ch[x][<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">pushdown</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">splay</span>(x);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">link</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="built_in">changeroot</span>(u);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">findroot</span>(v)!=u)&#123;</span><br><span class="line">        fa[u]=v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cut</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="built_in">changeroot</span>(x);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">findroot</span>(y)!=x||fa[y]!=x||ch[y][<span class="number">0</span>])<span class="keyword">return</span>;</span><br><span class="line">    fa[y]=<span class="number">0</span>;</span><br><span class="line">    ch[x][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">refresh</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="built_in">changeroot</span>(x);</span><br><span class="line">    <span class="built_in">access</span>(y);</span><br><span class="line">    <span class="built_in">splay</span>(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="细节-3"><a class="markdownIt-Anchor" href="#细节-3"></a> 细节:</h4>
+<ol>
+<li>
+<p>注意findroot最后要splay根</p>
+</li>
+<li>
+<p>cut的判断:findroot(y)==x说明在同一棵树,fa[y]==x是因为直接相连,ch[y][0]==0因为比它浅的只有根,根是它的父亲.</p>
+</li>
+<li>
+<p>access背过</p>
+</li>
+<li>
+<p>findroot要记得pushdown</p>
+</li>
+</ol>
+<h2 id="多项式"><a class="markdownIt-Anchor" href="#多项式"></a> 多项式</h2>
+<h3 id="fwt"><a class="markdownIt-Anchor" href="#fwt"></a> FWT</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fwtAnd</span><span class="params">(<span class="type">int</span> *f,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">2</span>;l&lt;=n;l&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> mid=l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> p=<span class="number">0</span>;p&lt;n;p+=l)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;mid;k++)&#123;</span><br><span class="line">                f[p+k]=(f[p+k]+f[p+k+mid]*x)%P;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fwtOr</span><span class="params">(<span class="type">int</span> *f,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">2</span>;l&lt;=n;l&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> mid=l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> p=<span class="number">0</span>;p&lt;n;p+=l)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;mid;k++)&#123;</span><br><span class="line">                f[p+k+mid]=(f[p+k]*x+f[p+k+mid])%P;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fwtXor</span><span class="params">(<span class="type">int</span> *f,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">2</span>;l&lt;=n;l&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="type">int</span> mid=l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> p=<span class="number">0</span>;p&lt;n;p+=l)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;mid;k++)&#123;</span><br><span class="line">                <span class="type">int</span> o1=f[p+k],o2=f[p+k+mid];</span><br><span class="line">                f[p+k]=(o1+o2)*x%P;</span><br><span class="line">                f[p+k+mid]=(o1-o2)*x%P;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>别把与和或弄反,亦或最后x是1(正变换)或1/2(逆变换)</p>
+<p>输出时要注意把数弄回正的,因为减法过程会出负数</p>
+
+            
+            <p class="more">
+                <a href="https://fireinicecode.github.io/blog/2022/05/16/%E6%A8%A1%E6%9D%BF%E5%A4%8D%E4%B9%A0/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://fireinicecode.github.io/blog/2022/05/16/%E6%A8%A1%E6%9D%BF%E5%A4%8D%E4%B9%A0/" title="模板复习">
+                
+                    <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+
+            </div>
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/blog/tags/%E9%A2%98%E8%A7%A3/" title="题解">题解 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%88%B7%E9%A2%98/" title="刷题">刷题 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%9B%BE%E8%AE%BA-%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%8D%95%E7%BA%AF%E5%BD%A2/" title="图论 网络流 单纯形">图论 网络流 单纯形 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/" title="复习 模板">复习 模板 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/" title="点分治 dp">点分治 dp (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://shanlunjiajian.github.io" target="_blank" title="QYC神仙">QYC</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2014-2022
+    
+
+    <a href="/blog/">The Force is with You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/blog/js/main.js?v=1652706538313.js"></script>
+
+
+</body>
+</html>

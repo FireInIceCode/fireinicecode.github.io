@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>感性理解网络单纯形 | FireBlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="博客 信息竞赛 OI kdw fireinice" >
+    <meta name="description" content="博客 信息竞赛 OI kdw fireinice" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="FireBlog" type="application/atom+xml" >
+    
+    
+    <link rel="icon" href="/blog/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/blog/css/style.css?v=1652706538298.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/blog/js/html5.js"></script>
+
+    <![endif]-->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a target="_blank" rel="noopener" href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/blog/">
+                <div class="cover">
+                    <span class="name">FireBlog</span>
+                    <span class="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav iconfont icon-nav" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/blog/2022/05/16/%E6%84%9F%E6%80%A7%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2/index.html" class="item ">
+                <a href="/blog/" title="首页" class="iconfont icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/%E6%84%9F%E6%80%A7%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2/index.html" class="item ">
+                <a href="/blog/archives/" title="归档" class="iconfont icon-archives">&nbsp;归档</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/%E6%84%9F%E6%80%A7%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2/index.html" class="item ">
+                <a href="/blog/about/" title="关于" class="iconfont icon-staff">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/blog/2022/05/16/%E6%84%9F%E6%80%A7%E7%90%86%E8%A7%A3%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2/index.html" class="item ">
+                <a href="/blog/comment/" title="留言" class="iconfont icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/fire.jpg" alt="avatar" title="FireInIce" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>感性理解网络单纯形</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        FireInIce 发表于
+        <time datetime="2022-05-16T12:23:49.878Z">2022-05-16</time>
+    </p>
+    <div id="JELON__articlePostContent" class="post-content">
+        <h1 id="感性理解网络单纯形"><a class="markdownIt-Anchor" href="#感性理解网络单纯形"></a> 感性理解网络单纯形</h1>
+<p>传说最快费用流</p>
+<h2 id="前置知识"><a class="markdownIt-Anchor" href="#前置知识"></a> 前置知识</h2>
+<p>单纯形,费用流基本概念</p>
+<h2 id="符号说明"><a class="markdownIt-Anchor" href="#符号说明"></a> 符号说明</h2>
+<p>n为点数,m为边数,先假设图为<strong>联通</strong>的(显然不联通什么也不影响)</p>
+<p>边e的单位费用为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><msub><mi>t</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">cost_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,流量上界为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>a</mi><msub><mi>p</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">cap_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 由<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>u</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">u_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>指向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>v</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">v_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>虽然原文中无显式反向边,但我们还是<strong>按有反向边考虑</strong>更简单</p>
+<h2 id="理论基础"><a class="markdownIt-Anchor" href="#理论基础"></a> 理论基础</h2>
+<p>我们知道费用流模型在线性规划标准形式的系数矩阵是<strong>全幺模矩阵</strong>,(这个矩阵有n行m列,仅由0,1,-1组成,每一列可以表示一条边,设这条边由u指向v,则矩阵中u行为-1,v行为1).</p>
+<p>直接单纯形,我们会设每一条边的流量,然后再转化标准形式,所以这里可以先感性理解的把边的流量作为LP中的变量(忽略松弛变量).</p>
+<h5 id="th此矩阵的一组基对应图的一棵生成树"><a class="markdownIt-Anchor" href="#th此矩阵的一组基对应图的一棵生成树"></a> Th.此矩阵的一组基对应图的一棵生成树</h5>
+<p>(这个证起来简单就证一下</p>
+<p>(如果没有线性规划基础看不懂证明可以跳过</p>
+<p>证明:若选中的基包含一个环,则将这个环的边的列顺次相加得到0,则这不是一组基,所以基的列对应的图无环,又因其能张成原图,所以其联通,因此能唯一对应一棵生成树.</p>
+<p>于是得到这样对应关系:</p>
+<ul>
+<li>
+<p>单纯形中变量对应边的流量</p>
+</li>
+<li>
+<p>单纯形中基的选择对应图的一棵生成树(一种边的选择)</p>
+</li>
+</ul>
+<p>于是对应着其流程,我们要找到</p>
+<ul>
+<li>
+<p>如何将一个非基变量替换一个基变量</p>
+<ul>
+<li>
+<p>如何选择一个非基变量并移入</p>
+<ul>
+<li>如何增加一个变量的值</li>
+</ul>
+</li>
+<li>
+<p>如何选择一个基变量并移出</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="增加一个变量的值边的流量"><a class="markdownIt-Anchor" href="#增加一个变量的值边的流量"></a> 增加一个变量的值(边的流量)</h4>
+<p>对于一条边,我们可以沿着它在一个环上推动一个流:</p>
+<p><img src="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205111557679.png" alt="" /></p>
+<p>如图,如果图中存在这一一个环,我们可以沿着它推送10的流量,容易发现仍然满足流量平衡(一个环,进去的和出去的一样).</p>
+<h4 id="寻找应该移入的非基变量"><a class="markdownIt-Anchor" href="#寻找应该移入的非基变量"></a> 寻找应该移入的非基变量</h4>
+<p>当我们沿着一个环增加变量的值时,为了保证费用最小,我们<strong>只在环的费用和为负时做</strong>,但这样无法保证流量最大,所以可以<strong>先给源点到汇点建一条边流满,费用为 inf,流量为 inf</strong>,此时它的反向边会和其他由源到汇的流形成一个环,且沿着这个环推动费用只降不增(反向边费用为 -inf )于是保证了在最大流前提下寻找最小费用.</p>
+<p>于是我们面临的问题是,如何快速计算环的和,这里有一个不错的 trick:</p>
+<p>对于每一个点计算它到根的路径的费用和,我们命名为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">i</span></span></span></span> ,则对于边 e: u-&gt;v ,它形成的环的费用和为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>e</mi><mi>d</mi><mi>u</mi><mi>c</mi><msub><mi>e</mi><mi>e</mi></msub><mo>=</mo><mi>C</mi><mi>o</mi><mi>s</mi><msub><mi>t</mi><mi>e</mi></msub><mo>+</mo><mi>P</mi><msub><mi>i</mi><mi>u</mi></msub><mo>−</mo><mi>P</mi><msub><mi>i</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">Reduce_e = Cost_e + Pi_u -Pi_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 因为除了 e 本身的费用外,从 u 到 u 和 v 的 lca 的费用是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><msub><mi>i</mi><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow></msub><mo>−</mo><mi>p</mi><msub><mi>i</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">pi_{lca} - pi_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (因为方向是逆着树边走的所以<strong>费用取反</strong>) ,从 lca 走到 v 的费用是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><msub><mi>i</mi><mi>u</mi></msub><mo>−</mo><mi>P</mi><msub><mi>i</mi><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Pi_u - Pi_{lca}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,两者相加即可得到.</p>
+<h4 id="替换基变量"><a class="markdownIt-Anchor" href="#替换基变量"></a> 替换基变量:</h4>
+<p>按照单纯形算法我们要替换掉的是一个<strong>限制最紧</strong>的变量,对应到这里就是找到这个<strong>环中剩余流量最小的边</strong>把它移出.</p>
+<h4 id="总结流程"><a class="markdownIt-Anchor" href="#总结流程"></a> 总结流程</h4>
+<p>于是我们按照以下流程去做:</p>
+<ol>
+<li>
+<p>找到初始的基,也就是随便建一棵生成树</p>
+</li>
+<li>
+<p>根据选择策略找到一条边,给这个环整体加上一个流,所以</p>
+<ol>
+<li>
+<p>我们看看这个环最大能加多少(就是这个环上边容量的最小值),并给它加上这么多.这个操作就相当于我们在LP中把这条边的变量加入基变量,对于这条边的变量进行增加以在顶点间移动.</p>
+</li>
+<li>
+<p>加入这个基变量后要删除一个(基大小为矩阵的秩),移出环上剩余流量最小的边</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="实现"><a class="markdownIt-Anchor" href="#实现"></a> 实现</h2>
+<h3 id="边的选择"><a class="markdownIt-Anchor" href="#边的选择"></a> 边的选择</h3>
+<p>三种方式</p>
+<ol>
+<li>
+<p>按照单纯形中,我们可以检查每一条边并找到其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>e</mi><mi>d</mi><mi>u</mi><mi>c</mi><msub><mi>e</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">Reduce_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>最小的 e 作为新的基变量</p>
+</li>
+<li>
+<p>直接循环遍历所有边,每碰到一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>e</mi><mi>d</mi><mi>u</mi><mi>c</mi><msub><mi>e</mi><mi>e</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Reduce_e &lt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mord mathdefault">c</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的就选了</p>
+</li>
+<li>
+<p>平衡前两种,划分大小为B的块,对每一个块内使用策略1,块和块间策略2,按LEMON论文,B应取 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>V</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.11333499999999996em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;padding-left:0.833em;">V</span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11333499999999996em;"><span></span></span></span></span></span></span></span></span></p>
+</li>
+</ol>
+<h3 id="实现1单次on暴力"><a class="markdownIt-Anchor" href="#实现1单次on暴力"></a> 实现1,单次O(n),暴力</h3>
+<p><s>暴力怎么做? (小声) 暴力怎么做? (大声) 暴力是不是,加边,加边,加边,并查集查询</s></p>
+<p>用向上标记法lca(充满了暴力的味道),每次删除一条边时暴力翻转一条链的父子关系(画图可以得知,这个关系是从删除的那条边中深的端点到新加的那条边的端点的链)</p>
+<h3 id="实现2单次olognlink-cut-tree"><a class="markdownIt-Anchor" href="#实现2单次olognlink-cut-tree"></a> 实现2,单次O(logn),Link-Cut Tree</h3>
+<p>我觉大家看到树上删去一条边,新加一条边,寻找链上最小值,是不是都想到LCT了</p>
+<p>常数大,但再大 O(logn) 也大不过 O(n) 吧,不知道为什么没见人写过.</p>
+<p>如果有人写了这个告诉我谢谢.</p>
+<h2 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度</h2>
+<blockquote>
+<p>We target a complexity of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span> per pivot in the worst-case, and for pivot selection we will perform a <em>block search</em> as described in the LEMON paper, with desired runtime of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msqrt><mi>E</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt E )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.176665em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;padding-left:0.833em;">E</span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11333499999999996em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>(can be tuned), but worst-case runtime of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span>.</p>
+</blockquote>
+<p>每次移入移出遍历为最坏 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span> ,在边的选择上用策略3期望<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msqrt><mi>E</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt E )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.176665em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;padding-left:0.833em;">E</span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.11333499999999996em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>至于到底要执行多少次这个移入,移出的过程,这和单纯形一样是玄学吧,~~目前有多种不同的分析,得出的结论大致相近,~~为:</p>
+<p><s>O(能过),O(很快),O(玄学)和</s>O(基本到不了的最坏指数级)</p>
+<p>我为了<s>偷懒</s>代码的简洁选择了策略2+暴力的实现,经测试随机数据下,在我的拖拉机电脑上大概1s跑m=1.5e5,v=4e4的图刚刚好,已经远远超过EK和Zkw的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi><msup><mi>E</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">VE^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>了吧</p>
+<p>我的实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">5e5</span>+<span class="number">500</span>,M=<span class="number">5e6</span>+<span class="number">500</span>,INF=<span class="number">1</span>e</span><br><span class="line"><span class="comment">// #define int long long;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Edge&#123;</span><br><span class="line">    <span class="type">int</span> u,v,w,c,next;</span><br><span class="line">&#125; edges[M];</span><br><span class="line"><span class="type">int</span> head[N],ecnt=<span class="number">1</span>;</span><br><span class="line"><span class="type">void</span> _add_edge(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w,<span class="type">int</span> c)&#123;</span><br><span class="line">    edges[++ecnt]=(Edge)&#123;u,v,w,c,head[u]&#125;;</span><br><span class="line">    head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w,<span class="type">int</span> c)</span></span>&#123;</span><br><span class="line">    _add_edge(u,v,w,c);</span><br><span class="line">    _add_edge(v,u,<span class="number">0</span>,-c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//fe为父亲指向自己的边,mark是标记当前信息是否过期等用途,curtime表示mark值为curtime的信息未过期</span></span><br><span class="line"><span class="type">int</span> piCache[N],fa[N],fe[N],circle[N],mark[N],curtime=<span class="number">1</span>;</span><br><span class="line"><span class="comment">// 随机一棵生成树初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init_tree</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> fi)</span></span>&#123;</span><br><span class="line">    fe[u]=fi;</span><br><span class="line">    fa[u]=edges[fi].u;</span><br><span class="line">    mark[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i;i=edges[i].next)&#123;</span><br><span class="line">        <span class="type">int</span> v=edges[i].v;</span><br><span class="line">        <span class="comment">//不过这里mark就判重用的</span></span><br><span class="line">        <span class="keyword">if</span>(mark[v]||edges[i].w==<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">init_tree</span>(v,i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">pi</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mark[x]==curtime)<span class="keyword">return</span> piCache[x];</span><br><span class="line">    mark[x]=curtime;</span><br><span class="line">    piCache[x]=<span class="built_in">pi</span>(fa[x])+edges[fe[x]].c;</span><br><span class="line">    <span class="keyword">return</span> piCache[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="comment">//沿着e在生成树上形成的环推送流</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">pushFlow</span><span class="params">(<span class="type">int</span> e)</span></span>&#123;</span><br><span class="line">    <span class="comment">//向上标记法求lca,够暴力</span></span><br><span class="line">    <span class="type">int</span> rt=edges[e].u,lca=edges[e].v;</span><br><span class="line">    curtime++;</span><br><span class="line">    <span class="type">int</span> ccnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(rt)&#123;</span><br><span class="line">        mark[rt]=curtime;</span><br><span class="line">        rt=fa[rt];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(mark[lca]!=curtime)&#123;</span><br><span class="line">        mark[lca]=curtime;</span><br><span class="line">        lca=fa[lca];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//找到被替换的(省域流量最小的)边,记录环上最小剩余流量</span></span><br><span class="line">    <span class="type">int</span> minflow=edges[e].w,p=<span class="number">2</span>,del_u=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> u=edges[e].u;u!=lca;u=fa[u])&#123;</span><br><span class="line">        circle[++ccnt]=fe[u];</span><br><span class="line">        <span class="keyword">if</span>(edges[fe[u]].w&lt;minflow)&#123;</span><br><span class="line">            minflow=edges[fe[u]].w;</span><br><span class="line">            del_u=u;</span><br><span class="line">            p=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> u=edges[e].v;u!=lca;u=fa[u])&#123;</span><br><span class="line">        <span class="type">int</span> ne=fe[u]^<span class="number">1</span>;</span><br><span class="line">        circle[++ccnt]=ne;</span><br><span class="line">        <span class="keyword">if</span>(edges[ne].w&lt;minflow)&#123;</span><br><span class="line">            minflow=edges[ne].w;</span><br><span class="line">            p=<span class="number">1</span>;</span><br><span class="line">            del_u=u;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    circle[++ccnt]=e;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//沿着环推送流量</span></span><br><span class="line">    <span class="type">int</span> cost=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=ccnt;i++)&#123;</span><br><span class="line">        cost+=edges[circle[i]].c*minflow;</span><br><span class="line">        edges[circle[i]].w-=minflow;</span><br><span class="line">        edges[circle[i]^<span class="number">1</span>].w+=minflow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果最小的就是当前边就不用加到树上了</span></span><br><span class="line">    <span class="keyword">if</span>(p==<span class="number">2</span>)<span class="keyword">return</span> cost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//把边加入树上,翻转一条链</span></span><br><span class="line">    <span class="type">int</span> u=edges[e].u,v=edges[e].v;</span><br><span class="line">    <span class="keyword">if</span>(p==<span class="number">1</span>)<span class="built_in">swap</span>(u,v);</span><br><span class="line">    <span class="type">int</span> last_e=e^p,last_u=v;</span><br><span class="line">    <span class="keyword">while</span>(last_u!=del_u)&#123;</span><br><span class="line">        last_e^=<span class="number">1</span>;</span><br><span class="line">        mark[u]--; <span class="comment">// 设置这条链上的信息过期</span></span><br><span class="line">        <span class="built_in">swap</span>(fe[u],last_e);</span><br><span class="line">        <span class="type">int</span> nu=fa[u];</span><br><span class="line">        fa[u]=last_u;</span><br><span class="line">        last_u=u;</span><br><span class="line">        u=nu;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cost;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//总算法</span></span><br><span class="line"><span class="function">pii <span class="title">simplex</span><span class="params">(<span class="type">int</span> s,<span class="type">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="built_in">add_edge</span>(t,s,INF,-INF);</span><br><span class="line">    <span class="built_in">init_tree</span>(t,<span class="number">0</span>);</span><br><span class="line">    mark[t]=++curtime;</span><br><span class="line">    fa[t]=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> cost=<span class="number">0</span>,flow=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//反复执行</span></span><br><span class="line">    <span class="type">bool</span> running=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span>(running)&#123;</span><br><span class="line">        running=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=ecnt;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(edges[i].w&amp;&amp;edges[i].c+<span class="built_in">pi</span>(edges[i].u)-<span class="built_in">pi</span>(edges[i].v)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                cost+=<span class="built_in">pushFlow</span>(i);</span><br><span class="line">                running=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//flow在每次直接累加是错的,会把正反的都算上,直接根据一开始加的那条边算</span></span><br><span class="line">    flow=edges[ecnt].w;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">make_pair</span>(flow,cost+flow*INF); <span class="comment">//+flow*INF是消除一开始加的那条边的费用</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个是luogu或uoj费用流板子对应的主程序</span></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="type">int</span> n,m,s,t;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> u,v,w,c;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w&gt;&gt;c;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v,w,c);</span><br><span class="line">    &#125;</span><br><span class="line">    pii res=<span class="built_in">simplex</span>(s,t);</span><br><span class="line">    cout&lt;&lt;res.first&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;res.second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="番外"><a class="markdownIt-Anchor" href="#番外"></a> 番外</h2>
+<p>Q:这东西太快了,我想用它跑最大流</p>
+<p>A:可以,但费用设成0远比设成1或其他值快(然后你可以用它过HLPP板子</p>
+<p>Q:有了它就不学模拟费用流了</p>
+<p>A:显然不行,如洛谷上Raper你会获得48分好成绩(是的我用它测了个速</p>
+<p>Q:为什么我用这个跑不过luogu费用流板子上最优解(一个EK算法)?</p>
+<p>A:这是个笑话</p>
+<p><img src="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205111717746.png" alt="" />–摘自你谷最优解</p>
+<h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考:</h2>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/94190">[Tutorial] Network simplex - Codeforces</a> 好文,就是从这学的</p>
+<p><a target="_blank" rel="noopener" href="https://www.cs.upc.edu/">https://www.cs.upc.edu/</a><sub>erodri/webpage/cps/theory/lp/network/slides.pdfhttps://www.cs.upc.edu/</sub>erodri/webpage/cps/theory/lp/network/slides.pdf 矩阵角度讲解</p>
+
+    </div>
+    <p class="eof">-- EOF --</p>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA-%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%8D%95%E7%BA%AF%E5%BD%A2/" title="图论 网络流 单纯形">图论 网络流 单纯形</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=FireInIce个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/blog/2022/05/16/%E6%A8%A1%E6%9D%BF%E5%A4%8D%E4%B9%A0/">
+            
+                模板复习
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="javascript: void(0);">没有下一篇了</a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+
+
+            </div>
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/blog/tags/%E9%A2%98%E8%A7%A3/" title="题解">题解 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%88%B7%E9%A2%98/" title="刷题">刷题 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%9B%BE%E8%AE%BA-%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%8D%95%E7%BA%AF%E5%BD%A2/" title="图论 网络流 单纯形">图论 网络流 单纯形 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E5%A4%8D%E4%B9%A0-%E6%A8%A1%E6%9D%BF/" title="复习 模板">复习 模板 (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/%E7%82%B9%E5%88%86%E6%B2%BB-dp/" title="点分治 dp">点分治 dp (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://shanlunjiajian.github.io" target="_blank" title="QYC神仙">QYC</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2014-2022
+    
+
+    <a href="/blog/">The Force is with You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/blog/js/main.js?v=1652706538299.js"></script>
+
+
+</body>
+</html>
