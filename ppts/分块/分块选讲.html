@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PPT</title>
+    <script src="./ppt.js"></script>
+    <link rel="stylesheet" href="./css/ppt.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./themes/red-web.css">
+    <style>
+        .pt {
+            padding-top: 200px !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div id="ppt">
+            <ppage-c class="pt">
+                <fly-t>
+                    <h1>分块入门</h1>
+                </fly-t><br>
+                <fly-bl>
+                    <h4>优雅的暴力--分块</h4>
+                </fly-bl>
+                <br>
+                <fly-br>
+                    <h6>kdw</h6>
+                </fly-br>
+            </ppage-c>
+            <ppage-c x="600" rotate-y="90">
+                <h1>
+                    <fly-t>目录</fly-t>
+                </h1>
+                <hr width="70%">
+                <div class="mx-auto">
+                    <ol>
+                        <li>
+                            <fly-r>序列分块</fly-r>
+                        </li>
+                        <li>
+                            <fly-l>值域分块</fly-l>
+                        </li>
+                        <li>
+                            <fly-r>有没有更难一点的</fly-r>
+                        </li>
+                    </ol>
+                </div>
+            </ppage-c>
+            <ppage-c class="pt" rotate-y="90" rotate-y="90" rotate-z="180" x="600" z="1200">
+                <h1>
+                    <fly-t>01-序列分块</fly-t>
+                </h1>
+                <p>
+                    <fly-b>基础</fly-b>
+                </p>
+            </ppage-c>
+            <ppage x="1000" y="1000" rotate-x="90">
+                <h1>
+                    <fly-t>单点修改区间查询修改O(1)</fly-t>
+                </h1>
+                <p>
+                    <fly-b>修改O(1)-查询O(sqrt n)做法,可以把序列分成长度为B的块,对每一块维护这一块的和</fly-b>
+                </p>
+                <p>
+                    <fly-b>那么对于修改我们只要把这个位置的值和这一块的和一起加就行了,显然是O(1)的</fly-b>
+                </p>
+                <p>
+                    <fly-b>
+                        对于查询,一个区间会被拆成中间若干个整块和两边两个不到一块的散块,我们可以直接累加整块维护的答案,散块的部分暴力遍历一遍累加,发现散块的大小是O(B)的,而最多又只有O(n/B)个整块,所以复杂度是O(B+n/B)
+                    </fly-b>
+                </p>
+                <p>
+                    <fly-t>我们要最小化查询的复杂度,发现当B=sqrt n时最小,所以每块大小为sqrt n,共sqrt n块</fly-r>
+                </p>
+            </ppage>
+            <ppage x="1000" y="2000" rotate-y="90" rotate-x="90">
+                <h1>
+                    <fly-t>单点修改区间查询查询O(1)</fly-t>
+                </h1>
+                <p>
+                    <fly-b>修改O(sqrt n)-查询O(1)做法,可以把序列分成长度为B的块,对每一块维护块内前缀和,块外前缀和(就是每一块的和再做前缀和)</fly-b>
+                </p>
+                <p>
+                    <fly-b>那么对于修改我们暴力把这一块的前缀和重新算一遍,再暴力给后面的块外前缀和每个加上修改的值,复杂度是O(B+n/B)</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于查询,我们可以差分成两个前缀,考虑对于一个前缀1-r求和,可以直接定位到r所在的块,则答案就是块内前缀和+块外前缀和,</fly-b>
+                </p>
+                <p>
+                    <fly-t>我们要最小化修改的复杂度,发现当B=sqrt n时最小,所每块大小为sqrt n,共sqrt n块</fly-r>
+                </p>
+            </ppage>
+            <ppage x="1000" y="3000" rotate-z="180">
+                <h1>
+                    <fly-t>区间加,区间查询</fly-t>
+                </h1>
+                <p>
+                    <fly-b>维护每块总和,和这一块整体被加了多少(加法懒标记)</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于修改,对于散块在原数组上暴力加,对于整块给每一个的总和和加法标记增加,复杂度是O(B+n/B)</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于查询,对于散块,根据加法标记和原数组把真实值累加,整块则直接累加总和,复杂度O(B+n/B)</fly-b>
+                </p>
+                <p>
+                    <fly-t>我们要最小化复杂度,发现当B=sqrt n时最小,所每块大小为sqrt n,共sqrt n块</fly-r>
+                </p>
+            </ppage>
+            <ppage-c x="1000" y="3000" rotate-y="180">
+                <h1>
+                    <fly-t>代码时间</fly-t>
+                </h1>
+                <p>
+                    <fly-tl>这就是线段树1的分块做法,建议通过这个题先熟悉一下分块基础操作怎么写,形成一个模板,我简单讲讲自己的代码</fly-tl>
+                </p>
+                <p>
+                    <fly-tl><a href="/code/P3372">Code</a></fly-tl>
+                </p>
+            </ppage-c>
+            <ppage-c class="pt" x="-1000" y="-1000">
+                <h1>
+                    <fly-t>02-值域分块</fly-t>
+                </h1>
+                <p>
+                    <fly-b>如何分块kth与rank</fly-b>
+                </p>
+            </ppage-c>
+            <ppage-c x="-2000" y="-1000" rotate-z="720"> 
+                <h1>
+                    <fly-t>插入和查rank</fly-t>
+                </h1>
+                <p>
+                    <fly-b>你发现这个就是直接把单点加区间查放到值域上</fly-b>
+                </p>
+            </ppage-c>
+            <ppage x="-1000" z="1000" rotate-x="360">
+                <h1>
+                    <fly-t>插入一个数,求kth,修改O(1)</fly-t>
+                </h1>
+                <p>
+                    <fly-b>维护值域块里数的个数</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于修改,直接给个数加</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于查询,先一块一块跳,后在一块里一个一个跳,复杂度还是O(B+n/B),套路B=sqrt n</fly-b>
+                </p>
+            </ppage>
+            <ppage z="-1000">
+                <h1>
+                    <fly-t>插入一个数,求kth,查询O(1)</fly-t>
+                </h1>
+                <p>
+                    <fly-b>维护第k大在第几个值域块和值域块内有序数组</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于修改,插入排序的方式O(B)修改块内有序数组,然后发现对于那个记录在第几个值域块的数组,只有每一块的最后一个可能到下一块,所以仍然修改量n/B,套路B=sqrt n</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于查询,直接查表</fly-b>
+                </p>
+            </ppage>
+            <ppage-c class="pt" y="-1000" z="-1000" rotate-x="180" rotate-y="180">
+                <h1>
+                    <fly-t>03-有没有更刺激的</fly-t>
+                </h1>
+                <p>
+                    <fly-b>云南OI警告</fly-b>
+                </p>
+            </ppage-c>
+            <ppage y="-2000" z="-1000">
+                <h1>
+                    <fly-t>区间加,区间rank</fly-t>
+                </h1>
+                <p>
+                    <fly-b>比较容易想到的方式,每个区间维护一个有序数组和加法标记</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于修改,被一起包含的整块有序数组不用变,加加法标记,对于散块直接暴力重构</fly-b>
+                </p>
+                <p>
+                    <fly-b>对于查询,散块部分可以暴力,整块则先给询问的数减去加法标记拿这个新数在每一块里二分,求得有几个数小于它</fly-b>
+                </p>
+                <p>
+                    <fly-b>设块长O(B),则修改复杂度O(B+n/B),查询复杂度O(n/B+B+n/B log B),发现此时B=sqrt(n log n)最棒,也提醒我们块长并不总是sqrt n的
+                    </fly-b>
+                </p>
+            </ppage>
+            <ppage y="-2000" z="-2000" rotate-z="90">
+                <h1>
+                    <fly-t>P2801 教主的魔法</fly-t>
+                </h1>
+                <p>
+                    <fly-b>看看这一题,上面的做法是可行的,然而qyc提出一种更牛逼的做法</fly-b>
+                </p>
+                <p>
+                    <fly-b>由于数据范围十分奇怪(n很大q很小),我们可以设计一种q^2的做法,以每个操作的两个端点作为分界,可以把序列分成O(q)段</fly-b>
+                </p>
+                <p>
+                    <fly-b>
+                        这样的好处是,所有查询和修改都是整块,可以直接维护加法标记了,再开一个块外前缀和s[i][j]表示前i块小于j的个数,可以一遍预处理出来,注意此时因为去掉加法标记后值始终在1000范围内这个东西完全可以开下
+                    </fly-b>
+                </p>
+                <p>
+                    <fly-b>最后复杂度是q^2的</fly-b>
+                </p>
+            </ppage>
+            <ppage y="-2000" z="2000"  rotate-z="90">
+                <h1>
+                    <fly-t>区间众数</fly-t>
+                </h1>
+                <p>
+                    <fly-b>
+                        这个做法好像还挺多<br>
+
+                        我在蒲公英写的一种是,维护块外所有区间答案和其出现次数,然后现在考虑如何对付散块,我们要计算散块的数在整块中的出现次数,所以可以记录块外前缀里等于某值的出现个数,查询时候就这样做就行了<br>
+
+                        然后你兴冲冲的提交到Yuno loves sqrt technology III上发现直接G,仔细一看空间要求线性.怎么办呢<br>
+                        
+                        问题主要在如何求出一个数的出现次数,考虑记录单独每一种值的出现位置,再记录一个位置上的元素出现的次数,查询n的时候看这个元素向左向右加上ans后是否还在这个区间里,如果还在就更新.<br>
+
+                        由于散块最多使答案增加sqrt n,所以可以暴力执行这个过程<br>
+                    </fly-b>
+                </p>
+            </ppage>
+            <ppage y="1000" x="1000" z="1000" rotate-x="45">
+                <h1>
+                    <fly-t>区间加,区间kth</fly-t>
+                </h1>
+                <p>
+                    <fly-b>大家都知道,kth和rank可以1log二分转化,所以我们可以先考虑在区间加区间rank的做法上套一个二分,但多了这个log一定是过不了的</fly-b>
+                </p>
+                <p>
+                    <fly-b>
+                        此时询问复杂度是O(B log(V)+log(B)log(V)*n/B),如果我们把一个log塞进B,让B=sqrt n log v,那么后面的俩log就只剩下一个了
+                    </fly-b>
+                </p>
+                <p>
+                    <fly-b>
+                        然而这个样散块多一个log,我们可以上来先把两个散快归并成一个整块再二分,复杂度就成了B + log(B)log(V).对于修改也是,本来复杂度为B log B,考虑到一个块的一部分加了后,成了两个内部有序的部分,可以把它们线性归并,复杂度就成了O(B)
+                    </fly-b>
+                </p>
+                <p>
+                    <fly-b>发现我们分析完之后取B=sqrt n log v是可行的,总复杂度O(log B),于是你切了一道YNOI</fly-b>
+                </p>
+            </ppage>
+            <opage-c class="pt" x="2000"  rotate-x="45" rotate-y="90" scale="3">
+                <h1><fly-t>还有时间吗?那我再讲时间分块</fly-t></h1>
+            </opage-c>
+        </div>
+    </div>
+    <script>
+        ppt.init();
+        document.querySelector('html').requestFullscreen();
+    </script>
+</body>
+
+</html>

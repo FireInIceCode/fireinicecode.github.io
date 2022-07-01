@@ -1,0 +1,48 @@
+body {
+    background-color: white;
+}
+
+ppage {
+    width: 800px;
+    height: 600px;
+    background-color: lightcyan;
+    color: rgb(80, 80, 80);
+    box-shadow: 10px 10px 10px lightblue;
+    border-radius: 10px;
+}
+
+opage {
+    width: 800px;
+    height: 600px;
+    text-align: center;
+    color: rgb(80, 80, 80);
+}
+
+#ppt {
+    background-color: white;
+}
+
+img {
+    width: 100%;
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: rgb(241, 241, 241);
+    box-shadow: 3px 3px 3px gray;
+    padding: 5px;
+    color: rgb(80, 80, 80);
+}
+
+.button-left,
+.button-right {
+    color: white;
+    background-color: rgb(173, 216, 230);
+}
+
+.button-left:hover,
+.button-right:hover {
+    background-color: rgb(214, 245, 255);
+}

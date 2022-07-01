@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="SAM题目选做这类题好多也可以用后缀数组和后缀平衡树,但我还是热爱SAM. P4022 熟悉的文章 [SAM] [dp] [复杂度]对于一篇作文,可以求出每个点向前最多匹配多长还在标准作文库中,这里前是指向下标小的方向(似乎对于序列,前和后会产生歧义) 把这个长度记为$len_i$ ,方法:  建出包含所有作文库作文的SAM。  初始匹配长度为0, p 借点在根,每次若能匹配沿自动机边向前走,否则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAM题目选做">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/06/08/SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="SAM题目选做这类题好多也可以用后缀数组和后缀平衡树,但我还是热爱SAM. P4022 熟悉的文章 [SAM] [dp] [复杂度]对于一篇作文,可以求出每个点向前最多匹配多长还在标准作文库中,这里前是指向下标小的方向(似乎对于序列,前和后会产生歧义) 把这个长度记为$len_i$ ,方法:  建出包含所有作文库作文的SAM。  初始匹配长度为0, p 借点在根,每次若能匹配沿自动机边向前走,否则">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-08T09:54:05.000Z">
+<meta property="article:modified_time" content="2022-06-08T09:58:18.234Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="SAM">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/2022/06/08/SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>SAM题目选做 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/08/SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SAM题目选做
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-08 17:54:05 / Modified: 17:58:18" itemprop="dateCreated datePublished" datetime="2022-06-08T17:54:05+08:00">2022-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">刷题记录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="SAM题目选做"><a href="#SAM题目选做" class="headerlink" title="SAM题目选做"></a>SAM题目选做</h1><p>这类题好多也可以用后缀数组和后缀平衡树,但我还是热爱SAM.</p>
+<h3 id="P4022-熟悉的文章-SAM-dp-复杂度"><a href="#P4022-熟悉的文章-SAM-dp-复杂度" class="headerlink" title="P4022 熟悉的文章 [SAM] [dp] [复杂度]"></a>P4022 熟悉的文章 [SAM] [dp] [复杂度]</h3><p>对于一篇作文,可以求出每个点向前最多匹配多长还在标准作文库中,这里前是指向下标小的方向(似乎对于序列,前和后会产生歧义) 把这个长度记为$len_i$ ,方法:</p>
+<ul>
+<li><p>建出包含所有作文库作文的SAM。</p>
+</li>
+<li><p>初始匹配长度为0, p 借点在根,每次若能匹配沿自动机边向前走,否则跳parent tree,注意向前匹配时匹配长度不能直接用 p 点 sam 节点的len值,但跳parent tree树时可以.</p>
+</li>
+<li><p><strong>qyc:这里暴力跳parent tree是对的因为跳一步深度减一,匹配一个深度加一,所以总复杂度O(n)</strong></p>
+</li>
+</ul>
+<p>然后考虑二分答案,对于每一个答案,进行判断,方法:</p>
+<ul>
+<li><p>$f_i$ 表示 考虑前 i 位时,最多能有多少位是熟悉的,转移就是考虑前面匹配到哪里$f_i = \max_j {f_j + i - j }, s.t.\ j \in [i-len_i,i-l]$.</p>
+</li>
+<li><p>这样做是$O(n^2)$的,发现可以进行简单单调队列优化,总复杂度$O(n\log n)$</p>
+</li>
+<li><p>最后判断熟悉的位数是否多于90%。</p>
+</li>
+</ul>
+<h3 id="P6640-封印-SAM-二分答案"><a href="#P6640-封印-SAM-二分答案" class="headerlink" title="P6640 封印 [SAM] [二分答案]"></a>P6640 封印 [SAM] [二分答案]</h3><p>向熟悉的文章一样,可以先求出s中每个点向前匹配多长还在t中,二分答案,若当前答案为x,询问为 l,r ,则只要判断$\min {len[l+x-1,r]}$这段区间的最大值是否不小于x即可,于是你需要一个静态RMQ,为了不写成2log,于是学了猫树.</p>
+<p>猫树要注意:</p>
+<ul>
+<li><p>补成完全二叉树时(即要把$n$弄成2的倍数)才满足叶子lca为叶子编号的lcp.</p>
+</li>
+<li><p>只要求出lca在第几层,设编号为x和y,则层数为$\lg{x}-\lg{x \operatorname {xor} y}$.</p>
+</li>
+</ul>
+<h3 id="P4094-字符串-SAM-线段树合并-二分答案"><a href="#P4094-字符串-SAM-线段树合并-二分答案" class="headerlink" title="P4094 字符串 [SAM] [线段树合并] [二分答案]"></a>P4094 字符串 [SAM] [线段树合并] [二分答案]</h3><p>二分答案,对于一个答案x,从s[1..d]跳parent tree到最后一个长度大于x的节点,看这个节点的endpos是否有在[a+len-1,b]之间的,所以用线段树合并维护endpos,复杂度$O(n\log^2n)$</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/SAM/" rel="tag"># SAM</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/08/%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8/" rel="prev" title="任务列表">
+      <i class="fa fa-chevron-left"></i> 任务列表
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/15/tricks/" rel="next" title="tricks">
+      tricks <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A"><span class="nav-number">1.</span> <span class="nav-text">SAM题目选做</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P4022-%E7%86%9F%E6%82%89%E7%9A%84%E6%96%87%E7%AB%A0-SAM-dp-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.1.</span> <span class="nav-text">P4022 熟悉的文章 [SAM] [dp] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6640-%E5%B0%81%E5%8D%B0-SAM-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88"><span class="nav-number">1.0.2.</span> <span class="nav-text">P6640 封印 [SAM] [二分答案]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4094-%E5%AD%97%E7%AC%A6%E4%B8%B2-SAM-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88"><span class="nav-number">1.0.3.</span> <span class="nav-text">P4094 字符串 [SAM] [线段树合并] [二分答案]</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

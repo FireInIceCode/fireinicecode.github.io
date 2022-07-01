@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="TYY杂题选将UOJ67 新年的毒瘤 给一个简单无向图,求删去哪个节点后变成一颗树  如果删完了图联通且边数为$n-1$就行,然后tarjan判割点 另外要判孤立点 UOJ575 光伏元件 给出一个 n×n 的 01 矩阵 A，其中 A_i,j&#x3D;1 表示开始时位置 (i,j) 有光伏元件，而 0 表示没有元件。你需要给出一组新的光伏元件的排布方案，光伏元件的分布有下列要求：设第 i 行的元件个数为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一轮省集1杂题选讲">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/06/18/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%861%E6%9D%82%E9%A2%98%E9%80%89%E8%AE%B2/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="TYY杂题选将UOJ67 新年的毒瘤 给一个简单无向图,求删去哪个节点后变成一颗树  如果删完了图联通且边数为$n-1$就行,然后tarjan判割点 另外要判孤立点 UOJ575 光伏元件 给出一个 n×n 的 01 矩阵 A，其中 A_i,j&#x3D;1 表示开始时位置 (i,j) 有光伏元件，而 0 表示没有元件。你需要给出一组新的光伏元件的排布方案，光伏元件的分布有下列要求：设第 i 行的元件个数为">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-18T07:21:30.000Z">
+<meta property="article:modified_time" content="2022-06-28T10:09:31.390Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="杂题">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/2022/06/18/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%861%E6%9D%82%E9%A2%98%E9%80%89%E8%AE%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>一轮省集1杂题选讲 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/18/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%861%E6%9D%82%E9%A2%98%E9%80%89%E8%AE%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一轮省集1杂题选讲
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-18 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-18T15:21:30+08:00">2022-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-28 18:09:31" itemprop="dateModified" datetime="2022-06-28T18:09:31+08:00">2022-06-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="TYY杂题选将"><a href="#TYY杂题选将" class="headerlink" title="TYY杂题选将"></a>TYY杂题选将</h1><h2 id="UOJ67-新年的毒瘤"><a href="#UOJ67-新年的毒瘤" class="headerlink" title="UOJ67 新年的毒瘤"></a>UOJ67 新年的毒瘤</h2><blockquote>
+<p>给一个简单无向图,求删去哪个节点后变成一颗树</p>
+</blockquote>
+<p>如果删完了图联通且边数为$n-1$就行,然后tarjan判割点</p>
+<p>另外要判孤立点</p>
+<h2 id="UOJ575-光伏元件"><a href="#UOJ575-光伏元件" class="headerlink" title="UOJ575 光伏元件"></a>UOJ575 光伏元件</h2><blockquote>
+<p>给出一个 n×n 的 01 矩阵 A，其中 A_i,j=1 表示开始时位置 (i,j) 有光伏元件，而 0 表示没有元件。<br>你需要给出一组新的光伏元件的排布方案，光伏元件的分布有下列要求：<br>设第 i 行的元件个数为 c_0,i，第 i 列的元件个数为 c_1,i。<br>对于每个 i，给出 dl_i,dr_i,k_i ，要求 |c_0,i−c_1,i|≤k 且 c_0,i,c_1,i∈[dl_i,dr_i]。即：要求第 i 行和第 i 列的元件个数在 [dl_i,dr_i] 之间，且相差不超过 k_i。<br>给出 n×n 的矩阵 C，以 C_i,j 表示改变位置 (i,j) 上元件有/无状态的代价；特别地，若 C_i,j=−1，则表示 (i,j) 位置的状态不可改变。<br>你需要找一组方案，在满足要求的前提下，使得总费用最小。保证存在合法方案。<br>1≤n≤100，0≤dl_i≤dr_i≤n，0≤k_i≤n，C_i,j≥−1，∑▒|C_i,j|≤2×10^9。</p>
+</blockquote>
+<p>这种棋盘上要求行的个数和列的个数的长的很像网络流的套路</p>
+<p>考虑建一排行点一行列点$col_i$和$row_i$,则$(i,j)$有点则$row_i\to col_j$,费用相应设置</p>
+<p>然后要处理两列间的这个问题,简单的想法是通过$row_i\to col_i$有上下界的网络流,接下来考虑给行和列补流来解决绝对值相差不超过$k$:</p>
+<blockquote>
+<p>做法是建一个新点 w_i，加入 $(col_i,w_i,[0,inf])$,$(col_i,T,[0,k_i])$,$(S,w_i,[0,k_i])$ 来允许 $k_i$ 的差距，之后再对 $w_i$ 和 $row_i$ 连边即可。</p>
+</blockquote>
+<p>可以使用强制流满的方法处理负环,像上下界一样补流,<del>直接网络单纯形</del></p>
+<h2 id="UOJ577-打击复读"><a href="#UOJ577-打击复读" class="headerlink" title="UOJ577 打击复读"></a>UOJ577 打击复读</h2><p>每个位置有一个$wl$和$wr$,$vl(s[l,r])$为$s[l,r]$出现位置的所有左端点的$wl$之和,$vr(s[l,r])$为右端点之和.每次修改一个位置的$wl$,求</p>
+<script type="math/tex; mode=display">
+\sum l\sum r vl(s[l,r])*vr(s[l,r])</script><p>设$s[l,r]$出现次数为$c([i,j])$</p>
+<p>如果直接维护$s[l,r]$的值会比较麻烦,还要考虑它的出现次数,所以维护<br>$f<em>i=\sum</em>{i\le j\le n} c(s[i,j])\times vr(s[i,j])$<br>那么答案就是$\sum f_i wl_i$</p>
+<p>建出$s$的后缀树(这个是反串后缀自动机parent tree),和后缀自动机</p>
+<p>考虑一个厉害结论,后缀树上一个节点对应的是后缀自动机上的一条链,且<strong>这一条链之外除了最后一个点外都只有一条出边</strong>,由于后缀自动机上每个节点对应endpos相同,所以每个节点对应的出现次数和$wr$均相等,对后缀树上每个叶子(叶子即一条后缀)到根路径累加路径上每个节点对应的</p>
+<script type="math/tex; mode=display">
+\sum c(s[l,r])\times wr_r</script><p>即为$f$,这个东西要在后缀自动机的链上求,刚才说明这条链中间都只有一条出边,所以一条链的信息是容易维护的,只要在后缀自动机上遍历一遍就能得到这些信息.</p>
+<p>对于修改发现可以简单O(1).</p>
+<h2 id="UOJ152-汉诺塔"><a href="#UOJ152-汉诺塔" class="headerlink" title="UOJ152 汉诺塔"></a>UOJ152 汉诺塔</h2><blockquote>
+<p>汉诺塔,但不要求过程中大的在小的上面,有1e4个圆盘,1e6次操作把它排序</p>
+</blockquote>
+<p>可以用操作把一个序列分成两个子序列或把两个子序列合并成一个.</p>
+<p>于是按大于或小于mid分成两个子序列,对每个子序列,发现可以忽略另一个子序列,因为操作都是在栈顶</p>
+<p>于是递归下去归并即可</p>
+<h2 id="UOJ153-世界线"><a href="#UOJ153-世界线" class="headerlink" title="UOJ153 世界线"></a>UOJ153 世界线</h2><blockquote>
+<p>交互题<br>要求你进行两次实验猜出一个长为$n$的排列$a$,值域1-n,你可以调用的函数包括</p>
+<ul>
+<li>new_round() 新的一次实验,只能调用两次,会生成一个$2n$点的无向图,其中$i\to n+a_i$,此时实验为第一阶段</li>
+<li>next_step() 实验进入第二阶段</li>
+<li>add_edge(u,v) 在第一阶段调用,连接$u,v$</li>
+<li>query(u,v) 在第二阶段调用,询问$u+n,v+n$的连通性</li>
+</ul>
+</blockquote>
+<p>我们可以在第一阶段把点连成若干连通块,第二阶段来问每个点在哪个连通块,我们无法通过add_edge的操作知道另一边的连通块是什么样的,会形成什么样的结构,题目相当于连通块和点是无标号的为点找到对应.</p>
+<p>那么我们要想一种方式区分这些连通块和点,发现可以使用连通块的大小,即我们用大小分别为1,2,3…k的连通块来区分,发现$k$是$O(\sqrt n)$的</p>
+<p>把一个点记为$(a,b)$表示它在左边连通块是a,右边连通块是b,把它画到一个平面上,把它画成一个阶梯状,第一次实验将行连成连通块,第二次将列连成连通块,然后构造一种方式使得我们可以通过连通块的大小来区分每一个元素.</p>
+<p>设$n=\frac {k\times (k+1)}{2}+c$</p>
+<ul>
+<li>若$c=0$,直接分成y=x下方三角形样子的阶梯状</li>
+<li>若$0&lt;c\le k$,在上面基础上放上(k+1,k+1),再把多出来的从上往下堆在最右边,惊喜的发现由于可以区分出$(k+1,k+1)$(所在行大小为1),那么仍然可以解决</li>
+</ul>
+<p>再考虑次数限制,连边是$O(n)$的毫无问题,而询问时我们从每个点询问前面的连通块看它属于哪个是$O(n\sqrt n)$的.卡常优化是从大的连通块开始尝试,为了防hack再把加点顺序随机.</p>
+<h2 id="UOJ218-火车管理"><a href="#UOJ218-火车管理" class="headerlink" title="UOJ218 火车管理"></a>UOJ218 火车管理</h2><blockquote>
+<p>有n个栈形成序列a,m次操作,每次</p>
+<ul>
+<li>给定$l$,$r$询问$a_{l..r}$的栈顶和</li>
+<li>给定$i$,a_i弹栈</li>
+<li>给定$l$,$r$,$x$,把$a_{l..r}$每个push一个$x$</li>
+</ul>
+</blockquote>
+<p>如果不带弹栈就是显然的区间推平区间和,线段树</p>
+<p>那么现在带上修改,考虑我们需要得到弹出后的栈顶进行修改,此时有两种解决方案.</p>
+<h3 id="Sol1"><a href="#Sol1" class="headerlink" title="Sol1"></a>Sol1</h3><p>开线段树套堆,堆按时间为关键字,对于一个操作按标记永久化的思想拆成线段树节点push进对应的堆中,那么弹出时查到一条链上最新的就是栈顶,把这个修改直接撤销了,再拆成不包含push点的两个修改再修改回去,发现每个修改的影响都是区间推平,所以开另一个线段树维护区间推平区间和.要用一些配对堆之类的牛逼堆.</p>
+<h3 id="Sol2"><a href="#Sol2" class="headerlink" title="Sol2"></a>Sol2</h3><p>开可持久化线段树,修改直接区间推平,pop可以在历史版本上查到pop完后应该是谁,进行单点修改,同时仍然要开另一棵树维护区间覆盖区间和.</p>
+<p>复杂度都是2log</p>
+<h2 id="SDOI-D1T3-子串统计"><a href="#SDOI-D1T3-子串统计" class="headerlink" title="SDOI D1T3 子串统计"></a>SDOI D1T3 子串统计</h2><p>差不多得了 to do</p>
+<h2 id="UOJ727-团队竞技"><a href="#UOJ727-团队竞技" class="headerlink" title="UOJ727 团队竞技"></a>UOJ727 团队竞技</h2><blockquote>
+<p>一堆人选3个人结对编程(?),每个人有3个指标,要求选出的三个人中每个人都有一个指标严格大于另外两个人,最大化选出来的三个人(每个指标的最大值)的和</p>
+</blockquote>
+<p>诈骗,如果一个人在多于一个的指标上是最大值,他就无法被选直接扔了.</p>
+<p>剩下的选三个分别最大的</p>
+<h2 id="UOJ177-新年的腮雷"><a href="#UOJ177-新年的腮雷" class="headerlink" title="UOJ177 新年的腮雷"></a>UOJ177 新年的腮雷</h2><blockquote>
+<p>有n个雷排成一个序列,$i$的大小为$a_i$,合并参数序列b,每次可以把m个合并,设合并的雷的大小序列为$x$,合并成一个代价为$\max {x_i+b_i}$的雷,最小化合成一个的代价,保证能成一个.</p>
+</blockquote>
+<p><strong>反向考虑</strong>,二分最后的答案,然后看能不能把一个大小为$v$的最后拆成$n$个,使得每个大小都不小于对应$a_i$</p>
+<p>那么把a和b分别排序,如果拆掉当前最大的大小为$x$的雷后,发现如果能拆一定会拆,而如果这个最大的雷能拆,发现拆了它一定比拆更小的优秀.</p>
+<h2 id="UOJ730-蚂蚁和方糖"><a href="#UOJ730-蚂蚁和方糖" class="headerlink" title="UOJ730 蚂蚁和方糖"></a>UOJ730 蚂蚁和方糖</h2><p>数轴上有蚂蚁和方糖,给定常数$L$,每次有两个操作:</p>
+<ul>
+<li>为位置$i$增加若干蚂蚁</li>
+<li>为位置$i$增加若干方糖</li>
+</ul>
+<p>并在每次操作后输出,每个蚂蚁能吃它左右$L$的位置的方糖,可以多个蚂蚁吃一个方糖,那么至少被一个蚂蚁吃的方糖有多少个.</p>
+<p>hall定理表明我们只要求任选一个蚂蚁集合能吃到方糖减去它们数量的最小值即可.</p>
+<p>如果一个方糖贡献一堆蚂蚁那么蚂蚁的重叠区间部分部分较为困难,所以改为一个方糖贡献一个蚂蚁的区间,蚂蚁的区间双向拓展$L$是其方糖区间.</p>
+<p>那么如果两个蚂蚁区间的方糖区间重叠了,我们把它合并成一个是一定不劣的.由于要求的是最优解所以可以假设它们不交.</p>
+<p>接下来处理一个方糖贡献一个区间的问题,为了让一个方糖只算一次,在相邻两个位置增加虚点,对每个方糖给它能贡献到的区间间隔加1和-1,发现此时若蚂蚁的区间于方糖贡献到的区间的交集大小超过1,仍然只会在容斥后算一次,类似圆方树的容斥.注意要钦定区间端点不在虚点上.</p>
+<p>使用线段树维护,每个节点记录左右端点和中间虚点的信息,发现答案可以合并</p>
+<h2 id="UOJ732-鱼-2"><a href="#UOJ732-鱼-2" class="headerlink" title="UOJ732 鱼 2"></a>UOJ732 鱼 2</h2><p>鱼排成一个序列,大小序列为$A$,一个鱼可以吃掉相邻的大小不大于自己的鱼然后大小变为两者之和,每次给出一个区间,吃到最后只剩一个的鱼,求可能成为幸存者的鱼的个数.询问独立.</p>
+<p>如果一个区间的和小于它左右端点的值,那么其中的鱼都不能成为幸存者,定义这样的区间为坏区间,发现被坏区间包含是死掉的充要条件.</p>
+<p>此外两个重要性质</p>
+<ul>
+<li><p>坏区间不会相交,只会包含和不交,因为如果相交的话,考虑长成这个样子:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-------------------------</span><br><span class="line">    |---------|</span><br><span class="line">         |---------|</span><br><span class="line">    a    b    c    d</span><br></pre></td></tr></table></figure>
+<p>发现A<em>{b-1}&gt;\sum A</em>{b..d},A<em>{c+1}&gt;\sum A</em>{a..c},显然直接矛盾</p>
+</li>
+<li><p>坏区间个数为$O(n \log n)$,考虑对于一个点,坏区间每次拓展至少翻一倍,因为包含了原来两边的墙,所以总个数是$n \log n$的.</p>
+</li>
+</ul>
+<p>于是可以考虑求出包含每个点的坏区间,考虑对每个点向左向右分别得到log个满足点权大于到这个点的区间和的端点,坏区间的点一定在这些中产生,由于求区间和是1log的,我们要O(点数)的求出端点,发现每个左边端点对应的右边端点必然是左边端点值的前驱后继之一,可以主席树去维护.</p>
+<p>然后询问时因为是单独拿出来一段,所以要求出左右端点在区间内的坏区间,直接进去倍增即可.</p>
+<p>最后要维护未被覆盖的数量,可以通过线段树维护区间加区间最小值个数,因为可能会有被询问的区间整体包含的情况所以不是1的个数.</p>
+<h1 id="比赛题"><a href="#比赛题" class="headerlink" title="比赛题"></a>比赛题</h1><h2 id="T1-小N的独立集"><a href="#T1-小N的独立集" class="headerlink" title="T1 小N的独立集"></a>T1 小N的独立集</h2><p>给一棵树,每个点权$a_i$在[0,m]间,每次独立的钦定一个点$a_x=y$,求此时有多少方案满足对所有$v\in [1,m]$,满足$a_i\le v$的点构成一个连通块.</p>
+<p>考虑如果不钦定怎么做,设f_{u,i,0/1}表示$u$的值为$i$,且子树内是否有比$i$大的时考虑$u$子树的方案数,对于1的情况容易转移</p>
+<script type="math/tex; mode=display">
+f_{u,i,1}=\prod_v \sum_j f_{v,j,1} s.t. j\le i</script><p>对于0的情况,可以枚举哪一个儿子是比它大的:</p>
+<script type="math/tex; mode=display">
+f_{u,i,0}=\sum_k (\prod_v \sum_{j\ne k} f_{v,j,0} s.t. j\le i) \times f_{k,j,1} s.t. j\ge i</script><p>用前缀和和后缀和处理空出k后其他儿子的信息再和k合并不然复杂度爆炸.</p>
+<p>那么现在要支持单点修改,于是ddp和整体dp拍上去,然后你发现这玩意ddp用矩阵表示简直发疯,整体dp赛场上也没写出来(这就是”命运”)</p>
+<p>而这个可以<strong>使用换根dp</strong>:处理它子树内的答案和子树外的答案,然后修改时以修改的点为根合并.</p>
+<h2 id="T2-整数序列"><a href="#T2-整数序列" class="headerlink" title="T2 整数序列"></a>T2 整数序列</h2><p>首先有一个$n^2$dp,$f_{i,j}$表示和为$i$,最后一个数为$j$,如果记录了选的数个数,那么你降智了.</p>
+<p>这个是慢的,然而发现比较浪费在于当$j$很大时几个数直接结束了,这种乘积一定的让人想到根号分治,当$a_1&lt;B$时使用这种方案.</p>
+<p>于是有另一种方式,当$a<em>1&gt;B$时,记$f</em>{i,j,k}$表示长度为$i$,最后一个数减去第一个数为$j$,所有数减去第一个数的和为$k$,这样做当值很大时$i$和$k$都很小,复杂度是${\frac {n} {B}}^4$,调阈值可以有奇怪复杂度$O(n^{\frac {8} {5}})$</p>
+<p>优化后面这种方式,常常可以考虑在前面加数,那么因为第一个数可以始终当成0,相当于给后面的整体抬升,可以记$f_{i,j}$表示选了$i$个数,所有数减去$a_1$的和为$j$,那么最后枚举$a_1$即可.</p>
+<h2 id="T3-有处存储"><a href="#T3-有处存储" class="headerlink" title="T3 有处存储"></a>T3 有处存储</h2><p>一个结论</p>
+<script type="math/tex; mode=display">
+\mu^2(x)=\sum_{d^2|x}\mu(d)</script><p>我的证明是</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x&=\prod_i p_i^{a_i} \\
+令x'&=\prod p_i^{\lfloor \frac{a_i}{2} \rfloor}\\
+则\mu^2(x) &=[x'=1]\\
+&=\sum_{d|x'}\mu({d_i})\\
+&=\sum_{d^2|x}\mu(d)
+\end{align}</script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/%E6%9D%82%E9%A2%98/" rel="tag"># 杂题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/17/KTT/" rel="prev" title="KTT学习记录">
+      <i class="fa fa-chevron-left"></i> KTT学习记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/19/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%867/" rel="next" title="一轮省集7">
+      一轮省集7 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TYY%E6%9D%82%E9%A2%98%E9%80%89%E5%B0%86"><span class="nav-number">1.</span> <span class="nav-text">TYY杂题选将</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ67-%E6%96%B0%E5%B9%B4%E7%9A%84%E6%AF%92%E7%98%A4"><span class="nav-number">1.1.</span> <span class="nav-text">UOJ67 新年的毒瘤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ575-%E5%85%89%E4%BC%8F%E5%85%83%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">UOJ575 光伏元件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ577-%E6%89%93%E5%87%BB%E5%A4%8D%E8%AF%BB"><span class="nav-number">1.3.</span> <span class="nav-text">UOJ577 打击复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ152-%E6%B1%89%E8%AF%BA%E5%A1%94"><span class="nav-number">1.4.</span> <span class="nav-text">UOJ152 汉诺塔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ153-%E4%B8%96%E7%95%8C%E7%BA%BF"><span class="nav-number">1.5.</span> <span class="nav-text">UOJ153 世界线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ218-%E7%81%AB%E8%BD%A6%E7%AE%A1%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">UOJ218 火车管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol1"><span class="nav-number">1.6.1.</span> <span class="nav-text">Sol1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sol2"><span class="nav-number">1.6.2.</span> <span class="nav-text">Sol2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDOI-D1T3-%E5%AD%90%E4%B8%B2%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.7.</span> <span class="nav-text">SDOI D1T3 子串统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ727-%E5%9B%A2%E9%98%9F%E7%AB%9E%E6%8A%80"><span class="nav-number">1.8.</span> <span class="nav-text">UOJ727 团队竞技</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ177-%E6%96%B0%E5%B9%B4%E7%9A%84%E8%85%AE%E9%9B%B7"><span class="nav-number">1.9.</span> <span class="nav-text">UOJ177 新年的腮雷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ730-%E8%9A%82%E8%9A%81%E5%92%8C%E6%96%B9%E7%B3%96"><span class="nav-number">1.10.</span> <span class="nav-text">UOJ730 蚂蚁和方糖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UOJ732-%E9%B1%BC-2"><span class="nav-number">1.11.</span> <span class="nav-text">UOJ732 鱼 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AF%94%E8%B5%9B%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">比赛题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1-%E5%B0%8FN%E7%9A%84%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">T1 小N的独立集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2-%E6%95%B4%E6%95%B0%E5%BA%8F%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">T2 整数序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-%E6%9C%89%E5%A4%84%E5%AD%98%E5%82%A8"><span class="nav-number">2.3.</span> <span class="nav-text">T3 有处存储</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

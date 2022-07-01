@@ -1,0 +1,91 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+.ppt-box {
+    position: absolute;
+    transition: 1s ease-in-out 0ms;
+    transform-style: preserve-3d;
+    transform-origin: left top;
+}
+
+.ppt-box-father {
+    position: absolute;
+    transition: 1s ease-in-out 0ms;
+    transform-style: preserve-3d;
+    transform-origin: left top;
+    top: 50%;
+    left: 50%;
+}
+
+.ppt-page {
+    padding: 30px;
+    transform-style: preserve-3d;
+    transform-origin: left top 0px;
+    position: absolute;
+}
+
+.button-left,
+.button-right {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    user-select:none;
+}
+
+.button-left {
+    left: 200px;
+}
+
+.button-right {
+    right: 200px;
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+img {
+    display: inline-block;
+    transition: .3s;
+}
+
+.active img:hover{
+    transform:scale(2);
+    border:solid lightskyblue 3px;
+}
+
+p,span,b,i,strong,.ppt-page{
+    font-size: 26px;
+}
+h1{
+    font-size: 50px;
+}
+h2{
+    font-size: 45px;
+}
+h3{
+    font-size: 41px;
+}
+h4{
+    font-size: 37px;
+}
+h5{
+    font-size: 34px;
+}
+h6{
+    font-size: 30px;
+}

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="置换群论学习我们要解决的问题是,给定一个对象集合$A$,一个颜色集合$B$和一组针对映射的变换$G$,求有多少种映射(将对象集合映射到颜色集合)的方案是本质不同的,这里两种映射本质不同指不能通过变换把一个变成另一个. 简单理解就是对对象染色,如果可以通过翻转旋转之类的操作变化到的算一种,求有多少种染色方案.要求这个变换操作关于他们的复合构成一个群 符号约定: $F(A,G)$表示对A染色,在G的情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="polya定理初学">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/07/01/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="置换群论学习我们要解决的问题是,给定一个对象集合$A$,一个颜色集合$B$和一组针对映射的变换$G$,求有多少种映射(将对象集合映射到颜色集合)的方案是本质不同的,这里两种映射本质不同指不能通过变换把一个变成另一个. 简单理解就是对对象染色,如果可以通过翻转旋转之类的操作变化到的算一种,求有多少种染色方案.要求这个变换操作关于他们的复合构成一个群 符号约定: $F(A,G)$表示对A染色,在G的情">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://fireinicecode.github.io/imgs/2022-07-01-13-59-32-v2-7723aba3a81e40fa0d25ab19ba3a230d_720w.jpg">
+<meta property="article:published_time" content="2022-07-01T03:05:00.000Z">
+<meta property="article:modified_time" content="2022-07-01T09:17:13.188Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/imgs/2022-07-01-13-59-32-v2-7723aba3a81e40fa0d25ab19ba3a230d_720w.jpg">
+
+<link rel="canonical" href="https://fireinicecode.github.io/2022/07/01/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>polya定理初学 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/07/01/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          polya定理初学
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-01 11:05:00 / Modified: 17:17:13" itemprop="dateCreated datePublished" datetime="2022-07-01T11:05:00+08:00">2022-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="置换群论学习"><a href="#置换群论学习" class="headerlink" title="置换群论学习"></a>置换群论学习</h1><p>我们要解决的问题是,给定一个对象集合$A$,一个颜色集合$B$和一组针对映射的变换$G$,求有多少种映射(将对象集合映射到颜色集合)的方案是本质不同的,这里两种映射本质不同指不能通过变换把一个变成另一个.</p>
+<p>简单理解就是对对象染色,如果可以通过翻转旋转之类的操作变化到的算一种,求有多少种染色方案.要求这个变换操作关于他们的复合构成一个群</p>
+<h2 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定:"></a>符号约定:</h2><ul>
+<li><p>$F(A,G)$表示对A染色,在G的情况下的本质不同方案数</p>
+</li>
+<li><p>$G(c)$表示应用到C上不改变的变换组成的集合</p>
+</li>
+<li><p>$C(f)$表示f作用上去不改变的方案组成的集合</p>
+</li>
+<li><p>$S(c)$表示和c本质相同的染色方案组成的集合</p>
+</li>
+<li><p>方案$c$经过置换$f$得到的东西为$c<em>f$,先进行$f$,再进行$g$(就是复合$f$和$g$)的置换为$h=f</em>g$</p>
+</li>
+</ul>
+<h2 id="Burnside引理"><a href="#Burnside引理" class="headerlink" title="Burnside引理"></a>Burnside引理</h2><h3 id="引理0"><a href="#引理0" class="headerlink" title="引理0"></a>引理0</h3><p>$G(c)$是群</p>
+<p>照着定义显然成立</p>
+<h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><script type="math/tex; mode=display">
+\sum|G(c)|=\sum |C(f)|</script><p>显然成立,因为两边都是满足$f$对$c$没用的有序对$(f,c)$的个数</p>
+<h3 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h3><p>作用在方案$c$上与$f$效果一样的变换$g$数量为$G(c)$.</p>
+<script type="math/tex; mode=display">
+f*c=g*c\\
+f^{-1}*g*c=c\\
+h*c=c</script><p>这里因为构成群,可以保证$f^{-1}$和$f^{-1}*g$一定存在,同时对于一个$f$满足$g$和$h$一一对应,所以成立</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><script type="math/tex; mode=display">
+|S(c)|=\frac {|G|}{|G(c)|},|G(c)|=\frac {|G|}{|S(C)|}</script><p>由引理2,可知每个$f$有$|G(c)|$个和它作用到$c$上效果相同,那么它们就构成了一个大小为$G(c)$的等价类,由于一共有$\dfrac{|G|}{|G(c)|}$个等价类,不同等价类会把$c$变换成不同的东西,所以定理成立.</p>
+<h3 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h3><script type="math/tex; mode=display">
+\sum_c \frac {1}{S(c)}=F(A,G)</script><p>原因是每一组等价的$c$正好加成了1</p>
+<h3 id="Burnside引理-1"><a href="#Burnside引理-1" class="headerlink" title="Burnside引理"></a>Burnside引理</h3><script type="math/tex; mode=display">
+F(A,G) = \frac{1}{|G|} \sum_c |G(c)|=\frac{1}{|G|} \sum_f |C(f)|</script><p>第二个等号直接用引理1得到,较为显然.而第一个等号是组合定理4和定理3:</p>
+<script type="math/tex; mode=display">
+F(A,G)=\sum_c \frac{1}{S(c)}=\frac {1}{|G|}\sum_c |G(c)|</script><p>于是命题得证.</p>
+<p>应用时,因为置换一般远比方案少,所以第三种形式比第二种形式常用.</p>
+<h2 id="Polya定理-声调飞了"><a href="#Polya定理-声调飞了" class="headerlink" title="Polya定理 (声调飞了)"></a>Polya定理 (声调飞了)</h2><p>那如何快速计算$C(f)$呢,考虑我们可以把一个变换写成这个形式:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}</script><p>表示1变成3,2变成1,3变成2,4变成5,5变成4.这里数字表示的是染色对象集合里的元素,比如一个圈把它旋转一下,对应的大概就是:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 2 & 3 & 4 & 5 & 1
+\end{pmatrix}</script><p>这个形式,表示第1个的颜色变成了第2个的,第2个的变成了第3个的…第5个的变成了第1个的.</p>
+<p>而这个东西又可以再分解成若干个循环,比如第一个例子我们换一个说法:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}</script><p>表示1变成3,3变成2,2变成1,4变成5,5变成4</p>
+<p>相当于拆成了若干个首尾相接的变换的复合,即</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 4 & 5
+\end{pmatrix}
+*
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 1 & 2 & 3 & 5 & 4
+\end{pmatrix}</script><p>我们称拆出来的一个为一个循环,因为它是首尾相接的一个环,那么一个循环里如果有任意两个元素不一样,被这个循环变换一下就不一样了,所以对于$C(f)$的每个染色,都要求一个循环里的元素被染成了相同的颜色.而不同的循环是互不影响的,所以得到</p>
+<script type="math/tex; mode=display">
+C(f)=m^{k(f)}</script><p>其中$m$表示颜色总数,$k(f)$表示$f$可以拆成多少个循环,这就是polya定理了,完整形式可以是</p>
+<script type="math/tex; mode=display">
+F(A,G)=\frac {1}{|G|}\sum m^{k(f)}</script><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="P4980-【模板】Polya-定理"><a href="#P4980-【模板】Polya-定理" class="headerlink" title="P4980 【模板】Pólya 定理"></a>P4980 【模板】Pólya 定理</h3><blockquote>
+<p>$t$次询问计数用$n$种颜色对一个长$n$的项链染色的本质不同的方案数,两个方案本质相同指可以通过旋转(注意不能翻转)从一个变成另一个.</p>
+<p>$t \le 10^3,n\le 10^9$</p>
+</blockquote>
+<p>对一种颜色的数量没有限制,一个变换就是把它转几下满足群的定义,可以Polya,问题是怎么算$k(f)$,即怎么算旋转$i$步的变换能拆成几个循环.</p>
+<p>考虑在旋转过程中,每个位置开始的情况是一样的所以在一个循环中不会重复经过一个数,拆出的每个循环的情况是一样的所以每个循环的长度相等.由于一个位置回到原位走的路程是$\operatorname{lcm}(n,i)$,也就是转了$\frac{\operatorname{lcm}(n,i)}{i}$步后回到原来的位置,也就是单个循环长度,所以循环个数就是$\dfrac{n}{\frac{\operatorname{lcm}(n,i)}{i}}=\gcd(n,i)$,于是就是要求</p>
+<script type="math/tex; mode=display">
+\sum_f{n^{k(f)}}\\
+=\sum_i n^{\gcd(i,n)}\\
+=\sum_{d|n} n^d\sum_i^n [\gcd(i,n)=d]\\
+=\sum_{d|n} n^d\sum_i^{\frac{n}{d}} [\gcd(i,\frac{n}{d})=1]\\
+=\sum_{d|n} n^d\varphi(\frac{n}{d})</script><p>因为$n$很大很难预处理,但直接暴力就能过.因为$10^9$次方以内只有$10^3$量级的因子,每个再平均$\sqrt{\sqrt{n}}$的求,界就很松.</p>
+<h3 id="P4727-HNOI2009-图的同构计数"><a href="#P4727-HNOI2009-图的同构计数" class="headerlink" title="P4727 [HNOI2009]图的同构计数"></a>P4727 [HNOI2009]图的同构计数</h3><blockquote>
+<p>问$n$个点组成的不同构的完全图的个数,两个图同构指它们可以通过重编号顶点相同.</p>
+<p>$n \le 60$</p>
+</blockquote>
+<p>一个变换就是对顶点重编号,一共有$n!$个变换</p>
+<p>考虑对一个变换如何算它的$C(f)$,这里的困难在于变换是对顶点的,但染色对象确是对边的,需要先把对顶点的变换转化为对边的.</p>
+<p>考虑一个顶点的重标号,会形成若干循环,考虑一个边要么连接两个循环,要么在同一个循环里:</p>
+<ul>
+<li><p>对于同一个循环里的边,设循环长度为$len$,发现这个点的变换关于边形成$\dfrac{len}{2}$个循环,如果不明白可以看这张图:</p>
+<p><img src="/imgs/2022-07-01-13-59-32-v2-7723aba3a81e40fa0d25ab19ba3a230d_720w.jpg" alt=""></p>
+<p>其中每个颜色代表了一个循环,根据一条边跨越了几个顶点分类.</p>
+</li>
+<li><p>对于不在同一个循环里的边,若两个循环大小分别为$a,b$,则一共有$ab$条这样的边,此时相当于每个时刻有两个环一起转一步,我们考虑一条边什么时候会回到原位,发现小学数学可知它$\operatorname{lcm}(a,b)$步后会回去,所以一个边的循环大小为$\operatorname{lcm}(a,b)$,所以个数就是$\gcd(a,b)$个.</p>
+</li>
+</ul>
+<p>于是,对于一个点的变换,设它拆成大小为$a_1$,$a_2$…$a_k$的循环,那么它对于边的循环个数为</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^k \dfrac{a_i}{2}+\sum_{i=1}^k\sum_{j=1}^{i-1}\gcd(a_i,a_j)</script><p>但现在由于我们要遍历$n!$个变换,仍然无法通过,发现其实一个变换我们只关心每个循环的大小,每个循环由哪些点构成是不重要的,所以我们可以直接枚举所有循环大小的情况,即枚举不同的升序序列$A=a_1,a_2…a_k$,并计算有多少个变换会拆成这样的序列.</p>
+<p>首先任意排列有$n!$种,再除掉每组内的相对顺序$a_i!$,每组里是个圆排列乘上$\dfrac{a_i!}{a_i}$,最后因为大小相同的组是不计顺序的,设$v$出现了$c_v$次我们要再除掉$\prod_v c_v!$,所以次数为</p>
+<script type="math/tex; mode=display">
+\frac{n!}{a_i\prod_v (c_v!)}</script><p>所以最后方案数为</p>
+<script type="math/tex; mode=display">
+\frac{1}{n!}\sum_A \frac{n!}{a_i\prod_v (c_v!)} \times 2^k\\
+k={\sum_{i=1}^k \dfrac{a_i}{2}+\sum_{i=1}^k\sum_{j=1}^{i-1}\gcd(a_i,a_j)}</script><p>拿这个算就好了.我们枚举的这个东西其实是拆分数,60的拆分数大约在1e6量级,再乘上$n^2$看起来过不了,但其实大多数拆分项数较少,所以跑的飞快.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/23/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/" rel="prev" title="一轮省集6">
+      <i class="fa fa-chevron-left"></i> 一轮省集6
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/01/qyc/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">置换群论学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">符号约定:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Burnside%E5%BC%95%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">Burnside引理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%90%860"><span class="nav-number">1.2.1.</span> <span class="nav-text">引理0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%90%861"><span class="nav-number">1.2.2.</span> <span class="nav-text">引理1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%90%862"><span class="nav-number">1.2.3.</span> <span class="nav-text">引理2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%90%863"><span class="nav-number">1.2.4.</span> <span class="nav-text">引理3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%90%864"><span class="nav-number">1.2.5.</span> <span class="nav-text">引理4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Burnside%E5%BC%95%E7%90%86-1"><span class="nav-number">1.2.6.</span> <span class="nav-text">Burnside引理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Polya%E5%AE%9A%E7%90%86-%E5%A3%B0%E8%B0%83%E9%A3%9E%E4%BA%86"><span class="nav-number">1.3.</span> <span class="nav-text">Polya定理 (声调飞了)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P4980-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91Polya-%E5%AE%9A%E7%90%86"><span class="nav-number">1.4.1.</span> <span class="nav-text">P4980 【模板】Pólya 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4727-HNOI2009-%E5%9B%BE%E7%9A%84%E5%90%8C%E6%9E%84%E8%AE%A1%E6%95%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">P4727 [HNOI2009]图的同构计数</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

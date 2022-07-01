@@ -1,0 +1,384 @@
+.animation-element{
+    display: inline-block;
+    animation-delay: 0.8s;
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+}
+
+.ppt-fly-b{
+    animation-name: fly-b;
+}
+.ppt-fly-t{
+    animation-name: fly-t;
+}
+.ppt-fly-l{
+    animation-name: fly-l;
+}
+.ppt-fly-r{
+    animation-name: fly-r;
+}
+.ppt-fly-tl{
+    animation-name: fly-tl;
+}
+.ppt-fly-tr{
+    animation-name: fly-tr;
+}
+.ppt-fly-bl{
+    animation-name: fly-bl;
+}
+.ppt-fly-br{
+    animation-name: fly-br;
+}
+
+@keyframes fly-r{
+    0% {
+        /* opacity: 0; */
+        transform: translateX(2000px);
+    }
+
+    60% {
+        /* opacity: 1; */
+        transform: translateX(-30px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fly-l{
+    0% {
+        opacity: 0;
+        transform: translateX(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(30px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fly-b{
+    0% {
+        opacity: 0;
+        transform: translateY(2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-30px);
+    }
+
+    80% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fly-t{
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fly-tl{
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px) translateX(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px) translateX(30px);
+    }
+
+    80% {
+        transform: translateY(-10px) translateX(-10px);
+    }
+
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+}
+
+@keyframes fly-tr{
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px) translateX(2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px) translateX(-30px);
+    }
+
+    80% {
+        transform: translateY(-10px) translateX(10px);
+    }
+
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+}
+
+@keyframes fly-bl{
+    0% {
+        opacity: 0;
+        transform: translateY(2000px) translateX(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-30px) translateX(30px);
+    }
+
+    80% {
+        transform: translateY(10px) translateX(-10px);
+    }
+
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+}
+
+@keyframes fly-br{
+    0% {
+        opacity: 0;
+        transform: translateY(2000px) translateX(2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-30px) translateX(-30px);
+    }
+
+    80% {
+        transform: translateY(10px) translateX(10px);
+    }
+
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+}
+
+
+
+@keyframes rock{
+    0%{
+        transform: rotate(0);
+    }
+    10%{
+        transform: rotate(10deg);
+    }
+    20%{
+        transform: rotate(-10deg);
+    }
+    30%{
+        transform: rotate(10deg);
+    }
+    40%{
+        transform: rotate(-10deg);
+    }
+    50%{
+        transform: rotate(10deg);
+    }
+    60%{
+        transform: rotate(-10deg);
+    }
+    70%{
+        transform: rotate(10deg);
+    }
+    80%{
+        transform: rotate(-10deg);
+    }
+    90%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.ppt-rock{
+    animation-name: rock;
+    animation-delay: 1.5s;
+    animation-duration: 0.7s;
+}
+
+
+@keyframes scale-in{
+    0%{
+        opacity: 0;
+        transform: scale(0.01);
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.ppt-scale-in{
+    animation-name: scale-in;
+    animation-duration: 1.5s;
+}
+@keyframes scale-out{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    20%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display:none;
+        transform: scale(0.01);
+    }
+}
+.ppt-scale-out{
+    animation-name: scale-out;
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.ppt-loop-rotate{
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes bomb{
+    0%{
+        transform: scale(1);
+    }
+    30%{
+        transform:scale(1.3);
+    }
+    50%{
+        transform:scale(1.1);
+    }
+    70%{
+        transform:scale(1.5);
+    }
+    99%{
+        transform: scale(2);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+.ppt-bomb{
+    animation-name: bomb;
+    animation-timing-function: linear;
+    animation-duration: 0.7s;
+}
+@keyframes loading{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+        z-index: auto;
+    }
+    100%{
+        opacity: 0;
+        display:none;
+        z-index:-1;
+    }
+}
+.loading{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color: gainsboro;
+    text-align:center;
+    animation-name: loading;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.loading>h1{
+    font-size:30px;
+    color:rgb(122, 122, 122);
+    margin-top:-15px;
+    position: absolute;
+    top:50%;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+.loading>div{
+    position: absolute;
+    top:50%;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:30px;
+    width: 200px;
+    height:30px;
+    border-radius: 15px;
+    background-color: gainsboro;
+    border:solid snow 2px;
+    overflow:hidden;
+}
+@keyframes loading-bar{
+    0%{
+        width:0px;
+    }
+    40%{
+        width:80%;
+    }
+    70%{
+        width:80%;
+    }
+    80%{
+        width:100%;
+    }
+}
+.loading>div>div{
+    height:100%;
+    border-radius: 15px;
+    animation: loading-bar 1.3s;
+    animation-timing-function: linear;
+    background-color: green;
+}

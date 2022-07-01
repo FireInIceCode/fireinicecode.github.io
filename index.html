@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="寄摆润摸职业选手">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FireBlog">
+<meta property="og:url" content="https://fireinicecode.github.io/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="寄摆润摸职业选手">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="博客 信息竞赛 OI kdw fireinice">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/07/01/qyc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/01/qyc/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-01 16:53:27 / Modified: 11:05:31" itemprop="dateCreated datePublished" datetime="2022-07-01T16:53:27+08:00">2022-07-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>qyc的感想<br>昨天和jhq老师谈人生，今天摸了一天，明天要睡一天，后天就是sdoi。我还什么都没有做。</p>
+<p>卷在我这里是中性词。</p>
+<p>如果你像我一样喜欢oi而不喜欢whk，那么你也会害怕失败，害怕失去学oi的理由而回去卷whk。有时候我觉得oi就是用来逃离whk的借口，但是当我在享受思考的乐趣，或者在学习新的科技时，我觉得至少这是一个十分正当的借口。当然我学的oi和大家可能不太一样，我是想怎么学就怎么学那种，所以还是挺快乐的，不过这导致我码力不足够强。</p>
+<p>在高等教育资源极大丰富之前，我们不得不为了争夺教育资源而学习自己并不喜欢的东西，作为一种被认为合理的区分卷王的方式。也许你会觉得这些东西是有用的，但是我认为有用的东西我们将来会为了它的用处学习它，而不是在它本身(也就是不考虑它对争夺教育资源的帮助)不能对我们体现出价值，也不能勾起我们兴趣的现在。也许你会觉得我们应该接触更多的东西，但是我认为初中已经可以做的很好，高中死不足惜。</p>
+<p>刚才说到我们不得不学习自己并不喜欢的东西，而oi则是我们所喜欢的。如果你不喜欢，我请你赶紧丝滑地滚，别你妈在这扎我的眼。我写的陈语秋和邱雨橙两个人，就是放弃了whk去追求爱好的人，她们一个赢了，保送了，另一个输了，高考随便考了考，去学烘焙了。</p>
+<p>主要想写的是，陈语秋老师的失败就是我所害怕的我的失败的一种，我把它写出来以博取同情。本来设定为陈语秋老师高三直接摆了，但是觉得不是很好，于是改为陈语秋老师高三并不是很卷，落下的课也不能完全补回来。我并不相信能有一个带着魔法的理由让我高三很有动力地卷起来。</p>
+<p>sdoi结束了。真的输了呢。D1写A到最后10min，然后冲了B的爆力走了，拿到了45pts，大众分105。D2大众分149。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/07/01/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/01/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/" class="post-title-link" itemprop="url">polya定理初学</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-01 11:05:00 / Modified: 17:17:13" itemprop="dateCreated datePublished" datetime="2022-07-01T11:05:00+08:00">2022-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="置换群论学习"><a href="#置换群论学习" class="headerlink" title="置换群论学习"></a>置换群论学习</h1><p>我们要解决的问题是,给定一个对象集合$A$,一个颜色集合$B$和一组针对映射的变换$G$,求有多少种映射(将对象集合映射到颜色集合)的方案是本质不同的,这里两种映射本质不同指不能通过变换把一个变成另一个.</p>
+<p>简单理解就是对对象染色,如果可以通过翻转旋转之类的操作变化到的算一种,求有多少种染色方案.要求这个变换操作关于他们的复合构成一个群</p>
+<h2 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定:"></a>符号约定:</h2><ul>
+<li><p>$F(A,G)$表示对A染色,在G的情况下的本质不同方案数</p>
+</li>
+<li><p>$G(c)$表示应用到C上不改变的变换组成的集合</p>
+</li>
+<li><p>$C(f)$表示f作用上去不改变的方案组成的集合</p>
+</li>
+<li><p>$S(c)$表示和c本质相同的染色方案组成的集合</p>
+</li>
+<li><p>方案$c$经过置换$f$得到的东西为$c<em>f$,先进行$f$,再进行$g$(就是复合$f$和$g$)的置换为$h=f</em>g$</p>
+</li>
+</ul>
+<h2 id="Burnside引理"><a href="#Burnside引理" class="headerlink" title="Burnside引理"></a>Burnside引理</h2><h3 id="引理0"><a href="#引理0" class="headerlink" title="引理0"></a>引理0</h3><p>$G(c)$是群</p>
+<p>照着定义显然成立</p>
+<h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><script type="math/tex; mode=display">
+\sum|G(c)|=\sum |C(f)|</script><p>显然成立,因为两边都是满足$f$对$c$没用的有序对$(f,c)$的个数</p>
+<h3 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h3><p>作用在方案$c$上与$f$效果一样的变换$g$数量为$G(c)$.</p>
+<script type="math/tex; mode=display">
+f*c=g*c\\
+f^{-1}*g*c=c\\
+h*c=c</script><p>这里因为构成群,可以保证$f^{-1}$和$f^{-1}*g$一定存在,同时对于一个$f$满足$g$和$h$一一对应,所以成立</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><script type="math/tex; mode=display">
+|S(c)|=\frac {|G|}{|G(c)|},|G(c)|=\frac {|G|}{|S(C)|}</script><p>由引理2,可知每个$f$有$|G(c)|$个和它作用到$c$上效果相同,那么它们就构成了一个大小为$G(c)$的等价类,由于一共有$\dfrac{|G|}{|G(c)|}$个等价类,不同等价类会把$c$变换成不同的东西,所以定理成立.</p>
+<h3 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h3><script type="math/tex; mode=display">
+\sum_c \frac {1}{S(c)}=F(A,G)</script><p>原因是每一组等价的$c$正好加成了1</p>
+<h3 id="Burnside引理-1"><a href="#Burnside引理-1" class="headerlink" title="Burnside引理"></a>Burnside引理</h3><script type="math/tex; mode=display">
+F(A,G) = \frac{1}{|G|} \sum_c |G(c)|=\frac{1}{|G|} \sum_f |C(f)|</script><p>第二个等号直接用引理1得到,较为显然.而第一个等号是组合定理4和定理3:</p>
+<script type="math/tex; mode=display">
+F(A,G)=\sum_c \frac{1}{S(c)}=\frac {1}{|G|}\sum_c |G(c)|</script><p>于是命题得证.</p>
+<p>应用时,因为置换一般远比方案少,所以第三种形式比第二种形式常用.</p>
+<h2 id="Polya定理-声调飞了"><a href="#Polya定理-声调飞了" class="headerlink" title="Polya定理 (声调飞了)"></a>Polya定理 (声调飞了)</h2><p>那如何快速计算$C(f)$呢,考虑我们可以把一个变换写成这个形式:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}</script><p>表示1变成3,2变成1,3变成2,4变成5,5变成4.这里数字表示的是染色对象集合里的元素,比如一个圈把它旋转一下,对应的大概就是:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 2 & 3 & 4 & 5 & 1
+\end{pmatrix}</script><p>这个形式,表示第1个的颜色变成了第2个的,第2个的变成了第3个的…第5个的变成了第1个的.</p>
+<p>而这个东西又可以再分解成若干个循环,比如第一个例子我们换一个说法:</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}</script><p>表示1变成3,3变成2,2变成1,4变成5,5变成4</p>
+<p>相当于拆成了若干个首尾相接的变换的复合,即</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 5 & 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 3 & 1 & 2 & 4 & 5
+\end{pmatrix}
+*
+\begin{pmatrix}
+ 1 & 2 & 3 & 4 & 5\\
+ 1 & 2 & 3 & 5 & 4
+\end{pmatrix}</script><p>我们称拆出来的一个为一个循环,因为它是首尾相接的一个环,那么一个循环里如果有任意两个元素不一样,被这个循环变换一下就不一样了,所以对于$C(f)$的每个染色,都要求一个循环里的元素被染成了相同的颜色.而不同的循环是互不影响的,所以得到</p>
+<script type="math/tex; mode=display">
+C(f)=m^{k(f)}</script><p>其中$m$表示颜色总数,$k(f)$表示$f$可以拆成多少个循环,这就是polya定理了,完整形式可以是</p>
+<script type="math/tex; mode=display">
+F(A,G)=\frac {1}{|G|}\sum m^{k(f)}</script><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="P4980-【模板】Polya-定理"><a href="#P4980-【模板】Polya-定理" class="headerlink" title="P4980 【模板】Pólya 定理"></a>P4980 【模板】Pólya 定理</h3><blockquote>
+<p>$t$次询问计数用$n$种颜色对一个长$n$的项链染色的本质不同的方案数,两个方案本质相同指可以通过旋转(注意不能翻转)从一个变成另一个.</p>
+<p>$t \le 10^3,n\le 10^9$</p>
+</blockquote>
+<p>对一种颜色的数量没有限制,一个变换就是把它转几下满足群的定义,可以Polya,问题是怎么算$k(f)$,即怎么算旋转$i$步的变换能拆成几个循环.</p>
+<p>考虑在旋转过程中,每个位置开始的情况是一样的所以在一个循环中不会重复经过一个数,拆出的每个循环的情况是一样的所以每个循环的长度相等.由于一个位置回到原位走的路程是$\operatorname{lcm}(n,i)$,也就是转了$\frac{\operatorname{lcm}(n,i)}{i}$步后回到原来的位置,也就是单个循环长度,所以循环个数就是$\dfrac{n}{\frac{\operatorname{lcm}(n,i)}{i}}=\gcd(n,i)$,于是就是要求</p>
+<script type="math/tex; mode=display">
+\sum_f{n^{k(f)}}\\
+=\sum_i n^{\gcd(i,n)}\\
+=\sum_{d|n} n^d\sum_i^n [\gcd(i,n)=d]\\
+=\sum_{d|n} n^d\sum_i^{\frac{n}{d}} [\gcd(i,\frac{n}{d})=1]\\
+=\sum_{d|n} n^d\varphi(\frac{n}{d})</script><p>因为$n$很大很难预处理,但直接暴力就能过.因为$10^9$次方以内只有$10^3$量级的因子,每个再平均$\sqrt{\sqrt{n}}$的求,界就很松.</p>
+<h3 id="P4727-HNOI2009-图的同构计数"><a href="#P4727-HNOI2009-图的同构计数" class="headerlink" title="P4727 [HNOI2009]图的同构计数"></a>P4727 [HNOI2009]图的同构计数</h3><blockquote>
+<p>问$n$个点组成的不同构的完全图的个数,两个图同构指它们可以通过重编号顶点相同.</p>
+<p>$n \le 60$</p>
+</blockquote>
+<p>一个变换就是对顶点重编号,一共有$n!$个变换</p>
+<p>考虑对一个变换如何算它的$C(f)$,这里的困难在于变换是对顶点的,但染色对象确是对边的,需要先把对顶点的变换转化为对边的.</p>
+<p>考虑一个顶点的重标号,会形成若干循环,考虑一个边要么连接两个循环,要么在同一个循环里:</p>
+<ul>
+<li><p>对于同一个循环里的边,设循环长度为$len$,发现这个点的变换关于边形成$\dfrac{len}{2}$个循环,如果不明白可以看这张图:</p>
+<p><img src="/imgs/2022-07-01-13-59-32-v2-7723aba3a81e40fa0d25ab19ba3a230d_720w.jpg" alt=""></p>
+<p>其中每个颜色代表了一个循环,根据一条边跨越了几个顶点分类.</p>
+</li>
+<li><p>对于不在同一个循环里的边,若两个循环大小分别为$a,b$,则一共有$ab$条这样的边,此时相当于每个时刻有两个环一起转一步,我们考虑一条边什么时候会回到原位,发现小学数学可知它$\operatorname{lcm}(a,b)$步后会回去,所以一个边的循环大小为$\operatorname{lcm}(a,b)$,所以个数就是$\gcd(a,b)$个.</p>
+</li>
+</ul>
+<p>于是,对于一个点的变换,设它拆成大小为$a_1$,$a_2$…$a_k$的循环,那么它对于边的循环个数为</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^k \dfrac{a_i}{2}+\sum_{i=1}^k\sum_{j=1}^{i-1}\gcd(a_i,a_j)</script><p>但现在由于我们要遍历$n!$个变换,仍然无法通过,发现其实一个变换我们只关心每个循环的大小,每个循环由哪些点构成是不重要的,所以我们可以直接枚举所有循环大小的情况,即枚举不同的升序序列$A=a_1,a_2…a_k$,并计算有多少个变换会拆成这样的序列.</p>
+<p>首先任意排列有$n!$种,再除掉每组内的相对顺序$a_i!$,每组里是个圆排列乘上$\dfrac{a_i!}{a_i}$,最后因为大小相同的组是不计顺序的,设$v$出现了$c_v$次我们要再除掉$\prod_v c_v!$,所以次数为</p>
+<script type="math/tex; mode=display">
+\frac{n!}{a_i\prod_v (c_v!)}</script><p>所以最后方案数为</p>
+<script type="math/tex; mode=display">
+\frac{1}{n!}\sum_A \frac{n!}{a_i\prod_v (c_v!)} \times 2^k\\
+k={\sum_{i=1}^k \dfrac{a_i}{2}+\sum_{i=1}^k\sum_{j=1}^{i-1}\gcd(a_i,a_j)}</script><p>拿这个算就好了.我们枚举的这个东西其实是拆分数,60的拆分数大约在1e6量级,再乘上$n^2$看起来过不了,但其实大多数拆分项数较少,所以跑的飞快.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/23/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/23/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/" class="post-title-link" itemprop="url">一轮省集6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-23 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-23T15:21:30+08:00">2022-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-01 15:17:07" itemprop="dateModified" datetime="2022-07-01T15:17:07+08:00">2022-07-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h1><h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><blockquote>
+<p>给一个由栈构成的序列和常数A,每次给一个区间里一起加入一个数,或者询问从这个栈开始连着几个的乘积大于A</p>
+</blockquote>
+<p>把时间维和序列维换一下,扫描序列维,维护时间维,若以序列为横轴,时间维为纵轴,则一个修改就是平面上一条横线,一个询问则相当于询问一点的区间历史和(差分得到一段).扫描线进入一个修改时,一个修改会影响向上log个不是1的段,lxl说随便数据结构至少1log找一段,每次进行一个区间修改,所以数据结构支持区间修改和单点历史时刻和,线段树即可</p>
+<p>也可以1log找出所有的被影响的段,把一堆插入的1缩成1个,在平衡树上找log个后继相当于finger search.</p>
+<p>修改也可以1 log finger search性质修改.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这种扫描线是利用了一个维度的不对称性,时间维的结构有时会比序列的更简单.</p>
+<h3 id="相关例题"><a href="#相关例题" class="headerlink" title="相关例题"></a>相关例题</h3><h4 id="饮食区"><a href="#饮食区" class="headerlink" title="饮食区"></a>饮食区</h4><blockquote>
+<p>有一个队列构成的序列,每次</p>
+<ul>
+<li><p>给$[l,r]$中的队列队尾加入$k$个$c$</p>
+</li>
+<li><p>$[l,r]$中的队列弹出$k$个队首,不足则弹空</p>
+</li>
+<li><p>查询第$i$个队列的第$k$个数</p>
+</li>
+</ul>
+</blockquote>
+<p>仍然用刚才的套路,扫描序列维护时间,可以用个线段树,位置$t$表示$t$时刻插入的人有几个,删除则为负数,那么发现直接求一个区间里有多少人是困难的,因为删除还会和0取max,方法是维护时间维上后缀和的min,那么只要二分它第一次小于0的位置就能得到最后一次取max的位置,接下来就直接二分kth就好了</p>
+<p>复杂度1log</p>
+<h4 id="相关例题UOJ515"><a href="#相关例题UOJ515" class="headerlink" title="相关例题UOJ515"></a>相关例题UOJ515</h4><blockquote>
+<p>单点修改,询问 ax,⋯,an 的不同的后缀最小值个数.</p>
+</blockquote>
+<p>首先显然和前缀最小值一样</p>
+<p>仍然用扫描序列维维护时间维的方法,扫的时候在后面增加个数是不会改变已有的最小值,所以转化后序列后区间询问转化成单点历史询问,单点的修改会影响一段后缀所以是区间修改.计算个数时,如果取min生效了就代表前缀最小值多了一个.这个可以线段树均摊,分析就是取min时递归到的每个区间本质不同数字的数量至少减1,所以复杂度1log.</p>
+<h4 id="相关例题Comet-OJ-Contest-14-D"><a href="#相关例题Comet-OJ-Contest-14-D" class="headerlink" title="相关例题Comet OJ Contest#14 D"></a>相关例题Comet OJ Contest#14 D</h4><blockquote>
+<p>有一个序列$c$,一个操作序列每个操作是对$c$区间赋值,然后每次询问按顺序执行操作序列一个区间的操作后$c$的全局和,询问独立.</p>
+</blockquote>
+<p>对于操作序列上的一个操作$(t,l,r,v)$表示$t$时刻把$[l,r]$赋值为$v$,我们把它的影响</p>
+<p>范围画出来,以操作序列的下标(或者说时间)为横轴,以序列为纵轴,那么它影响的$(x1,y1,x2,y2)$的矩形就是$(t,l,inf,r)$,是3side的矩形.<br>这些矩形相互覆盖,统计信息较为复杂,可以把它们划分成若干不交的矩形,相当于我们向右扫描线时用ODT维护区间值相等的段,在每一个段消失的时候,以它从加入到消失这个时间段为底,以这个段消失的时候在序列c上的左右端点为高,划分成一个矩形.由和镜中的昆虫相同的颜色段均摊原理,这样做复杂度是正确的,划分完矩形个数仍然是$O(n)$ 的</p>
+<p>于是现在一个横坐标在$[x1,r1]$的矩形对一个询问$l,r$有贡献,当且仅当$l\le x1,r\in [x1,x2]$,而贡献就是它的长度成值,这就是二维数点啊.</p>
+<h4 id="相关例题Ynoi2009-rprmq"><a href="#相关例题Ynoi2009-rprmq" class="headerlink" title="相关例题Ynoi2009 rprmq"></a>相关例题Ynoi2009 rprmq</h4><p>n*n矩形全是0,先进行m次矩形加,所有修改结束后有q次查询最大值</p>
+<p>扫描线的基本模型是先修后查,只是因为扫一维转化成了动态,所以这就是标准扫描线.</p>
+<p>不能直接扫描线因为max不具有差分性质</p>
+<p>一种方法是扫到起始边时把询问打标记,所以需要再用数据结构维护所有询问.</p>
+<p>另一种方法是进行分治,在坐标平面正中间切开,两边拼起来得到答案,但这样修改可能跨多个分治部分复杂度是假的.</p>
+<p>考虑把分治的切开线画到平面上,对同一个深度的层一起考虑,询问一定不会跨过两条线(因为一定在没跨过的时候,在最高层处理了)且贴在一条线上,那么相当于区间加区间历史最大值,而且信息每次经过一个分治切割线要把历史值清空一次(设为当前值),方式是每次经过一条线整体加inf.</p>
+<p>我们每一层进行了一遍所有修改,而询问只会出现在一层,所以修改复杂度$O(m log^2 n)$,询问$O(q log n)$</p>
+<h4 id="相关例题Ynoi2019-rprmq2"><a href="#相关例题Ynoi2019-rprmq2" class="headerlink" title="相关例题Ynoi2019 rprmq2"></a>相关例题Ynoi2019 rprmq2</h4><p>m*m的矩形初值为0,有m次操作,每次修改一个2side矩形,维护全局最大值</p>
+<p>这个是严格不弱于刚才的问题的:可以直接规约成矩形4side最大值和加:全局的直接区间加inf然后查完结果再减inf相当于矩形最大值,而2side也可以差分出4side.所以一些奇怪的乱搞是不行的.</p>
+<p>对于又有询问又有修改不容易做的问题,考虑时间分块.</p>
+<p>但我们无法直接对一个修改计算询问的贡献.</p>
+<p>对于当前的时间块,对于所有询问修改的矩形边界为边线,把平面按照这些线划分成一个网格图,则这一块修改询问都以网格为单位,而上一块的却不是,解决方案是对这$\sqrt n$个格子找到在上一个时间块的最大值,由于我们不会深究这一个格子里面到底是啥,所以只要知道这个就可以了.对于这个问题我们可以用rprmq1的扫描线得到答案.</p>
+<p>由于以块为单位,可以把块看成点,每次块内修改贡献是矩形加矩形最大值,可以用KDT单次$\sqrt n$解决.</p>
+<p>复杂度还有俩log要砍,需要再研究一下.todo</p>
+<p>据说这题写出来常数大的离谱,除了std700行以外没人能过,还是差不多得了.</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><p>给一个序列,记第k小为$kth(k-1)$,问区间里$\sum kth(i) b^i$的值</p>
+<p>来自CF633H</p>
+<p>赛时写了个垃圾$\sqrt n\log n$的莫队套线段树</p>
+<p>对序列分块一定会涉及到去重没前途,对值域分块</p>
+<p>先考虑无重复元素的个数.</p>
+<p>设第$i$块里有$x_i$个数,答案为$y_i$,则发现两个一起的答案可以$O(1)$得到.</p>
+<p>于是考虑一块的怎么做,仅考虑在当前块的位置,它对应的原序列上的位置也只有$\sqrt n$个,则<strong>在原序列上只有$O(n)$个本质不同(值域情况不同)区间</strong>,$O(n)$预处理$f_i$表示每个位置前面第一个在当前块里的位置,$g_i$表示每个位置后面第一个,这个只要正反各扫描一遍即可.然后则可以把一个询问定位到这一块在序列上一个本质不同的区间,那么预处理这些一共$n\sqrt n$个区间的答案即可.</p>
+<p>接下来考虑有重复元素的情况,此时可能一个值域里有很多数,那么可以对于一个值以它的出现次数为权值分块(like 势能均摊莫队),如果一个颜色出现次数多的离谱(多于$\sqrt n$)那么单独分一块,那么此时这种的要单独处理,我们只需要知道它的出现次数即可,考虑在线要二分多个$\log$,于是把询问离线,存下它们的端点,然后用刚才定位本质不同的区间扫两遍得到最左和最右的关键点,于是就能得到个数了.</p>
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><p>信息是可以快速合并的(然而我是智障没有发现)</p>
+<p>合并方法:两个块,设包含的等于$x$的个数为$b1$,$b2$,每个点到端点的颜色切换数是$a1$,$a2$,那么合起来答案就是$a1b2+a2b1$,$b$合并显然,$a$合并相当于整体延伸一段,再算一下整块一共切换多少次就可以合并.<br>那么只要考虑区间赋值了,如果一个块已经成了一个就$O(1)$算,否则暴力,那么复杂度是每个块的$O(\sqrt n \times \sqrt n+m\sqrt n)$和散块的$O(m\times \sqrt n)$</p>
+<h1 id="开始讲课了"><a href="#开始讲课了" class="headerlink" title="开始讲课了"></a>开始讲课了</h1><h2 id="LuoguP7125-Ynoi2008-rsmemq"><a href="#LuoguP7125-Ynoi2008-rsmemq" class="headerlink" title="LuoguP7125 Ynoi2008 rsmemq"></a>LuoguP7125 Ynoi2008 rsmemq</h2><blockquote>
+<p>给一个询问,每次问一个区间里有多少子区间的$\frac {l+r} {2}$(注意是下标而不是这个位置的值)是区间众数(非严格,可以有多个)且长度是奇数</p>
+</blockquote>
+<p>枚举每个位置为中心,设中心位置为$x$,有$y$个$i$个满足$a_i=x$,则最多有$y$段$k$的极长区间满足$[x-k,x+k]$合法.</p>
+<blockquote>
+<p>考虑从中心开始向外拓展，当前从[x-(i-1),x+(i-1)]拓展至[x-i,x+i]<br>若a[x-i]与a[x+i]均不为x，且[x-(i-1),x+(i-1)]不是可行区间，则[x-i,x+i]一定不是可行区间<br>所以对x，将所有a[i]==x的i变换为|x-i|后排序为一个数组b，在相邻两个元素b<em>j与b</em>{j+1}之间只可能有一个k满足[x-k,x+k]是可行区间，[x-(k+1),x+(k+1)]不为可行区间</p>
+</blockquote>
+<p>于是所有极长区间个数为$O(n)$</p>
+<p>于是要想如何算所有可行区间,对颜色根号分治,对出现次数大于$\sqrt n$的可以直接暴力,对于小于$\sqrt n$</p>
+<h2 id="CF1491H"><a href="#CF1491H" class="headerlink" title="CF1491H"></a>CF1491H</h2><p>给定序列$a$,$a_i$表示$i$的父亲构成一棵树,保证$1\le a_i &lt; i$,支持两个操作:<br>1 l r x 令 $a_i=\max(a_i-x,1)(l\leq i\leq r)$.<br>2 u v 查询在当前的 a 数组构成的树上 u,v 的 LCA.</p>
+<p>这个修改对形态的影响很大,根本不能维护树,由于修改太神询问一定较弱,从询问角度考虑:</p>
+<p>为了处理lca我们不需要知道树的形态,发现$a_i-i$很大时可以暴力,于是根号分治,当$a_i-i\le \sqrt n$时,分块后预处理每个点跳几次会跳出当前块,每个点跳出来在哪.</p>
+<p>由于$a_i-i$是单增的且每次至少减1,那么若一个块被整体减了$\sqrt n$次,其中每个数必然都会一次跳出去,就不需要维护这个块了.这使得每个整块只被减$\sqrt n$次,一共$\sqrt n$块,于是可以每块暴力$\sqrt n$做.</p>
+<p>那么复杂度就是完整包含的$n\sqrt n$或零散的$m\sqrt n$了</p>
+<p>然后剩下的可以暴力lca(向上标记法,先整块后散块)</p>
+<h3 id="奇妙小技巧"><a href="#奇妙小技巧" class="headerlink" title="奇妙小技巧"></a>奇妙小技巧</h3><p>lxl给我们讲对着一个老哥块长把这个题的$n^\frac {5}{3}$卡了,讲了下防卡技巧:<br>分块散块有一半常数,线段树期望也卡不满$2\log n$,为了防卡可以直接给序列整体右移一个随机值,就能让构造数据变成随机的.</p>
+<h2 id="CF700D-Huffman-Coding-on-Segment"><a href="#CF700D-Huffman-Coding-on-Segment" class="headerlink" title="CF700D Huffman Coding on Segment"></a>CF700D Huffman Coding on Segment</h2><blockquote>
+<p>给定一个长度为$n$的串,$q$次询问一个区间的最小二进制编码长度(给每个数找一个二进制对应,总长度最小)</p>
+</blockquote>
+<p>首先全局的是经典的,可以按出现次数建huffman树,那么每个点的编码就是根到叶子路径走过边形成的01串,长度就是深度*权值,所以相当于在这一段以次数为代价合并果子.</p>
+<p>我们要维护区间每个数的次数,这个东西常常莫队.因为这类问题常常不弱于矩阵乘法,如区间出现次数第$k$大的这类的,此时考虑莫队.</p>
+<p>但显然不能暴力合并果子,要进行优化,对于出现次数小于$\sqrt n$的,可以$O(1)$代价批量合并一个数,剩下的数都是大于$\sqrt n$的,可以进行暴力(势能为剩下数的个数).就能$O(\sqrt n)$完成一次查询.</p>
+<h2 id="CF1476G-Minimum-Difference"><a href="#CF1476G-Minimum-Difference" class="headerlink" title="CF1476G Minimum Difference"></a>CF1476G Minimum Difference</h2><blockquote>
+<p>有一个长为 $n$ 的数组，进行 $m$ 次询问，每次为以下两种中的一种：</p>
+<ul>
+<li><code>1 l r k</code>：给定区间 $[l,r]$，你需要求出最小的 $\text{dif}$，使得能够选出 $k$ 个互不相同的数 $a_1,a_2,\cdots,a_k$，令这些数在区间中的出现次数分别为 $cnt_1,cnt_2,\cdots,cnt_k$（任意 $cnt_i &gt; 0$），则 $\text{dif}$ 为这些 $cnt_i$ 的极差；若无法选出 $k$ 个数，则输出 $-1$.</li>
+<li><code>2 p x</code>：将位置 $p$ 赋值为 $x$。</li>
+</ul>
+</blockquote>
+<p>和上一个一样进行莫队,求出每个出现次数,和盼君勿忘一样有数的出现次数不同的只有$\sqrt n$种,因为有修改所以待修莫队.</p>
+<h2 id="lxl现场造题"><a href="#lxl现场造题" class="headerlink" title="lxl现场造题"></a>lxl现场造题</h2><p>三维空间有一堆长方体,求他们的并的体积. 长方体个数$10^5$,时限10s.</p>
+<p>扫描线一维,然后是动态的二维问题,每次要矩形加一减一或查询0的个数,那么就用上面的rprmq2把最大值变成最小值再维护最小值个数.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/22/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%865/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/22/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%865/" class="post-title-link" itemprop="url">一轮省集5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-22 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-22T15:21:30+08:00">2022-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-01 11:01:22" itemprop="dateModified" datetime="2022-07-01T11:01:22+08:00">2022-07-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h1><h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><blockquote>
+<p> 给一棵树,时间$t=0$时只有叶子有权值,以后的每个时间,记$i$在时刻$t$权值$f<em>{i,t}$为$f</em>{i,t}=\max<em>{j\in Son_i}{f</em>{j,t-1}}$,求一条链上的和,最小值,最大值.</p>
+</blockquote>
+<p>发现直接维护每个时刻的信息过于困难,很没前途,先考虑链上的情况,对于一个连续的值相等的段一起考虑,全都插进平衡树,那么若它上下两段的值都大于它它会缩小1,都小于它它会扩大1,否则向上移动一格,它的移动状况不依赖于当前的时间,那么可以通过一个全局标记表示所有区间实际经过了多长时间进行询问,每次如果一个区间没了就把它删了.标记的处理就是,因为移动后虽然位置变化了,但它的相对位置还是一样的(就是两个段的上下关系不变)可以二分出询问涵盖的范围算.</p>
+<p>拓展到树上,进行树剖,那么对每个段如果它即将移动出这个重链,因为是取max,所以只要考虑其第一个元素的移动,等它整体移动出下面那条链后把它再插到上面那条里.</p>
+<p>复杂度计算就是,一开始有$O(n)$个段,每个段最多有$log$次跳出重链的过程,复杂度就是$n\log n$了.</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><blockquote>
+<p>查询区间里出现次数超过一半的数的权值和,定义它叫绝对众数,$n,q\le 1e6,10s$</p>
+</blockquote>
+<p>看数据范围先猜测复杂度根号或2log</p>
+<p>显然这个绝对众数一个区间只有一个.</p>
+<p>一个容易想到的转化是,把等于$c$的设为1,不等于的设为0,那么这个数在这个区间是绝对众数等价于区间和大于0.</p>
+<p>那么把区间和差分成两个前缀,若$[l,r]$的绝对众数是$c$,即$$l\le r且pre<em>r-pre</em>{l-1}&gt;0$,这是区间逆序对,可以二次离线莫队等解决.</p>
+<p>颜色很少的时候这是对的,但颜色多了不行,考虑进行一个匹配:每个1向前后第一个未匹配的-1匹配,这个匹配实际上标记了区间和可能大于0的所有点,那么此时只有匹配的点可能出现在绝对众数为$c$的区间中,而被标记的总点数显然是$O(n)$的</p>
+<p>那么我们可以对每个颜色抽出匹配了的位置跑一遍,一次莫队的复杂度是$n\sqrt q+q$,发现如果没有第二项是对的,而有了遍历询问这一步又变成$O(nq)$的了.</p>
+<p>进行根号分治,则对出现次数大于$\sqrt n$的颜色每个跑一遍莫队,复杂度是$n\sqrt q+q\sqrt n$.</p>
+<ol>
+<li>对于次数小于$\sqrt n$的颜色,设颜色$i$的次数为$cnt_i\le \sqrt n$,总点对数就是$O(\sum_i {cnt_i}^2)$,直接看似乎是$O(n^2)$ 的,但实际上只要提出一个$\sqrt n$就是$O(n\sqrt n)$的了.</li>
+</ol>
+<p>那直接把点对放到平面上,$(l,r)$能贡献当且仅当询问的$ql,qr$满足$l\ge ql,r\le qr$,需要一个$O(1)-(\sqrt n)$修改询问的二维数点.离线用分块维护扫描线即可.</p>
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><blockquote>
+<p>给$m$个半平面和$n$个点,设两个半平面$i$,$j$包含的点的集合的对称差大小为$f(i,j)$,一个半平面的大小为$size<em>i$,构造一个排列使得$size_1+\sum</em>{i=1}^{n-1} f(i,i+1)\le 1.8e8$</p>
+<p>数据范围$n,m\le 1e5$</p>
+</blockquote>
+<p>相当于半平面莫队模板吧,看下面的半平面莫队.</p>
+<p>然后spj复杂度是平方的,评测一个人需要一年.</p>
+<h1 id="讲课"><a href="#讲课" class="headerlink" title="讲课"></a>讲课</h1><h2 id="半平面技巧"><a href="#半平面技巧" class="headerlink" title="半平面技巧"></a>半平面技巧</h2><p>给定平面上的一些点,查询一个半平面上的信息</p>
+<h3 id="六分树"><a href="#六分树" class="headerlink" title="六分树"></a>六分树</h3><p>通过三条斜线把点集均分成六份,每次会递归进入6个儿子中的4个,复杂度$O(n+nm^0.77)$</p>
+<h3 id="分块旋转扫描线"><a href="#分块旋转扫描线" class="headerlink" title="分块旋转扫描线"></a>分块旋转扫描线</h3><p>考虑我们连续的旋转一条线,维护以这条线为y轴时点集的x轴顺序,那么半平面里的点就是序列的一个前缀或后缀了.由于对于任意两个点,他们顺序(一个在另一个前面的关系)的翻转是$O(1)$的,所以复杂度是$O(n^2)$的</p>
+<p>那你直接把它分块,每个块复杂度$O({\sqrt n}^2)=O(n)$,它就成了$n\sqrt n$</p>
+<h3 id="半平面莫队"><a href="#半平面莫队" class="headerlink" title="半平面莫队"></a>半平面莫队</h3><p>超级厉害的技巧</p>
+<p>如果这些半平面都交于一点,那这个问题是简单的,因为旋转一遍的过程中我们的半平面区域包含一个点/不包含一个点的切换次数是$O(n)$的.</p>
+<p>而如果把半平面都平移到一个点,这个过程的切换次数是$O(n^2)$的,一定爆炸.</p>
+<p>于是考虑平衡这两个做法,在给定的$O(n)$个点中随机选$\sqrt n$个作为关键点,把直线平移到这些点再对没给点一起旋转.</p>
+<p>具体的,对于每条线,我们找到从它向下平移的过程中碰到的第一个点,那么过程中期望经过$\sqrt n$个点,所以总复杂度是每条线经过$\sqrt n$个点的$m\sqrt n$加上每个关键点旋转的$n$,为$(n+m)\sqrt n$</p>
+<h3 id="等差数列位置区间加-等差数列位置求和"><a href="#等差数列位置区间加-等差数列位置求和" class="headerlink" title="等差数列位置区间加,等差数列位置求和"></a>等差数列位置区间加,等差数列位置求和</h3><p>用第十分块的方式时间分块</p>
+<p>时间分治后问题变成三个子问题:</p>
+<ul>
+<li>算一个修改对另一个询问的贡献</li>
+<li>静态算一个询问,$O(\sqrt n)-O(n)$询问和重建</li>
+<li>静态算一个修改,$O(\sqrt n)-O(n)$修改和查每一个位置.</li>
+</ul>
+<p>对于第一个问题,贡献就是修改和询问这两个等差数列位置的交集*修改的值,交集要离线下来一起算,不然在线做不到O(1)</p>
+<p>对于第二第三个问题,套用”初始化”的方法进行根号分治,对于大于的暴力,小于的维护前缀和,平衡成$O(n^\frac {5}{3})$</p>
+<h3 id="3dmq"><a href="#3dmq" class="headerlink" title="3dmq"></a>3dmq</h3><p>长方体加,长方体乘,长方体求和,长方体均为左下方的3face长方体</p>
+<p>和上一个题一样时间分块,则仍然考虑三个子问题:</p>
+<ul>
+<li><p>修改对询问的贡献显然可以快速算吧</p>
+</li>
+<li><p>询问需要3side加和乘,可以离线一维变成</p>
+</li>
+</ul>
+<h3 id="给定一些点-求半平面内相等点对个数"><a href="#给定一些点-求半平面内相等点对个数" class="headerlink" title="给定一些点,求半平面内相等点对个数"></a>给定一些点,求半平面内相等点对个数</h3><p>直接用上面半平面莫队做,插入点和删除点都是平凡的.</p>
+<h3 id="半平面逆序对"><a href="#半平面逆序对" class="headerlink" title="半平面逆序对"></a>半平面逆序对</h3><p>求半平面有多少点构成逆序对</p>
+<p>对于$(x_i,y_i)$,预处理有多少$j\ s.t.\ x_i<x_j,y_i>y_j$,那么半平面的直线斜率为正就是半平面内$f_i$的和,否则再处理与这个点构成顺序对的对数$g_i$,然后拿总对数减去半平面的$g_i$的和即可.转化成了半平面数点.</p>
+<h3 id="P8283-「MCOI-08」Dantalion"><a href="#P8283-「MCOI-08」Dantalion" class="headerlink" title="P8283 「MCOI-08」Dantalion"></a>P8283 「MCOI-08」Dantalion</h3><blockquote>
+<p>给一个序列,每次问区间里有多少个子区间里值构成的集合关于异或封闭</p>
+</blockquote>
+<p>这个东西看起来很像线性基,考虑若一个区间的线性基大小为$k$,则这个区间的颜色数必然是$2^k$,由于颜色是满足包含单调性的,所以可以进行$\log n$遍双指针,求出一共$n \log n$对$(l1,l2,r,k)$表示$\forall l\in [l1,l2],[l,r]$的颜色段数为$2^k$.</p>
+<p>然后对于这些$n \log n$个对,我们需要知道它的线性基大小是否和颜色数匹配,所以需要扫一遍得到每一个的线性基.</p>
+<p>最后就是我们知道若干个$(l1,l2,r)$是满足条件的,直接二维数点即可.</p>
+<p>考虑继续优化</p>
+<p>线性基可以优化成1log的,方法是我们添加数的时候维护线性基每个位置什么时候有值,并维护1-r的线性基,那么$l,r$点线性基就是所有最早位置＞$l$的,那么此时只需要在每个位置扫一遍线性基上的位置扫一遍右端点在这里的对就可以完成1log统计</p>
+<p>接下来是数点的优化,可以按$l$为横轴,$r$为纵轴做一个平面,则$(l1,l2,r)$就是平面上的一条横线,而询问是问一个矩形内包含的线段总长度,注意这里右端点在外面.如果允许离线这个可以扫描线,做成扫描$r$轴,区间加和区间历史和,那么要求在线就把维护的数据结构可持久化即可.复杂度2log.</p>
+<p>把它优化成1log,首先对于$(l1,l2,r)$差分成$(1,l2,r)-(1,l1,r)$,然后把加的和减的单独计算.因为一开始我们说明过对于同一个$k$,它是不会有包含的,所以拆成$1,l,r$后$l$和$r$分别单调递增,那么我们把它排序后做前缀和,询问区间包含的一定是连续的一段.求出询问区间$L,R$里第一个$l&gt;L$的和最后一个$r&lt;R$的,最后直接减去多算的$L \times len$,$len$为包含的线段个数.</p>
+<h3 id="P4062-Code-1-Yazid-的新生舞会"><a href="#P4062-Code-1-Yazid-的新生舞会" class="headerlink" title="P4062 [Code+#1]Yazid 的新生舞会"></a>P4062 [Code+#1]Yazid 的新生舞会</h3><blockquote>
+<p>给定一个序列,求有多少子区间的众数的出现次数超过子区间长度的一半,线性复杂度</p>
+</blockquote>
+<p>首先它和T2长的很像,可以考虑仍然使用那个对于每一个数看成1和-1,然后1和-1匹配得到若干个连续段的做法,那么需要找到一个$O(1的个数)$跑匹配的方法,具体的,可以用一个并查集维护,对每个集合额外记录一个最左边的端点,每次匹配之后就把这次匹配行成的一个和为0的段合并,那么找匹配的时候只要看前一个元素的集合的最左边元素的再左边一个.</p>
+<p>然后现在要对每一个段求答案,划分成若干个段的好处是原来的区间逆序对变成了现在相邻两数差为1的逆序对,考虑以下标为$x$轴值为$y$轴会画出一个折线,从前往后扫不断把数加入到一个值域桶里,那么+1-1时,比当前大的数的个数的变化量其实就是刚才那个桶里对应位置的值了.</p>
+<h3 id="P7889-「MCOI-06」Eert-Tuc-Knil"><a href="#P7889-「MCOI-06」Eert-Tuc-Knil" class="headerlink" title="P7889 「MCOI-06」Eert Tuc Knil"></a>P7889 「MCOI-06」Eert Tuc Knil</h3><blockquote>
+<p>给一个$n$个点的有根树,点$i$权值为$a_i$,每次询问给出$u$,$x$,问如果给$u$子树整体加上$x$,那么它内部包含$u$的连通块的权值和最大多少.</p>
+</blockquote>
+<p>看到这个题发现这个最大连通块和其实和序列上的最大子段和是很像的,可以写出一个简单dp:$f<em>i=\sum</em>{j\to i}{\max(f_j,0)}$.</p>
+<p>现在加上了函数$x$,可以设$f_u(x)$表示给$u$的子树整体加上$x$后它的最大连通块和,把它看成一个关于$x$的分段函数,则因为叶子分两段,那么每个点的分段都是$O(n)$的,用启发式合并即可.</p>
+<h3 id="半平面数点数据随机做法"><a href="#半平面数点数据随机做法" class="headerlink" title="半平面数点数据随机做法:"></a>半平面数点数据随机做法:</h3><p>把平面分成$\sqrt n \times \sqrt n$块,每块期望常数个,半平面经过$\sqrt n$个块,那么完整包含的部分可以前缀和,一个块内的可以暴力判定,复杂度期望$\sqrt n$,感觉相比那几个半平面莫队之类的很可写啊! </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/19/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%862/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/19/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%862/" class="post-title-link" itemprop="url">一轮省集2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-19 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-19T15:21:30+08:00">2022-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-27 07:24:56" itemprop="dateModified" datetime="2022-06-27T07:24:56+08:00">2022-06-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>怎么没保存啊/fn</p>
+<p>zyz老师给我讲了线性递推</p>
+<p>首先说了如果一个生成函数是$F(x)$可以表示为$\frac {Q(x)}{P(x)}$充要的等价它是线性递推问题,线性递推就是$f<em>i=\sum f</em>{i-k}v_k$的问题.</p>
+<p>证明:考虑</p>
+<p>移项成$F(x)P(x)=Q(x)$,那么就是$q<em>i=\sum_k f</em>{i-k}p_i$</p>
+<p>诶呀证明挂了znb老师再讲讲</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/19/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%867/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/19/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%867/" class="post-title-link" itemprop="url">一轮省集7</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-19 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-19T15:21:30+08:00">2022-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-01 15:30:16" itemprop="dateModified" datetime="2022-07-01T15:30:16+08:00">2022-07-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h1><h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><p>给一个树,一开始都是蓝边,每次删掉一条全是蓝色的链上的一条边,然后再把链的两端点连一条红边,问能不能把它变成另一棵全是红色的树.</p>
+<h2 id="法1"><a href="#法1" class="headerlink" title="法1"></a>法1</h2><p>一条链可以进行操作当且仅当它上面只有一条要删的边,然后树剖线段树求每个链覆盖了多少条要删的边每次找最小的即可.</p>
+<h2 id="法2"><a href="#法2" class="headerlink" title="法2"></a>法2</h2><p>把操作反过来,那么每次能操作的就是两个点间有一条红边有一条蓝边的情况,操作后,由于任何一个接下来的操作都不能再经过它了,所以它相当于变成了一个点,可以启发式合并的把原来这些点的边添加到一个上,重复这个过程.</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><p>todo</p>
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><p>todo</p>
+<h1 id="讲课"><a href="#讲课" class="headerlink" title="讲课"></a>讲课</h1><h2 id="四边形不等式"><a href="#四边形不等式" class="headerlink" title="四边形不等式"></a>四边形不等式</h2><p>这里是讨论的最小值</p>
+<p>四边形不等式,等价于二维差分后$\le 0$,感觉一般写成$w<em>{l,r}+w</em>{l-1,r+1}\ge w<em>{l-1,r}+w</em>{l,r+1}$的形式更容易看性质啊,那么发现这个式子其实就是在矩阵上二维差分.</p>
+<p>满足四边形不等式的矩阵,称为蒙日矩阵,在每一行最小值位置<strong>单调递增</strong>(决策单调性).</p>
+<p>蒙日矩阵的行列没有关系,转置后仍然满足条件</p>
+<h3 id="常见形式1DAG上最短路"><a href="#常见形式1DAG上最短路" class="headerlink" title="常见形式1DAG上最短路"></a>常见形式1DAG上最短路</h3><p>$f_i=\min{f_j+w(j,i)}$,其中$w$满足四边形不等式</p>
+<p>结论:$f$满足决策单调性</p>
+<p>因为一个$j$贡献一个后缀的$i$,那么可以使用二分栈维护.二分栈的元素$(l,r,j)$表示在区间$[l,r]$中最优决策点为$j$.</p>
+<h3 id="常见形式2DAG上定长最短路"><a href="#常见形式2DAG上定长最短路" class="headerlink" title="常见形式2DAG上定长最短路"></a>常见形式2DAG上定长最短路</h3><p>$f<em>{i,j}=\min f</em>{i-1,k}+w(k,j)$</p>
+<p>$f$同时具有决策单调性和凸性,可以凸优化,证明方式todo</p>
+<h3 id="常见形式3区间DP"><a href="#常见形式3区间DP" class="headerlink" title="常见形式3区间DP"></a>常见形式3区间DP</h3><p>$f<em>{l,r}=\min</em>{k\in[l,r]} {f<em>{i,k}+f</em>{k,j}}+w(l,r)$</p>
+<p>要求$w$还满足区间包含单调性</p>
+<p>可以把$n^3$优化成$n^2$</p>
+<h3 id="基站选址"><a href="#基站选址" class="headerlink" title="基站选址"></a><a href="/P2605-%E5%9F%BA%E7%AB%99%E9%80%89%E5%9D%80-dp-%E7%BA%BF%E6%AE%B5%E6%A0%91">基站选址</a></h3><p>经典线段树优化dp了</p>
+<p>然而这题状态是满足四边形不等式的!</p>
+<p>证明:考虑dp式子:</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min _k {f_{i-1,k}+cost(j,k)}+c_j \\
+cost(l,r)=\sum _{i=l}^r{[d_i-s_i > d_l][d_i+s_i < d_r]w_i}</script><p>那么考虑当$cost$扩展一个时,记两个条件为$a<em>1$,$a_2$,相比于$cost</em>{l,r}$,$cost<em>{l+1,r}$增加了原来一些$a_1=0,a_2\ne 0$的部分,$cost</em>{l,r+1}$为原来一些$a<em>2=0,a1\ne 0$的部分,而$cost</em>{l-1,r+1}$除了完整包含这两类外还有一些$a_1=0,a_2=0$的部分,所以证明了包含大于相交.</p>
+<p>然后可以凸优化把原来的$nk\log n$优化成$n\log k\log n$</p>
+<h3 id="FJOI物流仓库选址"><a href="#FJOI物流仓库选址" class="headerlink" title="FJOI物流仓库选址"></a>FJOI物流仓库选址</h3><blockquote>
+<p>数轴上$n$个点,选择最少1个最多$k$个仓库,第$i$ 点位置$x_i$,在这里建立代价为$c_i$,若$i$到最近仓库距离为$d$,代价为$a_id$,最小化代价.</p>
+</blockquote>
+<p>设第$i$个仓库在$j$时的费用为$f_{i,j}$</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min{f(i-1,k)+\sum_{p=k}^j\min({x_p-x_k,x_j-x_p}})*a_p+c_j</script><p>转移函数满足四边形不等式,可以凸优化去掉第一维</p>
+<p>证明:仍然看</p>
+<script type="math/tex; mode=display">
+cost(l,r)=\sum_{p=l}^r\min({x_p-x_l,x_r-x_p})*a_p+c_j</script><p>像上面一样考虑拓展一个的情况,发现相比$f_{l,r}$有两个变化:</p>
+<ul>
+<li><p>增加了新的位置的数,但这里距离正好所以直接可以不管.</p>
+</li>
+<li><p>所有取$min$的$x_l$,$x_r$变了,且都是往大里变,那么取个 min 就显然是包含大于相交了.</p>
+</li>
+</ul>
+<p>凸优化后就是考虑不考虑限制随便选的情况,设$g_i$表示仓库在$i$时考虑前缀$[1,i]$的代价,$h_i$表示仓库在$i$前时前缀$[1,i]$的代价,再预处理每个前缀所有点到$1$的代价,后缀所有点到n的代价就可以快速通过$h$和$g$互相转移了.两个转移都可以斜率优化.最后复杂度就是$O(n\log V)$</p>
+<h3 id="IOI2014假期"><a href="#IOI2014假期" class="headerlink" title="IOI2014假期"></a>IOI2014假期</h3><blockquote>
+<p>$n$个城市一行,$i$号城市权值为$a_i$,给定起点$s$每次可以选择向左或向右移动一步或者获得现在所在位置的权值,权值不能重复获得,求$d$天内拿到的最大权值和</p>
+</blockquote>
+<p>期间只会回头一次,否则一定可以调整为不劣的方案.设走过的区间为$[s-l,s+r]$,移动用时就是$l+r+\min(l,r)$,那么答案就是前$d-(l+r+min(l,r))$大的和这个可以用主席树做.</p>
+<p>可以把形式转化成固定$l$,则$f_l=\max{sumkth(d-l-r-min(l,r))}$,其中$sumkth(k)$表示前$k$大的值.那么只要看看<code>max</code>里面的部分是否满足四边形不等式就能证明$r$对$l$是否有单调性.考虑$w(l,r)+w(l-1,r+1)$与$w(l-1,r)+w(l,r+1)$的大小关系.首先等式两边包含的数的个数显然相同,而左边的任何决策右边都可以覆盖到,所以这里相交大于等于包含,式子成立.</p>
+<p>既然有决策单调性,因为算一个决策的代价不是$O(1)$所以单调栈的复杂度是2log,而因为计算一个点的代价是不依赖于左右两边的答案的,所以可以分治维护决策单调性做完.</p>
+<h3 id="CTT2018旅行"><a href="#CTT2018旅行" class="headerlink" title="CTT2018旅行"></a>CTT2018旅行</h3><blockquote>
+<p>n个点的树,以s为根,要把编号区间分成恰好$k$段,一个区间的得分是从$s$出发的最短回路的边数,最大化得分和$nk\le 1e5$</p>
+</blockquote>
+<p>$f<em>{i,j}=\max</em>{0\le j’\le j}{f_{i-1,j’}+w(j’+1,j)}$</p>
+<p>首先最短回路等价于虚树边权和的二倍</p>
+<h4 id="解法1"><a href="#解法1" class="headerlink" title="解法1:"></a>解法1:</h4><p>todo</p>
+<h4 id="解法2"><a href="#解法2" class="headerlink" title="解法2:"></a>解法2:</h4><p>$w$是满足四边形不等式的,可以分治维护决策单调性,每次询问中点这个决策的代价.</p>
+<p>但$w$很难维护,第一眼是$\sqrt n\log n$的分块?</p>
+<p>然而<strong>这题暴力莫队是对的</strong>,考虑在分治过程中,当前左右端点是分治区间,那么现在它进入左区间的时候右端点移动到左区间右端点固定不动分治下去,一会等算完了再移动到右区间,那么发现这个过程里,左右端点移动是$1.5$区间长度的,所以总复杂度是$n\log n$的. 注意这里分治区间是决策点的区间</p>
+<p>实际实现时不用这么维护,要求哪里时直接移动过去是不比我们上面分析的做法劣的.</p>
+<p>启发了一种分治套莫队的方法</p>
+<h2 id="Slope-Trick"><a href="#Slope-Trick" class="headerlink" title="Slope Trick"></a>Slope Trick</h2><h3 id="APIO2016烟火表演"><a href="#APIO2016烟火表演" class="headerlink" title="APIO2016烟火表演"></a>APIO2016烟火表演</h3><p>给一棵$n$点的带权有根树,要求给每一个边重新赋值使得根到所有叶子的路径权值和相等,代价为新旧边权的差的绝对值,最小化代价</p>
+<p>记$f_{u,x}$表示修改$u$的子树,使高度为$x$的答案</p>
+<p>$f<em>{u,x}=\sum</em>{u\to v}\min<em>{0\le i\le x}{f</em>{v,i}+|w_{u\to v}-(x-i)|}$</p>
+<p>叶子的答案为全0,把$f_{u,x}$看成关于$x$的函数,那么一开始这个函数是下凸的(叶子全为0),运用归纳法,若儿子都是下凸的,那么绝对值函数显然下凸,和下一层的函数加起来仍然是下凸,证明了每一时刻它都是非严格下凸分段函数,且每一时刻斜率为整数</p>
+<p>运用Slope Trick,维护起始位置和(所有斜率增加1的位置的可重集)外层的Sigma相当于直接往Slope Trick的堆合并起来,<code>min</code>是做了前缀<code>min</code>,里面就是加绝对值函数,维护即可.</p>
+<ul>
+<li><h3 id="ARC070ENarrowRectangles"><a href="#ARC070ENarrowRectangles" class="headerlink" title="ARC070ENarrowRectangles"></a>ARC070ENarrowRectangles</h3></li>
+</ul>
+<p>$f_{i,j}$表示前$i$个区间最后一个左端点在$j$的代价,则有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min_{j-a_{i-1}\le k\le j+a_i}(f_{i-1,k}+|j-l_i|)</script><p>因为是平面,所以$j$是无限空间,可以考虑继续使用刚才的Slope Trick维护,由于是凸函数,可以直接根据$j$讨论出最小值是在$j-a_{i-1}$还是在$j+a_i$取得,那么就成了简单的函数平移.所以转移就是,先给上一个函数加上一个绝对值函数,再把两边向中间平移.</p>
+<p>讲的有点快啊</p>
+<h3 id="老鼠进洞"><a href="#老鼠进洞" class="headerlink" title="老鼠进洞"></a>老鼠进洞</h3><blockquote>
+<p>$n$个球位于,第$i$个位置为$a_i$,$m$个洞,第$i$个位于$b_i$,每个球往洞里走,一个洞对应一个球,最小化移动总距离</p>
+</blockquote>
+<p>模拟费用流经典为什么在动态规划里呢?因为也可以Slope Trick.</p>
+<h4 id="法1动态规划"><a href="#法1动态规划" class="headerlink" title="法1动态规划"></a>法1动态规划</h4><p>显然可以有他们移动路径不会交叉,可以看成选取$nnnn$个洞按顺序一个对一个配对,把路费算在边的左端点上.</p>
+<p>记$f_{i,j}$为扫描了前$i$个左端点,求比洞多$j$个的费用:</p>
+<p>那么因为当前球比洞多或少,一定会有相应的球滚回来或滚过去,那么此时经过右端点那条边的球数就是$j$,所以扫到球时</p>
+<script type="math/tex; mode=display">
+f_{i,j}=f_{i-1,j-1}+|j|(x_{i+1}-x_i)</script><p>扫到洞时$f<em>{i,j}=\min {f</em>{i-1,j},f<em>{i-1,j+1}}+|j|(x</em>{i+1}-x_i)$</p>
+<p>仍然是下凸折线,但此时$|j|(x_{i+1}-x_i)$的斜率可能很大,所以点要带权.而函数变换就是遇到洞要把斜率为0的部分(函数的底)扩大一个,平底可能会拆开支持一个 split</p>
+<p>对于第一种转移,相当于平移一位再加上一个绝对值函数,问题是这里$|j|(x_{i+1}-x_i)$的斜率较大,要改为点带权,而第二种转移仍然套路的讨论一下它的平移方向再加上一个绝对值函数.</p>
+<h4 id="法2模拟费用流"><a href="#法2模拟费用流" class="headerlink" title="法2模拟费用流"></a>法2模拟费用流</h4><p>老鼠进洞!</p>
+<p>建出模型是一个二分图,左边表示球右边表示洞,分别向源点汇点连(1,0)的边,中间两两连(1,球和洞距离)的边跑费用流.</p>
+<p>如图</p>
+<p><img src="/imgs/2022-06-27-17-20-21-image.png" alt=""></p>
+<p>左边是球,右边是洞,那么增加最下方的一个球时,可能有以下几种负环和增广路:</p>
+<ul>
+<li><p>红色的增广路,表示把一个球和最近都一个洞匹配</p>
+</li>
+<li><p>蓝色的增光路,表示这个球替换掉原来一个匹配的球</p>
+</li>
+<li><p>紫色</p>
+</li>
+</ul>
+<h3 id="法3贪心"><a href="#法3贪心" class="headerlink" title="法3贪心"></a>法3贪心</h3><p>路径不会交叉,可以划分若干个分界线,两个分界线间的球向左向右状况相同.</p>
+<p>设$f_i$表示前$i$个点正好没有都匹配了的最小总路费.</p>
+<p>然后呢理解不能todo</p>
+<h2 id="杂题部分"><a href="#杂题部分" class="headerlink" title="杂题部分"></a>杂题部分</h2><h3 id="莫名选物体"><a href="#莫名选物体" class="headerlink" title="莫名选物体"></a>莫名选物体</h3><blockquote>
+<p>n个物品,权值$a_i,b_i &gt;0$</p>
+<p>选择一个物品序列$i_1…i_k$,最大化</p>
+<script type="math/tex; mode=display">
+\sum^k_{j=1}((j-1)a_{i_j}+b_{i_j})</script><p>对每个$k$求最值,$n\le 3e5$</p>
+</blockquote>
+<p>贪心加dp</p>
+<p>首先你把$a$排序</p>
+<p>贪心1:$k$从小到大的过程中,一个东西成为最优解的一部分后不会在出来 </p>
+<p>证明:考虑证明每次贪心都会遇到它,todo</p>
+<h3 id="牛逼老师题CF573E"><a href="#牛逼老师题CF573E" class="headerlink" title="牛逼老师题CF573E"></a>牛逼老师题CF573E</h3><p>todo</p>
+<h3 id="莫名计数"><a href="#莫名计数" class="headerlink" title="莫名计数"></a>莫名计数</h3><blockquote>
+<p>求有多少个长度为$n$,值不超过$m$的整数构成的序列$a$满足$a<em>i\%a</em>{i+1}\ne 0$,对Q取模</p>
+</blockquote>
+<p>首先有dp,设$f_{i,j}$表示前$i$个数最后一个是$j$的方案数</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\sum_{k\%j\ne 0,k\le m}f(i-1,k)\\\\
+=\sum 1\le k\le m f(i-1,k)-\sum_{k|j}f(i-1,k)</script><h3 id="乱码日文题"><a href="#乱码日文题" class="headerlink" title="乱码日文题"></a>乱码日文题</h3><blockquote>
+<p>用$1\times 2$骨牌覆盖$H\times W$棋盘,不重叠不超出,两种方案不同当骨牌覆盖的格子集合不同.膜998244353. $H\le 5,W\le 10^9,2s,1G$</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/18/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%861%E6%9D%82%E9%A2%98%E9%80%89%E8%AE%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/18/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%861%E6%9D%82%E9%A2%98%E9%80%89%E8%AE%B2/" class="post-title-link" itemprop="url">一轮省集1杂题选讲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-18 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-18T15:21:30+08:00">2022-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-28 18:09:31" itemprop="dateModified" datetime="2022-06-28T18:09:31+08:00">2022-06-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TYY杂题选将"><a href="#TYY杂题选将" class="headerlink" title="TYY杂题选将"></a>TYY杂题选将</h1><h2 id="UOJ67-新年的毒瘤"><a href="#UOJ67-新年的毒瘤" class="headerlink" title="UOJ67 新年的毒瘤"></a>UOJ67 新年的毒瘤</h2><blockquote>
+<p>给一个简单无向图,求删去哪个节点后变成一颗树</p>
+</blockquote>
+<p>如果删完了图联通且边数为$n-1$就行,然后tarjan判割点</p>
+<p>另外要判孤立点</p>
+<h2 id="UOJ575-光伏元件"><a href="#UOJ575-光伏元件" class="headerlink" title="UOJ575 光伏元件"></a>UOJ575 光伏元件</h2><blockquote>
+<p>给出一个 n×n 的 01 矩阵 A，其中 A_i,j=1 表示开始时位置 (i,j) 有光伏元件，而 0 表示没有元件。<br>你需要给出一组新的光伏元件的排布方案，光伏元件的分布有下列要求：<br>设第 i 行的元件个数为 c_0,i，第 i 列的元件个数为 c_1,i。<br>对于每个 i，给出 dl_i,dr_i,k_i ，要求 |c_0,i−c_1,i|≤k 且 c_0,i,c_1,i∈[dl_i,dr_i]。即：要求第 i 行和第 i 列的元件个数在 [dl_i,dr_i] 之间，且相差不超过 k_i。<br>给出 n×n 的矩阵 C，以 C_i,j 表示改变位置 (i,j) 上元件有/无状态的代价；特别地，若 C_i,j=−1，则表示 (i,j) 位置的状态不可改变。<br>你需要找一组方案，在满足要求的前提下，使得总费用最小。保证存在合法方案。<br>1≤n≤100，0≤dl_i≤dr_i≤n，0≤k_i≤n，C_i,j≥−1，∑▒|C_i,j|≤2×10^9。</p>
+</blockquote>
+<p>这种棋盘上要求行的个数和列的个数的长的很像网络流的套路</p>
+<p>考虑建一排行点一行列点$col_i$和$row_i$,则$(i,j)$有点则$row_i\to col_j$,费用相应设置</p>
+<p>然后要处理两列间的这个问题,简单的想法是通过$row_i\to col_i$有上下界的网络流,接下来考虑给行和列补流来解决绝对值相差不超过$k$:</p>
+<blockquote>
+<p>做法是建一个新点 w_i，加入 $(col_i,w_i,[0,inf])$,$(col_i,T,[0,k_i])$,$(S,w_i,[0,k_i])$ 来允许 $k_i$ 的差距，之后再对 $w_i$ 和 $row_i$ 连边即可。</p>
+</blockquote>
+<p>可以使用强制流满的方法处理负环,像上下界一样补流,<del>直接网络单纯形</del></p>
+<h2 id="UOJ577-打击复读"><a href="#UOJ577-打击复读" class="headerlink" title="UOJ577 打击复读"></a>UOJ577 打击复读</h2><p>每个位置有一个$wl$和$wr$,$vl(s[l,r])$为$s[l,r]$出现位置的所有左端点的$wl$之和,$vr(s[l,r])$为右端点之和.每次修改一个位置的$wl$,求</p>
+<script type="math/tex; mode=display">
+\sum l\sum r vl(s[l,r])*vr(s[l,r])</script><p>设$s[l,r]$出现次数为$c([i,j])$</p>
+<p>如果直接维护$s[l,r]$的值会比较麻烦,还要考虑它的出现次数,所以维护<br>$f<em>i=\sum</em>{i\le j\le n} c(s[i,j])\times vr(s[i,j])$<br>那么答案就是$\sum f_i wl_i$</p>
+<p>建出$s$的后缀树(这个是反串后缀自动机parent tree),和后缀自动机</p>
+<p>考虑一个厉害结论,后缀树上一个节点对应的是后缀自动机上的一条链,且<strong>这一条链之外除了最后一个点外都只有一条出边</strong>,由于后缀自动机上每个节点对应endpos相同,所以每个节点对应的出现次数和$wr$均相等,对后缀树上每个叶子(叶子即一条后缀)到根路径累加路径上每个节点对应的</p>
+<script type="math/tex; mode=display">
+\sum c(s[l,r])\times wr_r</script><p>即为$f$,这个东西要在后缀自动机的链上求,刚才说明这条链中间都只有一条出边,所以一条链的信息是容易维护的,只要在后缀自动机上遍历一遍就能得到这些信息.</p>
+<p>对于修改发现可以简单O(1).</p>
+<h2 id="UOJ152-汉诺塔"><a href="#UOJ152-汉诺塔" class="headerlink" title="UOJ152 汉诺塔"></a>UOJ152 汉诺塔</h2><blockquote>
+<p>汉诺塔,但不要求过程中大的在小的上面,有1e4个圆盘,1e6次操作把它排序</p>
+</blockquote>
+<p>可以用操作把一个序列分成两个子序列或把两个子序列合并成一个.</p>
+<p>于是按大于或小于mid分成两个子序列,对每个子序列,发现可以忽略另一个子序列,因为操作都是在栈顶</p>
+<p>于是递归下去归并即可</p>
+<h2 id="UOJ153-世界线"><a href="#UOJ153-世界线" class="headerlink" title="UOJ153 世界线"></a>UOJ153 世界线</h2><blockquote>
+<p>交互题<br>要求你进行两次实验猜出一个长为$n$的排列$a$,值域1-n,你可以调用的函数包括</p>
+<ul>
+<li>new_round() 新的一次实验,只能调用两次,会生成一个$2n$点的无向图,其中$i\to n+a_i$,此时实验为第一阶段</li>
+<li>next_step() 实验进入第二阶段</li>
+<li>add_edge(u,v) 在第一阶段调用,连接$u,v$</li>
+<li>query(u,v) 在第二阶段调用,询问$u+n,v+n$的连通性</li>
+</ul>
+</blockquote>
+<p>我们可以在第一阶段把点连成若干连通块,第二阶段来问每个点在哪个连通块,我们无法通过add_edge的操作知道另一边的连通块是什么样的,会形成什么样的结构,题目相当于连通块和点是无标号的为点找到对应.</p>
+<p>那么我们要想一种方式区分这些连通块和点,发现可以使用连通块的大小,即我们用大小分别为1,2,3…k的连通块来区分,发现$k$是$O(\sqrt n)$的</p>
+<p>把一个点记为$(a,b)$表示它在左边连通块是a,右边连通块是b,把它画到一个平面上,把它画成一个阶梯状,第一次实验将行连成连通块,第二次将列连成连通块,然后构造一种方式使得我们可以通过连通块的大小来区分每一个元素.</p>
+<p>设$n=\frac {k\times (k+1)}{2}+c$</p>
+<ul>
+<li>若$c=0$,直接分成y=x下方三角形样子的阶梯状</li>
+<li>若$0&lt;c\le k$,在上面基础上放上(k+1,k+1),再把多出来的从上往下堆在最右边,惊喜的发现由于可以区分出$(k+1,k+1)$(所在行大小为1),那么仍然可以解决</li>
+</ul>
+<p>再考虑次数限制,连边是$O(n)$的毫无问题,而询问时我们从每个点询问前面的连通块看它属于哪个是$O(n\sqrt n)$的.卡常优化是从大的连通块开始尝试,为了防hack再把加点顺序随机.</p>
+<h2 id="UOJ218-火车管理"><a href="#UOJ218-火车管理" class="headerlink" title="UOJ218 火车管理"></a>UOJ218 火车管理</h2><blockquote>
+<p>有n个栈形成序列a,m次操作,每次</p>
+<ul>
+<li>给定$l$,$r$询问$a_{l..r}$的栈顶和</li>
+<li>给定$i$,a_i弹栈</li>
+<li>给定$l$,$r$,$x$,把$a_{l..r}$每个push一个$x$</li>
+</ul>
+</blockquote>
+<p>如果不带弹栈就是显然的区间推平区间和,线段树</p>
+<p>那么现在带上修改,考虑我们需要得到弹出后的栈顶进行修改,此时有两种解决方案.</p>
+<h3 id="Sol1"><a href="#Sol1" class="headerlink" title="Sol1"></a>Sol1</h3><p>开线段树套堆,堆按时间为关键字,对于一个操作按标记永久化的思想拆成线段树节点push进对应的堆中,那么弹出时查到一条链上最新的就是栈顶,把这个修改直接撤销了,再拆成不包含push点的两个修改再修改回去,发现每个修改的影响都是区间推平,所以开另一个线段树维护区间推平区间和.要用一些配对堆之类的牛逼堆.</p>
+<h3 id="Sol2"><a href="#Sol2" class="headerlink" title="Sol2"></a>Sol2</h3><p>开可持久化线段树,修改直接区间推平,pop可以在历史版本上查到pop完后应该是谁,进行单点修改,同时仍然要开另一棵树维护区间覆盖区间和.</p>
+<p>复杂度都是2log</p>
+<h2 id="SDOI-D1T3-子串统计"><a href="#SDOI-D1T3-子串统计" class="headerlink" title="SDOI D1T3 子串统计"></a>SDOI D1T3 子串统计</h2><p>差不多得了 to do</p>
+<h2 id="UOJ727-团队竞技"><a href="#UOJ727-团队竞技" class="headerlink" title="UOJ727 团队竞技"></a>UOJ727 团队竞技</h2><blockquote>
+<p>一堆人选3个人结对编程(?),每个人有3个指标,要求选出的三个人中每个人都有一个指标严格大于另外两个人,最大化选出来的三个人(每个指标的最大值)的和</p>
+</blockquote>
+<p>诈骗,如果一个人在多于一个的指标上是最大值,他就无法被选直接扔了.</p>
+<p>剩下的选三个分别最大的</p>
+<h2 id="UOJ177-新年的腮雷"><a href="#UOJ177-新年的腮雷" class="headerlink" title="UOJ177 新年的腮雷"></a>UOJ177 新年的腮雷</h2><blockquote>
+<p>有n个雷排成一个序列,$i$的大小为$a_i$,合并参数序列b,每次可以把m个合并,设合并的雷的大小序列为$x$,合并成一个代价为$\max {x_i+b_i}$的雷,最小化合成一个的代价,保证能成一个.</p>
+</blockquote>
+<p><strong>反向考虑</strong>,二分最后的答案,然后看能不能把一个大小为$v$的最后拆成$n$个,使得每个大小都不小于对应$a_i$</p>
+<p>那么把a和b分别排序,如果拆掉当前最大的大小为$x$的雷后,发现如果能拆一定会拆,而如果这个最大的雷能拆,发现拆了它一定比拆更小的优秀.</p>
+<h2 id="UOJ730-蚂蚁和方糖"><a href="#UOJ730-蚂蚁和方糖" class="headerlink" title="UOJ730 蚂蚁和方糖"></a>UOJ730 蚂蚁和方糖</h2><p>数轴上有蚂蚁和方糖,给定常数$L$,每次有两个操作:</p>
+<ul>
+<li>为位置$i$增加若干蚂蚁</li>
+<li>为位置$i$增加若干方糖</li>
+</ul>
+<p>并在每次操作后输出,每个蚂蚁能吃它左右$L$的位置的方糖,可以多个蚂蚁吃一个方糖,那么至少被一个蚂蚁吃的方糖有多少个.</p>
+<p>hall定理表明我们只要求任选一个蚂蚁集合能吃到方糖减去它们数量的最小值即可.</p>
+<p>如果一个方糖贡献一堆蚂蚁那么蚂蚁的重叠区间部分部分较为困难,所以改为一个方糖贡献一个蚂蚁的区间,蚂蚁的区间双向拓展$L$是其方糖区间.</p>
+<p>那么如果两个蚂蚁区间的方糖区间重叠了,我们把它合并成一个是一定不劣的.由于要求的是最优解所以可以假设它们不交.</p>
+<p>接下来处理一个方糖贡献一个区间的问题,为了让一个方糖只算一次,在相邻两个位置增加虚点,对每个方糖给它能贡献到的区间间隔加1和-1,发现此时若蚂蚁的区间于方糖贡献到的区间的交集大小超过1,仍然只会在容斥后算一次,类似圆方树的容斥.注意要钦定区间端点不在虚点上.</p>
+<p>使用线段树维护,每个节点记录左右端点和中间虚点的信息,发现答案可以合并</p>
+<h2 id="UOJ732-鱼-2"><a href="#UOJ732-鱼-2" class="headerlink" title="UOJ732 鱼 2"></a>UOJ732 鱼 2</h2><p>鱼排成一个序列,大小序列为$A$,一个鱼可以吃掉相邻的大小不大于自己的鱼然后大小变为两者之和,每次给出一个区间,吃到最后只剩一个的鱼,求可能成为幸存者的鱼的个数.询问独立.</p>
+<p>如果一个区间的和小于它左右端点的值,那么其中的鱼都不能成为幸存者,定义这样的区间为坏区间,发现被坏区间包含是死掉的充要条件.</p>
+<p>此外两个重要性质</p>
+<ul>
+<li><p>坏区间不会相交,只会包含和不交,因为如果相交的话,考虑长成这个样子:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-------------------------</span><br><span class="line">    |---------|</span><br><span class="line">         |---------|</span><br><span class="line">    a    b    c    d</span><br></pre></td></tr></table></figure>
+<p>发现A<em>{b-1}&gt;\sum A</em>{b..d},A<em>{c+1}&gt;\sum A</em>{a..c},显然直接矛盾</p>
+</li>
+<li><p>坏区间个数为$O(n \log n)$,考虑对于一个点,坏区间每次拓展至少翻一倍,因为包含了原来两边的墙,所以总个数是$n \log n$的.</p>
+</li>
+</ul>
+<p>于是可以考虑求出包含每个点的坏区间,考虑对每个点向左向右分别得到log个满足点权大于到这个点的区间和的端点,坏区间的点一定在这些中产生,由于求区间和是1log的,我们要O(点数)的求出端点,发现每个左边端点对应的右边端点必然是左边端点值的前驱后继之一,可以主席树去维护.</p>
+<p>然后询问时因为是单独拿出来一段,所以要求出左右端点在区间内的坏区间,直接进去倍增即可.</p>
+<p>最后要维护未被覆盖的数量,可以通过线段树维护区间加区间最小值个数,因为可能会有被询问的区间整体包含的情况所以不是1的个数.</p>
+<h1 id="比赛题"><a href="#比赛题" class="headerlink" title="比赛题"></a>比赛题</h1><h2 id="T1-小N的独立集"><a href="#T1-小N的独立集" class="headerlink" title="T1 小N的独立集"></a>T1 小N的独立集</h2><p>给一棵树,每个点权$a_i$在[0,m]间,每次独立的钦定一个点$a_x=y$,求此时有多少方案满足对所有$v\in [1,m]$,满足$a_i\le v$的点构成一个连通块.</p>
+<p>考虑如果不钦定怎么做,设f_{u,i,0/1}表示$u$的值为$i$,且子树内是否有比$i$大的时考虑$u$子树的方案数,对于1的情况容易转移</p>
+<script type="math/tex; mode=display">
+f_{u,i,1}=\prod_v \sum_j f_{v,j,1} s.t. j\le i</script><p>对于0的情况,可以枚举哪一个儿子是比它大的:</p>
+<script type="math/tex; mode=display">
+f_{u,i,0}=\sum_k (\prod_v \sum_{j\ne k} f_{v,j,0} s.t. j\le i) \times f_{k,j,1} s.t. j\ge i</script><p>用前缀和和后缀和处理空出k后其他儿子的信息再和k合并不然复杂度爆炸.</p>
+<p>那么现在要支持单点修改,于是ddp和整体dp拍上去,然后你发现这玩意ddp用矩阵表示简直发疯,整体dp赛场上也没写出来(这就是”命运”)</p>
+<p>而这个可以<strong>使用换根dp</strong>:处理它子树内的答案和子树外的答案,然后修改时以修改的点为根合并.</p>
+<h2 id="T2-整数序列"><a href="#T2-整数序列" class="headerlink" title="T2 整数序列"></a>T2 整数序列</h2><p>首先有一个$n^2$dp,$f_{i,j}$表示和为$i$,最后一个数为$j$,如果记录了选的数个数,那么你降智了.</p>
+<p>这个是慢的,然而发现比较浪费在于当$j$很大时几个数直接结束了,这种乘积一定的让人想到根号分治,当$a_1&lt;B$时使用这种方案.</p>
+<p>于是有另一种方式,当$a<em>1&gt;B$时,记$f</em>{i,j,k}$表示长度为$i$,最后一个数减去第一个数为$j$,所有数减去第一个数的和为$k$,这样做当值很大时$i$和$k$都很小,复杂度是${\frac {n} {B}}^4$,调阈值可以有奇怪复杂度$O(n^{\frac {8} {5}})$</p>
+<p>优化后面这种方式,常常可以考虑在前面加数,那么因为第一个数可以始终当成0,相当于给后面的整体抬升,可以记$f_{i,j}$表示选了$i$个数,所有数减去$a_1$的和为$j$,那么最后枚举$a_1$即可.</p>
+<h2 id="T3-有处存储"><a href="#T3-有处存储" class="headerlink" title="T3 有处存储"></a>T3 有处存储</h2><p>一个结论</p>
+<script type="math/tex; mode=display">
+\mu^2(x)=\sum_{d^2|x}\mu(d)</script><p>我的证明是</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x&=\prod_i p_i^{a_i} \\
+令x'&=\prod p_i^{\lfloor \frac{a_i}{2} \rfloor}\\
+则\mu^2(x) &=[x'=1]\\
+&=\sum_{d|x'}\mu({d_i})\\
+&=\sum_{d^2|x}\mu(d)
+\end{align}</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/17/KTT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/17/KTT/" class="post-title-link" itemprop="url">KTT学习记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-17 09:11:30" itemprop="dateCreated datePublished" datetime="2022-06-17T09:11:30+08:00">2022-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-27 07:24:56" itemprop="dateModified" datetime="2022-06-27T07:24:56+08:00">2022-06-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">OI算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="KTT或EI树的学习记录"><a href="#KTT或EI树的学习记录" class="headerlink" title="KTT或EI树的学习记录"></a>KTT或EI树的学习记录</h1><p>是我见过的最复杂的摊还分析..</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/15/tricks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/15/tricks/" class="post-title-link" itemprop="url">tricks</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-15 07:50:00" itemprop="dateCreated datePublished" datetime="2022-06-15T07:50:00+08:00">2022-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-27 07:24:56" itemprop="dateModified" datetime="2022-06-27T07:24:56+08:00">2022-06-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">杂项</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录一些技巧"><a href="#记录一些技巧" class="headerlink" title="记录一些技巧"></a>记录一些技巧</h1><h2 id="一半的半平面交"><a href="#一半的半平面交" class="headerlink" title="一半的半平面交"></a>一半的半平面交</h2><p>当求半平面交的一半(相当于求一个直线构成的下凸壳或上凸壳)时,可以把如$y=kx+b$的直线转化成$(a,b)$求凸壳</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/2022/06/08/SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/08/SAM%E9%A2%98%E7%9B%AE%E9%80%89%E5%81%9A/" class="post-title-link" itemprop="url">SAM题目选做</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-08 17:54:05 / Modified: 17:58:18" itemprop="dateCreated datePublished" datetime="2022-06-08T17:54:05+08:00">2022-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">刷题记录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="SAM题目选做"><a href="#SAM题目选做" class="headerlink" title="SAM题目选做"></a>SAM题目选做</h1><p>这类题好多也可以用后缀数组和后缀平衡树,但我还是热爱SAM.</p>
+<h3 id="P4022-熟悉的文章-SAM-dp-复杂度"><a href="#P4022-熟悉的文章-SAM-dp-复杂度" class="headerlink" title="P4022 熟悉的文章 [SAM] [dp] [复杂度]"></a>P4022 熟悉的文章 [SAM] [dp] [复杂度]</h3><p>对于一篇作文,可以求出每个点向前最多匹配多长还在标准作文库中,这里前是指向下标小的方向(似乎对于序列,前和后会产生歧义) 把这个长度记为$len_i$ ,方法:</p>
+<ul>
+<li><p>建出包含所有作文库作文的SAM。</p>
+</li>
+<li><p>初始匹配长度为0, p 借点在根,每次若能匹配沿自动机边向前走,否则跳parent tree,注意向前匹配时匹配长度不能直接用 p 点 sam 节点的len值,但跳parent tree树时可以.</p>
+</li>
+<li><p><strong>qyc:这里暴力跳parent tree是对的因为跳一步深度减一,匹配一个深度加一,所以总复杂度O(n)</strong></p>
+</li>
+</ul>
+<p>然后考虑二分答案,对于每一个答案,进行判断,方法:</p>
+<ul>
+<li><p>$f_i$ 表示 考虑前 i 位时,最多能有多少位是熟悉的,转移就是考虑前面匹配到哪里$f_i = \max_j {f_j + i - j }, s.t.\ j \in [i-len_i,i-l]$.</p>
+</li>
+<li><p>这样做是$O(n^2)$的,发现可以进行简单单调队列优化,总复杂度$O(n\log n)$</p>
+</li>
+<li><p>最后判断熟悉的位数是否多于90%。</p>
+</li>
+</ul>
+<h3 id="P6640-封印-SAM-二分答案"><a href="#P6640-封印-SAM-二分答案" class="headerlink" title="P6640 封印 [SAM] [二分答案]"></a>P6640 封印 [SAM] [二分答案]</h3><p>向熟悉的文章一样,可以先求出s中每个点向前匹配多长还在t中,二分答案,若当前答案为x,询问为 l,r ,则只要判断$\min {len[l+x-1,r]}$这段区间的最大值是否不小于x即可,于是你需要一个静态RMQ,为了不写成2log,于是学了猫树.</p>
+<p>猫树要注意:</p>
+<ul>
+<li><p>补成完全二叉树时(即要把$n$弄成2的倍数)才满足叶子lca为叶子编号的lcp.</p>
+</li>
+<li><p>只要求出lca在第几层,设编号为x和y,则层数为$\lg{x}-\lg{x \operatorname {xor} y}$.</p>
+</li>
+</ul>
+<h3 id="P4094-字符串-SAM-线段树合并-二分答案"><a href="#P4094-字符串-SAM-线段树合并-二分答案" class="headerlink" title="P4094 字符串 [SAM] [线段树合并] [二分答案]"></a>P4094 字符串 [SAM] [线段树合并] [二分答案]</h3><p>二分答案,对于一个答案x,从s[1..d]跳parent tree到最后一个长度大于x的节点,看这个节点的endpos是否有在[a+len-1,b]之间的,所以用线段树合并维护endpos,复杂度$O(n\log^2n)$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
