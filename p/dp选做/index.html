@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="dp选做省选dp挂了不会来补一补 神赢讲课： 在正解是dp的题中如果转移出了环说明状态设少了  对于一个状态保证其中蕴含的所有情况对答案贡献方式相同   刷题记录UVA1626 括号序列 [dp] [区间dp]区间dp(似乎括号类的都是区间dp?) 设$f_{l,r}$表示把区间l到r中补到合法的操作步数,则转移是:  最外侧是匹配的括号:$f_{l,r}&#x3D;f_{l+1,r-1}\ \ s.t.\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dp选做">
+<meta property="og:url" content="https://fireinicecode.github.io/p/dp%E9%80%89%E5%81%9A/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="dp选做省选dp挂了不会来补一补 神赢讲课： 在正解是dp的题中如果转移出了环说明状态设少了  对于一个状态保证其中蕴含的所有情况对答案贡献方式相同   刷题记录UVA1626 括号序列 [dp] [区间dp]区间dp(似乎括号类的都是区间dp?) 设$f_{l,r}$表示把区间l到r中补到合法的操作步数,则转移是:  最外侧是匹配的括号:$f_{l,r}&#x3D;f_{l+1,r-1}\ \ s.t.\">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205291347317.png">
+<meta property="article:published_time" content="2022-05-18T02:16:00.000Z">
+<meta property="article:modified_time" content="2022-07-03T23:42:06.723Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205291347317.png">
+
+<link rel="canonical" href="https://fireinicecode.github.io/p/dp%E9%80%89%E5%81%9A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>dp选做 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/p/dp%E9%80%89%E5%81%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dp选做
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-18 10:16:00" itemprop="dateCreated datePublished" datetime="2022-05-18T10:16:00+08:00">2022-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-04 07:42:06" itemprop="dateModified" datetime="2022-07-04T07:42:06+08:00">2022-07-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">OI刷题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="dp选做"><a href="#dp选做" class="headerlink" title="dp选做"></a>dp选做</h1><p>省选dp挂了不会来补一补</p>
+<h2 id="神赢讲课："><a href="#神赢讲课：" class="headerlink" title="神赢讲课："></a>神赢讲课：</h2><ul>
+<li><p>在正解是dp的题中如果转移出了环说明状态设少了</p>
+</li>
+<li><p>对于一个状态保证其中蕴含的所有情况对答案贡献方式相同</p>
+</li>
+</ul>
+<h2 id="刷题记录"><a href="#刷题记录" class="headerlink" title="刷题记录"></a>刷题记录</h2><h3 id="UVA1626-括号序列-dp-区间dp"><a href="#UVA1626-括号序列-dp-区间dp" class="headerlink" title="UVA1626 括号序列 [dp] [区间dp]"></a>UVA1626 括号序列 [dp] [区间dp]</h3><p>区间dp(似乎括号类的都是区间dp?)</p>
+<p>设$f_{l,r}$表示把区间l到r中补到合法的操作步数,则转移是:</p>
+<ul>
+<li><p>最外侧是匹配的括号:$f_{l,r}=f_{l+1,r-1}\ \ s.t.\ s_l=s_r$</p>
+</li>
+<li><p>区间由若干$f_{l,r}=\min_{l\le k\le r}{f_{l,k}+f_{k+1,r}}$</p>
+</li>
+<li><p>在最右侧添加一个与最左侧的括号匹配的括号或相反,发现这种情况不优于直接在与这个新添加的括号匹配的括号旁边直接匹配</p>
+</li>
+</ul>
+<p>然后初始情况就是$f_{i,i}=2$,表示为每个括号加一个反括号匹配</p>
+<p>这题输出方案,所以记录最有解位置即可.</p>
+<h3 id="P1220-关路灯-dp-区间dp"><a href="#P1220-关路灯-dp-区间dp" class="headerlink" title="P1220 关路灯 [dp] [区间dp]"></a>P1220 关路灯 [dp] [区间dp]</h3><p>由于老王走过去关一盏灯时顺手关掉路上经过的一定不劣,所以被关掉的灯是一个区间,于是记$f_{l,r}$表示已经被关了的灯的区间,发现这样转移不了,比如当我们向右扩展一位时我们不知道老王是刚刚关完左端点的灯还是右端点的,所以设$f_{l,r,0/1}$表示区间$[l,r]$已经关掉,老王此时正在左端点或右端点转移即可.</p>
+<h3 id="UVA1362-Exploring-Pyramids-dp-区间dp-计数dp"><a href="#UVA1362-Exploring-Pyramids-dp-区间dp-计数dp" class="headerlink" title="UVA1362 Exploring Pyramids [dp] [区间dp] [计数dp]"></a>UVA1362 Exploring Pyramids [dp] [区间dp] [计数dp]</h3><p>每个子树对应欧拉序上一段区间,可以区间dp统计答案</p>
+<p>设$f_{l,r}$表示$[l,r]$这段区间的方案数,转移就是枚举第一棵子树划分到哪里,即</p>
+<script type="math/tex; mode=display">
+f_{l,r}=f_{l+1,k-1}*f_{k+1,r-1}\ s.t.\ s_k=s_l=s_r\ \mathrm{and}\ k\in[l+2,r-2]</script><p>$s$为颜色区间,因为$l$,$r$,$k$对应的都是根的颜色.</p>
+<h3 id="P7914-CSP-S-2021-括号序列-dp-区间dp-计数dp"><a href="#P7914-CSP-S-2021-括号序列-dp-区间dp-计数dp" class="headerlink" title="P7914 [CSP-S 2021] 括号序列 [dp] [区间dp] [计数dp]"></a>P7914 [CSP-S 2021] 括号序列 [dp] [区间dp] [计数dp]</h3><p>仍然区间dp</p>
+<p>$f_{i,j}$表示区间$[i,j]$的方案数,则转移就是同UVA1626最外层相等的情况和中间划分的情况,但这题要求方案数,发现对于中间划分时,形如”()()()”的括号既可以划分成”()+()()”也可以划分成”()()+()”,会被计算多次,所以设$g_{l,r}$表示$l$和$r$恰好匹配的情况,转移就成了$f_{l,r}=g_{l,k}*f_{k+1,r}$,然后考虑亿点点细节.</p>
+<h3 id="P8352-SDOI-SXOI2022-小-N-的独立集-dp-计数dp-树形dp"><a href="#P8352-SDOI-SXOI2022-小-N-的独立集-dp-计数dp-树形dp" class="headerlink" title="P8352 [SDOI/SXOI2022] 小 N 的独立集 [dp] [计数dp] [树形dp]"></a>P8352 [SDOI/SXOI2022] 小 N 的独立集 [dp] [计数dp] [树形dp]</h3><p>终于不是区间dp</p>
+<p><del>一开始觉得设$f_{u,i,0/1}$表示u子树最大独立集为i,在u选/不选时取得,显然无法转移</del></p>
+<p>设$f_{u,i,j}$表示$u$的子树中,如果选$u    $最大独立集为$i$,如果不选最大独立集为$j$的方案数.</p>
+<p>转移时加入每个儿子,对每个儿子枚举$i’$和$j’$,式子就是</p>
+<script type="math/tex; mode=display">
+\huge
+f_{u,i+j',j+\max(i',j')}+=f_{v,i',j'}</script><p>(下标上内容较多所以放大点显示)然后要注意到若对于节点$u$,其$i-j\le k$ 因为选的情况强制不选根节点只会减少$k$,而对于$j-i&gt;k$的情况，对于它转移时的$j$和$i$,$\max(i,j)$一定不是i且再也不会和它有关系,可以压到一起处理。</p>
+<h3 id="P5504-JSOI2011-柠檬-dp-斜率优化"><a href="#P5504-JSOI2011-柠檬-dp-斜率优化" class="headerlink" title="P5504 [JSOI2011] 柠檬 [dp] [斜率优化]"></a>P5504 [JSOI2011] 柠檬 [dp] [斜率优化]</h3><p>首先显然相当于把序列划分成若干段的方案</p>
+<p>重要结论是<strong>对于划分的每一段,两端点贝壳大小相同</strong>,否则把它划分到其他部分或单独成段一定不劣.</p>
+<p>所以我们可以只考虑相同颜色的转移,令$f_i$表示考虑前i个的答案,$cnt_i$表示第i个贝壳的大小包含它的前缀中的出现次数,$size_i$表示它的大小,则转移可以枚举前面的j,就是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_i&=f_{j-1}+size_i\times(cnt_i-cnt_j+1)^2\\\\
+   &=f_{j-1}+size_i\times cnt_i^2+size_i\times cnt_j^2+size_i\\\\
+   &\ \ \ \ -2size_i\times cnt_i\times cnt_j - 2size_i\times cnt_j+2size_i\times cnt_i\\\\
+\end{aligned}\\\\</script><p>发现可以斜率优化,所以整理式子:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(2size_i\times cnt_i)\times (cnt_j) \\\\
++(f_i-size_i\times cnt_i^2-size_i-2size_i\times cnt_i) \\\\
+=f_{j-1}+size_j\times cnt_j^2-2size_j\times cnt_j
+\end{aligned}\\\\</script><p>这里用到刚才结论$size_i=size_j$,式子中的四个括号分别是直线的$k$,$x$,$b$,$y$.</p>
+<p>注意式子对颜色不相同的情况是不成立且不保证答案更小的,所以要对每种颜色单独维护凸包.右发现对于同种颜色,$cnt_j$和$2size_i\times cnt_j$单调增,所以用单调栈维护上凸壳即可.</p>
+<p>这类先分类再每一类分别进行斜率优化的dp值得思考</p>
+<h3 id="P3515-POI2011-Lightning-Conductor-dp-决策单调性"><a href="#P3515-POI2011-Lightning-Conductor-dp-决策单调性" class="headerlink" title="P3515 [POI2011]Lightning Conductor [dp] [决策单调性]"></a>P3515 [POI2011]Lightning Conductor [dp] [决策单调性]</h3><p>每个点$i$对后面的贡献函数是$\sqrt x$的平移,发现一旦一个决策点的答案到另一个之上,另一个再也没有机会反超,所以这个题满足决策单调性.</p>
+<p>于是有几种可以的方法利用决策单调性:</p>
+<ul>
+<li><p>分治法:设当前区间为$[l,r]$,可能的决策在$[pl,pr]$,每次扫一遍算出序列上mid的答案,则$[l,mid-1]$中决策点在$[pl,p]$中$[mid+1,r]$中决策点在$[p,pr]$中,可以递归处理</p>
+</li>
+<li><p>单调队列或栈,此题为单调队列:用容器存储三元组$(l,r,p)$表示以p为最有决策点的区间为$[l,r]$,每次加入一个节点时,如果它最后也不优秀就不用管,否则二分出它和队尾的决策点切换的分界点$k$,即它在$[k,n]$更优秀而队尾在$[l,k]$更优秀,把原本队尾的区间修改并把它push进去</p>
+</li>
+<li><p>SMAWK:to do <del>等我先学会了</del></p>
+</li>
+</ul>
+<p>分治法适用于离线决策单调性,即$f_i$的计算不依赖$f_{[1,n]}$的答案,而单调队列或栈的方法适用于可以快速计算在某个决策点下的答案的情况.</p>
+<p>这种相同凸函数的平移,常常存在决策单调性,还有常见的$y=\max{(a(x-b),c)}$和$y=ax^2+bx+c$,其中要求所有a均相同,b单调(不单调可能也行?)</p>
+<h3 id="P2497-基站建设-P4655-Build-Bridges-斜率优化-dp-李超树-cdq分治"><a href="#P2497-基站建设-P4655-Build-Bridges-斜率优化-dp-李超树-cdq分治" class="headerlink" title="P2497 基站建设, P4655 Build Bridges [斜率优化] [dp] [李超树] [cdq分治]"></a>P2497 基站建设, P4655 Build Bridges [斜率优化] [dp] [李超树] [cdq分治]</h3><p>   方程过于模板了不放了.</p>
+<p>   推出方程后可以斜率优化,没什么单调性所以用李超树或cdq或平衡树或二进制分组维护斜率优化dp,基站建设注意第一步要初中几何一下.</p>
+<h3 id="P4027-NOI2007-货币兑换-dp-斜率优化-李超树-cdq分治"><a href="#P4027-NOI2007-货币兑换-dp-斜率优化-李超树-cdq分治" class="headerlink" title="P4027 [NOI2007] 货币兑换 [dp] [斜率优化] [李超树] [cdq分治]"></a>P4027 [NOI2007] 货币兑换 [dp] [斜率优化] [李超树] [cdq分治]</h3><p>设$f_i$表示第i天能拥有多少钱(在把所有券都卖光的情况),转移就是考虑它能卖的券是之前的哪一天买的,但这题给的比较麻烦,首先要做一些转换,设$a_i,b_i,c_i,d_i,r_i$分别为两种券的钱数,两种券的数量和题目中的$Rate_i$,列出方程:</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+a_ic_i+b_id_i=f_i\\\\
+\frac {c_i} {d_i}=r_i
+\end{cases}</script><p>解出来得到:</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+c_i=\frac{f_ir_i}{r_ia_i+b_i}\\\\
+d_i=\frac{f_i}{r_ia_i+b_i}
+\end{cases}</script><p>于是方程就是:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_i&=c_ja_i+d_jb_i\\\\
+\frac {f_i}{b_i}&=c_j\frac {a_i}{b_i}+d_j\\\\
+\end{align}</script><p>现在就已经是斜率优化的形式了,对于这种没有单调性的题目,常见做法是cdq,李超树和平衡树维护,个人感觉李超树是最简单好用的.复杂度$O(n \log n)$</p>
+<p>实现细节:注意这里李超线段树的下标域是$[1,10]$的有理数,可以先把所有$\frac {a}{b}$离散化,加速并不用卡精度.</p>
+<h3 id="HDU4991-Ordered-Subsequence-dp-线段树-树状数组"><a href="#HDU4991-Ordered-Subsequence-dp-线段树-树状数组" class="headerlink" title="HDU4991 Ordered Subsequence [dp] [线段树] [树状数组]"></a>HDU4991 Ordered Subsequence [dp] [线段树] [树状数组]</h3><p>真正的线段树树状数组优化dp模板,然而我是先做的后面那个基站选址,但它更模板所以被我放到前面</p>
+<p>首先暴力式子应该还挺显然的,设$f_{i,j}$表示以第$i$个结尾,长度为$j$的LIS长度,式子就是</p>
+<script type="math/tex; mode=display">
+\huge
+f_{i,j}=\sum_{k < i,a_k < a_i} {f_{k,j-1}}</script><p>初始条件$f_{i,1}=1$</p>
+<p><del>放大一下,不然下标可能有点小</del></p>
+<p>然后和基站选址类似的是它的$m$最大100,可以承受$O(nm\log n)$,所以把j改为在外层枚举,考虑优化式子</p>
+<script type="math/tex; mode=display">
+f_i=\sum_{k < i,a_k < a_i} f_k</script><p>然后就是简单二维数点求和,这里可以线段树也可以离散化后树状数组上</p>
+<h3 id="P2605-基站选址-dp-线段树"><a href="#P2605-基站选址-dp-线段树" class="headerlink" title="P2605 基站选址 [dp] [线段树]"></a>P2605 基站选址 [dp] [线段树]</h3><p>首先要推出暴力dp式子,设$f_{i,j}$表示考虑前i个村庄,在第i个村庄建了第j个基站的花费,这里<strong>不考虑i到n部分的赔偿</strong>,记$i$到$j$部分的补偿为$cost(i,j)$,第i个村庄建立基站的花费为$c_i$,则转移就是看上一个基站在哪:</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min_l {f_{l,j-1}+cost(l,i)} + c_i</script><p>暴力转移为$O(n^2k)$, 发现这里n很大而j不大,所以可以只优化i的转移,外层暴力枚举j,另外发现式子只和$j-1$有关,可以滚动掉一维空间,式子就成了</p>
+<script type="math/tex; mode=display">
+f_{i}=\min_l {f_{k}+cost(k,i)} + c_i</script><p>困难在于计算$cost(k,i)$,正向计算在$f_i$时哪些村庄在选$k$时要赔偿较为困难,可以反过来想对于每个村庄选择那些$k$需要时需要赔偿这个村庄,首先可以预处理对于每个村庄向左右最远到哪里建设不需要赔偿,分别记为$l_k$,$r_k$,则对于一个村庄,仅当处理到的$i&gt;r_k$且选择的$k &lt; l_k$时需要赔偿,所以可以数据结构维护$f_{k}+cost(k,i)$,则转移时就是查询$[1,i-1]$的区间最小值,每次处理完$i$后,对于所有${r_i=l_k}$的村庄,如果k在$[1,r_i]$中需要赔偿,所以给这个区间加上它的赔偿费用,由于是区间加,区间最小值,可以使用线段树完成</p>
+<p>第一次做线段树优化dp,所以开始找其他类似题目…</p>
+<h3 id="CF675E-Trains-and-Statistic-dp-贪心-RMQ"><a href="#CF675E-Trains-and-Statistic-dp-贪心-RMQ" class="headerlink" title="CF675E Trains and Statistic [dp] [贪心] [RMQ]"></a>CF675E Trains and Statistic [dp] [贪心] [RMQ]</h3><p>然后发现被骗了,这题并不需要线段树优化dp,因为这就一个RMQ根本不用线段树…</p>
+<p>首先发现如果我们能到达$i$,则一定能到达任意$j s.t.\ j &lt; i$,因为我们可以在任意时刻中途下车</p>
+<p>由于上面的性质,可以对每个i找出$\max_j{a_j}\ s.t. j\in[i,a_i]$, 这个$j$的意义是如果我们要走的这次到不了,那么应该走到$j$,记它为$next_i$<br>这个可以用静态RMQ直接求,我觉得猫树最<del>可爱</del>容易理解而好用</p>
+<p>要求的这个答案应该可以想到计算对于每一个i的$\sum_j {\operatorname{dis}(i,j)}$ ,记为$f_i$,要想办法求$f_i$,你可以画出下面的示意图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------</span><br><span class="line">       -------------------</span><br><span class="line">                                   -------</span><br><span class="line">       ^                  ^       ^       ^</span><br><span class="line">       i                nxt[i]  a[i]      n</span><br></pre></td></tr></table></figure>
+<p>发现对于$f_i$相比$f_{nxt_i}$有两段距离增加,一段是$[i+1,nxt_i]$,是原来不需要走的,另一段是$[a_i+1,n]$,需要先用一步走到$nxt[i]$再继续走,所以转移为</p>
+<script type="math/tex; mode=display">
+f_i=f_{nxt_i} + (n - a_i) + (nxt_i - i)</script><p>倒序递推即可</p>
+<h3 id="CF946G-Almost-Increasing-Array-dp-树状数组"><a href="#CF946G-Almost-Increasing-Array-dp-树状数组" class="headerlink" title="CF946G Almost Increasing Array [dp] [树状数组]"></a>CF946G Almost Increasing Array [dp] [树状数组]</h3><p>我认为这个也不是严格的线段树优化dp,它只是在值域上树状数组维护最大值而已</p>
+<p>首先套路的可以把每个数减去他们的下标,把问题转化为非严格递增,这样转化的好处是,我们可以任意在两个数中间添加一个值,而原来如果这两个数相邻我们不能添加小数.</p>
+<p>然后可以反向思考能留下哪些,发现留下的就是已有的非严格LIS,所以我们要在<strong>可以删一个数的前提</strong>下求这个LIS</p>
+<p>思考删除这个数造成哪些影响,发现对于它后面的每个数,删去它后下标前进了一个,也就是变大了一个</p>
+<p>于是在原有LIS的dp上进行修改,设$f_{i,0/1}表示考虑前i个,是否已经删除过一个数,则转移有三种:</p>
+<ul>
+<li>尚未删除任何数:$f_{i,0}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i$</li>
+<li>已经删除过一个数:$f_{i,0}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i$</li>
+<li>现在正要删一个数,仍然考虑子序列里上一个数是谁,因为这个与上一个间删除了一个数,所以这个数的值变大了1,所以式子为$f_{i,1}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i+1$</li>
+</ul>
+<p>然后用树状数组记录值域上前缀max即可</p>
+<h3 id="CF739E-Gosha-is-hunting-dp-wqs二分-二维wqs二分-费用流"><a href="#CF739E-Gosha-is-hunting-dp-wqs二分-二维wqs二分-费用流" class="headerlink" title="CF739E Gosha is hunting [dp] [wqs二分] [二维wqs二分] [费用流]"></a>CF739E Gosha is hunting [dp] [wqs二分] [二维wqs二分] [费用流]</h3><p>这题可以从费用流考虑,从源点连到左边一排点表示宝可梦,边权为2,费用为0,从宝可梦连向右边两个点表示两种球,这一步边权为1,费用为用这个球能捉住的概率,从右边的球向汇点连边,容量 inf ,边权为0,但是发现同时对一个宝可梦使用两种球时还要减去两个同时发生的概率(独立事件),所以把源点到宝可梦的每条边拆成两个,一个容量为1边权为0,另一个容量为1边权为两概率相乘,就有了一个费用流做法,已经可以通过.</p>
+<p>有了费用流能说明关于流量(使用球总个数)有凸性,所以可以进行二分一种球的使用数量把朴素的$O(n^3)$dp优化成$O(n^2)$的,然后又可以二分另一种的优化成$O(n \log^2 n)$的,可以更稳通过此题</p>
+<p>然而这个题直接这么两重wqs二分是假的,一重wqs二分时有两种写法,分别找到:</p>
+<ul>
+<li>最大的斜率满足使用球数小于要求的</li>
+<li>最小的斜率满足使用球数大于要求的</li>
+</ul>
+<p>这两个的选择要和二分时的 check 函数相对应,比如题目 P4694 Raper 中有些买光盘决策收益为0,这类光盘如果不购买则使用个数较少,购买则个数较多,分别对应前面两种情况,所以二分时是要有这种对应的,而当拓展到二维时,就需要我们找到两者都最少的,这里以谁为第一关键字似乎是个问题.目前有两种解法:</p>
+<ul>
+<li>给每个数再加一个很小的随机权值,直接避免出现这类二分遇到直线和平面的情况</li>
+<li>二分过程中mid不再等于l+r,而是等于两者之间的一个随机位置,这个样跑一次成功概率较小,需要重复多次选一个答案最小的(来自机房大佬qyc),注意这种方法保证正确性的同时会TLE并不能通过</li>
+</ul>
+<p>所以还是很玄,我再思考能不能在dp决策过程中使某个最小但仍然很困难.有人有好办法了告诉我.</p>
+<h3 id="P2619-Tree-I-wqs二分-最小生成树"><a href="#P2619-Tree-I-wqs二分-最小生成树" class="headerlink" title="P2619 Tree I [wqs二分] [最小生成树]"></a>P2619 Tree I [wqs二分] [最小生成树]</h3><p>是时候来点清新WQS二分了</p>
+<p>凸性的证明是困难的(目前还没看到),先尽量感性理解,就是考虑总边数一定的情况下,使用白边少时会需要用一些不优点黑边顶上,多时要必须选一些不优的白边,说明它是有一个谷的…然后就不会了</p>
+<p>在通过打表,瞎猜等方式得到凸性之后就很简单了,二分给每个白色边加上一个权值C(给所有黑色边也是一样),再按照新的权值跑Kruskal,统计有多少条白边去调整二分区间即可.</p>
+<h3 id="P4983-忘情-wqs二分-斜率优化"><a href="#P4983-忘情-wqs二分-斜率优化" class="headerlink" title="P4983 忘情 [wqs二分] [斜率优化]"></a>P4983 忘情 [wqs二分] [斜率优化]</h3><p>中规中矩的wqs二分</p>
+<p>首先把给的式子拆开后发现<del>npy很善良</del>其实就是$(sum+1)^2$,那么不考虑段数情况下就是简单斜率优化,考虑段数的情况就再使用wqs二分,给每一段一个附加代价二分</p>
+<p>这个题凸性证明由qyc给出,先考虑原始dp方程,即$f_{i,j}$表示前$i$个划分$j$段,则有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min(f_{k,j-1}+(sum_i-sum_k)^2)</script><p>对于类似$f_{i,j}=\min(f_{k,j-1}+w(k,i))$这种方程,或者更泛化一些,<strong>对于在一个 DAG 上走k步从1走到n的最短路问题，如果边权满足四边形不等式，那么答案是关于k的凸函数</strong></p>
+<p>然后再把sum变成前缀和形式拆开,平方也拆开,就有了一个显然斜率优化,其中k和x都是单增多,单调队列即可</p>
+<h3 id="WQS二分总结"><a href="#WQS二分总结" class="headerlink" title="WQS二分总结"></a>WQS二分总结</h3><p>感觉目前这个算法的难点主要有两个</p>
+<p>为了统一,把wqs二分中二分的值为$C$,通过二分改变的题目要求的值为$K$,答案为$A$</p>
+<p>第一个是二分时二分区间变化的选择要与check函数相对应,比如如果check函数选择的是给定$C$下$K$最小的,那么二分时就应二分最大的小于等于$K$的,否则如果是给定$C$下$K$最大的,则二分最小的大于等于$K$的,是一个十分重要的细节,例子:</p>
+<ul>
+<li>Tree I中,出现黑色白色边权值相同时,如果选择白色边,则相当于选择$K$最小的,我们要二分出最大的小于$K$的</li>
+<li>忘情中,对于斜率优化中是否取等,不取等相当于选择$K$最小的,要二分出最大都满足条件段数的</li>
+<li>Gosha is hunting中,对于遇到使用不使用球期望相同的情况,选择不使用相当于$K$最小,要二分最大的球数小于$K$的</li>
+<li>Raper中对于获益为0的光盘是否要买也是相同的</li>
+</ul>
+<p>第二个是凸性的证明</p>
+<ul>
+<li>费用流问题,费用是关于流量的凸函数</li>
+<li>忘情中写的<strong>对于在一个 DAG 上走k步从1走到n的最短路问题，如果边权满足四边形不等式，那么答案是关于k的凸函数</strong></li>
+<li>打表出奇迹</li>
+</ul>
+<h3 id="P4481-BJWC2018-序列合并-dp-区间dp"><a href="#P4481-BJWC2018-序列合并-dp-区间dp" class="headerlink" title="P4481 BJWC2018 序列合并 [dp] [区间dp]"></a>P4481 BJWC2018 序列合并 [dp] [区间dp]</h3><p>qyc说这是他童年阴影题,然而他只用了两分钟就秒了</p>
+<p>首先它长的这么像石子合并,让人想到一个区间dp,于是一种做法是记$f_{l,r}$表示区间$[l,r]$合并成一个的代价,转移时就相当于要把这一段划分成k段,所以可以用一个$O(n^3)$的dp,然后会得到一个五次方TLE做法</p>
+<p>然后简单想一下发现对每个l向右跑一遍就能得到所有的r,就成了四次方,卡卡常就过了</p>
+<p>不过还有一种长的更像区间dp的理解,设$f_{l,r,k}$表示把区间$[l,r]$合并成k段,$g_{l,r}$表示这一段合并成一段的答案,则方程就是</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_{l,r,k}&=g_{l,p}+f_{p+1,r,k-1} \ s.t.\ ,k\ge 2 \\
+g_{l,r}&=\min f_{l,r,k} \ s.t.\ k \in [L,R] \\
+f_{l,r,1}&=g_{l,r}
+\end{align}</script><h3 id="P4767-邮局"><a href="#P4767-邮局" class="headerlink" title="P4767 邮局"></a>P4767 邮局</h3><p>[结论] : 对于一个区间中的一个邮局,若区间长度为奇数则邮局建在中位数上,偶数则建在中间两个数的任意一个上<del>小学奥数经典</del></p>
+<p>于是就可以考虑把原序列分成$P$个区间,每个区间里放一个邮局,所以设$f_{i,j}$表示前$i$个村庄分了$j$段(也就是建了$j$个邮局)的代价,转移即</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min f_{k,j-1}+cost(k+1,i)</script><p>其中$cost(l,r)$表示在区间$[l,r]$中建立一个邮局的最小代价,这个代价可以$n^2$递推,但我认为这种方法更好:考虑知道中位数后,距离就是对中位数两边的位置一一匹配后匹配位置间距离的和,如图:</p>
+<p><img src="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205291347317.png" alt="示意图"></p>
+<p>可以结合图理解,蓝色点表示村庄,红色即表示一对位置的匹配,总代价就是所有匹配点之间距离的和,也就是右边的每个点位置分别减去左边每个点位置之和,可以先处理一个前缀和之后$O(1)$,用这个式子去做复杂度就成了$O(n^2p)$,由于奇数偶数时的差异,式子是</p>
+<script type="math/tex; mode=display">
+cost(l,r)=(sum_r-sum_{\lfloor \frac {l+r}{2} \rfloor})-(sum_{\lfloor \frac {l+r-1}{2} \rfloor}-sum_{l-1})</script><p>接下来遍历能进行的优化策略,式子有与$k$,$i$均有关的项废掉了单调队列,这个项里与$i$,$k$相关的东西在下标里废掉了斜率优化,只剩下wqs二分和决策单调性,由于我在上面wqs二分总结的结论,问题就转化为证明$cost$满足四边形不等式</p>
+<p>抛开式子会发现包含单调性的显然,在原有区间上增加新村庄代价一定不会降低</p>
+<p>对于四边形不等式的证明复杂一些,首先因为$x$单调递增,所以$sum$是凸函数,此外在证明$cost_{l,r}+cost_{l+1,r-1}\ge cost_{l+1,r}+cost_{l,r-1}$时会消掉所有$sum_r$和$sum_{l-1}$,剩下的可以套用琴森不等式证明</p>
+<p>这样同时证明了四边形不等式和凸性,单用四边形不等式可达到$n^2$通过,使用 wqs 二分和决策单调性可以达到$n \log n\log v$</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/dp/" rel="tag"># dp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/BZOJ4985%E8%AF%84%E5%88%86/" rel="prev" title="BZOJ4985评分">
+      <i class="fa fa-chevron-left"></i> BZOJ4985评分
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/%E5%88%86%E5%9D%97%E9%80%89%E5%81%9A/" rel="next" title="分块选做">
+      分块选做 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dp%E9%80%89%E5%81%9A"><span class="nav-number">1.</span> <span class="nav-text">dp选做</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E8%B5%A2%E8%AE%B2%E8%AF%BE%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">神赢讲课：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UVA1626-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97-dp-%E5%8C%BA%E9%97%B4dp"><span class="nav-number">1.2.1.</span> <span class="nav-text">UVA1626 括号序列 [dp] [区间dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P1220-%E5%85%B3%E8%B7%AF%E7%81%AF-dp-%E5%8C%BA%E9%97%B4dp"><span class="nav-number">1.2.2.</span> <span class="nav-text">P1220 关路灯 [dp] [区间dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UVA1362-Exploring-Pyramids-dp-%E5%8C%BA%E9%97%B4dp-%E8%AE%A1%E6%95%B0dp"><span class="nav-number">1.2.3.</span> <span class="nav-text">UVA1362 Exploring Pyramids [dp] [区间dp] [计数dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P7914-CSP-S-2021-%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97-dp-%E5%8C%BA%E9%97%B4dp-%E8%AE%A1%E6%95%B0dp"><span class="nav-number">1.2.4.</span> <span class="nav-text">P7914 [CSP-S 2021] 括号序列 [dp] [区间dp] [计数dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P8352-SDOI-SXOI2022-%E5%B0%8F-N-%E7%9A%84%E7%8B%AC%E7%AB%8B%E9%9B%86-dp-%E8%AE%A1%E6%95%B0dp-%E6%A0%91%E5%BD%A2dp"><span class="nav-number">1.2.5.</span> <span class="nav-text">P8352 [SDOI&#x2F;SXOI2022] 小 N 的独立集 [dp] [计数dp] [树形dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5504-JSOI2011-%E6%9F%A0%E6%AA%AC-dp-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96"><span class="nav-number">1.2.6.</span> <span class="nav-text">P5504 [JSOI2011] 柠檬 [dp] [斜率优化]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P3515-POI2011-Lightning-Conductor-dp-%E5%86%B3%E7%AD%96%E5%8D%95%E8%B0%83%E6%80%A7"><span class="nav-number">1.2.7.</span> <span class="nav-text">P3515 [POI2011]Lightning Conductor [dp] [决策单调性]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2497-%E5%9F%BA%E7%AB%99%E5%BB%BA%E8%AE%BE-P4655-Build-Bridges-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96-dp-%E6%9D%8E%E8%B6%85%E6%A0%91-cdq%E5%88%86%E6%B2%BB"><span class="nav-number">1.2.8.</span> <span class="nav-text">P2497 基站建设, P4655 Build Bridges [斜率优化] [dp] [李超树] [cdq分治]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4027-NOI2007-%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2-dp-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96-%E6%9D%8E%E8%B6%85%E6%A0%91-cdq%E5%88%86%E6%B2%BB"><span class="nav-number">1.2.9.</span> <span class="nav-text">P4027 [NOI2007] 货币兑换 [dp] [斜率优化] [李超树] [cdq分治]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU4991-Ordered-Subsequence-dp-%E7%BA%BF%E6%AE%B5%E6%A0%91-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.10.</span> <span class="nav-text">HDU4991 Ordered Subsequence [dp] [线段树] [树状数组]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2605-%E5%9F%BA%E7%AB%99%E9%80%89%E5%9D%80-dp-%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="nav-number">1.2.11.</span> <span class="nav-text">P2605 基站选址 [dp] [线段树]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF675E-Trains-and-Statistic-dp-%E8%B4%AA%E5%BF%83-RMQ"><span class="nav-number">1.2.12.</span> <span class="nav-text">CF675E Trains and Statistic [dp] [贪心] [RMQ]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF946G-Almost-Increasing-Array-dp-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.13.</span> <span class="nav-text">CF946G Almost Increasing Array [dp] [树状数组]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF739E-Gosha-is-hunting-dp-wqs%E4%BA%8C%E5%88%86-%E4%BA%8C%E7%BB%B4wqs%E4%BA%8C%E5%88%86-%E8%B4%B9%E7%94%A8%E6%B5%81"><span class="nav-number">1.2.14.</span> <span class="nav-text">CF739E Gosha is hunting [dp] [wqs二分] [二维wqs二分] [费用流]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P2619-Tree-I-wqs%E4%BA%8C%E5%88%86-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.2.15.</span> <span class="nav-text">P2619 Tree I [wqs二分] [最小生成树]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4983-%E5%BF%98%E6%83%85-wqs%E4%BA%8C%E5%88%86-%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96"><span class="nav-number">1.2.16.</span> <span class="nav-text">P4983 忘情 [wqs二分] [斜率优化]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WQS%E4%BA%8C%E5%88%86%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.17.</span> <span class="nav-text">WQS二分总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4481-BJWC2018-%E5%BA%8F%E5%88%97%E5%90%88%E5%B9%B6-dp-%E5%8C%BA%E9%97%B4dp"><span class="nav-number">1.2.18.</span> <span class="nav-text">P4481 BJWC2018 序列合并 [dp] [区间dp]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4767-%E9%82%AE%E5%B1%80"><span class="nav-number">1.2.19.</span> <span class="nav-text">P4767 邮局</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="数数题会把计数相关问题放在这里. 生成函数超纲严重先挑DP做. 一做数数发现现在已经不会做蓝题了. CF1515E Phoenix and Computers 有$n$台电脑排成一排,每次可以手动打开一台没被打开的,同时若一台电脑左右的电脑都被打开,那么它会自动打开.求把所有电脑打开的方案数.$n\le 400$  发现自动打开的电脑两边一定是手动打开的,即它们不可能相邻,所以其实是若干段手动打开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数数">
+<meta property="og:url" content="https://fireinicecode.github.io/p/%E6%95%B0%E6%95%B0/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="数数题会把计数相关问题放在这里. 生成函数超纲严重先挑DP做. 一做数数发现现在已经不会做蓝题了. CF1515E Phoenix and Computers 有$n$台电脑排成一排,每次可以手动打开一台没被打开的,同时若一台电脑左右的电脑都被打开,那么它会自动打开.求把所有电脑打开的方案数.$n\le 400$  发现自动打开的电脑两边一定是手动打开的,即它们不可能相邻,所以其实是若干段手动打开">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-02T07:48:00.000Z">
+<meta property="article:modified_time" content="2022-07-04T13:24:07.349Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/p/%E6%95%B0%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>数数 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/p/%E6%95%B0%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-07-02 15:48:00" itemprop="dateCreated datePublished" datetime="2022-07-02T15:48:00+08:00">2022-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-04 21:24:07" itemprop="dateModified" datetime="2022-07-04T21:24:07+08:00">2022-07-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">OI刷题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数数题"><a href="#数数题" class="headerlink" title="数数题"></a>数数题</h1><p>会把计数相关问题放在这里.</p>
+<p>生成函数超纲严重先挑DP做.</p>
+<p>一做数数发现现在已经不会做蓝题了.</p>
+<h2 id="CF1515E-Phoenix-and-Computers"><a href="#CF1515E-Phoenix-and-Computers" class="headerlink" title="CF1515E Phoenix and Computers"></a>CF1515E Phoenix and Computers</h2><blockquote>
+<p>有$n$台电脑排成一排,每次可以手动打开一台没被打开的,同时若一台电脑左右的电脑都被打开,那么它会自动打开.求把所有电脑打开的方案数.$n\le 400$</p>
+</blockquote>
+<p>发现自动打开的电脑两边一定是手动打开的,即它们不可能相邻,所以其实是若干段手动打开的,段段之间夹着一个自动打开的.</p>
+<p>手动打开一个连续区间的方案数是$2^{len-1}$,原因是我们每次只能像左边和右边拓展,那么设第一个打开的是第$k$个,方案就是在剩下$len-1$步中选$k-1$步是向左拓展的,所以方案数是</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{len} \binom{len-1}{k-1}=2^{n-1}</script><p>那么把一个自动打开的和紧跟着的一段手动打开的作为一段,设$f_i$表示前$i$个都方案,则加上一个新段的方案数时除了乘上这一段的方案,还要再在总步数里选若干步是新的这段的方案,那么我们要知道总步数,所以还要记录总步数或者之前分了几段,增加一维,设$f_{i,j}$表示前$i$个分了$j$段,转移就是</p>
+<script type="math/tex; mode=display">
+f_{i,j}=f_{k-1,j-1}\times \binom {i-j+1}{i-k}\times 2^{i-k+1}\\
+
+f_{-1,0}=1</script><p>要把0当成一个自动开启的电脑留出来,所以边界就成了-1,实际实现可以所有下标一起加一</p>
+<h2 id="P6944-LOJ3405-ICPC2018-WF-Gem-Island"><a href="#P6944-LOJ3405-ICPC2018-WF-Gem-Island" class="headerlink" title="P6944/LOJ3405 [ICPC2018 WF]Gem Island"></a>P6944/LOJ3405 [ICPC2018 WF]Gem Island</h2><blockquote>
+<p>有$n$个人每个人有一个宝石,每天会随机一个宝石分裂成两个,求$d$天后拥有宝石前$r$多的人所拥有的宝石数之和的期望,不膜.$n,d\le 500$</p>
+</blockquote>
+<p>设序列$A$,$a_i$表示$d$天后第$i$个人拥有的宝石数,试着算算它出现的概率.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\text{A的方案数}&=\dfrac {d!}{\prod_i (a_i-1)!}\times \prod(a_i-1)!\\
+&=d!
+\end{align}</script><p>解释一下这个式子:</p>
+<ul>
+<li><p>乘号左边的部分是我们确定下来每一天是给哪个人加的,这个过程相当于对于一个天数构成的排列对一个排列我们让前$1-a_1$个给第一个人,接下来$a_2$个给第二个人…再除掉这么每一组分组后组内相对顺序.</p>
+</li>
+<li><p>乘号右边的部分是把每天由谁得这个关于人的方案数再变成关于宝石的方案数,考虑一个人第$i$次收获宝石的方案数是$i-1$,那么这个人$i$得到宝石的方案数就是$(a_i-1)!$再乘起来.</p>
+</li>
+</ul>
+<p>于是发现每个$A$的概率是相同的,那么接下来就是算对于所有的$A$它们的前$r$大之和,先考虑如何求$A$的方案数,此时可以先减去每个人一开始有的那个宝石方便计算:</p>
+<p>这时有一种十分奇妙的状态设计,考虑由于我们不关心$a_i$的顺序,所以我们假定它是递减的,我们把宝石排成一个矩阵,第$i$列表示第$i$个人的情况,像这个样:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">****</span><br><span class="line">******</span><br><span class="line">*********</span><br><span class="line">*********</span><br><span class="line">***********</span><br><span class="line">***********</span><br></pre></td></tr></table></figure>
+<p>这个图对应的$A$是$6,6,6,6,5,5,4,4,4,2,2$</p>
+<p>横着关于人递推是困难的,于是把它竖着递推,由于此时向上递推时更高的顶大小一定小于更低的所以我们要知道顶的大小,由于最后要求$\sum a_i=d$所以要记录和,于是设$f_{i,j}$表示一共有$j$个宝石,其中有顶有$i$个的方案数,那么转移就是枚举上一层的大小,即</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_{i,j}&=\sum f_{k,j-i}\times\binom{k}{i}\\
+f_{n,0}&=1
+\end{align}</script><p>可以类比这个列出和的,设顶大小为$i$,共$j$个的所有情况前$r$大和的和为$g_{i,j}$,则有转移:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+g_{i,j}&=\sum (g_{k,j-k}+f_{k,j-k}*min(r,i))*\binom{k}{i}\\
+g_{n,0}&=0
+\end{align}</script><p>然后dp就行了,这个题不膜,要直接带着long double从头算到尾,而且组合数最好递推而不是阶乘,(i think)</p>
+<h2 id="CF1630E-Expected-Components"><a href="#CF1630E-Expected-Components" class="headerlink" title="CF1630E Expected Components"></a>CF1630E Expected Components</h2><p>收录到<a href="/p/polya定理初学/"><polya定理初学></a>中</p>
+<h2 id="CF1657E-Star-Mst"><a href="#CF1657E-Star-Mst" class="headerlink" title="CF1657E Star Mst"></a>CF1657E Star Mst</h2><blockquote>
+<p>求$n$个点的无向图有多少个满足最小生成树的权值和等于所有和点1相连的边的权值和,每条边边权为$[1,v]$,$n,v \le 250$</p>
+</blockquote>
+<p>qyc场切</p>
+<p>这个条件首先等价于以1为根的菊花是它的最小生成树,再考虑Kruskal的过程,又等价于对于每个点,1都是离它最近的点之一.</p>
+<p>考虑对于一条$u\to v,u,v\ne 1$的边,在我们不知道$1\to u$和$1\to v$前是无法确定的,所以要明确一个确定边权的顺序,发现如果从小到大确定边权那么所有新的满足$1\to u,1\to v$已经确定的$u\to v$的边权都只依赖于我们新加的边权而不依赖于旧的,根据这个,设$f_{i,j}$表示加入了边权在$[1,i]$的边,一共有$j$个满足要求,当转移时,我们考虑新加入的这些边确定了哪些:</p>
+<script type="math/tex; mode=display">
+f_{i,j}=f_{i-1,k}\times (v-i+1)^{\binom{j}{2}-\binom{k}{2}}\times \binom{j}{k}</script><p>推转移式子的时候别忘了最后那个组合数.</p>
+<p>注意指数上那个二项式系数不是对$P$取模,但其实也没事因为它们根本到不了要取模的大小.</p>
+<p>然后你就做完了.</p>
+<h2 id="P5664-CSP-S2019-Emiya-家今天的饭"><a href="#P5664-CSP-S2019-Emiya-家今天的饭" class="headerlink" title="P5664 [CSP-S2019] Emiya 家今天的饭"></a>P5664 [CSP-S2019] Emiya 家今天的饭</h2><blockquote>
+<p>给一个$n$行$m$列的矩阵$A$,每个格子有个数表示选这个格子的方案数,可以选任意多个格子,要求每行只能选一个,且若一共选了$k$个数,则不能有一列选超过$\lfloor\dfrac{k}{2}\rfloor$个数.$n \le 100, m\le 1000$</p>
+</blockquote>
+<p>这题首先看起来很dp,发现这个每列个数不超过一半很难计算,而又因为只可能有一列选的个数超过一半,所以可以容斥,枚举是哪一列超过了一半.</p>
+<p>于是现在钦定第$r$列超过一半计算方案数,很容易想到设$f_{i,j,k}$表示考虑这一列的前$i$个数,选了$j$个第$r$列的和其他$k$个不在第$r$列的.这里记$s_i=\sum_j A_{i,j}$,则转移为:</p>
+<script type="math/tex; mode=display">
+f_{i,j,k}=f_{i-1,j-1,k}\times a_{r,i}+f_{i-1,j,k-1}\times (s_i-a_{r,i})</script><p>但这样做算上枚举每一列的话复杂度是$O(mn^3)$的,无法通过,发现我们之所以记录$j$和$k$是因为判断最后是否要这个值,即是否在这一列里选了超过一半,那么其实我们只要知道$j-k$就行,所以考虑设$f_{i,j}$表示考虑这一列的前$i$个数,在这一列的比外面的多$j$的方案数,发现转移是简单的,复杂度就成了$O(mn^2)$</p>
+<p>启发一种优化状态设计的方法.</p>
+<h2 id="P3214-HNOI2011-卡农"><a href="#P3214-HNOI2011-卡农" class="headerlink" title="P3214 [HNOI2011] 卡农"></a>P3214 [HNOI2011] 卡农</h2><blockquote>
+<p>有$m$个音,要求选出无序的$n$个互不相同的音的集合,满足所有音都出现了偶数次. 对$10^8+7$取模.</p>
+<p>$n,m\le 10^6$</p>
+</blockquote>
+<p>首先10^8+7居然也是质数,长见识.</p>
+<p>首先这个的无序没有任何用处,有序的除以$n!$就行.</p>
+<p>由于是偶数次,让人想到亦或,所以转化为:</p>
+<p>在$[1,2^m -1]$个数中选$n$个互不相同的数满足亦或和为0.</p>
+<p>设选前$i$个数的答案为$f_i$,如果我们先随便放$[1,i-1]$,最后在$i$的位置放一个数$x=a_1\operatorname{xor}a2…\operatorname{xor}a_{i-1}$就满足了条件,这样的方案数是$A^{i-1}_{2^m-1}$但却多算了以下两种情况:</p>
+<ul>
+<li><p>$x=0$,说明前$i-1$个已经亦或起来是0了,多算了$f_{i-1}$个方案.</p>
+</li>
+<li><p>$x$在前面出现过,那么把那个出现过的也删去,剩下的还有$f_{i-2}$个方案,此时$x$有$2^m-1 -(i-2)$种可能(与前面的其他数互不相同),同时与其相同的那个数的下标有$i-1$种,一共多算了$(2^m-1-(i-2))(i-1)f_{i-2}$个方案.</p>
+</li>
+</ul>
+<p>最后注意</p>
+<script type="math/tex; mode=display">
+A^k_n\bmod P=A^k_{n\bmod P} \bmod P</script><p>可以简单归纳法证明.</p>
+<h2 id="P2606-ZJOI2010-排列计数"><a href="#P2606-ZJOI2010-排列计数" class="headerlink" title="P2606 [ZJOI2010]排列计数"></a>P2606 [ZJOI2010]排列计数</h2><blockquote>
+<p>求有多少个长为$n$的排列满足$p_{i}&gt;p_{\frac{i}{2}}$.$n \le 10^6$</p>
+</blockquote>
+<p>容易想到若$i$向$\dfrac{i}{2}$连边会得到一棵完全二叉树,而此时根一定是当前最小值,左右子树则是互不干扰的,形成一个递归结构,于是我们考虑dp.</p>
+<p>设$f_i$表示长度为$i$的排列的答案,也就是节点数为$i$的树的答案,同时设$lson_i,rson_i$表示它左右子树的大小,则有:</p>
+<script type="math/tex; mode=display">
+f_{i}=\binom i {lson_i}\times f_{lson_i}\times f_{rson_i}</script><p>然后做完了.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/dp/" rel="tag"># dp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/qyc/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%95%B0%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">数数题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1515E-Phoenix-and-Computers"><span class="nav-number">1.1.</span> <span class="nav-text">CF1515E Phoenix and Computers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P6944-LOJ3405-ICPC2018-WF-Gem-Island"><span class="nav-number">1.2.</span> <span class="nav-text">P6944&#x2F;LOJ3405 [ICPC2018 WF]Gem Island</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1630E-Expected-Components"><span class="nav-number">1.3.</span> <span class="nav-text">CF1630E Expected Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1657E-Star-Mst"><span class="nav-number">1.4.</span> <span class="nav-text">CF1657E Star Mst</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD"><span class="nav-number">1.5.</span> <span class="nav-text">P5664 [CSP-S2019] Emiya 家今天的饭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P3214-HNOI2011-%E5%8D%A1%E5%86%9C"><span class="nav-number">1.6.</span> <span class="nav-text">P3214 [HNOI2011] 卡农</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2606-ZJOI2010-%E6%8E%92%E5%88%97%E8%AE%A1%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">P2606 [ZJOI2010]排列计数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

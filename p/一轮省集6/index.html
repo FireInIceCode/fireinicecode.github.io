@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="测试题T1 给一个由栈构成的序列和常数A,每次给一个区间里一起加入一个数,或者询问从这个栈开始连着几个的乘积大于A  把时间维和序列维换一下,扫描序列维,维护时间维,若以序列为横轴,时间维为纵轴,则一个修改就是平面上一条横线,一个询问则相当于询问一点的区间历史和(差分得到一段).扫描线进入一个修改时,一个修改会影响向上log个不是1的段,lxl说随便数据结构至少1log找一段,每次进行一个区间修改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一轮省集6">
+<meta property="og:url" content="https://fireinicecode.github.io/p/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="测试题T1 给一个由栈构成的序列和常数A,每次给一个区间里一起加入一个数,或者询问从这个栈开始连着几个的乘积大于A  把时间维和序列维换一下,扫描序列维,维护时间维,若以序列为横轴,时间维为纵轴,则一个修改就是平面上一条横线,一个询问则相当于询问一点的区间历史和(差分得到一段).扫描线进入一个修改时,一个修改会影响向上log个不是1的段,lxl说随便数据结构至少1log找一段,每次进行一个区间修改">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-23T07:21:30.000Z">
+<meta property="article:modified_time" content="2022-07-01T07:17:07.054Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="杂题">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/p/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>一轮省集6 | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/p/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%866/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一轮省集6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-23 15:21:30" itemprop="dateCreated datePublished" datetime="2022-06-23T15:21:30+08:00">2022-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-01 15:17:07" itemprop="dateModified" datetime="2022-07-01T15:17:07+08:00">2022-07-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h1><h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><blockquote>
+<p>给一个由栈构成的序列和常数A,每次给一个区间里一起加入一个数,或者询问从这个栈开始连着几个的乘积大于A</p>
+</blockquote>
+<p>把时间维和序列维换一下,扫描序列维,维护时间维,若以序列为横轴,时间维为纵轴,则一个修改就是平面上一条横线,一个询问则相当于询问一点的区间历史和(差分得到一段).扫描线进入一个修改时,一个修改会影响向上log个不是1的段,lxl说随便数据结构至少1log找一段,每次进行一个区间修改,所以数据结构支持区间修改和单点历史时刻和,线段树即可</p>
+<p>也可以1log找出所有的被影响的段,把一堆插入的1缩成1个,在平衡树上找log个后继相当于finger search.</p>
+<p>修改也可以1 log finger search性质修改.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这种扫描线是利用了一个维度的不对称性,时间维的结构有时会比序列的更简单.</p>
+<h3 id="相关例题"><a href="#相关例题" class="headerlink" title="相关例题"></a>相关例题</h3><h4 id="饮食区"><a href="#饮食区" class="headerlink" title="饮食区"></a>饮食区</h4><blockquote>
+<p>有一个队列构成的序列,每次</p>
+<ul>
+<li><p>给$[l,r]$中的队列队尾加入$k$个$c$</p>
+</li>
+<li><p>$[l,r]$中的队列弹出$k$个队首,不足则弹空</p>
+</li>
+<li><p>查询第$i$个队列的第$k$个数</p>
+</li>
+</ul>
+</blockquote>
+<p>仍然用刚才的套路,扫描序列维护时间,可以用个线段树,位置$t$表示$t$时刻插入的人有几个,删除则为负数,那么发现直接求一个区间里有多少人是困难的,因为删除还会和0取max,方法是维护时间维上后缀和的min,那么只要二分它第一次小于0的位置就能得到最后一次取max的位置,接下来就直接二分kth就好了</p>
+<p>复杂度1log</p>
+<h4 id="相关例题UOJ515"><a href="#相关例题UOJ515" class="headerlink" title="相关例题UOJ515"></a>相关例题UOJ515</h4><blockquote>
+<p>单点修改,询问 ax,⋯,an 的不同的后缀最小值个数.</p>
+</blockquote>
+<p>首先显然和前缀最小值一样</p>
+<p>仍然用扫描序列维维护时间维的方法,扫的时候在后面增加个数是不会改变已有的最小值,所以转化后序列后区间询问转化成单点历史询问,单点的修改会影响一段后缀所以是区间修改.计算个数时,如果取min生效了就代表前缀最小值多了一个.这个可以线段树均摊,分析就是取min时递归到的每个区间本质不同数字的数量至少减1,所以复杂度1log.</p>
+<h4 id="相关例题Comet-OJ-Contest-14-D"><a href="#相关例题Comet-OJ-Contest-14-D" class="headerlink" title="相关例题Comet OJ Contest#14 D"></a>相关例题Comet OJ Contest#14 D</h4><blockquote>
+<p>有一个序列$c$,一个操作序列每个操作是对$c$区间赋值,然后每次询问按顺序执行操作序列一个区间的操作后$c$的全局和,询问独立.</p>
+</blockquote>
+<p>对于操作序列上的一个操作$(t,l,r,v)$表示$t$时刻把$[l,r]$赋值为$v$,我们把它的影响</p>
+<p>范围画出来,以操作序列的下标(或者说时间)为横轴,以序列为纵轴,那么它影响的$(x1,y1,x2,y2)$的矩形就是$(t,l,inf,r)$,是3side的矩形.<br>这些矩形相互覆盖,统计信息较为复杂,可以把它们划分成若干不交的矩形,相当于我们向右扫描线时用ODT维护区间值相等的段,在每一个段消失的时候,以它从加入到消失这个时间段为底,以这个段消失的时候在序列c上的左右端点为高,划分成一个矩形.由和镜中的昆虫相同的颜色段均摊原理,这样做复杂度是正确的,划分完矩形个数仍然是$O(n)$ 的</p>
+<p>于是现在一个横坐标在$[x1,r1]$的矩形对一个询问$l,r$有贡献,当且仅当$l\le x1,r\in [x1,x2]$,而贡献就是它的长度成值,这就是二维数点啊.</p>
+<h4 id="相关例题Ynoi2009-rprmq"><a href="#相关例题Ynoi2009-rprmq" class="headerlink" title="相关例题Ynoi2009 rprmq"></a>相关例题Ynoi2009 rprmq</h4><p>n*n矩形全是0,先进行m次矩形加,所有修改结束后有q次查询最大值</p>
+<p>扫描线的基本模型是先修后查,只是因为扫一维转化成了动态,所以这就是标准扫描线.</p>
+<p>不能直接扫描线因为max不具有差分性质</p>
+<p>一种方法是扫到起始边时把询问打标记,所以需要再用数据结构维护所有询问.</p>
+<p>另一种方法是进行分治,在坐标平面正中间切开,两边拼起来得到答案,但这样修改可能跨多个分治部分复杂度是假的.</p>
+<p>考虑把分治的切开线画到平面上,对同一个深度的层一起考虑,询问一定不会跨过两条线(因为一定在没跨过的时候,在最高层处理了)且贴在一条线上,那么相当于区间加区间历史最大值,而且信息每次经过一个分治切割线要把历史值清空一次(设为当前值),方式是每次经过一条线整体加inf.</p>
+<p>我们每一层进行了一遍所有修改,而询问只会出现在一层,所以修改复杂度$O(m log^2 n)$,询问$O(q log n)$</p>
+<h4 id="相关例题Ynoi2019-rprmq2"><a href="#相关例题Ynoi2019-rprmq2" class="headerlink" title="相关例题Ynoi2019 rprmq2"></a>相关例题Ynoi2019 rprmq2</h4><p>m*m的矩形初值为0,有m次操作,每次修改一个2side矩形,维护全局最大值</p>
+<p>这个是严格不弱于刚才的问题的:可以直接规约成矩形4side最大值和加:全局的直接区间加inf然后查完结果再减inf相当于矩形最大值,而2side也可以差分出4side.所以一些奇怪的乱搞是不行的.</p>
+<p>对于又有询问又有修改不容易做的问题,考虑时间分块.</p>
+<p>但我们无法直接对一个修改计算询问的贡献.</p>
+<p>对于当前的时间块,对于所有询问修改的矩形边界为边线,把平面按照这些线划分成一个网格图,则这一块修改询问都以网格为单位,而上一块的却不是,解决方案是对这$\sqrt n$个格子找到在上一个时间块的最大值,由于我们不会深究这一个格子里面到底是啥,所以只要知道这个就可以了.对于这个问题我们可以用rprmq1的扫描线得到答案.</p>
+<p>由于以块为单位,可以把块看成点,每次块内修改贡献是矩形加矩形最大值,可以用KDT单次$\sqrt n$解决.</p>
+<p>复杂度还有俩log要砍,需要再研究一下.todo</p>
+<p>据说这题写出来常数大的离谱,除了std700行以外没人能过,还是差不多得了.</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><p>给一个序列,记第k小为$kth(k-1)$,问区间里$\sum kth(i) b^i$的值</p>
+<p>来自CF633H</p>
+<p>赛时写了个垃圾$\sqrt n\log n$的莫队套线段树</p>
+<p>对序列分块一定会涉及到去重没前途,对值域分块</p>
+<p>先考虑无重复元素的个数.</p>
+<p>设第$i$块里有$x_i$个数,答案为$y_i$,则发现两个一起的答案可以$O(1)$得到.</p>
+<p>于是考虑一块的怎么做,仅考虑在当前块的位置,它对应的原序列上的位置也只有$\sqrt n$个,则<strong>在原序列上只有$O(n)$个本质不同(值域情况不同)区间</strong>,$O(n)$预处理$f_i$表示每个位置前面第一个在当前块里的位置,$g_i$表示每个位置后面第一个,这个只要正反各扫描一遍即可.然后则可以把一个询问定位到这一块在序列上一个本质不同的区间,那么预处理这些一共$n\sqrt n$个区间的答案即可.</p>
+<p>接下来考虑有重复元素的情况,此时可能一个值域里有很多数,那么可以对于一个值以它的出现次数为权值分块(like 势能均摊莫队),如果一个颜色出现次数多的离谱(多于$\sqrt n$)那么单独分一块,那么此时这种的要单独处理,我们只需要知道它的出现次数即可,考虑在线要二分多个$\log$,于是把询问离线,存下它们的端点,然后用刚才定位本质不同的区间扫两遍得到最左和最右的关键点,于是就能得到个数了.</p>
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><p>信息是可以快速合并的(然而我是智障没有发现)</p>
+<p>合并方法:两个块,设包含的等于$x$的个数为$b1$,$b2$,每个点到端点的颜色切换数是$a1$,$a2$,那么合起来答案就是$a1b2+a2b1$,$b$合并显然,$a$合并相当于整体延伸一段,再算一下整块一共切换多少次就可以合并.<br>那么只要考虑区间赋值了,如果一个块已经成了一个就$O(1)$算,否则暴力,那么复杂度是每个块的$O(\sqrt n \times \sqrt n+m\sqrt n)$和散块的$O(m\times \sqrt n)$</p>
+<h1 id="开始讲课了"><a href="#开始讲课了" class="headerlink" title="开始讲课了"></a>开始讲课了</h1><h2 id="LuoguP7125-Ynoi2008-rsmemq"><a href="#LuoguP7125-Ynoi2008-rsmemq" class="headerlink" title="LuoguP7125 Ynoi2008 rsmemq"></a>LuoguP7125 Ynoi2008 rsmemq</h2><blockquote>
+<p>给一个询问,每次问一个区间里有多少子区间的$\frac {l+r} {2}$(注意是下标而不是这个位置的值)是区间众数(非严格,可以有多个)且长度是奇数</p>
+</blockquote>
+<p>枚举每个位置为中心,设中心位置为$x$,有$y$个$i$个满足$a_i=x$,则最多有$y$段$k$的极长区间满足$[x-k,x+k]$合法.</p>
+<blockquote>
+<p>考虑从中心开始向外拓展，当前从[x-(i-1),x+(i-1)]拓展至[x-i,x+i]<br>若a[x-i]与a[x+i]均不为x，且[x-(i-1),x+(i-1)]不是可行区间，则[x-i,x+i]一定不是可行区间<br>所以对x，将所有a[i]==x的i变换为|x-i|后排序为一个数组b，在相邻两个元素b_j与b_{j+1}之间只可能有一个k满足[x-k,x+k]是可行区间，[x-(k+1),x+(k+1)]不为可行区间</p>
+</blockquote>
+<p>于是所有极长区间个数为$O(n)$</p>
+<p>于是要想如何算所有可行区间,对颜色根号分治,对出现次数大于$\sqrt n$的可以直接暴力,对于小于$\sqrt n$</p>
+<h2 id="CF1491H"><a href="#CF1491H" class="headerlink" title="CF1491H"></a>CF1491H</h2><p>给定序列$a$,$a_i$表示$i$的父亲构成一棵树,保证$1\le a_i &lt; i$,支持两个操作:<br>1 l r x 令 $a_i=\max(a_i-x,1)(l\leq i\leq r)$.<br>2 u v 查询在当前的 a 数组构成的树上 u,v 的 LCA.</p>
+<p>这个修改对形态的影响很大,根本不能维护树,由于修改太神询问一定较弱,从询问角度考虑:</p>
+<p>为了处理lca我们不需要知道树的形态,发现$a_i-i$很大时可以暴力,于是根号分治,当$a_i-i\le \sqrt n$时,分块后预处理每个点跳几次会跳出当前块,每个点跳出来在哪.</p>
+<p>由于$a_i-i$是单增的且每次至少减1,那么若一个块被整体减了$\sqrt n$次,其中每个数必然都会一次跳出去,就不需要维护这个块了.这使得每个整块只被减$\sqrt n$次,一共$\sqrt n$块,于是可以每块暴力$\sqrt n$做.</p>
+<p>那么复杂度就是完整包含的$n\sqrt n$或零散的$m\sqrt n$了</p>
+<p>然后剩下的可以暴力lca(向上标记法,先整块后散块)</p>
+<h3 id="奇妙小技巧"><a href="#奇妙小技巧" class="headerlink" title="奇妙小技巧"></a>奇妙小技巧</h3><p>lxl给我们讲对着一个老哥块长把这个题的$n^\frac {5}{3}$卡了,讲了下防卡技巧:<br>分块散块有一半常数,线段树期望也卡不满$2\log n$,为了防卡可以直接给序列整体右移一个随机值,就能让构造数据变成随机的.</p>
+<h2 id="CF700D-Huffman-Coding-on-Segment"><a href="#CF700D-Huffman-Coding-on-Segment" class="headerlink" title="CF700D Huffman Coding on Segment"></a>CF700D Huffman Coding on Segment</h2><blockquote>
+<p>给定一个长度为$n$的串,$q$次询问一个区间的最小二进制编码长度(给每个数找一个二进制对应,总长度最小)</p>
+</blockquote>
+<p>首先全局的是经典的,可以按出现次数建huffman树,那么每个点的编码就是根到叶子路径走过边形成的01串,长度就是深度*权值,所以相当于在这一段以次数为代价合并果子.</p>
+<p>我们要维护区间每个数的次数,这个东西常常莫队.因为这类问题常常不弱于矩阵乘法,如区间出现次数第$k$大的这类的,此时考虑莫队.</p>
+<p>但显然不能暴力合并果子,要进行优化,对于出现次数小于$\sqrt n$的,可以$O(1)$代价批量合并一个数,剩下的数都是大于$\sqrt n$的,可以进行暴力(势能为剩下数的个数).就能$O(\sqrt n)$完成一次查询.</p>
+<h2 id="CF1476G-Minimum-Difference"><a href="#CF1476G-Minimum-Difference" class="headerlink" title="CF1476G Minimum Difference"></a>CF1476G Minimum Difference</h2><blockquote>
+<p>有一个长为 $n$ 的数组，进行 $m$ 次询问，每次为以下两种中的一种：</p>
+<ul>
+<li><code>1 l r k</code>：给定区间 $[l,r]$，你需要求出最小的 $\text{dif}$，使得能够选出 $k$ 个互不相同的数 $a_1,a_2,\cdots,a_k$，令这些数在区间中的出现次数分别为 $cnt_1,cnt_2,\cdots,cnt_k$（任意 $cnt_i &gt; 0$），则 $\text{dif}$ 为这些 $cnt_i$ 的极差；若无法选出 $k$ 个数，则输出 $-1$.</li>
+<li><code>2 p x</code>：将位置 $p$ 赋值为 $x$。</li>
+</ul>
+</blockquote>
+<p>和上一个一样进行莫队,求出每个出现次数,和盼君勿忘一样有数的出现次数不同的只有$\sqrt n$种,因为有修改所以待修莫队.</p>
+<h2 id="lxl现场造题"><a href="#lxl现场造题" class="headerlink" title="lxl现场造题"></a>lxl现场造题</h2><p>三维空间有一堆长方体,求他们的并的体积. 长方体个数$10^5$,时限10s.</p>
+<p>扫描线一维,然后是动态的二维问题,每次要矩形加一减一或查询0的个数,那么就用上面的rprmq2把最大值变成最小值再维护最小值个数.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/%E6%9D%82%E9%A2%98/" rel="tag"># 杂题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%865/" rel="prev" title="一轮省集5">
+      <i class="fa fa-chevron-left"></i> 一轮省集5
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/polya%E5%AE%9A%E7%90%86%E5%88%9D%E5%AD%A6/" rel="next" title="polya定理初学">
+      polya定理初学 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">测试题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1"><span class="nav-number">1.1.</span> <span class="nav-text">T1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98"><span class="nav-number">1.1.2.</span> <span class="nav-text">相关例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A5%AE%E9%A3%9F%E5%8C%BA"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">饮食区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98UOJ515"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">相关例题UOJ515</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98Comet-OJ-Contest-14-D"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">相关例题Comet OJ Contest#14 D</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98Ynoi2009-rprmq"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">相关例题Ynoi2009 rprmq</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98Ynoi2019-rprmq2"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">相关例题Ynoi2019 rprmq2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2"><span class="nav-number">1.2.</span> <span class="nav-text">T2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3"><span class="nav-number">1.3.</span> <span class="nav-text">T3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E8%AE%B2%E8%AF%BE%E4%BA%86"><span class="nav-number">2.</span> <span class="nav-text">开始讲课了</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LuoguP7125-Ynoi2008-rsmemq"><span class="nav-number">2.1.</span> <span class="nav-text">LuoguP7125 Ynoi2008 rsmemq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1491H"><span class="nav-number">2.2.</span> <span class="nav-text">CF1491H</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%A6%99%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">2.2.1.</span> <span class="nav-text">奇妙小技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF700D-Huffman-Coding-on-Segment"><span class="nav-number">2.3.</span> <span class="nav-text">CF700D Huffman Coding on Segment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CF1476G-Minimum-Difference"><span class="nav-number">2.4.</span> <span class="nav-text">CF1476G Minimum Difference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lxl%E7%8E%B0%E5%9C%BA%E9%80%A0%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">lxl现场造题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
