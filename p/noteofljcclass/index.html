@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fireinicecode.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="sdfzoj contest2 但当我用上了换行  给$n$个长$T$模式串,含能匹配任何一个字符的通配符,求有多少个字符串$S$能匹配其中恰好$k$个模式串.$n\le15,|T|\le50$  首先考虑了一个容斥做法,算能匹配每一个模式串子集的方案数再容斥就结束了. 不过还有个DP,如果设$f_{i,S}$表示考虑前$i$位能匹配集合$S$的方案数,转移就是枚举这一位填谁,然后根据这个算能满足">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LJC讲dp">
+<meta property="og:url" content="https://fireinicecode.github.io/p/noteofljcclass/index.html">
+<meta property="og:site_name" content="FireBlog">
+<meta property="og:description" content="sdfzoj contest2 但当我用上了换行  给$n$个长$T$模式串,含能匹配任何一个字符的通配符,求有多少个字符串$S$能匹配其中恰好$k$个模式串.$n\le15,|T|\le50$  首先考虑了一个容斥做法,算能匹配每一个模式串子集的方案数再容斥就结束了. 不过还有个DP,如果设$f_{i,S}$表示考虑前$i$位能匹配集合$S$的方案数,转移就是枚举这一位填谁,然后根据这个算能满足">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-08T03:18:30.000Z">
+<meta property="article:modified_time" content="2022-07-08T07:50:20.000Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fireinicecode.github.io/p/noteofljcclass/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LJC讲dp | FireBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FireBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">飞蛾并不觉得黑暗,因为它至少享受了短暂的光明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://fireinicecode.github.io/p/noteofljcclass/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="FireInIce">
+      <meta itemprop="description" content="寄摆润摸职业选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FireBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LJC讲dp
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-07-08 11:18:30 / Modified: 15:50:20" itemprop="dateCreated datePublished" datetime="2022-07-08T11:18:30+08:00">2022-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="sdfzoj-contest2-但当我用上了换行"><a href="#sdfzoj-contest2-但当我用上了换行" class="headerlink" title="sdfzoj contest2 但当我用上了换行"></a>sdfzoj contest2 但当我用上了换行</h2><blockquote>
+<p> 给$n$个长$T$模式串,含能匹配任何一个字符的通配符,求有多少个字符串$S$能匹配其中恰好$k$个模式串.$n\le15,|T|\le50$</p>
+</blockquote>
+<p>首先考虑了一个容斥做法,算能匹配每一个模式串子集的方案数再容斥就结束了.</p>
+<p>不过还有个DP,如果设$f_{i,S}$表示考虑前$i$位能匹配集合$S$的方案数,转移就是枚举这一位填谁,然后根据这个算能满足哪些模式串,复杂度应该是$O(26\times2^n |S|n)$,但是很容易发现卡不满,据说实际上跑的飞快.</p>
+<p>感觉这个dp做法的对所有串同时考虑的想法还挺不错?</p>
+<h2 id="sdfzoj-contest0-T1"><a href="#sdfzoj-contest0-T1" class="headerlink" title="sdfzoj contest0 T1"></a>sdfzoj contest0 T1</h2><blockquote>
+<p>给一个数列$A$,若一个位置为$-1$表示你可以随便填,求最长上升子序列长度.$n\le 10^6$ </p>
+</blockquote>
+<p>先给每个位置减去它的下标,就可以是求最长不降子序列了,考虑此时我们可以任意在两个元素间插入一个-1,所以直接不带-1求最长不降子序列然后加上-1的个数.这是对的吗?</p>
+<p>然而是不对的,这个每个位置减下标的结论只对整个序列才管用,正确的做法是每个位置减去前面的-1的个数,因为必然存在一个最优解使用了所有-1,那么我们就强制不能把-1挤掉,也就是选数的时候相邻两数之差大于等于之间-1个数,这么做就过了.        </p>
+<h2 id="P7961-NOIP2021-数列"><a href="#P7961-NOIP2021-数列" class="headerlink" title="P7961 [NOIP2021] 数列"></a>P7961 [NOIP2021] 数列</h2><blockquote>
+<p>给定整数 $n,m,k$和一个长度为 $m+1$ 的正整数数组 $v0,v1,…,vm$.</p>
+<p>对于一个长度为 $n$，下标从 $1$ 开始且每个元素均不超过 $m$ 的非负整数序列 ${ai}$，我们定义它的权值为 $va1 \times va2 \times ⋯ \times van$。</p>
+<p>当这样的序列 ${a_i}$ 满足整数 $S=2^{a_1}+2^{a_2}+⋯+2^{a_n}$ 的二进制表示中 1 的个数不超过 $k$ 时，我们认为 ${a_i}$ 是一个合法序列。</p>
+<p>计算所有合法序列 ${a_i}$ 的权值和对 $998244353$ 取模的结果。</p>
+</blockquote>
+<p>由于是二进制使得我们倾向于按二进制从低位向高位选,也就相当于我们把$a$按值域顺序考虑,那么可以把题目做一个转化,变成我们有长$m$的序列中选长$n$的下标序列,那么考虑设$f_{i,j,x,y}$表示已经考虑到二进制的第$i$位,已经选了$j$个,二进制下前面有$x$个1,同时这一位上积累的进位是$y$,这里$y$不一定是1,也可能积累了一堆,总之是留着后面进位的.那么转移就是我们枚举选的最后一个:</p>
+<script type="math/tex; mode=display">
+f_{i,j,k,l}\times \binom {m-j}{o}\times v_i^o\to f_{i-1,j-o,k+l\operatorname{and}1,o+\frac{l}{2}}</script><p>就做完了</p>
+<h2 id="spoj19-sdfzoj-contest-2-我仿佛"><a href="#spoj19-sdfzoj-contest-2-我仿佛" class="headerlink" title="spoj19. [sdfzoj contest #2]我仿佛"></a>spoj19. [sdfzoj contest #2]我仿佛</h2><blockquote>
+<p>给$m$个区间,让每个区间里有切仅有一个关键点,最大化关键点个数.</p>
+</blockquote>
+<p>序列上这类选点问题常常设$f_i$表示强制选$i$的情况下的答案,那么考虑$f_i$可以从哪里转移过来,当前到$i$的情况下,一个区间$[l,r]$共有3类:</p>
+<ul>
+<li><p>不包含$i$且在右边,显然不用管</p>
+</li>
+<li><p>包含$i$,那么转移过来的位置显然要满足$j&lt;l$</p>
+</li>
+<li><p>不包含$i$且在左边,要求满足$j\ge l$,</p>
+</li>
+</ul>
+<p>对于第二个限制,要求覆盖每个位置的区间的最左的左端点,可以线段树区间取min解决.</p>
+<p>对于第三个限制,要求右端点小于$i$的左端点最大值,把它按$r$排序,每次加入小于$i$的,扫着维护就行了.</p>
+<h2 id="P7962-NOIP2021-方差"><a href="#P7962-NOIP2021-方差" class="headerlink" title="P7962 [NOIP2021] 方差"></a>P7962 [NOIP2021] 方差</h2><blockquote>
+<p>给一个序列,你可以进行任意多次让$a_i=a_{i+1}+a_{i-1}-a_i$,最小化数组方差.</p>
+<p>$n\le 400,a_i\le 600$或$n\le 10^4,a_i\le 50$</p>
+</blockquote>
+<p>首先这个操作相当于交换相邻两项差分,那么也就是我们可以任意重排差分数组.</p>
+<p>经过一番玄学发现方差数组是单谷的.感性理解就是平均值一定是值域中间的,那么你希望更多的数接近平均值,所以就中间小两边大.那么从小到大加入方差时就是选择每次加到头上或尾巴上.</p>
+<p>众所周知</p>
+<script type="math/tex; mode=display">
+n^2s^2=
+n\sum a_i^2-(\sum a_i)^2</script><p>我们很难直接维护这个两项相减的东西,所以把一个记录到状态里,设$f_{i,j}$表示加入前$i$个差分而和为$j$的情况,再设$s_i=\sum_j^i d_j$为这一项的大小,此时有两种转移:</p>
+<ul>
+<li><p>新数加到前面:$f_{i-1,j}+2xd_i+id_i^2\to f_{i,j+i\times d_i}$</p>
+</li>
+<li><p>新数加到后面$f_{i-1,j}+s_i^2\to f_{i,j+s_i}$</p>
+</li>
+</ul>
+<p>然后现在得到一个$n^2a$的解法,考虑$n$很大时序列中很多都是0,因为序列是不降的所以0一定在中间,那么只要把0都跳过去就成了$na^2$.</p>
+<h2 id="P2569-SCOI2010-股票交易"><a href="#P2569-SCOI2010-股票交易" class="headerlink" title="P2569 [SCOI2010]股票交易"></a>P2569 [SCOI2010]股票交易</h2><blockquote>
+<p>最近 $\text{lxhgww}$ 又迷上了投资股票，通过一段时间的观察和学习，他总结出了股票行情的一些规律。</p>
+<p>通过一段时间的观察，$\text{lxhgww}$ 预测到了未来 $T$ 天内某只股票的走势，第 $i$ 天的股票买入价为每股 $AP_i$，第 $i$ 天的股票卖出价为每股 $BP_i$（数据保证对于每个 $i$，都有 $AP_i \geq BP_i$），但是每天不能无限制地交易，于是股票交易所规定第 $i$ 天的一次买入至多只能购买 $AS_i$ 股，一次卖出至多只能卖出 $BS_i$ 股。</p>
+<p>另外，股票交易所还制定了两个规定。为了避免大家疯狂交易，股票交易所规定在两次交易（某一天的买入或者卖出均算是一次交易）之间，至少要间隔 $W$ 天，也就是说如果在第 $i$ 天发生了交易，那么从第 $i+1$ 天到第 $i+W$ 天，均不能发生交易。同时，为了避免垄断，股票交易所还规定在任何时间，一个人的手里的股票数不能超过 $\text{MaxP}$。</p>
+<p>在第 $1$ 天之前，$\text{lxhgww}$ 手里有一大笔钱（可以认为钱的数目无限），但是没有任何股票，当然，$T$ 天以后，$\text{lxhgww}$ 想要赚到最多的钱，聪明的程序员们，你们能帮助他吗？</p>
+<p>对于 $100\%$ 的数据，$0\leq W&lt;T\leq 2000,1\leq\text{MaxP}\leq2000$</p>
+<p>对于所有的数据，$1\leq BP_i\leq AP_i\leq 1000,1\leq AS_i,BS_i\leq\text{MaxP}$</p>
+</blockquote>
+<p>容易想到设$f_{i,j}$表示到第$i$天有$j$股时最大收益.转移:</p>
+<ul>
+<li><p>从这一天第一次买入这么多:$f_{i,j}=-AP_i\times j$</p>
+</li>
+<li><p>这一天什么也没干:$f_{i,j}=f_{i-1,j}$</p>
+</li>
+<li><p>买进了一些$f_{i,j}=f_{i-w-1,j-k}-k\times AP_i\ s.t.\ 0&lt;k\le \min(j,AS_i)$</p>
+</li>
+<li><p>买出了一些$f_{i,j}=f_{i-w-1,j+k}+k\times BP_i\ s.t.\ 0&lt;k\le min(BS_i,MaxP-j)$</p>
+</li>
+</ul>
+<p>由于有第二个的转移所以我们可以只从$i-w-1$天转移过来而不用再枚举哪一天.</p>
+<p>然后这样复杂度三次方,可以通过单调队列优化成二次方.</p>
+<h2 id="P8352-SDOI-SXOI2022-小-N-的独立集"><a href="#P8352-SDOI-SXOI2022-小-N-的独立集" class="headerlink" title="P8352 [SDOI/SXOI2022] 小 N 的独立集"></a>P8352 [SDOI/SXOI2022] 小 N 的独立集</h2><blockquote>
+<p>给一棵树,对每个$v\in [0,nk]$计数$n$个点每个点点权在$[1,k]$之间的最大独立集为$v$的方案数.</p>
+<p>$n\le 1000,k\le 5$</p>
+</blockquote>
+<p>由于一个广为人知的求最大独立集的dp,让我们想到设$f_{u,i,j}$表示对于$u$的子树,选了的方案数为$i$,不选的方案数为$j$的方案数.</p>
+<p>直接数状态数的话$i,j\le nk$,总状态数是$n^3k^4$的,但是可以分析$j\le i\le j+k$</p>
+<ul>
+<li><p>$i\le j+k$是因为根本不会有这个样的合法状况,如果不选$u$的时候最大为$j$那么加上$u$一定不会增加超过$k$.</p>
+</li>
+<li><p>$i\ge j$是因为若$i&lt; j$那么最大独立集一定和$i$没关系,因为不选的限制显然是弱于选的限制的,那么以后的最大独立集一定不会选它,所以不用管.</p>
+</li>
+</ul>
+<p>状态数成$n^2k^2$了</p>
+<p>然后再有个优化,直接转移的话式子显然是</p>
+<script type="math/tex; mode=display">
+f_{v,x,y}\to f_{u,i+y,j+\max(x,y)}</script><p>复杂度$n^4k^4$,但实际上我们的$j,y$可以只枚举到$k$倍对应子树大小,看起来这个优化是玄学的,但实际上可以分析:记$u$子树大小为$siz_u$,此时我们合并一个子树到$u$的复杂度为$siz_v\times(siz_u-siz_v)\times k^2$,相当于一个点在$v$内,一个点在$v$外的点对数量,所以我们的复杂度可以类比过来,考虑我们以后就再也不会枚举到$u$子树内两个点的点对了,那么每个点对只在他们的 lca 处被计算了一次,点对个数是$n^2$的,所以总复杂度是$n^2k^2$的啊.</p>
+<p>然后就过了.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+              <a href="/tags/dp/" rel="tag"># dp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/%E6%95%B0%E6%95%B0/" rel="prev" title="数数">
+      <i class="fa fa-chevron-left"></i> 数数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/note8/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sdfzoj-contest2-%E4%BD%86%E5%BD%93%E6%88%91%E7%94%A8%E4%B8%8A%E4%BA%86%E6%8D%A2%E8%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">sdfzoj contest2 但当我用上了换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sdfzoj-contest0-T1"><span class="nav-number">2.</span> <span class="nav-text">sdfzoj contest0 T1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7961-NOIP2021-%E6%95%B0%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">P7961 [NOIP2021] 数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spoj19-sdfzoj-contest-2-%E6%88%91%E4%BB%BF%E4%BD%9B"><span class="nav-number">4.</span> <span class="nav-text">spoj19. [sdfzoj contest #2]我仿佛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P7962-NOIP2021-%E6%96%B9%E5%B7%AE"><span class="nav-number">5.</span> <span class="nav-text">P7962 [NOIP2021] 方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2569-SCOI2010-%E8%82%A1%E7%A5%A8%E4%BA%A4%E6%98%93"><span class="nav-number">6.</span> <span class="nav-text">P2569 [SCOI2010]股票交易</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P8352-SDOI-SXOI2022-%E5%B0%8F-N-%E7%9A%84%E7%8B%AC%E7%AB%8B%E9%9B%86"><span class="nav-number">7.</span> <span class="nav-text">P8352 [SDOI&#x2F;SXOI2022] 小 N 的独立集</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="FireInIce"
+      src="/images/icon.jpg">
+  <p class="site-author-name" itemprop="name">FireInIce</p>
+  <div class="site-description" itemprop="description">寄摆润摸职业选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://shanlunjiajian.github.io/" title="https:&#x2F;&#x2F;shanlunjiajian.github.io" rel="noopener" target="_blank">Qyc's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/winterfrost" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;winterfrost" rel="noopener" target="_blank">Zsy's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FireInIce</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

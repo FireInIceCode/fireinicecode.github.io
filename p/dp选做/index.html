@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/FireInIceCode/imgs/main/imgs/202205291347317.png">
 <meta property="article:published_time" content="2022-05-18T02:16:00.000Z">
-<meta property="article:modified_time" content="2022-07-03T23:42:06.723Z">
+<meta property="article:modified_time" content="2022-07-08T11:50:53.345Z">
 <meta property="article:author" content="FireInIce">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="dp">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-04 07:42:06" itemprop="dateModified" datetime="2022-07-04T07:42:06+08:00">2022-07-04</time>
+                <time title="Modified: 2022-07-08 19:50:53" itemprop="dateModified" datetime="2022-07-08T19:50:53+08:00">2022-07-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -354,10 +354,10 @@ f_i=f_{nxt_i} + (n - a_i) + (nxt_i - i)</script><p>倒序递推即可</p>
 <p>首先套路的可以把每个数减去他们的下标,把问题转化为非严格递增,这样转化的好处是,我们可以任意在两个数中间添加一个值,而原来如果这两个数相邻我们不能添加小数.</p>
 <p>然后可以反向思考能留下哪些,发现留下的就是已有的非严格LIS,所以我们要在<strong>可以删一个数的前提</strong>下求这个LIS</p>
 <p>思考删除这个数造成哪些影响,发现对于它后面的每个数,删去它后下标前进了一个,也就是变大了一个</p>
-<p>于是在原有LIS的dp上进行修改,设$f_{i,0/1}表示考虑前i个,是否已经删除过一个数,则转移有三种:</p>
+<p>于是在原有LIS的dp上进行修改,设$f_{i,0/1}$表示考虑前i个,是否已经删除过一个数,则转移有三种:</p>
 <ul>
 <li>尚未删除任何数:$f_{i,0}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i$</li>
-<li>已经删除过一个数:$f_{i,0}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i$</li>
+<li>已经删除过一个数:$f_{i,1}=\max {f_{j,1}} + 1,\ s.t.\ j &lt; i,a_j\le a_i$</li>
 <li>现在正要删一个数,仍然考虑子序列里上一个数是谁,因为这个与上一个间删除了一个数,所以这个数的值变大了1,所以式子为$f_{i,1}=\max {f_{j,0}} + 1,\ s.t.\ j &lt; i,a_j\le a_i+1$</li>
 </ul>
 <p>然后用树状数组记录值域上前缀max即可</p>
@@ -518,7 +518,7 @@ cost(l,r)=(sum_r-sum_{\lfloor \frac {l+r}{2} \rfloor})-(sum_{\lfloor \frac {l+r-
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
