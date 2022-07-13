@@ -29,13 +29,15 @@
 <meta property="og:site_name" content="FireBlog">
 <meta property="og:description" content="分块选做省选分块显然也挂了,感觉又能数据结构又练码力,唯一的问题是不会做 P4108 HEOI2015 公约数数列 [分块] [分析性质][结论]:一个序列前缀 gcd 是 log 段的函数! 因为每次gcd改变至少要除以2,所以就 $\log n$ 段,这个性质还挺优秀. 第二是发现序列长度为$10^5$,但询问$10^4$,放过了$O(q\sqrt n \log n)$的做法 于是只需要考虑计">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://fireinicecode.github.io/imgs/2022-07-13-19-57-00-image.png">
 <meta property="article:published_time" content="2022-05-24T13:36:01.000Z">
-<meta property="article:modified_time" content="2022-06-27T05:14:04.469Z">
+<meta property="article:modified_time" content="2022-07-13T12:26:56.147Z">
 <meta property="article:author" content="FireInIce">
-<meta property="article:tag" content="题解">
 <meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="题解">
 <meta property="article:tag" content="分块">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/imgs/2022-07-13-19-57-00-image.png">
 
 <link rel="canonical" href="https://fireinicecode.github.io/p/%E5%88%86%E5%9D%97%E9%80%89%E5%81%9A/">
 
@@ -222,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-27 13:14:04" itemprop="dateModified" datetime="2022-06-27T13:14:04+08:00">2022-06-27</time>
+                <time title="Modified: 2022-07-13 20:26:56" itemprop="dateModified" datetime="2022-07-13T20:26:56+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -450,6 +452,29 @@
 <h3 id="P5309-Ynoi2011-初始化-分块-思维"><a href="#P5309-Ynoi2011-初始化-分块-思维" class="headerlink" title="P5309 [Ynoi2011]初始化 [分块] [思维]"></a>P5309 [Ynoi2011]初始化 [分块] [思维]</h3><p>容易想到根号分治,修改时$x&gt;\sqrt n$可以直接暴力,那么只要考虑剩下的部分.</p>
 <p>此时x只有$\sqrt n$种,可以思考能不能对于一个询问单独计算每个$x$的贡献加起来,考虑对于相同的$x$,如果把序列按$x$为块长分块,那么整块每一块被加的量相同.而对于散块,能贡献到一个块内区间的$y$是一个连续区间,所以可以以$y$为下标开前缀和记录$y\in[1,i]$的修改的$z$之和,散块就也解决了,修改时暴力修改前缀和即可.复杂度$n\sqrt n$</p>
 <p>还提过一个时间分块的想法,但这个东西很难$O(n)$重构,就算重构也就是上面的做法所以寄了.</p>
+<h3 id="P6774-NOI2020-时代的眼泪"><a href="#P6774-NOI2020-时代的眼泪" class="headerlink" title="P6774 [NOI2020] 时代的眼泪"></a>P6774 [NOI2020] 时代的眼泪</h3><blockquote>
+<p>给定一个长$n$排列,$m$次询问区间内值在某一区间的顺序对.$n\le 10^5,m\le 2\times 10^5$.</p>
+</blockquote>
+<p>我是十代的眼泪.</p>
+<p><img src="/imgs/2022-07-13-19-57-00-image.png" alt=""></p>
+<p>有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&ans(ABCD)\\
+=&ans(AB)+ans(CD)+ans(AC)+ans(BD)\\
+&-ans(A)−ans(B)−ans(C)−ans(D)+size(A)\times size(D)​
+\end{align}</script><p>可以建立树套树,内层节点对应二维平面上的一个矩形,则可以分治求出每个矩形的$ans,size$.</p>
+<p>那么接下来考虑如何处理询问,每个询问在图上会拆成$\log^2 n$个矩形,那么贡献成了三部分:</p>
+<ul>
+<li><p>每个小矩形内部的,第一步已经预处理结束.</p>
+</li>
+<li><p>所有不同行且不同列的矩形,这个的贡献相当于每个矩形左下方的矩形的$size$的和.可以一边遍历矩形一边求出.</p>
+</li>
+<li><p>同一行或同一列的,行和列情况显然相同,这仍然是一个二维矩形顺序对问题,但好处是有一重限制为线段树的节点对应区间,可以每个节点跑一遍二次离线莫队或分块.对于复杂度,考虑对每节点分别考虑,若当前节点位于第$k$层,则复杂度为$\dfrac{n}{2^k}\sqrt {q}$,这里$q$是拆分到这个节点的询问,然后我们在按层考虑,每个询问会被拆成$\log n$个节点,但同一层只有两个,所以每一层的询问总数为$2m$,那么又因为发现当所有$p$都相等的时候最大所以复杂度为$n\sqrt{\dfrac{q}{2^k}}$,累加每一层的即为$n\sqrt q \times \sum_i \dfrac{1}{\sqrt{2}^i} $,后面那个式子收敛于$1+\sqrt 2$的位置为常数,所以复杂度仍为$n\sqrt q$.</p>
+</li>
+</ul>
+<p>于是不卡空间的版本就做完了.</p>
+<p>这个题启发了一种分治套分块的做法,使得若分治后每一层的$\sum a_i$和$\sum b_i$一定,则每个节点$a_i\sqrt b_i$的复杂度套上分治后仍为$n\sqrt n$.</p>
 
     </div>
 
@@ -459,8 +484,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
               <a href="/tags/%E5%88%86%E5%9D%97/" rel="tag"># 分块</a>
           </div>
 
@@ -535,7 +560,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%9D%97%E9%80%89%E5%81%9A"><span class="nav-number">1.</span> <span class="nav-text">分块选做</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P4108-HEOI2015-%E5%85%AC%E7%BA%A6%E6%95%B0%E6%95%B0%E5%88%97-%E5%88%86%E5%9D%97-%E5%88%86%E6%9E%90%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text">P4108 HEOI2015 公约数数列 [分块] [分析性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4891-%E5%BA%8F%E5%88%97-%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.2.</span> <span class="nav-text">P4891 序列 [分块] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%85%E5%8A%A0%E8%BE%BE%E7%9A%84%E6%91%A9%E5%A4%A9%E6%A5%BC-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB-bfs-%E6%9A%B4%E5%8A%9B-%E5%BB%BA%E5%9B%BE-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">雅加达的摩天楼 [根号分治] [bfs] [暴力] [建图] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%8B%E5%AE%A4%E8%81%94%E9%82%A6-%E6%A0%91%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97"><span class="nav-number">1.0.4.</span> <span class="nav-text">王室联邦 [树分块] [分块]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6177-Count-on-a-tree-II-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%A0%91%E5%88%86%E5%9D%97-%E6%A0%91%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97-bitset"><span class="nav-number">1.0.5.</span> <span class="nav-text">P6177 Count on a tree II&#x2F;【模板】树分块 [树分块] [分块] [bitset]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5072-Ynoi2015-%E7%9B%BC%E5%90%9B%E5%8B%BF%E5%BF%98-%E8%8E%AB%E9%98%9F-%E9%93%BE%E8%A1%A8-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.6.</span> <span class="nav-text">P5072 [Ynoi2015] 盼君勿忘 [莫队] [链表] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4117-Ynoi2018-%E4%BA%94%E5%BD%A9%E6%96%91%E6%96%93%E7%9A%84%E4%B8%96%E7%95%8C-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%B9%B6%E6%9F%A5%E9%9B%86-%E9%93%BE%E8%A1%A8-%E6%80%A7%E8%B4%A8-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.7.</span> <span class="nav-text">P4117 [Ynoi2018] 五彩斑斓的世界 [分块] [大分块] [并查集] [链表] [性质] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4119-Ynoi2018-%E6%9C%AA%E6%9D%A5%E6%97%A5%E8%AE%B0-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%B9%B6%E6%9F%A5%E9%9B%86-%E9%93%BE%E8%A1%A8-%E5%A4%8D%E6%9D%82%E5%BA%A6-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.8.</span> <span class="nav-text">P4119 [Ynoi2018] 未来日记 [分块] [大分块] [并查集] [链表] [复杂度] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5397-Ynoi2018-%E5%A4%A9%E9%99%8D%E4%B9%8B%E7%89%A9-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB"><span class="nav-number">1.0.9.</span> <span class="nav-text">P5397 [Ynoi2018] 天降之物 [分块] [大分块] [性质] [根号分治]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6578-Ynoi2019-%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E7%BD%91%E7%AB%99-Trick-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.10.</span> <span class="nav-text">P6578 [Ynoi2019] 魔法少女网站 [Trick] [分块] [大分块] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4690-Ynoi2016-%E9%95%9C%E4%B8%AD%E7%9A%84%E6%98%86%E8%99%AB-%E5%88%86%E5%9D%97-%E6%A0%B9%E5%8F%B7%E9%87%8D%E6%9E%84-%E6%80%9D%E7%BB%B4-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.11.</span> <span class="nav-text">P4690 [Ynoi2016] 镜中的昆虫 [分块] [根号重构] [思维] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6580-Ynoi2019-%E7%BE%8E%E5%A5%BD%E7%9A%84%E6%AF%8F%E4%B8%80%E5%A4%A9-%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%98%E5%9C%A8-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4-%E8%8E%AB%E9%98%9F-%E5%88%86%E5%9D%97-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.12.</span> <span class="nav-text">P6580 [Ynoi2019] 美好的每一天~ 不连续的存在 [大分块] [思维] [莫队] [分块] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5398-Ynoi2018-GOSICK-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4-%E8%8E%AB%E9%98%9F"><span class="nav-number">1.0.13.</span> <span class="nav-text">P5398 [Ynoi2018] GOSICK [大分块] [分块] [思维] [莫队]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5309-Ynoi2011-%E5%88%9D%E5%A7%8B%E5%8C%96-%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4"><span class="nav-number">1.0.14.</span> <span class="nav-text">P5309 [Ynoi2011]初始化 [分块] [思维]</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%9D%97%E9%80%89%E5%81%9A"><span class="nav-number">1.</span> <span class="nav-text">分块选做</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P4108-HEOI2015-%E5%85%AC%E7%BA%A6%E6%95%B0%E6%95%B0%E5%88%97-%E5%88%86%E5%9D%97-%E5%88%86%E6%9E%90%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text">P4108 HEOI2015 公约数数列 [分块] [分析性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4891-%E5%BA%8F%E5%88%97-%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.2.</span> <span class="nav-text">P4891 序列 [分块] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%85%E5%8A%A0%E8%BE%BE%E7%9A%84%E6%91%A9%E5%A4%A9%E6%A5%BC-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB-bfs-%E6%9A%B4%E5%8A%9B-%E5%BB%BA%E5%9B%BE-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">雅加达的摩天楼 [根号分治] [bfs] [暴力] [建图] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%8B%E5%AE%A4%E8%81%94%E9%82%A6-%E6%A0%91%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97"><span class="nav-number">1.0.4.</span> <span class="nav-text">王室联邦 [树分块] [分块]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6177-Count-on-a-tree-II-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E6%A0%91%E5%88%86%E5%9D%97-%E6%A0%91%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97-bitset"><span class="nav-number">1.0.5.</span> <span class="nav-text">P6177 Count on a tree II&#x2F;【模板】树分块 [树分块] [分块] [bitset]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5072-Ynoi2015-%E7%9B%BC%E5%90%9B%E5%8B%BF%E5%BF%98-%E8%8E%AB%E9%98%9F-%E9%93%BE%E8%A1%A8-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.6.</span> <span class="nav-text">P5072 [Ynoi2015] 盼君勿忘 [莫队] [链表] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4117-Ynoi2018-%E4%BA%94%E5%BD%A9%E6%96%91%E6%96%93%E7%9A%84%E4%B8%96%E7%95%8C-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%B9%B6%E6%9F%A5%E9%9B%86-%E9%93%BE%E8%A1%A8-%E6%80%A7%E8%B4%A8-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.7.</span> <span class="nav-text">P4117 [Ynoi2018] 五彩斑斓的世界 [分块] [大分块] [并查集] [链表] [性质] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4119-Ynoi2018-%E6%9C%AA%E6%9D%A5%E6%97%A5%E8%AE%B0-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%B9%B6%E6%9F%A5%E9%9B%86-%E9%93%BE%E8%A1%A8-%E5%A4%8D%E6%9D%82%E5%BA%A6-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.8.</span> <span class="nav-text">P4119 [Ynoi2018] 未来日记 [分块] [大分块] [并查集] [链表] [复杂度] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5397-Ynoi2018-%E5%A4%A9%E9%99%8D%E4%B9%8B%E7%89%A9-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB"><span class="nav-number">1.0.9.</span> <span class="nav-text">P5397 [Ynoi2018] 天降之物 [分块] [大分块] [性质] [根号分治]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6578-Ynoi2019-%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E7%BD%91%E7%AB%99-Trick-%E5%88%86%E5%9D%97-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%A7%E8%B4%A8"><span class="nav-number">1.0.10.</span> <span class="nav-text">P6578 [Ynoi2019] 魔法少女网站 [Trick] [分块] [大分块] [性质]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P4690-Ynoi2016-%E9%95%9C%E4%B8%AD%E7%9A%84%E6%98%86%E8%99%AB-%E5%88%86%E5%9D%97-%E6%A0%B9%E5%8F%B7%E9%87%8D%E6%9E%84-%E6%80%9D%E7%BB%B4-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.11.</span> <span class="nav-text">P4690 [Ynoi2016] 镜中的昆虫 [分块] [根号重构] [思维] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6580-Ynoi2019-%E7%BE%8E%E5%A5%BD%E7%9A%84%E6%AF%8F%E4%B8%80%E5%A4%A9-%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%98%E5%9C%A8-%E5%A4%A7%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4-%E8%8E%AB%E9%98%9F-%E5%88%86%E5%9D%97-%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.12.</span> <span class="nav-text">P6580 [Ynoi2019] 美好的每一天~ 不连续的存在 [大分块] [思维] [莫队] [分块] [复杂度]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5398-Ynoi2018-GOSICK-%E5%A4%A7%E5%88%86%E5%9D%97-%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4-%E8%8E%AB%E9%98%9F"><span class="nav-number">1.0.13.</span> <span class="nav-text">P5398 [Ynoi2018] GOSICK [大分块] [分块] [思维] [莫队]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P5309-Ynoi2011-%E5%88%9D%E5%A7%8B%E5%8C%96-%E5%88%86%E5%9D%97-%E6%80%9D%E7%BB%B4"><span class="nav-number">1.0.14.</span> <span class="nav-text">P5309 [Ynoi2011]初始化 [分块] [思维]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P6774-NOI2020-%E6%97%B6%E4%BB%A3%E7%9A%84%E7%9C%BC%E6%B3%AA"><span class="nav-number">1.0.15.</span> <span class="nav-text">P6774 [NOI2020] 时代的眼泪</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

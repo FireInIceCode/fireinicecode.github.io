@@ -30,7 +30,7 @@
 <meta property="og:description" content="数数题会把计数相关问题放在这里. 生成函数超纲严重先挑DP做. 一做数数发现现在已经不会做蓝题了. CF1515E Phoenix and Computers 有$n$台电脑排成一排,每次可以手动打开一台没被打开的,同时若一台电脑左右的电脑都被打开,那么它会自动打开.求把所有电脑打开的方案数.$n\le 400$  发现自动打开的电脑两边一定是手动打开的,即它们不可能相邻,所以其实是若干段手动打开">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-02T07:48:00.000Z">
-<meta property="article:modified_time" content="2022-07-04T13:24:07.349Z">
+<meta property="article:modified_time" content="2022-07-09T23:50:29.183Z">
 <meta property="article:author" content="FireInIce">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="dp">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-04 21:24:07" itemprop="dateModified" datetime="2022-07-04T21:24:07+08:00">2022-07-04</time>
+                <time title="Modified: 2022-07-10 07:50:29" itemprop="dateModified" datetime="2022-07-10T07:50:29+08:00">2022-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
 <p>发现自动打开的电脑两边一定是手动打开的,即它们不可能相邻,所以其实是若干段手动打开的,段段之间夹着一个自动打开的.</p>
 <p>手动打开一个连续区间的方案数是$2^{len-1}$,原因是我们每次只能像左边和右边拓展,那么设第一个打开的是第$k$个,方案就是在剩下$len-1$步中选$k-1$步是向左拓展的,所以方案数是</p>
 <script type="math/tex; mode=display">
-\sum_{k=1}^{len} \binom{len-1}{k-1}=2^{n-1}</script><p>那么把一个自动打开的和紧跟着的一段手动打开的作为一段,设$f_i$表示前$i$个都方案,则加上一个新段的方案数时除了乘上这一段的方案,还要再在总步数里选若干步是新的这段的方案,那么我们要知道总步数,所以还要记录总步数或者之前分了几段,增加一维,设$f_{i,j}$表示前$i$个分了$j$段,转移就是</p>
+\sum_{k=1}^{len} \binom{len-1}{k-1}=2^{n-1}</script><p>那么把一个自动打开的和紧跟着的一段手动打开的作为一段,设$f_i$表示前$i$个的方案,则加上一个新段的方案数时除了乘上这一段的方案,还要再在总步数里选若干步是新的这段的方案,那么我们要知道总步数,所以还要记录总步数或者之前分了几段,增加一维,设$f_{i,j}$表示前$i$个分了$j$段,转移就是</p>
 <script type="math/tex; mode=display">
 f_{i,j}=f_{k-1,j-1}\times \binom {i-j+1}{i-k}\times 2^{i-k+1}\\
 
