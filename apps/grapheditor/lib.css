@@ -1,0 +1,37 @@
+.gnode{
+    position: absolute;
+    border-radius: 50%;
+    border: solid 3px;
+    padding: 2px;
+    text-align: center;
+    background-color: white;
+    user-select: none;
+    cursor: pointer;
+}
+.gnode.gfixed{
+    border: solid 5px;
+}
+.gnode.default{
+    background: white;
+    color: black;
+}
+.gnode.gs1{
+    background-color: red;
+    color: white;;
+}
+.gnode.gs2{
+    background-color: blue;
+    color: white;;
+}
+.gnode.gs3{
+    background-color: green;
+    color: white;;
+}
+.gcanvas{
+    overflow: hidden;
+    position: relative;
+}
+.gcanvas>canvas{
+    position: absolute;
+    z-index: -1;
+}

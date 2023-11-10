@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Graph Editor</title>
+    <script src="lib.js"></script>
+    <script src="index.js"></script>
+    <link href="lib.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="canvas"></div>
+    <div class="panel">
+        <button cmd="fix-all" onclick="cmd(this)">Fixall</button>
+        <button cmd="show-as-tree" onclick="cmd(this)">Show as Tree</button><br>
+        <button cmd="attr directioned true" onclick="cmd(this)">Directioned Graph</button>
+        <button cmd="attr directioned false" onclick="cmd(this)">Undirectioned Graph</button>
+        <br>
+        <label>Graph Data:</label><br>
+        <textarea id="graphtext" rows="30" cols="30">1 2
+2 3
+3 4</textarea>
+        <br>
+        <label>Terminal:</label>
+        <input id="cmd" type="text" placeholder="help"></input>
+        <div id="output" style="max-height: 250px;"></div>
+    </div>
+</body>
+</html>

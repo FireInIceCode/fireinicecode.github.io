@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数据结构选做 | FireInIce's Blog</title><meta name="keywords" content="日志,线段树,数据结构,虚树,主席树"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="数据结构综合选做高妙分块都塞进分块选做了 P3714 树的难题 [点分治] [线段树] [单调队列]线段树解法用线段树维护之前的子树中, 与当前子树颜色相同和不同的情况, 把颜色排序, 可以保证先前碰到的颜色不相同后后面不会再相同, 每次到新颜色则把相同颜色插入到不相同颜色中. 单调队列合并to do P3345 幻想乡战略游戏 [点分树] [线段树] 重心的性质, 可以利用对当前答案移动一条边的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构选做">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/06/08/ds/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="数据结构综合选做高妙分块都塞进分块选做了 P3714 树的难题 [点分治] [线段树] [单调队列]线段树解法用线段树维护之前的子树中, 与当前子树颜色相同和不同的情况, 把颜色排序, 可以保证先前碰到的颜色不相同后后面不会再相同, 每次到新颜色则把相同颜色插入到不相同颜色中. 单调队列合并to do P3345 幻想乡战略游戏 [点分树] [线段树] 重心的性质, 可以利用对当前答案移动一条边的">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2022-06-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="虚树">
+<meta property="article:tag" content="主席树">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2022/06/08/ds/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构选做',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据结构选做</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2022-06-07T16:00:00.000Z" title="Created 2022-06-08 00:00:00">2022-06-08</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据结构综合选做"><a href="#数据结构综合选做" class="headerlink" title="数据结构综合选做"></a>数据结构综合选做</h1><p>高妙分块都塞进<a href="/%E5%88%86%E5%9D%97%E9%80%89%E5%81%9A/">分块选做</a>了</p>
+<h3 id="P3714-树的难题-点分治-线段树-单调队列"><a href="#P3714-树的难题-点分治-线段树-单调队列" class="headerlink" title="P3714 树的难题 [点分治] [线段树] [单调队列]"></a>P3714 树的难题 [点分治] [线段树] [单调队列]</h3><h4 id="线段树解法"><a href="#线段树解法" class="headerlink" title="线段树解法"></a>线段树解法</h4><p>用线段树维护之前的子树中, 与当前子树颜色相同和不同的情况, 把颜色排序, 可以保证先前碰到的颜色不相同后后面不会再相同, 每次到新颜色则把相同颜色插入到不相同颜色中.</p>
+<h4 id="单调队列合并"><a href="#单调队列合并" class="headerlink" title="单调队列合并"></a>单调队列合并</h4><p>to do</p>
+<h3 id="P3345-幻想乡战略游戏-点分树-线段树"><a href="#P3345-幻想乡战略游戏-点分树-线段树" class="headerlink" title="P3345 幻想乡战略游戏 [点分树] [线段树]"></a>P3345 幻想乡战略游戏 [点分树] [线段树]</h3><ul>
+<li>重心的性质, 可以利用对当前答案移动一条边的方式证明答案既是全树点带权重心(边权无影响), 每次会走向自己儿子中点权和大于一半的儿子,</li>
+</ul>
+<h4 id="解法1-线段树"><a href="#解法1-线段树" class="headerlink" title="解法1: 线段树"></a>解法1: 线段树</h4><p>由于所有大于一半的儿子形成了由根开始的一条链可以直接在线段树中二分出重心, 问题变为求所有点到重心的距离, 设重心为u, 点到根距离为dis, 则答案为:</p>
+<ul>
+<li>$$ \sum dis_u+dis_v-dis_{lca(u, v)}\\&#x3D;\sum dis_u + \sum dis_v - \sum dis_{lca(u, v)}$$<br> 其中前两个式子可以直接求解, 最后一个式子则考虑首先 lca 一定在u到根的链上, 其中考虑边 e 被 dis_{lca(u, v)} 计算的次数为 e 较深端点的子树大小 (这个子树中的每个 v 都可以和 u 构成一个 lca 在e下的点对), 所以对每个点维护父边边权和子树大小的乘积, 注意这里大小都是点权和</li>
+</ul>
+<h4 id="解法2-动态点分治"><a href="#解法2-动态点分治" class="headerlink" title="解法2: 动态点分治"></a>解法2: 动态点分治</h4><p>to do</p>
+<h3 id="P632-9震波-点分树"><a href="#P632-9震波-点分树" class="headerlink" title="P632 9震波 [点分树]"></a>P632 9震波 [点分树]</h3><p>每层维护两棵线段树, 下标 i 表示到父亲或当前点的距离为i的点的和, 查询从叶子出发向上跳, 算上当前层的, 容斥掉父亲的</p>
+<h3 id="P4587神秘数-主席树"><a href="#P4587神秘数-主席树" class="headerlink" title="P4587神秘数 [主席树]"></a>P4587神秘数 [主席树]</h3><blockquote>
+<p>一个可重复数字集合 $S$ 的神秘数定义为最小的不能被 $S$ 的子集的和表示的正整数. 例如 $S&#x3D;{1, 1, 1, 4, 13}$, 有: $1 &#x3D; 1$, $2 &#x3D; 1+1$, $3 &#x3D; 1+1+1$, $4 &#x3D; 4$, $5 &#x3D; 4+1$, $6 &#x3D; 4+1+1$, $7 &#x3D; 4+1+1+1$.</p>
+<p>$8$ 无法表示为集合 $S$ 的子集的和, 故集合 $S$ 的神秘数为 $8$.</p>
+<p>现给定长度为 $n$ 的<strong>正整数</strong>序列 $a$, $m$ 次询问, 每次询问包含两个参数 $l, r$, 你需要求出由 $a_l, a_{l+1}, \cdots, a_r$ 所组成的可重集合的神秘数.</p>
+<p>对于 $100%$ 的数据点, $1\le n, m\le {10}^5$, $\sum a\le {10}^9$.</p>
+</blockquote>
+<p>若当前可表示的值域为 [1, x] , 升序加入值v后, 若v&gt;x+1, 则x+1一定无法表示, 答案为 x+1 , 否则答案为 x+v</p>
+<p>发现若一个区间中数均不大于 x+1 , 则这个区间的数可以一起加进去, 答案更新为x+区间和</p>
+<p>于是可以用线段树优化, 在值域上建线段树, 每次线段树查出所有未被加入的数中不大于 x+1 的数的和, 若为0说明无数可加, 答案为x+1, 否则把这个和加进答案, 暴力重复这个过程</p>
+<p>对于复杂度, 设 $b_i$ 表示第 i 次的x+1, 那考虑对于得到 $b_{i+1}$ 的过程中, 由于我们加入的区间中至少有一个数, 而且这个数上次没被加入说明这个数大于 $b_{i-1}$ 所以 $b_{i+1} &#x3D; b_i + sum_i &gt; b_i + b_{i-1}$ b的增长是严格大于斐波那契的, 斐波那契增长是指数的, 所以我们最多进行 log(v) 次这个操作</p>
+<h3 id="P4197-Peaks-Kruskal重构树-线段树合并"><a href="#P4197-Peaks-Kruskal重构树-线段树合并" class="headerlink" title="P4197 Peaks [Kruskal重构树] [线段树合并]"></a>P4197 Peaks [Kruskal重构树] [线段树合并]</h3><p>如标签, 过于模板</p>
+<h3 id="P2839-middle-主席树"><a href="#P2839-middle-主席树" class="headerlink" title="P2839 middle [主席树]"></a>P2839 middle [主席树]</h3><p>中位数性质, 对中位数把所有大于它的设1, 小于的设-1, 答案是0, 然后主席树维护区间大于小于个数即可</p>
+<h3 id="P6071-TreeQuery-虚树-主席树"><a href="#P6071-TreeQuery-虚树-主席树" class="headerlink" title="P6071 TreeQuery [虚树] [主席树]"></a>P6071 TreeQuery [虚树] [主席树]</h3><p>相当于p到[l, r]中点构成虚树的最短距离, 分几种情况:</p>
+<ul>
+<li><p>p在虚树根的子树内, 则距离为把p添加到虚树后p到其父亲的距离, 有一个结论是<strong>一个点在虚树中的父亲是该点和所有点中它dfs序的前驱或后继的lca</strong>根据这个用主席树找区间前驱后继.</p>
+</li>
+<li><p>p在虚树根的子树外, 此时最短路径就是它和虚树根的lca.</p>
+</li>
+<li><p>虚树包含p, 答案为0.</p>
+</li>
+</ul>
+<h3 id="P5069-Ynoi2015-纵使日薄西山-线段树"><a href="#P5069-Ynoi2015-纵使日薄西山-线段树" class="headerlink" title="P5069 [Ynoi2015] 纵使日薄西山 [线段树]"></a>P5069 [Ynoi2015] 纵使日薄西山 [线段树]</h3><p>发现如果位置 $i$ 被操作, 那么位置 $i+1$ 和 $i-1$ 一定不会被操作, 因为它们永远不会比 $i$ 大了, 于是 $i$ 位置会被操作恰好 $a_i$ 次.</p>
+<p>所以题目就成了给定一个序列求所有被操作位置的和.</p>
+<p>发现合并两个区间时, 只要看左区间右端点和右区间左端点是否被选了去分类讨论, 如果都被选了就强制两个中小的那个不能选. 又因为我们会有钦定一个端点不能选的情况, 所以每个节点要记录4个情况, 分别表示是否忽略左右端点, 记录每个情况下的被操作位置和, 左&#x2F;右端点是否被选.</p>
+<p>拿着这个去讨论, 以得到父亲是两个端点都被选的为例, 发现:</p>
+<ul>
+<li>若左区间右端点和右区间左端点未被同时选中, 则和可以直接相加, 左右端点是否选中直接照搬左右区间完整情况的左右端点信息.</li>
+<li>若同时选中, 则比较两个端点谁的值更大, 若左端点的更大, 则合并左端点完整区间情况和右端点忽略左端点情况. 右端点更大的同理</li>
+</ul>
+<p>于是可以写出线段树的更新, 接下来可以单点修改, 区间赋值, 区间加, 区间查. . . 然而这题只要写个单点修改就行了.</p>
+<h3 id="P5070-Ynoi2015-即便看不到未来-树状数组-性质"><a href="#P5070-Ynoi2015-即便看不到未来-树状数组-性质" class="headerlink" title="P5070 [Ynoi2015] 即便看不到未来 [树状数组] [性质]"></a>P5070 [Ynoi2015] 即便看不到未来 [树状数组] [性质]</h3><p>首先有比较明显的莫队做法, 维护一个值域数组, 在连续值域段的左右端点记录对应的另一个端点位置, 添加一个元素时像第十分块一样合并俩连续区间, 回滚</p>
+<p>然后 $O(\sqrt n)$ 会时间炸飞, 显然 $10^6$ 次方是个单 log 做法, 3s是个大常数, 而且毒瘤肯定不会无端只问你1到10的, 一定要用这个条件</p>
+<p>另一个维护序列区间的常用套路是右端点向右扫描数据结构维护左端点, 首先, 若记位置 $i$ 上一次出现位置为 $last_i$ , 则新增右端点 $r$ 只会影响 $(last_r, r]$ 这一个区间的左端点的答案.</p>
+<p>然后再因为利用1-10的这个条件, 可以考虑把值在 $[a_r-10, a_r+10]$ 这个区间的数的<strong>最后一次出现位置</strong>拿出来, 按出现位置从大到小排序扫描, 取最后一个原因是这个数是否在区间 $[l, r]$ 中出现取决于 $l$ 和这个数最后一次出现的大小关系, 从右往左扫是意味着出现的值只会增加而不会减少, 可以用莫队的 $O(1)$ 维护方式.</p>
+<p>于是相当于这21个数把 $(last_r, r]$ 区间划分成若干段, 每个段值的出现情况相同, 由于每次是算出这个区间的左端点增加了多少, 所以数据结构只要单点查和区间加, 可以用一个树状数组, 而且是对每个答案分别开一个树状数组维护.</p>
+<p>然后你发现莫队的O(1)方式是毫无必要的, 码量大细节多, 而因为你在扫这个区间的过程中始终只计算某一时刻 $x$ 的贡献, 所以只要记两个指针表示x往上&#x2F;往下连续段最大到哪就均摊 $O(1)$ .</p>
+<p>代码不多, 但有一堆一堆细节, 放段核心代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> v = a[i];  <span class="comment">//a是原数组</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec; <span class="comment">//vec是我们单独拿出来的21个数的位置</span></span><br><span class="line">    <span class="type">int</span> up = <span class="number">0</span>, down = <span class="number">0</span>; <span class="comment">//上下两个连续段的延伸长度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (v == a[i - <span class="number">1</span>]) &#123; <span class="comment">//对于相邻两个值相等的特殊处理,否则按照我的垃圾写法会把一个值加两遍</span></span><br><span class="line">        bs[<span class="number">1</span>].<span class="built_in">add</span>(i, <span class="number">1</span>);  <span class="comment">//bs是答案树状数组,bs[i]表示连续段长i的左端点出现次数数据结构</span></span><br><span class="line">        bs[<span class="number">1</span>].<span class="built_in">add</span>(i + <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">goto</span> query;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="built_in">sizeof</span>(vis)); <span class="comment">//vis是这个值是否有值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="built_in">max</span>(v - <span class="number">11</span>, <span class="number">0</span>); j &lt;= v + <span class="number">11</span>; j++) &#123; <span class="comment">//对于x+10,x-10更新的时候会碰到的边界条件,所以加上11</span></span><br><span class="line">        <span class="keyword">if</span> (lastpos[j] &amp;&amp; lastpos[j] &gt; lastpos[v]) &#123; <span class="comment">//lastpos是一个值的上次出现位置</span></span><br><span class="line">            vec.<span class="built_in">push_back</span>(lastpos[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//乱七八糟边界条件</span></span><br><span class="line">    vec.<span class="built_in">push_back</span>(<span class="built_in">max</span>(<span class="number">0</span>, lastpos[v])); <span class="comment">//标定了待更新左端点区间的左端点(好绕啊,就是从左往右第一个要更新的左端点)</span></span><br><span class="line">    vec.<span class="built_in">push_back</span>(i); <span class="comment">//要先把自己插入进去,相当于修改以i为左端点的答案</span></span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; vec.<span class="built_in">size</span>() - <span class="number">1</span>; k++) &#123;</span><br><span class="line">        <span class="type">int</span> j = vec[k], jv = a[j];</span><br><span class="line">        vis[jv - v + C] = <span class="literal">true</span>; <span class="comment">//C是一个偏移,避免下标负数</span></span><br><span class="line">        <span class="keyword">for</span> (; vis[up + C + <span class="number">1</span>]; up++)</span><br><span class="line">            ;</span><br><span class="line">        <span class="keyword">for</span> (; vis[-down + C - <span class="number">1</span>]; down++)</span><br><span class="line">            ;</span><br><span class="line">        <span class="type">int</span> len = up + down + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> ml = vec[k + <span class="number">1</span>] + <span class="number">1</span>, mr = j; <span class="comment">//当前这个值的出现情况是对于区间在[ml,mr]中的左端点的</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//注意长度区间不在1-10的不用管</span></span><br><span class="line">        <span class="keyword">if</span> (up &gt;= <span class="number">1</span> &amp;&amp; up &lt;= <span class="number">10</span>)</span><br><span class="line">            <span class="built_in">del</span>(ml, mr, up); <span class="comment">//这个辅助函数就是bs[up]的区间删除</span></span><br><span class="line">        <span class="keyword">if</span> (down &gt;= <span class="number">1</span> &amp;&amp; down &lt;= <span class="number">10</span>)</span><br><span class="line">            <span class="built_in">del</span>(ml, mr, down);</span><br><span class="line">        <span class="keyword">if</span> (len &gt;= <span class="number">1</span> &amp;&amp; len &lt;= <span class="number">10</span>) &#123;</span><br><span class="line">            bs[len].<span class="built_in">add</span>(ml, <span class="number">1</span>);</span><br><span class="line">            bs[len].<span class="built_in">add</span>(mr + <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">query:</span><br><span class="line">    <span class="keyword">for</span> (Q q : queries[i]) &#123;</span><br><span class="line">        <span class="built_in">query</span>(q.l, q.id);</span><br><span class="line">    &#125;</span><br><span class="line">    lastpos[a[i]] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="P5354-Ynoi2017-由乃的-OJ"><a href="#P5354-Ynoi2017-由乃的-OJ" class="headerlink" title="P5354  [Ynoi2017] 由乃的 OJ"></a>P5354  [Ynoi2017] 由乃的 OJ</h3><p>大家肯定都做过那个经典的序列上全局的版本, 那么对于这个题可以相同方式考虑.</p>
+<p>由那个题我们知道位运算每一位是独立的, 只要从高位往低位看每一位能不能是1就行了.</p>
+<p>首先考虑序列上的区间询问, 那么容易发现可以简单线段树维护, 每个点记录在每一位1进去出来什么和0进去出来什么.</p>
+<p>然后搬到树上可以合并方式不变的变成LCT和树剖, 此时要注意要记录两个方向(到序列上就是从左往右和从右往左)走的进出映射, 因为一条链又有向上的又有向下的.</p>
+<p>然后被卡常了, 需要用位运算优化, 可以把每一位进去1出来什么这种压成一个int, 直接位运算, 然后就能过了.</p>
+<p>由于合并操作比较复杂且询问的时候也要用这种合并操作, 一般就把线段树存的数据写成结构体了. 这里只放合并信息的关键代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Dat是记录的信息,zero,one,rzero,rone每一位分别表示这一位正着走一开始是0,正着走一开始是1,反着走一开始是0,反着走一开始是1四种情况.</span></span><br><span class="line"><span class="function">Dat <span class="title">merge</span><span class="params">(<span class="type">const</span> Dat&amp; a, <span class="type">const</span> Dat&amp; b)</span> </span>&#123;</span><br><span class="line">    Dat ans;</span><br><span class="line">    ans.zero = (a.zero &amp; b.one) | ((~a.zero) &amp; b.zero);</span><br><span class="line">    ans.one = (a.one &amp; b.one) | ((~a.one) &amp; b.zero);</span><br><span class="line">    ans.rzero = (b.rzero &amp; a.rone) | ((~b.rzero) &amp; a.rzero);</span><br><span class="line">    ans.rone = (b.rone &amp; a.rone) | ((~b.rone) &amp; a.rzero);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>树剖查询的时候注意分清向上向下的细节.</p>
+<h3 id="P5068-Ynoi2015-我回来了"><a href="#P5068-Ynoi2015-我回来了" class="headerlink" title="P5068 [Ynoi2015] 我回来了"></a>P5068 [Ynoi2015] 我回来了</h3><p>首先显然乘上区间长度后问的就是每个 $d$ 的次数之和.</p>
+<p>由于两个血量相同的小兵和一个是等价的, 可以把小兵按血量映射到一个数轴上.</p>
+<p>而对于一个 $d$ , 这个答案次数就等价于把数轴分成若干长为 $d$ 的块, 求一个最长的前缀使得每一块里都至少有一个数.</p>
+<p>考虑对于每个 $d$ , 可能的答案只有 $\frac {n} {d}$ 种, 调和级数分析一下发现, 总数是 $n \log n$ 的, 那么答案变大一, 或者说前缀向后拓展一块的次数也是 $n \log n$ 的.</p>
+<p>于是插入一个点时, 我们要能快速找到包含一个点的区间, 并支持插入和删除区间.</p>
+<p>一开始想了一种建出线段树, 把一个区间拆成 $\log n$ 段挂到节点上标记永久化, 发现这玩意删除是困难的</p>
+<p>正确的做法是, 考虑开 $n$ 个 set , 第 $i$ 个里面有以 $i$ 为左端点的区间的右端点, 再开一棵线段树算区间内set里面放的右端点的最大值, 查包含 $p$ 的所有区间时只要查左端点在 $1-p$ 的最大右端点, 并把这个区间删了加新的, 不断重复这个过程, 直到右端点在 $p$ 左侧.</p>
+<p>这样就能做了, 但还有个很厉害的离线做法.</p>
+<p>考虑反向考虑, 要求 $[l, r]$ 的和, 可以考虑哪些小兵会贡献一个答案, 发现仍然应该转化成数轴模型, 那么算出每个块最早开始有数的时间 $t$ , 插入点 $(d, t)$ , 查询就是查时间在询问之前的并且伤害 $d\in[l, r]$ .</p>
+<p>这是个静态二维数点, 由于有 $n \log n$ 个点所以复杂度 $n \log^2 n$ , 而每个块最早有数的时间只要先处理每个位置最早开始有数的时间就可以ST表或猫树 $n \log n$ 解决了.</p>
+<p>写的第二种做法, 不怎么卡常, 不用快读快写不很稳, 如果放个fread&#x2F;fwrite基本就很没问题.</p>
+<h3 id="Frog-2022一轮省集"><a href="#Frog-2022一轮省集" class="headerlink" title="Frog 2022一轮省集"></a>Frog 2022一轮省集</h3><blockquote>
+<p>给一个序列 $a$ , 每次查询区间 $[l, r]$ 中最短的区间 $[l’, r’]$ 满足 $[l, r]$ 中出现的数都在 $[l’, r’]$ 出现.</p>
+</blockquote>
+<p>std:</p>
+<p>考虑序列上扫描线扫描答案右端点, 开一个set维护所有数的最后一次出现都位置, 记 $last_i$ 表示 $i$ 的上一次出现位置, 那么对于位置 $r$ 作为右端点时, 只有询问的 $l$ 在 $(pre(last_i), last_i]$ 中时答案才可能比 $r-1$ 更优, 记这个区间为 $rg_r$ , 且这一段答案是一样的, 为 $ans_r&#x3D;r-succ(last_i)+1$ , pre表示一个数在set中的前驱. 所以我们对每个询问处理出它的 $r_0$ 表示 $r’$ 只有在 $r_0$ 右边才能包含区间中所有的数, $r_0$ 可以简单线段树求. 接下来就变成了对于一个询问 $[l, r]$ , 求 $\min_{r’&#x3D;r_0}^r ans_r’, \ s. t. \ i\in rg_r’$ , 这个可以再跑第二遍线段树扫描线解决.</p>
+<p>zsy 吊打 std:<br>直接维护答案, 在序列上扫描线扫描询问的右端点, 开一个线段树, 维护 $r_i$ , $len_i$ , 表示以 $i$ 为答案左端点时对应答案右端点的位置和答案长度, 显然 $len_i&#x3D;r_i-i+1$ . 那么若当前位置为 $r$ , $a_r$ 上一次出现在 $a_pre$ , 则 $a_r$ , $a_pre$ 中的答案左端点对应的答案右端点一定要包含 $a_r$ 所以都设成 $a_r$ .</p>
+<p>每次查询的时候, 查的就是区间 $\min len_i\ s. t. i\in[l_0, r]$ , 其中 $l_0$ 表示 $[l, r]$ 中最短的后缀包含其中所有元素的左端点, 或者说区间里所有数的最后一次出现位置的min, 这个可以用线段树做不影响复杂度. 也可以并查集卡个常.</p>
+<h3 id="ZSContest5-主席树"><a href="#ZSContest5-主席树" class="headerlink" title="ZSContest5 [主席树]"></a>ZSContest5 [主席树]</h3><blockquote>
+<p>给定一个长 $n$ 的排列, $q$ 次选定长度相同的两个区间 $a$ , $b$ , 保证第二个区间在第一个区间右侧(不相交), 询问第二个区间的重排中有多少种使得每一位都大于第一个区间对应位. $n, q\le 10^5$ . 排列逆序对数不超过 $10^5$ . 3s</p>
+</blockquote>
+<p>这个逆序对很突兀啊, 一看就是复杂度相关, 然而仍然不会做啊.</p>
+<p>记 $cnt_i$ 表示 $b_i$ 大于 $a$ 中的 $cnt_i$ 个数. 答案显然为 $\prod (cnt_i-i+1)$ , 这里 $i$ 顺序任意.</p>
+<p>那么考虑利用逆序对的条件, 两个区间形成的逆序对个数为 $\sum (m-cnt_i)\le k$ , 所以 $m-cnt_i$ 和 $cnt_i$ 只有 $\sqrt k$ 种取值, 需要相同 $cnt$ 一起计算, 由于顺序任意按照 $cnt$ 从小到大也是值从小到大计算, 那么就要支持查等于某 $cnt$ 的有多少种.</p>
+<p>用主席树求即可. 仍然值域上建, 实现一下rank和kth即可每次动态跳不同 $cnt$</p>
+<p>最后复杂度 $(n+q\sqrt k)\log n$ , 可能因为 $\sqrt n$ 不满能跑 $10^5$ 吧.</p>
+<h3 id="CF639F-Bear-and-Chemistry-虚树-tarjan"><a href="#CF639F-Bear-and-Chemistry-虚树-tarjan" class="headerlink" title="CF639F Bear and Chemistry [虚树] [tarjan]"></a>CF639F Bear and Chemistry [虚树] [tarjan]</h3><blockquote>
+<p>给定一张 $n$ 个点 $m$ 条边的初始无向图.<br>$q$ 次询问, 每次询问给定一个点集 $V$ 和边集 $E$ .<br>你需要判断, 将 $E$ 中的边加入初始无向图之后, $V$ 中任意两个点 $x$ , $y$ 是否都能<strong>在每条边至多经过一次</strong>的情况下从 $x$ 到 $y$ 再回到 $x$<br>$n, m, q, \sum ∣V∣, \sum∣E∣\le 3\times 10^5$ , 强制在线.</p>
+</blockquote>
+<p>众所周知绕一圈回来这个相当于 $V$ 的点位于同一边双. 而 $V$ 这个询问方式让人想到虚树. . . 之类的东西.</p>
+<p>于是显然边双缩点变成一棵树, 然后可以用NOI2021庆典的做法去求虚树用虚树上的点建图跑tarjan解决问题.</p>
+<h2 id="NOI2020山东省队集训-Day7-货车运输"><a href="#NOI2020山东省队集训-Day7-货车运输" class="headerlink" title="[NOI2020山东省队集训 Day7]货车运输"></a>[NOI2020山东省队集训 Day7]货车运输</h2><blockquote>
+<p>$n$ 点 $m$ 条边, $q$ 次查询任意把一条边改成 $inf$ 后, 两点之间边权最小值最大.</p>
+<p>$n, m, q\le 3\times 10^5$</p>
+</blockquote>
+<p>建kruskal重构树, 二分答案, 那么相当于我们同时从起点和终点向上跳, 然后查询这两棵子树内是否有边. 这个可以直接二维数点, 或者线段树合并. 复杂度 $n\log^2 n$</p>
+<p>考虑整体二分的思想, 离线询问后将每一轮二分的值拿出来, 从小到大排序, 并模拟kruskal的过程, 并查集维护连通性, 那么就可以知己并查集知道两棵子树是否有边了.</p>
+<h2 id="CF983D-Arkady-and-Rectangles"><a href="#CF983D-Arkady-and-Rectangles" class="headerlink" title="CF983D Arkady and Rectangles"></a>CF983D Arkady and Rectangles</h2><blockquote>
+<p>给定平面上 $n$ 个矩形, 标号大覆盖标号小的, 求最后平面上能看到的颜色个数.</p>
+<p>$n\le 10^5$ , 值域 $10^9$ .</p>
+</blockquote>
+<p>暑假和杜赢看的ds题, 一直没记录.</p>
+<p>扫描线是肯定的, 考虑扫描 $x$ , 线段树维护一条竖线.</p>
+<p>那么我们会若干次添加一个颜色, 在扫描线上相当于区间赋值, 但显然这里下传标记是不可能的. 甚至没法上传.</p>
+<p>考虑标记永久化, 每个节点开一个set存所有完整覆盖自己的颜色, 因为上下传我们都做不到, 所以此时一个颜色被看到的条件是存在一个从根到叶子的路径其所有set中的最大值是这个颜色. 那么可以维护每个节点向下到根的路径中最大值的最小值 $mind$ .</p>
+<p>此时如果所有矩形在 $x$ 轴上都是一个后缀我们已经会做了, 只要每次区间修改看是否能被看到即可. 但问题是有可能一个颜色在横轴上结束的比较早, 露出了本来看不见的, 考虑该怎么处理.</p>
+<p>我们考虑set里只存没被统计过答案的, 那么 $mind$ 就成了子树中已经看到过的最小值.</p>
+<p>暴力回收下放的标记是不现实的, 考虑只有在这个颜色没了之后露出一个新颜色的情况是有用的, 且假设其在多个区间分别露出同一个颜色只需要取一次. 于是维护每个节点子树中未被看到的颜色且大于对应 $mind$ 中的最大值, 就能知道是否有可能获得新的颜色, 然后查一下全局是否能获得新颜色, 如果能就把这个颜色加入考虑, 再暴力回收这个颜色的所有标记(一个颜色的标记只有 $\log$ 个), 重算这些节点的信息即可.</p>
+<p>因为套了个set所以最后复杂度是 $O(n\log^2 n)$ 的.</p>
+<h2 id="P3295-SCOI2016-萌萌哒"><a href="#P3295-SCOI2016-萌萌哒" class="headerlink" title="P3295 [SCOI2016]萌萌哒"></a>P3295 [SCOI2016]萌萌哒</h2><blockquote>
+<p>给定序列长度和限制个数, 每个限制 $(l_1, r_1, l_2, r_2)\ s. t. \ r_2-l_2&#x3D;r_1-l_1$ 表示序列 $[l_1, r_1]$ 和 $[l_2, r_2]$ 完全相同, 序列每个数都在 $[0, 9]$ 中, 求序列个数.</p>
+<p>膜 $10^9+7$ , $n\le 10^5, m\le 10^5$ .</p>
+</blockquote>
+<p>同样是和杜赢看的题.</p>
+<p>单独考虑每一位的可能, 发现我们的问题相当于区间 $l_1+i$ 对应连边 $l_2+i$ , 最后求连通块个数. 那么一个 $n^2$ 是暴力并查集.</p>
+<p>考虑现在要优化这个暴力, 我们用st表结构把每个区间拆成2个的并, 而一个长度为 $2^k$ 的显然有可以再合并到两个长度为 $2^{k-1}$ 的.</p>
+<p>于是我们一开始只直接合并每个区间拆出来的那两个, 再所有合并都结束之后, $k$ 从大到小遍历: 对于一个 $k$ 的一个连通块, 每一个节点拆成两部分在 $k-1$ 连成一个连通块, 就到了 $k-1$ 这一层, 发现这样做是线性的, 你就做完了.</p>
+<p>那么这个题现在是修改 $q\alpha(n)$ , 查询 $n\log n \alpha(n)$ 的. 不能用线段树的结构因为结构不对应.</p>
+<p>能优化的本质是我们本来连了一个稠密图, 现在从顶上一层一层向下的过程中我们保证了每次都仅连最少的边. 于是每一层的复杂度贡献都是线性的.</p>
+<p>顺手写一发, 发现我像个智障. 码力没了.</p>
+<h2 id="ABC238G"><a href="#ABC238G" class="headerlink" title="ABC238G"></a>ABC238G</h2><blockquote>
+<p>给定一个序列 $a_n$ , $q$ 次判断一个区间的乘积是否是完全立方数.</p>
+<p>忘了数据范围所以福建OI</p>
+</blockquote>
+<p>降智题, 和qyc一起降大智.</p>
+<p>每个数拆成小于 $V^{\frac{1}{3}}$ 的质因数和一个质数, 那么小的直接前缀和, 大的莫队, 就是根号的.</p>
+<p>然后发现我们是智障, 它相当于判断两个前缀的所有质因数次数膜3相同, 直接hash复杂度是 $n\log v$ 的.</p>
+<h2 id="CF1588F-Jumping-Through-the-Array"><a href="#CF1588F-Jumping-Through-the-Array" class="headerlink" title="CF1588F Jumping Through the Array"></a>CF1588F Jumping Through the Array</h2><blockquote>
+<p>给定 $a_n$ 和排列 $p_n$ , 对每个 $i$ 建有向边 $(i, p_i)$ , $q$ 次操作:</p>
+<ul>
+<li>询问 $a$ 区间和</li>
+<li>对点 $u$ 能走到的所有点加 $x$ .</li>
+<li>交换 $p_x$ 与 $p_y$<br>$n\le 2\times 10^5, 8s$</li>
+</ul>
+</blockquote>
+<p>第一眼看成在内向基环树森林上做这个问题, 好吧其实是一堆环.</p>
+<p>那么第三个操作会把环断开或合并, 稍微考虑一下发现断开和合并是十分”自由”的, 也就是说找不到多大性质.</p>
+<p>$8s$ 提醒我们根号复杂度.</p>
+<p>于是通过根号分治, 序列分块与一堆平衡树可以想到各种根号log.</p>
+<p>考虑假设没有对环的修改, 你直接时间分块, 那么可以直接维护所有环, 加就直接加到环上, 区间和可以直接遍历被加的所有环去算对这个区间的贡献, 每根号个重构. 那现在有了对环的修改, 考虑在根号个修改的情况下, 你只切了根号刀, 所以实际上可以看成一共只有根号个点集, 那么加就直接遍历环包含的每个点集加, 询问考虑被加的每个点集的贡献, 这里不需要二分, 而是直接处理出每个数在这个块里被询问分成的根号段中的哪一段, 那么直接对每个环前缀和即可. 最后复杂度单根号.</p>
+<p>我们糊出了不用时间分块的做法!</p>
+<p>考虑根号分治, 那么在没有3操作的情况下, 小块加法直接暴力加到序列上, 大块加法把标记打在大块上, 那么查询的时候就查询序列上的和, 遍历每一个大环, 就行了.</p>
+<p>现在有了合并&#x2F;分裂, 仍然根号分治, 考虑对于一个大环, 维护的结构是一个块状链表, 链表上每一块维护其在原序列上的每一块的元素个数, 及其前缀和. 于是考虑:</p>
+<ul>
+<li>查询<ul>
+<li>分成整块和散块<ul>
+<li>整块部分和遍历每一个大环的块状链表上的每一块, 就能 $O(1)$ 查询这一块其对序列上整块的和的贡献</li>
+<li>散块部分若属于某个大环, 就直接查每个位置所属的大环的那个块的加法标记.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>加法<ul>
+<li>大环: 遍历大环上的每一块, 打加法标记, 复杂度根号</li>
+<li>小环: 暴力加到序列上</li>
+</ul>
+</li>
+<li>合并<ul>
+<li>就是把两个块状链表接起来, 可能会合并块状链表上的两块, 合并是根号的.</li>
+</ul>
+</li>
+<li>拆分<ul>
+<li>把一个块状链表拆成两个, 可能会把大块中间劈开.</li>
+</ul>
+</li>
+</ul>
+<p>合并拆分都是块状链表经典操作, 不再赘述.</p>
+<p>注意复杂度分析的时候, 块状链表的块的总个数是根号的, 因为一个大环的块状链表上小于根号的块左右必然都是大于根号的, 而小环我们不开块状链表. 所以复杂度正确.</p>
+<h2 id="CF1746F-Kazaee"><a href="#CF1746F-Kazaee" class="headerlink" title="CF1746F Kazaee"></a>CF1746F Kazaee</h2><blockquote>
+<p>给定 $a_n$ , $q$ 次询问区间 $l, r$ 中是否所有数都出现 $k$ 的倍数次.</p>
+<p>$n, q\le 3\times 10^5$</p>
+</blockquote>
+<p>直接hash, 对于每个数进行一个随机映射, 那么如果这个区间的和不是 $k$ 的倍数就说明不是, 是的话发现有 $\dfrac{1}{k}$ 的概率错, 所以跑30遍. 复杂度2log.</p>
+<h2 id="CF482E-ELCA"><a href="#CF482E-ELCA" class="headerlink" title="CF482E ELCA"></a>CF482E ELCA</h2><blockquote>
+<p>给定 $T&#x3D;Tree(n)$ , 根为 $1$ , $i$ 的父亲为 $f_i$ , 点有点权 $a_i$ , $m$ 次修改, 每次单点修改或者把以 $u$ 为根的子树挂到 $B$ 上(作为儿子), 每次修改后输出任意两个点的lca的权值的期望.</p>
+<p>$n, m\le 5\times 10^4$</p>
+</blockquote>
+<p>做dp的时候打错题号进来的. . .</p>
+<p>先考虑静态怎么做, 以一个点 $u$ 为 lca 的方案数就是 ${siz_u}^2-\sum {siz_v}^2$ , $v$ 是 $u$ 的儿子. 那么子树接上去这个操作就是, 受影响的只有它到根的这条链, 看看是怎么影响的: 发现是减去 $2siz_v\cdot (siz_u-siz_w)$ , 其中 $w$ 是 $u$ 子树包含 $v$ 的儿子.</p>
+<p>影响含有 $w$ 不好维护, 但直接重新合并可是简单的很, 但答案不能每次重新统计, 所以就再记录个 $ans$ 表示子树内所有方案的lca编号与权值的乘积的和即可. 这个题信息看看维护虚子树信息显然是免不了了.</p>
+<h2 id="CF1550F-Jumping-Around"><a href="#CF1550F-Jumping-Around" class="headerlink" title="CF1550F Jumping Around"></a>CF1550F Jumping Around</h2><p>注意到这个玩意是可以左右跳的, 所以不能用一些简单dp.</p>
+<p>考虑维护当前连通块, 按 $k$ 递增的顺序处理, 显然不能去尝试新点.</p>
+<p>考虑维护每个连通块 $v$ 表示最小的 $k$ 使得其能扩张. 问题变成如何确定合并两个连通块时新的 $v$. 根本不会.</p>
+<p>停, 注意到起点固定的, 那就只需要维护一个连通块, 那反过来对每个点维护它距离当前连通块的最小 $k$.</p>
+<p>直接考虑函数 $f(x)$ 表示位置 $x$ 距离当前连通块的最短距离 $-d$ 后的绝对值, 那么每次加入一个点相当于把一部分减等差数列, 然后要求最小的点, 这个可以ktt冲对吧</p>
+<p>但是注意到每次凹下去的那个线斜率绝对值都是 $1$, 相当于取min, 所以每个直接维护每个位置被取min的直线的截距的最大最小值即可.</p>
+<p>另一个方法是求Brovka求完全图MST, 可以支持 $s$ 不一样的.</p>
+<p>重点就在于如何求与当前点距离最近的不在连通块里的点.</p>
+<p>一个方法是, 按照连通块编号顺序扫点, 一个点的贡献是插入几条斜率绝对值为 $1$ 的直线, 用数据结构维护, 正反扫两遍就能排除档期那连通块了.</p>
+<h2 id="不知名典题"><a href="#不知名典题" class="headerlink" title="不知名典题."></a>不知名典题.</h2><blockquote>
+<p>给一棵 $n$ 点树, 定义 $f(l, r)$ 表示把编号在 $[l, r]$ 之间的点连通的最小边数, 求 $\sum_{l, r}f(l, r)$</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>考虑一条边有贡献当且仅当两边都有点, 于是统计只有一边有点的区间个数, 方式是维护子树内编号连续段并树上启发式合并, 在过程中计算即可.</p>
+<p>启发式合并的时候如果用splay就优化到单log.</p>
+<h2 id="GYM102586A"><a href="#GYM102586A" class="headerlink" title="GYM102586A"></a>GYM102586A</h2><blockquote>
+<p><img src="/img/2023-05-12-17-14-47-image.png" alt="picture 2">  </p>
+</blockquote>
+<p><img src="/img/2023-05-12-17-14-32-image.png" alt="picture 1">  </p>
+<h2 id="QOJ-5098-第一代图灵机"><a href="#QOJ-5098-第一代图灵机" class="headerlink" title="QOJ #5098. 第一代图灵机"></a>QOJ #5098. 第一代图灵机</h2><blockquote>
+<p>给定 $a_n, c_n$, $q$ 次操作, 每次单点改 $c$ 或者询问 $[l, r]$ 中没有重复颜色且数字和最大的子区间的数字和.</p>
+<p>$n, q\le 2\times 10^5, a_i&gt;0$</p>
+</blockquote>
+<p>考虑没有重复颜色, 维护每个位置上一次&#x2F;下一次出现的 $lst, nxt$, 则对于每个 $i$, 答案 $[l, r]$ 不能满足 $l&lt;lst_i, r&gt;i$.</p>
+<p>把区间表示成点画到平面上, 每个 $i$ 排除了一个左上角的2-side矩形, 于是答案是一条左上方的包络线.</p>
+<p>考虑要能带删除插入的维护包络线, 它就是后缀min, 使用类楼房重建线段树维护即可.</p>
+<p>线段树部分, 对每个点维护其答案, $calc(u, k)$ 定义为在 $u$ 节点右边添加一个 $k$ 后, 它的答案和最右边的点, 算它的时候如果 $k$ 比右二子最小值小就递归到左儿子, 否则就合并维护好的 $calc(lson, rson_{min})$ 递归右边.</p>
+<h2 id="CF1712F-Triameter"><a href="#CF1712F-Triameter" class="headerlink" title="CF1712F Triameter"></a>CF1712F Triameter</h2><p>WJQ给的题</p>
+<blockquote>
+<p>-不是, 我是说, 我们的目标是什么?</p>
+<p>-去整点找直径问题.</p>
+<p>你有一棵树, 树上的每条边权值都为 $1$. 现在有若干次询问, 每次询问一个整数 $x$, 并将叶子结点全部相连上权值为 $x$ 的边(操作不会保留). 问每次操作后图的直径是多少. 图的直径定义为 $\underset{ 1 \leq u &lt; v \leq n }{ \max } d(u, v)$.</p>
+<p>O(nq)</p>
+</blockquote>
+<p>容易想到对每个点 $u$ 求出最近的叶子距离 $h_u$, 设深度为 $d_u$, 于是答案是 $\max_{u, v} \min (h_u+h_v+x, d_u+d_v-2d_{\operatorname{lca}(u, v)})$.</p>
+<p>那么启发式合并双log爆炸, fingersearch启发式合并单log常数爆炸, 长链剖分直接过了.</p>
+<p>另一个想法是, 考虑这是最大化最小值, 转化为判定题, 那么枚举 $u$, 判定 $h_v+x+h_u\ge mid$ 的 $v$ 中是否存在 $u\to v$ 距离不小于 $mid$. 然后继续转化, 满足第一个条件的 $v$ 是按 $h_v$ 排序后的一个后缀, 那么就成了问点到区间距离最大值, 众所周知直径可以 $O(1)$ 合并, 于是上个 $O(1)$ lca.</p>
+<h2 id="CF1303G-Sum-of-Prefix-Sums"><a href="#CF1303G-Sum-of-Prefix-Sums" class="headerlink" title="CF1303G Sum of Prefix Sums"></a>CF1303G Sum of Prefix Sums</h2><p>前缀和的和不就是数组 $\sum_i ia_i$ 吗, 那么想到点分治, 对于当前根 $u$, 处理 $f_v$ 表示 $u$ 走到根路径上 $ia_i$, $g_v$ 表示根走到 $u$ 上 $ia_i$, $s_v$ 表示权值和, $l_v$ 表示距离, 那么 $x\to y$ 就是 $f_x+g_y+l_xs_y$, 看到两个相乘, 李超树优化即可. 复杂度 $n\log^2 n$</p>
+<h2 id="CF1446D2-Frequency-Problem-Hard-Version"><a href="#CF1446D2-Frequency-Problem-Hard-Version" class="headerlink" title="CF1446D2 Frequency Problem (Hard Version)"></a>CF1446D2 Frequency Problem (Hard Version)</h2><p>结论是, 这两个值中一定有一个是全局众数. 因为如果不是, 你一定可以扩展使得其与全局众数一样多.</p>
+<p>于是只要求另一个数在区间中数量相等且最大, 发现最大是不必要的, 如果其中有另一个数比这个区间的全局众数和它都大, 那么全局众数就会和另一个数构成答案. 那么只要数量相等的话就很好做了吧, 对全局众数前缀和, 看到出现次数想根号分治, 大于根号的有根号个, 直接扫整个序列hash掉前缀和之差, 对于小于根号的, 枚举出现次数, 双指针看是否有另一个数达到这个次数, 每次加一个数删一个数可以用桶维护其出现次数并统计答案.</p>
+<h2 id="CF1316F-Battalion-Strength"><a href="#CF1316F-Battalion-Strength" class="headerlink" title="CF1316F Battalion Strength"></a>CF1316F Battalion Strength</h2><p>容易想到把相邻贡献拿出来, 答案写成 $2^n \sum_{p_i&lt;p_j}p_ip_j2^{-{s_i-s_j}}$ 的形式, 其中 $s$ 是排名. 然后再拆成 $(\sum_i p_i2^{-s_i})(\sum_{j&lt;i} p_j2^{s_j})$, $j&lt;i$ 怎么办, 考虑对值域分治, 那么现在就只要维护两边这两团式子的和, 写个值域线段树即可.</p>
+<h3 id="CF484E-Sign-on-Fence"><a href="#CF484E-Sign-on-Fence" class="headerlink" title="CF484E Sign on Fence"></a>CF484E Sign on Fence</h3><blockquote>
+<p>给定一个长度为 $n$ 的数列, 有 $m$ 次询问要你在区间 $[l, r]$ 内选一个长度为 $k$ 的区间, 求区间最小数的最大值</p>
+<p>$n, m\le 10^5$</p>
+</blockquote>
+<p>此时你应该想到二分, 把大于答案的数设为 $1$, 小于答案的数设为 $0$, 然后求区间最长连续段长度, 主席树以维护每个二分答案的值.</p>
+<p>怎么这破ds都能降智啊.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><a class="post-meta__tags" href="/tags/%E8%99%9A%E6%A0%91/">虚树</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E5%B8%AD%E6%A0%91/">主席树</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/24/block/" title="分块选做"><img class="cover" src="/img/2022-11-23-20-22-43-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-24</div><div class="title">分块选做</div></div></a></div><div><a href="/2022/06/17/KTT/" title="KTT学习记录"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-17</div><div class="title">KTT学习记录</div></div></a></div><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E9%80%89%E5%81%9A"><span class="toc-number">1.</span> <span class="toc-text">数据结构综合选做</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P3714-%E6%A0%91%E7%9A%84%E9%9A%BE%E9%A2%98-%E7%82%B9%E5%88%86%E6%B2%BB-%E7%BA%BF%E6%AE%B5%E6%A0%91-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-number">1.0.1.</span> <span class="toc-text">P3714 树的难题 [点分治] [线段树] [单调队列]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E8%A7%A3%E6%B3%95"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">线段树解法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E5%90%88%E5%B9%B6"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">单调队列合并</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3345-%E5%B9%BB%E6%83%B3%E4%B9%A1%E6%88%98%E7%95%A5%E6%B8%B8%E6%88%8F-%E7%82%B9%E5%88%86%E6%A0%91-%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">1.0.2.</span> <span class="toc-text">P3345 幻想乡战略游戏 [点分树] [线段树]</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%951-%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">解法1: 线段树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%952-%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">解法2: 动态点分治</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P632-9%E9%9C%87%E6%B3%A2-%E7%82%B9%E5%88%86%E6%A0%91"><span class="toc-number">1.0.3.</span> <span class="toc-text">P632 9震波 [点分树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4587%E7%A5%9E%E7%A7%98%E6%95%B0-%E4%B8%BB%E5%B8%AD%E6%A0%91"><span class="toc-number">1.0.4.</span> <span class="toc-text">P4587神秘数 [主席树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4197-Peaks-Kruskal%E9%87%8D%E6%9E%84%E6%A0%91-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6"><span class="toc-number">1.0.5.</span> <span class="toc-text">P4197 Peaks [Kruskal重构树] [线段树合并]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2839-middle-%E4%B8%BB%E5%B8%AD%E6%A0%91"><span class="toc-number">1.0.6.</span> <span class="toc-text">P2839 middle [主席树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6071-TreeQuery-%E8%99%9A%E6%A0%91-%E4%B8%BB%E5%B8%AD%E6%A0%91"><span class="toc-number">1.0.7.</span> <span class="toc-text">P6071 TreeQuery [虚树] [主席树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5069-Ynoi2015-%E7%BA%B5%E4%BD%BF%E6%97%A5%E8%96%84%E8%A5%BF%E5%B1%B1-%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">1.0.8.</span> <span class="toc-text">P5069 [Ynoi2015] 纵使日薄西山 [线段树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5070-Ynoi2015-%E5%8D%B3%E4%BE%BF%E7%9C%8B%E4%B8%8D%E5%88%B0%E6%9C%AA%E6%9D%A5-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84-%E6%80%A7%E8%B4%A8"><span class="toc-number">1.0.9.</span> <span class="toc-text">P5070 [Ynoi2015] 即便看不到未来 [树状数组] [性质]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5354-Ynoi2017-%E7%94%B1%E4%B9%83%E7%9A%84-OJ"><span class="toc-number">1.0.10.</span> <span class="toc-text">P5354  [Ynoi2017] 由乃的 OJ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5068-Ynoi2015-%E6%88%91%E5%9B%9E%E6%9D%A5%E4%BA%86"><span class="toc-number">1.0.11.</span> <span class="toc-text">P5068 [Ynoi2015] 我回来了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Frog-2022%E4%B8%80%E8%BD%AE%E7%9C%81%E9%9B%86"><span class="toc-number">1.0.12.</span> <span class="toc-text">Frog 2022一轮省集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZSContest5-%E4%B8%BB%E5%B8%AD%E6%A0%91"><span class="toc-number">1.0.13.</span> <span class="toc-text">ZSContest5 [主席树]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF639F-Bear-and-Chemistry-%E8%99%9A%E6%A0%91-tarjan"><span class="toc-number">1.0.14.</span> <span class="toc-text">CF639F Bear and Chemistry [虚树] [tarjan]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2020%E5%B1%B1%E4%B8%9C%E7%9C%81%E9%98%9F%E9%9B%86%E8%AE%AD-Day7-%E8%B4%A7%E8%BD%A6%E8%BF%90%E8%BE%93"><span class="toc-number">1.1.</span> <span class="toc-text">[NOI2020山东省队集训 Day7]货车运输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF983D-Arkady-and-Rectangles"><span class="toc-number">1.2.</span> <span class="toc-text">CF983D Arkady and Rectangles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3295-SCOI2016-%E8%90%8C%E8%90%8C%E5%93%92"><span class="toc-number">1.3.</span> <span class="toc-text">P3295 [SCOI2016]萌萌哒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABC238G"><span class="toc-number">1.4.</span> <span class="toc-text">ABC238G</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1588F-Jumping-Through-the-Array"><span class="toc-number">1.5.</span> <span class="toc-text">CF1588F Jumping Through the Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1746F-Kazaee"><span class="toc-number">1.6.</span> <span class="toc-text">CF1746F Kazaee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF482E-ELCA"><span class="toc-number">1.7.</span> <span class="toc-text">CF482E ELCA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1550F-Jumping-Around"><span class="toc-number">1.8.</span> <span class="toc-text">CF1550F Jumping Around</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E7%9F%A5%E5%90%8D%E5%85%B8%E9%A2%98"><span class="toc-number">1.9.</span> <span class="toc-text">不知名典题.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GYM102586A"><span class="toc-number">1.10.</span> <span class="toc-text">GYM102586A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QOJ-5098-%E7%AC%AC%E4%B8%80%E4%BB%A3%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="toc-number">1.11.</span> <span class="toc-text">QOJ #5098. 第一代图灵机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1712F-Triameter"><span class="toc-number">1.12.</span> <span class="toc-text">CF1712F Triameter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1303G-Sum-of-Prefix-Sums"><span class="toc-number">1.13.</span> <span class="toc-text">CF1303G Sum of Prefix Sums</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1446D2-Frequency-Problem-Hard-Version"><span class="toc-number">1.14.</span> <span class="toc-text">CF1446D2 Frequency Problem (Hard Version)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1316F-Battalion-Strength"><span class="toc-number">1.15.</span> <span class="toc-text">CF1316F Battalion Strength</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF484E-Sign-on-Fence"><span class="toc-number">1.15.1.</span> <span class="toc-text">CF484E Sign on Fence</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

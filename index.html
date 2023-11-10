@@ -1,0 +1,604 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>FireInIce's Blog</title><meta name="keywords" content="FireInIce"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="FireInIce&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FireInIce&#39;s Blog">
+<meta property="og:url" content="https://fireinicecode.github.io/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="FireInIce&#39;s blog">
+<meta property="og:locale">
+<meta property="og:image" content="https://fireinicecode.github.io/img/favicon.ico">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="FireInIce">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/img/favicon.ico"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FireInIce\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: true,
+  isToc: false,
+  postUpdate: '2023-11-10 20:16:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/bg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">FireInIce's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/17/hello_world/" title="Hello World"><img class="post_bg" src="/img/2022-10-25-13-56-03-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/hello_world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a></span></div><div class="content">Hello World新博客开通啦洛谷每篇文章只有一个标签过于烦人, 所以就这样啦以前洛谷上的文章已经都迁移过来, 但以后的可能只在这里发
+写一些杂项
+hexo迁移到jekyll.
+jekyll又迁移到hexo为了支持加密文章.
+一点说明序列常常会用 $a_n$ 表示长度为 $n$ 的序列.
+标签咕咕表示还在更新(或表示总有一天会更新)
+标签日志指做题记录, 笔记是记录某些人的讲课或自己学的科技, 训练多半是还包括模拟赛等.
+半角标点是信仰.
+问题记录jekyll的部分现在支持emoji和折叠了
+博客副标题里不能用%, 否则会死
+死亡特点是没有标题, 并且时间不对(为你push的日期)
+latex里不能出现{ { . . .  } }, 因为这个是jekyll的模板语法. 
+死亡特点是居中对齐的latex源码.
+hexo的部分要clean以应用更改.
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/21/lyh/" title="LYHDP选做"><img class="post_bg" src="/img/2022-11-15-20-37-07-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LYHDP选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/21/lyh/" title="LYHDP选做">LYHDP选做</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-20T16:00:00.000Z" title="Created 2022-10-21 00:00:00">2022-10-21</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a></span></div><div class="content">LYHDPslide. pptxday6那个做不动啊, 还是看看简单点的.
+CF1409F Subsetsequences of Length Two
+给定 $s_n, t(\vert t\vert&#x3D;2)$ , 可以修改 $s$ 的最多 $k$ 个字符使得 $t$ 作为子序列在 $s$ 中出现次数最大.
+$n\le 200$
+
+$f_{i, j, k, l}$ 表示前 $i$ 个, 修改 $j$ 个, $t_1$ , $t_2$ 的个数分别为 $k, l$ 的 $t$ 出现次数.
+哦, $t_1, t_2$ 只需要记录一个.
+CF1404B Tree Tag
+给定一棵树 $T&#x3D;Tree(n)$ , $AB$ 初始时在 $a, b$ 两点, 每次可以移动到距离不超过 $d_a, d_b$ 的点, 交替移动 $A$ 先手, 若 $A$ 能抓住 $B$ , $A$ 获胜. 问谁赢.$n\le 10^5$ .
+
+考虑因为无限步数, 可以忽略前面过程, 直接想什么时候必然抓住:
+
+$A$ 站在直径中点上, $B$ 死了
+$d_b\le 2d_a$ , 此时它不能跨过 $A$  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/12/greedy/" title="I Can't Be Greedy"><img class="post_bg" src="/img/2022-11-17-16-02-38-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="I Can't Be Greedy"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/12/greedy/" title="I Can't Be Greedy">I Can't Be Greedy</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-11T16:00:00.000Z" title="Created 2022-09-12 00:00:00">2022-09-12</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a></span></div><div class="content">贪心发现自己贪心跟没学一样, 完全不会.
+贪心 做题笔记题库里筛选greedy, 2600, 通过人数降序.
+1400E Clear the Multiset
+给定 $1\ldots n$ 每个数的个数 $a$ , 每次给一个区间个数减1或对一个数减去任意, 求清空次数. $n\le 5000, a_i\le 10^9$ 
+
+“能大力dp的谁贪心啊” –qyc
+好像给人感觉很经典.
+很能dp, $f_{i, j}$ 表示前 $i$ 个数, 有 $j$ 个区间操作延伸到 $i$ 清空的最小代价. 复杂度 $n^2$ .
+好吧, 贪心就是, 每次大力给全局减掉全局最小值, 然后全局裂开成若干区间, 再递归下去做, 如果这么算出来的答案大于区间长度直接变成区间长度(全用单点)
+1537E2. Erase and Extend (Hard Version)
+给定一个字符串, 可以任意多次删掉末尾字符或者把当前字符串复制一份接在后面, 求能得到的字典序最小的, 长度恰好为 $k$ 的字符串.$n, k\le 5\times 10^5$ 
+
+切不动2200了? !
+结论是最优解一定先用删再用复制. ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/02/count/" title="数数"><img class="post_bg" src="/img/2022-11-23-20-33-31-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数数"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/02/count/" title="数数">数数</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-01T16:00:00.000Z" title="Created 2022-07-02 00:00:00">2022-07-02</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/dp/">dp</a></span></div><div class="content">数数题会把计数相关问题放在这里.
+一做数数发现现在已经不会做蓝题了.
+1. Appleblue17这一部分是appleblue17的cf和其他数数选做里的前几个.
+CF1515E Phoenix and Computers
+有 $n$ 台电脑排成一排, 每次可以手动打开一台没被打开的, 同时若一台电脑左右的电脑都被打开, 那么它会自动打开. 求把所有电脑打开的方案数. $n\le 400$ 
+
+发现自动打开的电脑两边一定是手动打开的, 即它们不可能相邻, 所以其实是若干段手动打开的, 段段之间夹着一个自动打开的.
+手动打开一个连续区间的方案数是 $2^{len-1}$ , 原因是我们每次只能像左边和右边拓展, 那么设第一个打开的是第 $k$ 个, 方案就是在剩下 $len-1$ 步中选 $k-1$ 步是向左拓展的, 所以方案数是
+$$\sum_{k&#x3D;1}^{len} \binom{len-1}{k-1}&#x3D;2^{n-1}$$ 
+那么把一个自动打开的和紧跟着的一段手动打开的作为一段, 设 $f_i$ 表示前 $i$ 个的方案, 则加上一个新段的方案数时除了乘上这一段的方 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/18/dp/" title="dp选做"><img class="post_bg" src="/img/2022-11-23-20-19-47-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="dp选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/18/dp/" title="dp选做">dp选做</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-17T16:00:00.000Z" title="Created 2022-05-18 00:00:00">2022-05-18</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/dp/">dp</a></span></div><div class="content">dp选做省选dp挂了不会来补一补
+刷题记录-2022暑假前UVA1626 括号序列 [dp] [区间dp]区间dp(似乎括号类的都是区间dp? )
+设 $f_{l, r}$ 表示把区间l到r中补到合法的操作步数, 则转移是:
+
+最外侧是匹配的括号: $f_{l, r}&#x3D;f_{l+1, r-1}\ \ s. t. \ s_l&#x3D;s_r$
+区间由若干 $f_{l, r}&#x3D;\min_{l\le k\le r}{f_{l, k}+f_{k+1, r} }$
+在最右侧添加一个与最左侧的括号匹配的括号或相反, 发现这种情况不优于直接在与这个新添加的括号匹配的括号旁边直接匹配
+
+然后初始情况就是 $f_{i, i}&#x3D;2$ , 表示为每个括号加一个反括号匹配
+这题输出方案, 所以记录最有解位置即可.
+P1220 关路灯 [dp] [区间dp]由于老王走过去关一盏灯时顺手关掉路上经过的一定不劣, 所以被关掉的灯是一个区间, 于是记 $f_{l, r}$ 表示已经被关了的灯的区间, 发现这样转移不了, 比如当我们向右扩展一位时我们不知道老王是刚刚关完左端点的灯还是右端 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/17/unsorted_problems/" title="杂题(tricks)"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杂题(tricks)"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/unsorted_problems/" title="杂题(tricks)">杂题(tricks)</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">Sticky</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A2%98/">杂题</a></span></div><div class="content">做题笔记
+几个杂题P2150 寿司晚宴 [dp] [状压dp]大于 $\sqrt n$ 的质因数最多只有一个, 最多出现一次, 相同大质因数一起处理, 背包合并
+P2048 超级钢琴 [greedy]要求所有区间的前k大, 考虑处理 $k$ 次取最大, 开一个堆记录 $(l, rl, rr, t)$ 表示左端点为 $l$ , 右端点在 $rl$ 到 $rr$ 间时最优位置为 $t$ 的答案, 每次从堆中取出最优解, 把区间分裂成 $(l, rl, t-1)$ 和 $(l, t+1, r)$ 两个区间放回堆中
+P3783 天才黑客 [ds] [virtual-tree] [最短路] [前缀和优化建图]点边互换, 考虑对于一个点怎么把这些边连到一起.
+考虑边之间的贡献是lcp, 那么可以转字典树上lca, 然后转字典树欧拉序最小值.
+那么在这个序列上一个最小值会贡献前面一段后面一段, 用前后缀优化建图. 并且因为要对每个点单独跑一遍所以要用虚树.
+最后可能会连出多余的边, 但是最短路保证了只会走最小值(重边自动取min), 所以是正确的.
+P1763 埃及分数 [ida] [搜索]居然是第 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/11/04/note/" title="2023.11"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023.11"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/04/note/" title="2023.11">2023.11</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">CF1305F Kuroni and the Punishment
+给定 $n$ 个数. 每次可以选择将一个数 $+1$ 或 $-1$ . 求至少多少次操作使得整个序列都是正数且全部元素的 $\gcd&gt;1$ .$n\leq 2\times10^5, 1\le a_i\leq 10^{12}$ .
+
+答案不超过 $n$(全调成偶数).
+值域很大, 直接做要求一些 $\sum a_i\bmod g$ 状物, 是困难的, 考虑因为答案不超过 $n$, 那么至少有一半的数被操作至多一次, 于是随一个数, 再随一种操作, 它被这么操作的概率有 $\dfrac{1}{6}$, 随错了的是 $\dfrac{5}{6}$, 那么只要随比如 $50$ 组就行, 然后对着这些可能的操作分解质因数枚举 $gcd$ 即可.
+哦, 一直以为cf的possibilities都是概率期望题, 结果是随机化
+CF605E Intergalaxy Trips
+
+$n$ 个点的有向完全图.
+$i \to j$ 的边每天出现的概率均为 $p_{i, j}$, 若 $i &#x3D; j$, 有 $p_{i, j} & ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/11/03/constructive/" title="构造!"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="构造!"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/03/constructive/" title="构造!">构造!</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9E%84%E9%80%A0/">构造</a></span></div><div class="content">CF1375E Inversion SwapSort
+给定一个长度为 $n$ 的序列 $a$, 求 $a$ 中的所有逆序对 $(i_1, j_1), (i_2, j_2), \cdots, (i_m, j_m)$ 的一个排列 $p$,使得依次交换 $(a_{i_{p_1}}, a_{j_{p_1}}), (a_{i_{p_2}}, a_{j_{p_2}}), \cdots, (a_{i_{p_m}}, a_{j_{p_m}})$ 后序列单调不降.$1 \le n \le 10^3$, $1 \le a_i \le 10^9$.
+
+感觉还可以. 不过大概是因为前两天那道ssfz友好联测的D.
+因为这个你需对是跟一开始的值位置相关而不是跟某时刻的值相关, 从位置角度, 考虑先用所有和 $n$ 构成逆序对的东西把 $n$ 换到最后一位, 这个是简单的, 从小到大换和 $a_n$ 构成逆序对的即可, 发现这样的好处是前面的顺序不变. 于是可以递归下去.
+CF741C Arpa’s overnight party and Mehrdad’s silent entering
+有 $2n$ 个人围成 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/24/nfls/" title="南外集训"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="南外集训"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">
+  eefb5db928c71b56de762b2abc1f4fd5fb21e34cd4e0477274d13a9561186372d34d2512d48d4f2ee9519e2d2decbcaefa5490765a7754cdb73d4f1eb5e39ec79a8e0bb6b97873ae8fd971f079e8afcaa3512b5fbc2ecb54c2eff3aeb382a76e8f1c8ff5372d5c286ad9f14d8798cd6413c09577f2645d7612dd322fc60676a74e33f25b77da588f914eed2ad1ca397b1916e1e12a76c1a35f076c3f4d809f458dce39ecfe3833b278074e956faadaea785760627e9c70ee5059130d42827e6b54795a732ae8aa1a603dcdcb6885a25e361ceef494034c7192ac5201383031a090baf03d77833f2ef52c7748a5f13c555d99c06908bab0744 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/10/22/csp2023/" title="CSP2023游记"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSP2023游记"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/22/csp2023/" title="CSP2023游记">CSP2023游记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-21T16:00:00.000Z" title="Created 2023-10-22 00:00:00">2023-10-22</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%B8%B8%E8%AE%B0/">游记</a></span></div><div class="content">CSP2023游记文中杜赢指do_while_true.
+Day -n开始停课, 打了4场模拟赛, 第一场爆了一个标, 剩下的都挺寄.
+Day 0上午复习数位dp, 看以前的blog, 中午出发, 晚上到达日照一个民宿, 晚霞很好!
+试机, 抽到win10. 发现虚拟机不能用, 说晚上解决. 机子上放了3个不同的mingw, 最后只有dev自带的那个能用. 但是机子配了vscode, 即使没有c++插件也是vscode, 即使没有虚拟机也是vscode. 最可惜的是没有python. 考试过程中习惯性拿python当计算器&#x2F;暴力弹出的是微软商店. 面到杜赢, 他们机房虚拟机能用. 面到whc, 面到一个也来打比赛的初中同学.
+晚上复习圆方树, 虚树, kmp. 没有python于是背了一个bat对拍板子.
+Day 1 比赛上午又看了看字符串打开知乎, 听说普及组某机房没断网(问号脸). 特意带了杯咖啡和零食, 切一个题吃一个.
+提前30min左右进场, 配vscode, 打了空模板, 考场大概提前几分钟给了压缩包密码, 压缩包里看到名字”tree”打一个存树的模板, 看”st ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/05/zr/" title="ZROI2021NOIP20连测"><img class="post_bg" src="/img/2022-10-24-20-18-14-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZROI2021NOIP20连测"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/05/zr/" title="ZROI2021NOIP20连测">ZROI2021NOIP20连测</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-04T16:00:00.000Z" title="Created 2023-10-05 00:00:00">2023-10-05</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">Day1A. [21 ZR联赛集训 day1]数字变换
+你有一个素数 $p$ 和二元组 $(a, b)$, 它们的和不被 $p$ 整除.
+你想对这个二元组进行若干次操作, 让它变成另外一个二元组. 每一步, 你可以二元组做如下操作中的一个:
+
+把 $(a, b)$ 变成 $(2a \mod p, (b+p-a) \mod p)$
+把 $(a, b)$ 变成 $((a+p-b) \mod p, 2b \mod p)$
+
+你需要回答 $q$ 次询问, 每次询问, 给你 $a_i, b_i, c_i, d_i$, 问最少需要多少步能将 $(a_i, b_i)$ 变成 $(c_i, d_i)$. 如果不可行, 那么输出 $-1$.
+注意, 这里 $(a, b)$ 和 $(b, a)$ 是不同的.
+$2 \leq p \leq 10^9, 1 \leq q \leq 10^5, 0 \leq a_i, b_i, c_i, d_i &lt; p$, 保证 $a_i + b_i \not\equiv 0 \pmod p, c_i + d_i \not\equiv 0 \pmod p$.  
+
+操作不 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/10/02/bct/" title="BCT National Holiday Training"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BCT National Holiday Training"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/02/bct/" title="BCT National Holiday Training">BCT National Holiday Training</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-10-01T16:00:00.000Z" title="Created 2023-10-02 00:00:00">2023-10-02</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">DSCF1672H已收录
+CF1290E大根笛卡尔树子树大小就是当前点作为最大值的区间, 于是想到逐个插入维护左右端点, 但相邻两个插入的元素之间未被插入元素多算的贡献是不好去除的, 所以需要插入的时候不是插入的原序列对应位置上而是无空隙紧挨着插入, 每次是区间取max&#x2F;min和区间加.
+CF809DLIS两个主要做法分别是记录以某值结尾的最短长度和某长度对应的最小结尾. 此题一维表示当前前 $i$ 个数, 若第二维表示当前的值那么转移是跳跃的, 如果记录长度则是连续的.
+于是 $f_{i, j}$ 表示前 $i$ 个, 长度为 $j$ 的结尾最小值, 那么显然
+$$f_{i, j}&#x3D;\max f_{i-1, j},\begin{cases}    f_{i-1, j-1}+1, f_{i-1, j-1}+1\in [l_i, r_i]\    l_i, f_{i-1, j-1}+1&lt;l_i\    inf, f_{i-1, j-1}+1&gt;r_i\end{cases}$$
+显然 $f_i$ 是递增的, 考虑数据结构维护状态, 那么第二种转移显然就是直接区 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/08/12/smallnote/" title="杂记"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杂记"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/08/12/smallnote/" title="杂记">杂记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-08-11T16:00:00.000Z" title="Created 2023-08-12 00:00:00">2023-08-12</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/note/">note</a></span></div><div class="content">记录奇怪的思考
+存在确定结果的游戏等价于决策透明, 于是可以等价于一个人提出一个策略另一方对着你的策略卡.
+
+记录代码细节错误
+noip2022 旅行: 手动实现矩阵乘法*=, 注意顺序, 可能要用旧的值更新而旧的被变了.
+csp2022 假期计划: 取max的初始值应设为-inf而不是0
+csp2021 回文: 函数没有返回值, dev默认值为true(? )
+P7916 区间dp时若转移到长度偶数则答案错的, 没有判
+P7077 初始化问题
+P7116 拉插次数没想清楚就往上试到不变化, 同时注意数组开小了
+P5666 线段树合并怎么会有人想到写 $x&amp;y&#x3D;&#x3D;0$ 判断是否有一个是空? &#x2F;fn, 动态开点编号多测没清空&#x2F;fn
+P5021 multiset erase(iter)会删除一个元素, erase(value)会删除所有等于这个值的元素.
+P4606 圆方树点数最大是图的两倍, 点双弹栈连放点时不是”删到栈顶为 $u$”而是”直到把 $v$ 删掉”(指处理 $u\to v$ 这条边)
+nfls vector, deque pu ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/07/14/2023_sdsc/" title="2023SDSC"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023SDSC"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/14/2023_sdsc/" title="2023SDSC">2023SDSC</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-13T16:00:00.000Z" title="Created 2023-07-14 00:00:00">2023-07-14</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></span></div><div class="content">2023夏令营Day0垃圾山外宿舍6人
+Day1ContestT1 colour
+有序列 $a_n$, 初始 $a_i&#x3D;0$, 给定 $p_m$, $q$ 次询问按顺序遍历 $p_l\ldots p_r$, 对于 $p_i$, 选择给 $a_{p_i}$ 或 $a_{p_i+1}$ 赋值为 $i$.$n\le 500, m\le 10^6, q\le 2000$
+
+对于位置 $i$, 有一些是和右边选一个赋值, 有些是和左边, 称为向左伸&#x2F;向右伸. 考虑每个位置最终颜色, 注意到 $i-1$ 中向右伸的最高的 $lt$ 是重要的, 如果 $i-1$ 的位置最终颜色比 $lt$ 小, 则右边必须选的比 $lt$ 大, 然后就想到 $f_{i, 0&#x2F;1&#x2F;2}$ 表示位置 $i$ 选的数与从 $i$ 向右伸的最后一次操作 $t$ 小于&#x2F;相等&#x2F;大于就能转移了.
+复杂度 $nq\log m+m$
+T2 binary
+  
+$n, m\le 5\times 10^5$
+
+考虑已经选定了 $w$ 之后, 答案只在某一次没有 $x$ 或没有  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/05/18/cf/" title="CF"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CF"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/18/cf/" title="CF">CF</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-17T16:00:00.000Z" title="Created 2023-05-18 00:00:00">2023-05-18</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">CF1827B Range Sorting
+对一个数组 ${p_i}$ 的一段区间 $[l, r]$ 排序的代价为 $r-l$ , 对整个数组 $p_i$ 排序的代价为选定若干区间并排序, 使得整个数组有序的代价之和.求 ${a_i}$ 的所有子段排序的代价之和.$n\le 3\times 10^5$
+
+首先排序区间不交, 不然相交的用一个大的代替.
+考虑贡献拆分到, 没有一个区间覆盖 $i, i+1$ 之间的间隔, 等价于 $\max p_{l: i}\le \min p_{i+1: r}$, 计数 $l, r$ 组数即可
+直接枚举间隔+维护单调栈+双指针可以过 B1
+考虑一个剪枝, 扫 $[i+1: ]$ 时若 $\min p_{i+1: j}&lt;p_i$ 则显然可以跳, 复杂度可以考虑一个小根笛卡尔树, 在后半部分前缀min的单调栈上走相当于身为左儿子跳父亲.
+C Palindrome Partition
+称一个字符串是好的, 当且仅当它是一个长度为偶数的回文串或由若干长度为偶数的回文串拼接而成.
+给定一个长度为 $n$ 的字符串 $s$, 求有多少 $s$ 的子串是好的.
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/04/19/2023_sdsj1/" title="2023省队集训"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023省队集训"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/04/19/2023_sdsj1/" title="2023省队集训">2023省队集训</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-18T16:00:00.000Z" title="Created 2023-04-19 00:00:00">2023-04-19</time></span></div><div class="content">2023省队集训模拟赛Day3T1
+给定 $n$ 点简单无向图, 对每对 $(x, y)$ 求是否有一条 $x$ 开始 $y$ 结束的哈密顿路.
+$n\le 24$
+
+注意到因为哈密顿路一定经过所有点, 所以对于 $x\to y$ 可以拆成 $1\to x, 1\to y$.
+考虑求出 $f_S$ 表示经过 $S$ 能走到哪些点, 然后枚举每一个 $S$, 对于其中每一个 $x$, 考察 $f_{U&#x2F;S}$ 是否包括 $y$, 复杂度是 $n2^n$.
+至于如何求 $f_S$, 考虑每次对于 $f_S$, 轮流拿出其中的点扩展一个得到新的 $f$, 复杂度是 $n2^n$
+总复杂度 $n2^n$
+T2
+  
+对于 $100%$ 的数据, $1 \leq n, q \leq 10^6$, $1 \leq l_i \leq n$, $1 \leq H, a_i \leq 10^{12}$, $1 \leq t_i \leq 3$.
+
+相当于给了三种函数:
+
+$f(x)&#x3D;\begin{cases}x-a_i, x\ge a_i\-inf, x&lt;a_i\end{cas ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/03/21/2021_sdsj1/" title="ZROI省选集训"><img class="post_bg" src="/img/2022-10-24-20-18-14-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZROI省选集训"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/21/2021_sdsj1/" title="ZROI省选集训">ZROI省选集训</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-20T16:00:00.000Z" title="Created 2023-03-21 00:00:00">2023-03-21</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">
+  22e7e709fa94e4e00ab63525df5a422cf413487baacc16f9aab461b0d3b1cb2a78ebc4b83ca386db96851baad90e8b80af4772194149e887f4972dfbf405a0a319f346149fc7a60db81a24cce7e10326fac8a190da4885669817f5a3196027b60e24b5074b6cd730004200dd32e9615fdcb1a80ba2e599dbced379ab2981fd4b650bfe3519cbee56ddf024ca659f3e4c382d0959a1b8ee3f8cfb3894c794c5b12373d5aad17f96ff46b361937dc76dcaf43d47bf07ebe673cec041b6a31ec2a682c150b86fd22645098275a5100fde0de00d7f2d29fc9aa28d3542ee87ba6e2799451976dc1bb351af99b3b32b16c7c096407ec7c559de59a ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/03/04/number/" title="数论"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数论"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/04/number/" title="数论">数论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-03-03T16:00:00.000Z" title="Created 2023-03-04 00:00:00">2023-03-04</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></span></div><div class="content">Problem ?
+给定排列 $a_n$, 求 $\sum_i \sum_j gcd(i, j)gcd(a_i, a_j)$
+$n\le 10^5$
+
+$$\begin{gathered}\sum_i \sum_j gcd(i, j)gcd(a_i, a_j)\&#x3D;\sum_i \sum_j \sum_{d|i, j} \varphi(d) \sum_{k|a_i, a_j} \varphi(k)\&#x3D;\sum_d \varphi(d) \sum_k \varphi(k) (\sum_{d\vert i}[k\vert a_i])^2\end{gathered}$$
+设 $g(d, k)&#x3D;\sum_{d\vert i}[k\vert a_i]$
+考虑一个 $(i, a_i)$ 对的贡献, 那么发现 $g$ 一共是 $\sum d(i) d(a_i)$, 又因为是排列, 于是这个就是 $\sum_i d^2(i)$, 据说是 $n\log^3 n$ 的.
+那么你只枚举 $g$ 有值的 $i, j$ 就能做3log了. 简单想法是哈希表, 空间爆炸.
+考虑逐个 $ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/12/31/zroisj/" title="ZROI省选集训"><img class="post_bg" src="/img/2022-10-24-20-18-14-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZROI省选集训"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/31/zroisj/" title="ZROI省选集训">ZROI省选集训</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-12-30T16:00:00.000Z" title="Created 2022-12-31 00:00:00">2022-12-31</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">
+  22e7e709fa94e4e00ab63525df5a422c0d81a68edf52556db985fa7f8157c38cc8b448b8bcdc2d21c8b344794fc8db8435dbde85e2f82e5d307e773b4355af29174488f5889e07073ed63aae53c1bfc28e479b9abea90133fb5bd9e93f00110d8b5dea8d5de84611d5af00638e3273b9d471e82209ab0529ce15f592fdc2f1f4973ef3ab398df65abe73fb3007c0708114d67affc45898ee560c7a3b923780a4952cfcab4329c4a1e0d776101a508e276ddef1e949ac05d143a8fb32ff31b241d638ff695f90eff3a899cae0f4013732e2a97e427cc106f282f86240b8739d118fc549fa9beef71ff9dc625d1f1426130d0082dd85974b38f ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/11/15/graph/" title="图论"><img class="post_bg" src="/img/2022-11-15-20-29-09-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图论"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/11/15/graph/" title="图论">图论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-11-14T16:00:00.000Z" title="Created 2022-11-15 00:00:00">2022-11-15</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a></span></div><div class="content">图论选做先开个坑.
+CF1687B Railway System [mst] [kru]
+有一张图 $Graph(n, m)$ , 现在给定 $n, m$ , 要求你通过 $2m$ 次询问一个边集的最大生成树森林权值和, 得到整张图的最小生成树森林权值和.
+$n\le 200, m\le 500$
+
+最小生成树题基本模拟Kru或Br, 随便想想就知道不会是Br, 所以考虑Kru.
+考虑从小往大加边, 那么一条边是否加入就直接判断已经得到的边集再加上这条边的最大生成树森林是不是原来的值加上这条边的边权, 如果是就加上, 否则说明它把另一条边顶下去了. 于是就先 $m$ 次问每一条的边权, 再 $m$ 次加边即可.
+很套路.
+Gym102331F Fast Spanning Tree
+给定 $n$ 点树, 点有点权边有边权, 用Kru求mst, 但每次是选择所有两端点不在同一个连通块中, 编号最小, 且两个连通块的点权和之和大于边权, 按顺序输出选择的边.
+$n, m\le 3\times 10^5$
+
+考虑如果限制是, 两边任意一个连通块的和大于边权的做法, 可以每个连通块开数据结构维护 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/11/02/caylay/" title="Prufer序列与Caylay定理"><img class="post_bg" src="/img/2022-11-23-20-15-42-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Prufer序列与Caylay定理"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/11/02/caylay/" title="Prufer序列与Caylay定理">Prufer序列与Caylay定理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-11-01T16:00:00.000Z" title="Created 2022-11-02 00:00:00">2022-11-02</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></span></div><div class="content">做ZR题触及了知识盲区()
+Prufer序列与Caylay定理不特殊说明均指有标号无根树.
+Prufer序列对于一个有标号无根树, 其prufer序列是, 每次删掉一个编号最小的叶子, 然后在序列上push_back这个叶子连向的点, 直到只有两个点.
+于是Prufer序列的特征(不好意思叫性质):
+
+长度是 $n-2$ .
+最后留下的两个点中一个是Prufer序列上最后一个点, 另一个是 $n$ .
+每个点出现次数为度数-1.
+
+于是发现显然可以直接对着序列重建树, 倒着做就行, 所以它是有标号无根树与序列的双射.
+Caylay定理1. $n$ 个点构成的树的方案数为 $n^{n-2}$ .Prufer序列, 每个位置是在 $1\ldots n$ 中, 长 $n-2$ .
+2. $n$ 个点, 和指定的 $k$ 个点, 做出 $k$ 棵树的森林使得 $k$ 个点都不在同一棵树立的方案树为 $kn^{n-k-1}$ .考虑不指定这 $k$ 个点, 而是直接算最后除以 $\binom{n}{k}$ , 那么为了保证每一个 $k$ 子集只被算了一次, 钦定这 $k$ 个点为其所在生成树的根 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/24/zroi20/" title="ZROI2022NOIP20连测"><img class="post_bg" src="/img/2022-10-24-20-18-14-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZROI2022NOIP20连测"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/24/zroi20/" title="ZROI2022NOIP20连测">ZROI2022NOIP20连测</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-23T16:00:00.000Z" title="Created 2022-10-24 00:00:00">2022-10-24</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">
+  22e7e709fa94e4e00ab63525df5a422cf413487baacc16f9aab461b0d3b1cb2a9cf3e3247e39604ba2c4f1dd226546ea922961dfd579893c06319297f7da0043cfd118945070ab6be776d5d40063096769c54fda4c1992ad3f9a1d6c290f65d4d3c8d95e8f82bca0cd004b90f658c11c2a79ac5cef47a37062a0dfbe1a866be4548d75c0b12d8f4a9819702c2ce2e95bdac16645935e791d69caf792052e8d5bd77806885210ff5f6c95567d83c59cb91d867bcb06a8e6336dafed1c0a507674e42f5167cabf1bfb50206d6a843268bfc4a99f607c07e31636cdea8236bc390e7735c537dc005e8b598b5592ebd4b1da443a45b0a58d67c33 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/23/dwtoj/" title="杜赢OJ选做"><img class="post_bg" src="/img/2022-10-23-17-47-32-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杜赢OJ选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/23/dwtoj/" title="杜赢OJ选做">杜赢OJ选做</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-22T16:00:00.000Z" title="Created 2022-10-23 00:00:00">2022-10-23</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="content">
+  ca1d8f2359529bcc908f544d729b356d55fe3589699801b6bc287b56547daf465c6a42fd383ee5f04f2a612c9a5443235cfe7dfc1e6da2952bf09def5fc9ed250ba6316ea6ab6785e76ab5f0cf34a003b1cfee7abec05b61dca0bc3d3f1c07fbd94b96b87986fc3a111746fc5a594a0f4e453b9ff560f16026cd0a168e1b768f36d5539dafae510a19d0deba6f99cd242f7b0498c1b6a902a0c3098699691146b99b3b241a907533213cb2743de001756e4b0d1626e384f1fbf604dabc799eb1c1e9bea1844ba0ba615d06bd4b452b26712cb8dfea9a5ab9bfd48441779dbe43f80483765cb3fd3c760b113ebb584dc55015a47878de48808 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/19/dfaminimize/" title="DFA最小化"><img class="post_bg" src="/img/2022-11-23-20-15-14-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFA最小化"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/19/dfaminimize/" title="DFA最小化">DFA最小化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-18T16:00:00.000Z" title="Created 2022-10-19 00:00:00">2022-10-19</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/dfa%E6%9C%80%E5%B0%8F%E5%8C%96/">dfa最小化</a></span></div><div class="content">DFA最小化学习笔记定义DFA: 众所周知啊.
+DFA的等价类: 若DFA中两个节点相同字符的出边指向的节点属于同一等价类, 则它们是等价的.
+算法简介大致原理是选择一个等价类 $A$ 作为”证据”, 若所有能到 $A$ 中的节点集合为 $X$ , 而存在等价类 $Y$ 满足 $X\cap Y\ne \varnothing, X&#x2F;Y\ne \varnothing$ , 则可以把 $Y$ 划分成这两个部分.
+于是算法流程就是初始化一个证据集合包含结束节点, 一个等价类, 每次取出一个证据, 然后执行上面的过程, 然后把它删了, 如果 $Y$ 在证据中就把 $Y$ 删了, 分成的两个部分, 否则加入两个部分中少的那一个, 直到证据集合为空.
+复杂度是 $n\vert \sigma\vert \log n$ .
+应用感觉主要用在dpofdp上, 因为本质相同的dfa最小化结果唯一, 就是说你内层dp的状态设计有很多种, 但最小化的结果应该是相同的. 会得到和你本质相同的所有dfa中最小的一个.
+遇到这种题要大胆猜能用到的状态没看上去那么多.
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/10/random/" title="随机化"><img class="post_bg" src="/img/2022-11-23-20-17-32-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随机化"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/10/random/" title="随机化">随机化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-09T16:00:00.000Z" title="Created 2022-10-10 00:00:00">2022-10-10</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A2%98/">杂题</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/random/">random</a></span></div><div class="content">[sdfzoj contest #1]记录
+构造一个有向图满足其以1为根的内向生成树个数对 $10^18+3$ 取模为 $k$ .要求构造的有向图点数不超过100, 边数不超过 $3\times 10^5$
+
+首先众所周知的一个DAG的生成树个数是所有节点的入度的乘积. 那么要控制入度, 考虑直接让1到每个节点连一堆边就控制了入度, 所以现在问题是要选若干个数乘积在膜意义下等于 $k$ .
+这个东西我们不会做, 可以智慧. 假设要等于一个数, 那么给2号点随机一个入度, 就直接给 $k$ 乘上一个逆元, 这很好因为你发现这样做把出题人精心构造的 $k$ 变成了近乎随机的. 那么现在你手里由一个随机的 $k$ , 于是接着随机每个节点的入度, 判断此时乘上一堆逆元之后的 $k$ 是否可以由小于某个阈值的质数表示, 如果随到最后还没弄出来就从头再来.
+复杂度算不出来, 但qyc说他写出来之后只跑了1s多一点. 考虑剪枝, 考虑判断一个数是不是可以分解为小于某个数的质数这件事比较费时, 所以仅在它膜常数 $C$ 为0的时候去判断. 这样做相当于把值域缩小到 $\dfrac{1}{C}$ ,  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/10/contest-records/" title="比赛记录"><img class="post_bg" src="/img/2022-11-23-20-19-22-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="比赛记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/10/contest-records/" title="比赛记录">比赛记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-09T16:00:00.000Z" title="Created 2022-10-10 00:00:00">2022-10-10</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a></span></div><div class="content">
+  50603e7e33457008144426d79c080ce55e99b59821a7b7f04343218221d591a654d53cf541e05b7189e9ec58caba3f3297ed456a5c988938ed39f3f33416a9bcc6627ad376577f4b73a71bb8b24a7c571e54eb5b887ad682037ee095a335322bbcd4934fae99ec804477fbcb61296808c59953a04791361b8cb0e9cf7ae73f144d8dc1a96c072c04f01b73d8c5dd6a7a83fe7b8ab7c9e6611212a04ce51c9060998d3e1160f60c15228ac09f254b9a86a554018a555091d0312ddd63db046b5736fc4afcaabea845d07096a6f2cb85bc4ae064914fdf55391ddf69f036eac896f2041952391fdacb9514a95701213ddf61ad111ce8d0dece6 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/03/2022_national_holiday_training/" title="国庆集训"><img class="post_bg" src="/img/2022-11-23-20-23-06-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="国庆集训"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/03/2022_national_holiday_training/" title="国庆集训">国庆集训</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-02T16:00:00.000Z" title="Created 2022-10-03 00:00:00">2022-10-03</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></span></div><div class="content">Day1-Wyj模拟赛T1智障题
+T2
+给定 $a$ , 计数满足以下条件的排列个数:
+
+$b_1b_3&lt;b_4\ldots$ 
+$b_2&lt;b_4&lt;b_6\ldots$$n\le 5000$
+
+
+排列上的问题, 基本上只要 $n\ge 20$ 就是顺着值域扫了.
+同时显然偶数位上的性质比奇数位上的好的多. 确定偶数位后, 对每一个奇数位, 它可以被插入在一个后缀里. 此时只看奇数位方案数 $\prod (c_i-i)$ 这样的.
+考虑dp, $f_{i, j}$ 表示值域上前 $i$ 个数, 这 $i$ 个数中有 $j$ 个在偶数位上的方案数. 但这里要提前计算奇数位的费用. 转移就是考虑当前这一位选不选, 选就是 $f_{i-1, j-1}$ , 否则就直接 $f_{i-1, j}$ 再乘上这一个数作为奇数位上的贡献.
+但现在相同数. 只要改一下转移: 枚举是否拿其中一个作为偶数位, 乘上剩下的数作为奇数位的一个下降幂贡献再除掉自己内部顺序.
+T3
+求选树上点两条不相交链, 最大化两条链各自的异或和的和.$n\le 2\times 10^9, w\le 10^9$  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/21/simplex/" title="线性规划"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性规划"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/21/simplex/" title="线性规划">线性规划</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-20T16:00:00.000Z" title="Created 2022-09-21 00:00:00">2022-09-21</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%8D%95%E7%BA%AF%E5%BD%A2/">单纯形</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/">线性规划</a></span></div><div class="content">线性规划单纯形标准型与松弛型标准型是
+$$\sum_i a_{i, j}x_j\le b_i\max \sum_i c_ix_i$$ 
+松弛型是
+$$\sum_i a_{i, j}x_j&#x3D;b_i\max \sum_i c_ix_i$$ 
+标准型转化为松弛型, 只要在所有限制左侧一个松弛变量即可. $\sum_i a_{i, j}x_j + x\le b_i$ .
+一般写的单纯型求解的应该是标准型转化成的松弛型, (当然, 也有可能因为UOJ上模板题是输入标准型)
+核心思想每一条不等式限制限制的是多维空间的一个”半空间”(类比二维空间的半平面), 若干个这个的交应该是一个凸多维几何体.
+而因为目标函数是线性的, 所以必然有一个顶点可以取到最优解. (可以理解一下, 线性函数等值线全部平行, 也就是朝着一个固定的方向函数值最大, 可以沿着等值线平移到一个顶点上). 因为是凸的所以只要贪心的走就能走到最后的最优解.
+单纯形说的是, 选择一组线性无关的变量, 为基变量, 其他变量都可以由基变量表示.
+单纯形实现中, 我们让基变量形式上都是松弛变量(对于每一个基变量, 其只在一个限制中 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/26/joi/" title="JOI"><img class="post_bg" src="/img/2022-10-25-14-13-54-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JOI"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/26/joi/" title="JOI">JOI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-25T16:00:00.000Z" title="Created 2022-08-26 00:00:00">2022-08-26</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A2%98/">杂题</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/JOI/">JOI</a></span></div><div class="content">JOI刷题笔记NOI考完了, 挂分80还有没打完的30遗憾打铁
+另一方面也发现自己观察性质, 思维题, dp方向差很多啊
+看到身边人都刷穿JOI, 板刷CF, 就从这里开始了.
+写这篇博客时hexo爆炸换成了qyc的jekyll, 主要是省心不用配置, 并增加了折叠功能, 就把题目都粘过来提高阅读体验了.
+「JOI 2017 Final」T1 焚风现象
+给定序列 $a$ , 构造序列 $b$ :
+
+若 $a_i&#x3D;a_{i-1}, b_i&#x3D;b_{i-1}$ .
+若 $a_i&gt;a_{i-1}, b_i&#x3D;b_{i-1}-(a_i-a_{i-1})t$ 
+若 $a_i&lt;a_{i-1}, b_i&#x3D;b_{i-1}+(a_{i-1}-a_i)s$
+
+$q$ 次对 $a$ 区间加一个数, 询问 $b_n$ .
+$n, q\le 2\times 10^5$ 
+
+一脸差分, 差分后变成单点修改, 那么直接维护 $b$ 的差分就好了, 树状数组单点修改区间求和.
+「 JOI 2017 Final」T2 准高速电车
+JOI 铁路公司是 JOI 国唯一的铁路公 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/01/2022_sdsc/" title="2022SDSC"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022SDSC"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/01/2022_sdsc/" title="2022SDSC">2022SDSC</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-31T16:00:00.000Z" title="Created 2022-08-01 00:00:00">2022-08-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></span></div><div class="content">夏令营游寄Day 1比赛题T1 P7163
+给一个树, 每个点有一个灯, 可能为开或关, 每经过一个点会把灯的状态翻转, 不能停留, 任选起点, 求最短路径把所有灯打开. $n\le 10^5$ 
+
+尝试构造发现方案不唯一而十分复杂, 考虑dp.
+由于起点为自选, 想到换根dp, 发现换根过程很困难, 考虑把换根的信息也放进状态里, 最后设 $f_{u, 0&#x2F;1, 0&#x2F;1&#x2F;2}$ 表示节点 $u$ 的子树内, $u$ 的状态为开或关, 子树内有几个路径端点的情况下让子树内全亮的最短路程, 转移时:
+
+路径拼接时可能会重复走某个点
+若走出时发现某个 $v$ 并没有被关闭, 那么就在走到 $v$ 后再走回 $v$ 再走回 $u$ , 会把 $u\to v$ 走两遍.
+
+T2
+3d空间内有 $n$ 个块, 每个块都是一个长方体, 第 $i$ 块对角 $(x, y, z)$ 坐标分别为 $(i, 0, 0)$ , $(i+1, a_i, b_i)$ , 要求在这些块内的空间内找到一个最大的长方体
+ $n\le 2\times 10^5, a_i, b_i\le 1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/30/noi_problems/" title="NOI系列题目"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NOI系列题目"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/30/noi_problems/" title="NOI系列题目">NOI系列题目</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-29T16:00:00.000Z" title="Created 2022-07-30 00:00:00">2022-07-30</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/noi/">noi</a></span></div><div class="content">NOI系列刷题P7738 [NOI2021] 量子通信 [乱搞]
+给定一个 $n$ 个单词的字典, 每个单词为长256的01串, $q$ 次询问一个串是否可以由字典中的串翻转 $k$ 位得到.$n\le 4\times 10^5, q\le 1. 2\times 10^5, k\le 15$ , 字典是随机生成的.
+
+没看输入格式的时候没有意识到字典是随机生成的, 想了些字典树上dp之类的东西. 没想到其实是个乱搞题.
+如果把每个单词每16位一组分成16组, 那么翻转15位的情况下至少有一组是相同的. 所以对于询问的串直接枚举是哪一位相同, 字典里这一位恰好相同的只有 $\dfrac{n}{65536}$ 个, 于是复杂度就是 $\dfrac{nq}{256}$ .
+最后的问题就是如何快速找到字典里确定了某一组所有单词, 用vector存即可. 不要智障的打算插入到set&#x2F;map&#x2F;有序数组里就不会TLE.
+P7737 [NOI2021] 庆典 [图论] [tarjan] [虚树] [拓扑排序]
+给定一张 $n$ 点 $m$ 边有向图, 记 $a\Rightarrow ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/08/note_of_ljcclass/" title="LJC讲dp"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LJC讲dp"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/08/note_of_ljcclass/" title="LJC讲dp">LJC讲dp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-07T16:00:00.000Z" title="Created 2022-07-08 00:00:00">2022-07-08</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/dp/">dp</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></span></div><div class="content">LJC讲dpsdfzoj contest2 但当我用上了换行
+ 给 $n$ 个长 $T$ 模式串, 含能匹配任何一个字符的通配符, 求有多少个字符串 $S$ 能匹配其中恰好 $k$ 个模式串. $n\le15, \vert T \vert \le50$ 
+
+首先考虑了一个容斥做法, 算能匹配每一个模式串子集的方案数再容斥就结束了.
+不过还有个DP, 如果设 $f_{i, S}$ 表示考虑前 $i$ 位能匹配集合 $S$ 的方案数, 转移就是枚举这一位填谁, 然后根据这个算能满足哪些模式串, 复杂度应该是 $O(26\times2^n  \vert S \vert n)$ , 但是很容易发现卡不满, 据说实际上跑的飞快.
+感觉这个dp做法的对所有串同时考虑的想法还挺不错?
+sdfzoj contest0 T1
+给一个数列 $A$ , 若一个位置为 $-1$ 表示你可以随便填, 求最长上升子序列长度. $n\le 10^6$ 
+
+先给每个位置减去它的下标, 就可以是求最长不降子序列了, 考虑此时我们可以任意在两个元素间插入一个-1, 所以直接不带-1求最长不降子序列然后加上-1的个数. 这 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/01/polya/" title="polya定理初学"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="polya定理初学"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/01/polya/" title="polya定理初学">polya定理初学</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-30T16:00:00.000Z" title="Created 2022-07-01 00:00:00">2022-07-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></span></div><div class="content">置换群论学习
+我们要解决的问题是, 给定一个对象集合 $A$ , 一个颜色集合 $B$ 和一组针对映射的变换 $G$ , 求有多少种映射(将对象集合映射到颜色集合)的方案是本质不同的, 这里两种映射本质不同指不能通过变换把一个变成另一个.
+
+简单理解就是对对象染色, 如果可以通过翻转旋转之类的操作变化到的算一种, 求有多少种染色方案. 要求这个变换操作关于他们的复合构成一个群, 称为置换群, 变换称为置换.
+符号约定:
+$F(A, G)$ 表示对 $A$ 染色, 在 $G$ 的情况下的本质不同方案数
+
+$G(c)$ 表示应用到 $C$ 上不改变的置换组成的集合
+
+$C(f)$ 表示 $f$ 作用上去不改变的方案组成的集合
+
+$S(c)$ 表示和 $c$ 本质相同的染色方案组成的集合
+
+方案 $c$ 经过置换 $f$ 得到的东西为 $cf$ , 先进行 $f$ , 再进行 $g$ (就是复合 $f$ 和 $g$ )的置换为 $h&#x3D;fg$
+
+
+Burnside引理引理0$G(c)$ 是群
+照着定义显然成立
+引理1$$\sum \vert G(c) \vert &#x3D;\sum ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/18/2022_sdjx1/" title="一轮省集1杂题选讲"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一轮省集1杂题选讲"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/18/2022_sdjx1/" title="一轮省集1杂题选讲">一轮省集1杂题选讲</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-17T16:00:00.000Z" title="Created 2022-06-18 00:00:00">2022-06-18</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></span></div><div class="content">Day1 contest of TYYT1 小N的独立集给一棵树, 每个点权 $a_i$ 在[0, m]间, 每次独立的钦定一个点 $a_x&#x3D;y$ , 求此时有多少方案满足对所有 $v\in [1, m]$ , 满足 $a_i\le v$ 的点构成一个连通块.
+考虑如果不钦定怎么做, 设f_{u, i, 0&#x2F;1}表示 $u$ 的值为 $i$ , 且子树内是否有比 $i$ 大的时考虑 $u$ 子树的方案数, 对于1的情况容易转移
+$$f_{u, i, 1}&#x3D;\prod_v \sum_j f_{v, j, 1} s. t. j\le i$$ 
+对于0的情况, 可以枚举哪一个儿子是比它大的:
+$$f_{u, i, 0}&#x3D;\sum_k (\prod_v \sum_{j\ne k} f_{v, j, 0} s. t. j\le i) \times f_{k, j, 1} s. t. j\ge i$$ 
+用前缀和和后缀和处理空出k后其他儿子的信息再和k合并不然复杂度爆炸.
+那么现在要支持单点修改, 于是ddp和整体dp拍上去, 然后你发现这玩意ddp用矩阵表 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/17/KTT/" title="KTT学习记录"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KTT学习记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/17/KTT/" title="KTT学习记录">KTT学习记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-16T16:00:00.000Z" title="Created 2022-06-17 00:00:00">2022-06-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a></span></div><div class="content">KTT或EI树的学习记录是我见过的最复杂的均摊分析. 坑.
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/15/tricks/" title="tricks"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="tricks"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/15/tricks/" title="tricks">tricks</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-14T16:00:00.000Z" title="Created 2022-06-15 00:00:00">2022-06-15</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/trick/">trick</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a></span></div><div class="content">记录一些技巧一半的半平面交当求半平面交的一半(相当于求一个直线构成的下凸壳或上凸壳)时, 可以把如 $y&#x3D;kx+b$ 的直线转化成 $(a, b)$ 求凸壳
+长剖换根长链剖分的换根说的是, 你做完长链剖分之后跑换根dp, 那么现在一个点有其长儿子的信息, 短儿子的信息和子树外的信息, 那么直接把所有短儿子都合并到子树外的信息上, 进入一个轻儿子的时候把自己删了, 把重儿子前 $h$ 个加入, 退出的时候撤销, 进入重儿子的时候就用全部的即可.
+要求信息可合并, 可删, 且信息量是仅深度相关对.
+二项式系数$$\sum \binom {n}{i}^2&#x3D;\binom{2n}{n}$$
+证明考虑 $x^k^{2k}$
+排列模 $n$ 的环上存在排列 $p_n$ 满足 $i-p_i$ 互不相同当且仅当 $n$ 为奇数.
+必要性显然.
+充分性考虑率 $\sum_i i&#x3D;\sum_i i-p_i&#x3D;\sum i-\sum p_i&#x3D;0$ 即可.
+末尾添加删除节点的线段树动态构建UOJ191
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/08/ds/" title="数据结构选做"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/08/ds/" title="数据结构选做">数据结构选做</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-07T16:00:00.000Z" title="Created 2022-06-08 00:00:00">2022-06-08</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E8%99%9A%E6%A0%91/">虚树</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E4%B8%BB%E5%B8%AD%E6%A0%91/">主席树</a></span></div><div class="content">数据结构综合选做高妙分块都塞进分块选做了
+P3714 树的难题 [点分治] [线段树] [单调队列]线段树解法用线段树维护之前的子树中, 与当前子树颜色相同和不同的情况, 把颜色排序, 可以保证先前碰到的颜色不相同后后面不会再相同, 每次到新颜色则把相同颜色插入到不相同颜色中.
+单调队列合并to do
+P3345 幻想乡战略游戏 [点分树] [线段树]
+重心的性质, 可以利用对当前答案移动一条边的方式证明答案既是全树点带权重心(边权无影响), 每次会走向自己儿子中点权和大于一半的儿子,
+
+解法1: 线段树由于所有大于一半的儿子形成了由根开始的一条链可以直接在线段树中二分出重心, 问题变为求所有点到重心的距离, 设重心为u, 点到根距离为dis, 则答案为:
+
+$$ \sum dis_u+dis_v-dis_{lca(u, v)}\\&#x3D;\sum dis_u + \sum dis_v - \sum dis_{lca(u, v)}$$ 其中前两个式子可以直接求解, 最后一个式子则考虑首先 lca 一定在u到根的链上, 其中考虑边 e 被 dis_{lca(u, v)} 计算的次数为 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/08/flow/" title="网络流题目选做"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络流题目选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/08/flow/" title="网络流题目选做">网络流题目选做</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-07T16:00:00.000Z" title="Created 2022-06-08 00:00:00">2022-06-08</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></span></div><div class="content">网络流选做建图套路深
+费用流边的描述用 $u \stackrel{f, c}{\longrightarrow} v$ , $f, c$ 分别是流量和费用.
+题目P5458 水晶 [网络流] [最小割]对于水晶, 染色时能量源染成一种, 能量源周围六个点间隔着染两种, 发现若共振则一定三种颜色都包含且相邻, 同色格子互不影响
+于是可以每个能量源拆三个点, 分别表示三种颜色删去哪一种, 串联起来跑最小割, 表示从这三种任意删一个
+P2774 方格取数问题 [网络流] [最小割]黑白染色, 做成二分图, 两种颜色各一边.
+对于一个格子, 向源点或汇点连自己点权的边(取决于自己在哪一边), 向周围四个格子连容量inf的边, 跑最小割即可
+[思考] : 限制明显而许可(可以这么做)不明显时最小割
+P5038 奇怪的游戏 [网络流] [思维]看到相邻的两个格子想到黑白染色后一定一黑一白
+于是黑白染色, 统计黑, 白色格子个数和权值和, 记为 $cnt_b, cnt_w, sum_b, sum_w$ , $sum_b-sum_w$ 始终不变 设最后所有数都变成x, 接下来分两种情况
+
+如果黑白格子数 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/08/sam/" title="字符串题目选做"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字符串题目选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/08/sam/" title="字符串题目选做">字符串题目选做</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-07T16:00:00.000Z" title="Created 2022-06-08 00:00:00">2022-06-08</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/SAM/">SAM</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a></span></div><div class="content">SAM字符串题目选做~~这类题好多也可以用后缀数组和后缀平衡树, 但我还是热爱SAM. ~~
+一开始是SAM题目选做, 现在也会加入部分其他字符串.
+P4022 熟悉的文章 [SAM] [dp]
+给定01串标准文章, 定义一个01串是熟悉的当且仅当长度大于 $L$ 且z在标准文章中出现过. 现 $q$ 次给定询问串 $T$ , 求最大的 $L$ 使得可以把 $T$ 分成若干段, 其中有90%以上是熟悉的.
+输入文件小于1100000Byte.
+
+对于一篇作文, 可以求出每个点向前最多匹配多长还在标准作文库中(zsy数组), 这里前是指向下标小的方向(似乎对于序列, 前和后会产生歧义) 把这个长度记为 $len_i$ , 方法:
+
+建出包含所有作文库作文的SAM.
+
+初始匹配长度为0, p 借点在根, 每次若能匹配沿自动机边向前走, 否则跳parent tree, 注意向前匹配时匹配长度不能直接用 p 点 sam 节点的len值, 但跳parent tree树时可以.
+
+qyc: 这里暴力跳parent tree是对的因为跳一步深度减一, 匹配一个深度加一, 所以总复杂度O(n)
+
+
+然 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/01/not_oi_problems/" title="非信竞杂题"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="非信竞杂题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/01/not_oi_problems/" title="非信竞杂题">非信竞杂题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-31T16:00:00.000Z" title="Created 2022-06-01 00:00:00">2022-06-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></span></div><div class="content">数竞趣题来自数竞同学, 有12个球和一个天平, 天平可以比较两组球的重量和的大小关系, 其中一个球是假的, 可能更重或更轻, 称3次找出
+这类题的关键是对获得信息量的考虑, 要使得每次询问的最坏情况下获取的信息量最多, 相当于尽量均衡
+这个题第一步可以划分成4, 4, 4也可以是3, 3, 6, 发现若是3, 3, 6, 则不相等比相等多知道一个大小关系, 而4, 4, 4则更均衡
+于是先考虑4, 4, 4, 如果相等则用2次从剩下的4个里找, 简单
+如果不相等, 就要想办法利用这个不相等关系, 设球从1编号, 两组分别为1, 2, 3, 4和5, 6, 7, 8, 显然可以设1, 2, 3, 4&gt;5, 6, 7, 8, 于是考虑问1, 2, 5和3, 4, 6, 如果相等仍然简单
+如果又不相等, 考虑如果那个假球比正常的大, 则只能在1, 2, 3, 4和两组中大的那组的交中, 只有两个, 如果更小则是5, 6, 7, 8和两组中更小的那组的交中, 只有一个, 可以假设更大称那两个, 如果相等说明假设错了就是那一个, 否则取更大的一个.
+还是很有意思的
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/01/talking_problems/" title="机房杂题"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机房杂题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/01/talking_problems/" title="机房杂题">机房杂题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-31T16:00:00.000Z" title="Created 2022-06-01 00:00:00">2022-06-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9D%82%E9%A2%98/">杂题</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E9%80%9A%E4%BF%A1%E9%A2%98/">通信题</a></span></div><div class="content">机房杂题奇怪通信题通信题1 [线性基] [随机化] [构造]A程序输入 $x\le 10^18$ 和最多40个位置, 要求编码长为150的01串给B, 其中给定的位置必须为0, B从这长150的串里恢复信息.
+法1: 每3个分一块, 若一块内有两个位置必须为0则全填0, 否则按照如下方式编码:
+1234567块编码  -&gt;  实际信息001     -&gt;  1010     -&gt;  0101     -&gt;  00100     -&gt;  01110     -&gt;  10111     -&gt;  11
+
+构造满足不管是哪个位置挂了, 都可以用一种编码表示它, 最坏情况下我们也能有40个坏了的和10个没坏的, 其中没坏的可以表示2位, 坏了的表示至少1位, 就能表示 $2^40*4^10&#x3D;2^60$ , 正好表示 $10^18$ 
+法2: 每2个分一块, 如果有一个位置挂了就全0, 否则可以编码3种信息, 那么能表示 $3^35$ 个信息, 发现 $3^38$ 才行, 发现这种最坏情况仅当每个数单独占一块, 这时可以两个程序选用同一个种子把位 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/24/block/" title="分块选做"><img class="post_bg" src="/img/2022-11-23-20-22-43-image.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分块选做"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/24/block/" title="分块选做">分块选做</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-23T16:00:00.000Z" title="Created 2022-05-24 00:00:00">2022-05-24</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%88%86%E5%9D%97/">分块</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">分块选做省选分块显然也挂了, 感觉又能数据结构又练码力, 唯一的问题是不会做
+P4108 HEOI2015 公约数数列 [分块] [分析性质][结论]: **一个序列前缀 gcd 是 log 段的函数! ** 因为每次gcd改变至少要除以2, 所以就 $\log n$ 段, 这个性质还挺优秀.
+第二是发现序列长度为 $10^5$ , 但询问 $10^4$ , 放过了 $O(q\sqrt n \log n)$ 的做法
+于是只需要考虑计算对于gcd的每一种取值是否可行即可, 如果线段树需要支持后缀异或一个数和查询一个区间是否存在某个数, 这是不可做的, 因为首先标记显然不能pushdown, 那么对于标记永久化, 可能会走到一个节点, 它一部分被打上了标记, 然后就G了
+所以只能分块, 设块长为 $B$ , 对每个块维护块内 gcd 和 xor和, 再开一个哈希表存储当前块内前缀xor和为 $x$ 的最早的位置, 修改时暴力 $O(B)$ 重构当前块, 并对后面 $O(\frac{n}{b})$ 个块暴力, 询问则在外层从前到后遍历每一个块, 并在过程中记录当前块前缀 gcd 和 xor, ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/17/P6556Forest/" title="The Forest题解"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Forest题解"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/P6556Forest/" title="The Forest题解">The Forest题解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%8D%A2%E6%A0%B9/">换根</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%82%B9%E5%88%86%E6%B2%BB/">点分治</a></span></div><div class="content">The Forest题解题意:t组询问, 每次给两棵n个点的树A和B, 求有多少点集满足B树上是一个连通块而A树上是一条链. $n\le1e5, t\le3$ 
+解法链比连通块性质更好, 从A树角度考虑
+A是链的解法这是后面的基础. 对于树上的一个连通块, 满足V(顶点数)-E(边数)&#x3D;1, 当A是链也就是每条链成了一个区间, 于是每次移动区间右端点, 数据结构维护左端点, 于是可以开一棵线段树, 下标i位置表示以链上下标为i的位置为左端点, 到当前右端点这一段区间的V-E, 因为V-E不可能比1更小, 所以维护区间最小值和最小值个数, 支持区间加, 每次
+
+r&#39;=r+1
+
+给1到 r’ 加一, 对于它们所有都多了 r’ 这个点
+
+遍历  r’ 在B树上的每一条边, 若指向的顶点在当前区间内, 给这个点到 r’ 的这个区间减一, 因为左端点在这个区间时点集会包含这条边.
+
+
+完整解法一 – 换根把刚才的解法拓展到树上, 维护每个点到根rt的这条路径的V-E, 随便一个根, 可以 O(n) 求出所有节点的值, 然后进行换根, 考虑根移动到它的一个儿子时, 如图, 当根由 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/17/nodeconquerwithdp/" title="点分治优化树上连通块DP"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="点分治优化树上连通块DP"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/nodeconquerwithdp/" title="点分治优化树上连通块DP">点分治优化树上连通块DP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%82%B9%E5%88%86%E6%B2%BB/">点分治</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/dp/">dp</a></span></div><div class="content">qyc博客学习2-点分治优化树上连通块DPqyc只摆了一个优化连通块背包dp的例题, 所以我理解并不透彻(
+概念有时我们处理树上连通块, 由于在树上, 对于包含根的连通块, 连通块若不包含父亲则一定不能包含儿子, 根据这个性质, 我们可以把dp进行不重不漏的划分, 选这个父亲的方案或不选的方案, 从而可以直接将对应状态直接合并来代替困难的dp合并.
+既然划分成选或不选根, 就容易理解通过点分治进行根的选取从而达到优化效果了
+适用于解决合并困难而插入一个点较简单的计数dp (也可能不是计数? 但这种划分还能怎么用没见过)
+例题Tree Cutting - HDU 5909 - Virtual Judge (vjudge. net):题意:点有点权, 对每一个k求点权异或和为k的连通块个数
+解法:首先对于每个分治部分处理:
+dp[j]为当前异或和为j的连通块个数
+一开始dp[j]全为空, dp[0]&#x3D;1, 即都不选时异或和为0
+dfs当前点分治的部分, 进入一个节点就有两种情况
+
+不选这个节点, 则这个点的儿子也不能选了, 那么答案仍然是是其父亲传下来的dp[j], 我们叫他dp ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/17/network_simplex/" title="感性理解网络单纯形"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="感性理解网络单纯形"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/network_simplex/" title="感性理解网络单纯形">感性理解网络单纯形</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%8D%95%E7%BA%AF%E5%BD%A2/">单纯形</a></span></div><div class="content">感性理解网络单纯形传说最快费用流
+前置知识单纯形, 费用流基本概念
+符号说明$n$ 为点数, $m$ 为边数, 先假设图为联通的(显然不联通没有影响)
+边 $e$ 的单位费用为 $cost_e$ , 流量上界为 $cap_e$ , 由 $u_e$ 指向 $v_e$ 
+认为我们建网络流的图时是建了反向边的
+理论基础我们知道费用流模型在线性规划标准形式的系数矩阵是全幺模矩阵, (这个矩阵有 $n$ 行 $m$ 列, 仅由 $0, 1, -1$ 组成, 每一列可以表示一条边, 设这条边由 $u$ 指向 $v$, 则矩阵中 $u$ 行为 $-1$, $v$ 行为 $1$).
+直接单纯形, 我们会设每一条边的流量, 然后再转化标准形式, 所以这里可以认为边的流量是线性规划中的变量(忽略松弛变量).
+注意到此矩阵的一组基对应图的一棵生成树. 证明: 若选中的基包含一个环, 则将这个环的边的列顺次相加得到0, 则这不是一组基, 所以基的列对应的图无环, 又因其能张成原图, 所以其联通, 因此能唯一对应一棵生成树.
+于是得到这样对应关系:
+
+单纯形中变量对应边的流量
+
+单纯形中基的选择对应图的一棵生成 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/17/templates/" title="模板复习"><img class="post_bg" src="https://t.mwm.moe/fj" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模板复习"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/17/templates/" title="模板复习">模板复习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-16T16:00:00.000Z" title="Created 2022-05-17 00:00:00">2022-05-17</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%A8%A1%E6%9D%BF/">模板</a></span></div><div class="content">板子图论tarjan:
+割点
+
+条件: 对于点u存在儿子v使low[v]&gt;&#x3D;dfn[u] (实现时low可以算u的dfn, 也对)
+
+感性理解: 说明v的子树内除了u之外没有其他方法走到外面
+
+注意: 对于dfs树的根(开始dfs的节点), 要通过统计子树个数方法判断(&gt;1则为割点)
+
+代码:
+1234567891011121314151617181920void dfs(int u,int rt=0)&#123;  if(rt==0)rt=u;  dfn[u]=low[u]=++dcnt;  int children=0;  for(int v:G[u])&#123;      if(dfn[v])&#123;          low[u]=min(low[u],dfn[v]);          continue;      &#125;      dfs(v,rt);      children++;      low[u]=min(low[u],low[v]);      if(u!=rt&amp;&amp;low[v]&gt;=dfn[u])&#123 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/JOI/" style="font-size: 1.1em; color: #999">JOI</a> <a href="/tags/SAM/" style="font-size: 1.1em; color: #999">SAM</a> <a href="/tags/dfa%E6%9C%80%E5%B0%8F%E5%8C%96/" style="font-size: 1.1em; color: #999">dfa最小化</a> <a href="/tags/dp/" style="font-size: 1.27em; color: #99a0a9">dp</a> <a href="/tags/noi/" style="font-size: 1.1em; color: #999">noi</a> <a href="/tags/note/" style="font-size: 1.1em; color: #999">note</a> <a href="/tags/random/" style="font-size: 1.1em; color: #999">random</a> <a href="/tags/trick/" style="font-size: 1.1em; color: #999">trick</a> <a href="/tags/%E4%B8%BB%E5%B8%AD%E6%A0%91/" style="font-size: 1.1em; color: #999">主席树</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 1.1em; color: #999">分块</a> <a href="/tags/%E5%8D%95%E7%BA%AF%E5%BD%A2/" style="font-size: 1.16em; color: #999b9e">单纯形</a> <a href="/tags/%E5%92%95%E5%92%95/" style="font-size: 1.39em; color: #99a4b4">咕咕</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 1.27em; color: #99a0a9">图论</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.1em; color: #999">字符串</a> <a href="/tags/%E6%8D%A2%E6%A0%B9/" style="font-size: 1.1em; color: #999">换根</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.27em; color: #99a0a9">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.21em; color: #999ea4">数据结构</a> <a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.5em; color: #99a9bf">日志</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 1.27em; color: #99a0a9">杂项</a> <a href="/tags/%E6%9D%82%E9%A2%98/" style="font-size: 1.27em; color: #99a0a9">杂题</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 1.1em; color: #999">构造</a> <a href="/tags/%E6%A8%A1%E6%9D%BF/" style="font-size: 1.1em; color: #999">模板</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 1.1em; color: #999">游记</a> <a href="/tags/%E7%82%B9%E5%88%86%E6%B2%BB/" style="font-size: 1.16em; color: #999b9e">点分治</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.44em; color: #99a7ba">笔记</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 1.1em; color: #999">线性规划</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 1.21em; color: #999ea4">线段树</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 1.16em; color: #999b9e">网络流</a> <a href="/tags/%E8%99%9A%E6%A0%91/" style="font-size: 1.1em; color: #999">虚树</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.1em; color: #999">贪心</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E9%A2%98/" style="font-size: 1.1em; color: #999">通信题</a> <a href="/tags/%E9%9B%86%E8%AE%AD/" style="font-size: 1.33em; color: #99a2af">集训</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 1.1em; color: #999">题解</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">October 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

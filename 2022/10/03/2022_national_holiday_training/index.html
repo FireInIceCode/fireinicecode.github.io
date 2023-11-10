@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>国庆集训 | FireInIce's Blog</title><meta name="keywords" content="日志,笔记,集训"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Day1-Wyj模拟赛T1智障题 T2 给定 $a$ , 计数满足以下条件的排列个数:  $b_1b_3&lt;b_4\ldots$  $b_2&lt;b_4&lt;b_6\ldots$$n\le 5000$   排列上的问题, 基本上只要 $n\ge 20$ 就是顺着值域扫了. 同时显然偶数位上的性质比奇数位上的好的多. 确定偶数位后, 对每一个奇数位, 它可以被插入在一个后缀里. 此时只看奇数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国庆集训">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/10/03/2022_national_holiday_training/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="Day1-Wyj模拟赛T1智障题 T2 给定 $a$ , 计数满足以下条件的排列个数:  $b_1b_3&lt;b_4\ldots$  $b_2&lt;b_4&lt;b_6\ldots$$n\le 5000$   排列上的问题, 基本上只要 $n\ge 20$ 就是顺着值域扫了. 同时显然偶数位上的性质比奇数位上的好的多. 确定偶数位后, 对每一个奇数位, 它可以被插入在一个后缀里. 此时只看奇数">
+<meta property="og:locale">
+<meta property="og:image" content="https://fireinicecode.github.io/img/2022-11-23-20-23-06-image.png">
+<meta property="article:published_time" content="2022-10-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="集训">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/img/2022-11-23-20-23-06-image.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2022/10/03/2022_national_holiday_training/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '国庆集训',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/2022-11-23-20-23-06-image.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">国庆集训</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2022-10-02T16:00:00.000Z" title="Created 2022-10-03 00:00:00">2022-10-03</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Day1-Wyj"><a href="#Day1-Wyj" class="headerlink" title="Day1-Wyj"></a>Day1-Wyj</h1><h2 id="模拟赛"><a href="#模拟赛" class="headerlink" title="模拟赛"></a>模拟赛</h2><h3 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h3><p>智障题</p>
+<h3 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h3><blockquote>
+<p>给定 $a$ , 计数满足以下条件的排列个数:</p>
+<ul>
+<li>$b_1<b_2>b_3&lt;b_4\ldots$ </li>
+<li>$b_2&lt;b_4&lt;b_6\ldots$<br>$n\le 5000$</li>
+</ul>
+</blockquote>
+<p>排列上的问题, 基本上只要 $n\ge 20$ 就是顺着值域扫了.</p>
+<p>同时显然偶数位上的性质比奇数位上的好的多. 确定偶数位后, 对每一个奇数位, 它可以被插入在一个后缀里. 此时只看奇数位方案数 $\prod (c_i-i)$ 这样的.</p>
+<p>考虑dp, $f_{i, j}$ 表示值域上前 $i$ 个数, 这 $i$ 个数中有 $j$ 个在偶数位上的方案数. 但这里要提前计算奇数位的费用. 转移就是考虑当前这一位选不选, 选就是 $f_{i-1, j-1}$ , 否则就直接 $f_{i-1, j}$ 再乘上这一个数作为奇数位上的贡献.</p>
+<p>但现在相同数. 只要改一下转移: 枚举是否拿其中一个作为偶数位, 乘上剩下的数作为奇数位的一个下降幂贡献再除掉自己内部顺序.</p>
+<h3 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h3><blockquote>
+<p>求选树上点两条不相交链, 最大化两条链各自的异或和的和.<br>$n\le 2\times 10^9, w\le 10^9$ </p>
+</blockquote>
+<p>考虑相当于在子树内找一条最大异或和链, 子树外找一条.</p>
+<p>找到全局最大异或和链, 对于链外的点, 其子树外找的那一条必然是这一条.</p>
+<p>于是把这个最大链求出来作为根, 然后再对内部节点求子树内的链, 此时子树总和是 $O(n)$ . (不需要递归, 只要找直接接在链上的, 显然他们的子孙被包含, 只要插入).</p>
+<p>接下来考虑直接在这条链上的节点, 此时从这条链最深的点往上走, 相当于每次给子树添加几个点, 总增量也是 $O(n)$ 的.</p>
+<p>哦, 这个题有个地理解错了, 其实求最大的和求子树内的都不需要点分治, 因为实际上异或和到根的地方会抵消掉, 所以trie上插入根到所有节点的链的答案就行了.</p>
+<p>点分治是硬加1log</p>
+<h3 id="T4"><a href="#T4" class="headerlink" title="T4"></a>T4</h3><blockquote>
+<p>一个 $n$ 个集合组成的序列, $m$ 次操作支持区间插入一个数, 求区间内的集合中的所有数的最大值, 或者对区间内的每一个集合, 删掉<strong>一个</strong>等于这个区间所有数最大值的数.<br>$n, m\le 2\times 10^5$ </p>
+</blockquote>
+<p>第三个删除操作, 相当于强制在线, 毙掉了这类题一个经典扫序列维维护时间维的套路. . .</p>
+<p>考虑线段树套堆+标记永久化. 插入的时候给线段树对应顶层区间的堆插入这个数, 删除的时候因为一共插入 $m\log n$ 个数, 所以我们每次找到一个等于这个数的删掉. 只要暴力递归从树上删除, 但当最大值小于这个数的时候就跳过, 这样做我们只会递归子树内有要删的子树, 用吉老师线段树分叉的分析方法(分析递归链向外分叉数), 复杂度2log.</p>
+<p>对于查询就简单了, 注意标记永久化之后区间查询要算上从根到自己的所有标记.</p>
+<h2 id="讲课"><a href="#讲课" class="headerlink" title="讲课"></a>讲课</h2><h3 id="T1-1"><a href="#T1-1" class="headerlink" title="T1"></a>T1</h3><blockquote>
+<p>一个由小写字母组成的长 $n$ 的字符串, Alice和Bob两人分别先后依次操作, 每次操作将字符串的两端其中一个字符移动到自己字符串的开头, 初始时每个人的字符串为空. 最后谁的字符串字典序小谁就赢了. 双方都按照最优操作, 最后谁会赢, 或是平局. $n$ 是偶数, $n \le 2000$ .</p>
+</blockquote>
+<p>一定是前面一段连续相同的然后出现一个不一样的, 并且每一个有向图游戏状态由端点表示即可</p>
+<p>麻, 加到前面, 看错题了.</p>
+<p>但状态设计不变, 转移枚举两个人的决策. 注意是从小到大扩(因为你选的字符是加到最后)</p>
+<p>还有个贪心, 但讲了个啥完全不懂.</p>
+<h3 id="T2-1"><a href="#T2-1" class="headerlink" title="T2"></a>T2</h3><blockquote>
+<p>无向图, 边有边权. 有 $k$ 次飞跃的机会, 无视道路, 花费 $(u-v)^2$ 的时间从 $u$ 来到 $v$ . 求从1号点开始的最短路. $n \le 10^5 , m \le 10^5 , k \le 20$ </p>
+</blockquote>
+<p>哦是个智障. 图上转移方向很多, 但编号维方向只有俩.</p>
+<p>于是你就跑最短路, 然后处理跳的这一步的时候枚举编号的两个转移方向单独转(斜率优化). 复杂度 $km\log n$ </p>
+<h3 id="T3-1"><a href="#T3-1" class="headerlink" title="T3"></a>T3</h3><blockquote>
+<p>长为 $n$ 的数列 a, 进行如下操作: 选择 $1 \le l \le r \le n$ 和任意数 $x$ , 将 $[l, r]$ 内的所有数字异或 $x$ , 代价 $\left\lceil\dfrac{r-l+1}{2}\right\rceil$ , 注意是向上取整. 求把数列a变成全零的最小代价. $n \le 10^5 , a_i \le 2^{30}$ .</p>
+</blockquote>
+<p>代价向上取整意味着我们只会用长度不大于2的操作</p>
+<p>发现若一个区间异或和为0则可以节省一次. 所以要划分若干个不交区间即可.</p>
+<h3 id="T4-1"><a href="#T4-1" class="headerlink" title="T4"></a>T4</h3><blockquote>
+<p>给定 $n, k\le 2* 10^5$ , 第一次选择一个 $k$ 的倍数, 第二次选择一个 $k+1$ 的倍数, 以此类推, 直到选择数的总和为 $n$ . 对于每一个 $1 \le i \le n$ , 求有多少种方法选择到 $i$ .</p>
+</blockquote>
+<p>比较套路, 暴力做状态数是 $n\sqrt n$ 的.</p>
+<h3 id="T5"><a href="#T5" class="headerlink" title="T5"></a>T5</h3><blockquote>
+<p>长为 $n$ 的数列 a, $n \le 250 , \sum a_i \le 250$ , 每次操作让相邻的两个数字一个加一, 另一个减一. 最小操作数使得数列不增.</p>
+</blockquote>
+<p>$f_{i, j, k}$ 表示前 $i$ 个数, 第 $i$ 个数是 $j$ , 并且向右移出了 $k$ 的值.</p>
+<p>重点是我们并不是只用左减右加.</p>
+<h3 id="T6"><a href="#T6" class="headerlink" title="T6"></a>T6</h3><blockquote>
+<p>有一个 $2^n-1$ 个点的完全二叉树, 点有字母, 树的串为前序遍历的字符串. 如果可以将任意点的左右儿子互换, 最多出现多少种不同的树的串? $n \le 18$ </p>
+</blockquote>
+<p>直接做 $f_{u}&#x3D;f_{v}f_{k}(\times 2)$ , 乘不乘取决于左右两边是否同构. 于是判同构即可.</p>
+<h3 id="T7"><a href="#T7" class="headerlink" title="T7"></a>T7</h3><blockquote>
+<p>将长度为 $n$ 的序列 $a$ 分成若干子段, 设子段 $s&#x3D;a_l+a_{l+1}+\ldots+a_r$ 每段的价值定义为: 如果 $s&gt;0$ 价值为 $(r-l+1)$ , 如果 $s&#x3D;0$ 价值为 $0$ , 如果 $s&lt;0$ 价值为 $-(r-l+1)$ . 求序列划分出所有子段总价值的最大值.</p>
+</blockquote>
+<p>暴力就是 $f_i$ 表示前 $i$ 个答案.</p>
+<p>用线段树优化即可.</p>
+<h3 id="T8"><a href="#T8" class="headerlink" title="T8"></a>T8</h3><blockquote>
+<p>构建一棵 $n$ 个点的二叉搜索树, 使得 $\sum_{1 \le i &lt; j \le n}c_{ij}* d_{ij}$ 最小. $d_{ij}$ 表示树上 $i$ 号点和 $j$ 号点的最短路径长度. $n \le 200 , 0 \le c_{ij} \le 10^9$ </p>
+</blockquote>
+<p>是BST所以一个子树对应一个区间. 于是区间dp枚举中间断开当根, 需要费用提前计算</p>
+<h3 id="T9"><a href="#T9" class="headerlink" title="T9"></a>T9</h3><p>模拟赛T2</p>
+<h3 id="T10"><a href="#T10" class="headerlink" title="T10"></a>T10</h3><blockquote>
+<p>长为 $n$ 的两个序列 $a, b$ , 每次操作可以交换 $(a_i, b_i)$ , 求式子的最小值: $\sum_{i&#x3D;1}^{n} \sum_{j&#x3D;i + 1}^{n} (a_i + a_j)^2+\sum_{i&#x3D;1}^{n} \sum_{j&#x3D;i + 1}^{n} (b_i + b_j)^2$ . $n, a_i, b_i\le 100$ .</p>
+</blockquote>
+<p>拆式子, 成了 $\sum_{i, j} a_ia_j&#x3D;\sum_i a_i\times s_i$ , 根据这个设 $f_{i, j}$ 表示前 $i$ 个, $a$ 的前 $i$ 个和位 $j$ 即可.</p>
+<h3 id="T11"><a href="#T11" class="headerlink" title="T11"></a>T11</h3><blockquote>
+<p>长为 $n$ 的序列, 每次操作将一个数加一或减一, 使序列单调不降的最小操作次数. $n \le 5000 , a_i \le 10^9$ </p>
+</blockquote>
+<p>这不是Slope Trick经典例题吗?</p>
+<h3 id="T12"><a href="#T12" class="headerlink" title="T12"></a>T12</h3><blockquote>
+<p>长为 $n$ 的序列 $a$ , 分成 $k$ 段, 每段的价值为不同的数字的个数, 求最大总价值和. $n \le 35000 , k \le 50$ </p>
+</blockquote>
+<p>考虑转化二维数点之后贡献变成什么, 然后考虑这玩意貌似是凸的? ! 是的, 可以二维数点画图, 也可以考虑 $[i-1, j], [i, j+1]$ 变成 $[i-1, j+1], [i, j]$ 相当于把 $i-1$ 移动到 $[i, j+1]$ , 发现如果它在 $i, j$ 中没有贡献则在 $[i, j+1]$ 中一定没有贡献. 所以相交大于等于包含. 于是就是DAG定长最短路直接冲.</p>
+<h3 id="T13"><a href="#T13" class="headerlink" title="T13"></a>T13</h3><blockquote>
+<p>长为 $n$ 的序列 $a$ , 进行 $k$ 次操作. 每次随机选取两个不相同的位置, 交换他们. 求多少概率最后的序列不降. 概率对1000000007取模. $n \le 100 , k \le 10^9 a_i&#x3D; {0, 1}$ .</p>
+</blockquote>
+<p>考虑设 $f_i$ 表示错误位置上的0&#x2F;1的个数为 $i$ 的情况, 你惊讶的发现从 $i$ 到 $i+1$ 或 $i-1$ 的转移只和 $i$ 有关, 于是这个再加上100-1e9这个矩阵乘法数据范围提示组合即可.</p>
+<h3 id="T14"><a href="#T14" class="headerlink" title="T14"></a>T14</h3><blockquote>
+<p>搜索树: 一个点的权值大于左子树的点的权值, 小于右子树的点的权值; 平衡的树: 不存在另外一棵节点大小相同的数, 所有节点的深度和比自己的树小; 有条纹的树: 每个点与左儿子奇偶性不同, 与左儿子奇偶性相同. 求 $n$ 个点的有条纹的平衡的二叉搜索树的个数, 对998244353取模.</p>
+</blockquote>
+<p>结论是只当 $n&#x3D;4, 5, 9, 10, 20, 21. . .$ 时它才是1, 其他是0</p>
+<h3 id="T15"><a href="#T15" class="headerlink" title="T15"></a>T15</h3><blockquote>
+<p>由 $3n-2$ 根火柴横着拼成的 $n$ 个正方形, 对于每个 $i$ 求恰好去掉 $i$ 根火柴后仍然全部联通的方案数. $n \le 3000$ </p>
+</blockquote>
+<p>是不是直接设 $f_{i, j, 0&#x2F;1, 0&#x2F;1}$ 前 $i$ 个, 删了 $j$ 个, 第 $i$ 列的上下是否连通就结束了.</p>
+<h3 id="T16"><a href="#T16" class="headerlink" title="T16"></a>T16</h3><blockquote>
+<p>$n$ 个数的序列, 每个数字值域 $[1, m]$ . 最长上升子序列恰好为3的序列个数有多少? $n \le 1000 , m\le 10$ </p>
+</blockquote>
+<p>$m\le 10$ 提示状压?</p>
+<p>$f_{i, a, b, c}$ 表示前 $i$ 个数, 这 $i$ 个数中长度为1, 2, 3的LIS的最后一个数最少是 $a, b, c$ 即可.</p>
+<p>相当于对着贪心做LIS的那个贪心数组做dp of dp.</p>
+<h1 id="Day2-Qyc"><a href="#Day2-Qyc" class="headerlink" title="Day2-Qyc"></a>Day2-Qyc</h1><h2 id="模拟赛-1"><a href="#模拟赛-1" class="headerlink" title="模拟赛"></a>模拟赛</h2><h3 id="组合数学靠运气"><a href="#组合数学靠运气" class="headerlink" title="组合数学靠运气"></a>组合数学靠运气</h3><blockquote>
+<p><strong>组合</strong>喜欢组合<strong>数学</strong>. 组合认为组合数学中最有趣的部分就是形式语言处理, 或者说串串. 今天她看到一篇关于形式语言的论文, 其中证明了这样一个结论 : 一个长 $l$ 的模式是长 $l$ 的字符串中若干字符之间的等价关系, 如果一个包含 $k$ 个等价类的模式长度至少是 $2^k$ , 那么存在无限长的三个字母的序列, 其中没有子串满足这一模式. 证明的话组合要<strong>靠运气</strong>才能看懂, 但是今天大凶, 所以就不再赘述了.</p>
+<p>选手, 今天组合不关心Entropy Compression, 她只想知道长 $n$ 的无平方串最少有多少个不同的字母, 并且你需要给出构造. 一个串是平方串, 当且仅当它的前一半和后一半相同, 如abcabc或114514114514. 一个串是无平方串, 当且仅当它的子串都不是平方串. $n\leq 10^7$ .</p>
+<p>为了checker写起来方便, 每个字母是一个数, 并且如果你认为最少有 $k$ 个不同的字母, 你构造的串中只能出现 $1, . . . , k$ 这些数.</p>
+<p>输入&#x2F;输出量看起来很大, 但是实际上并没有那么恐怖. 我们测试了一份使用putchar输出的代码, 运行时间在0. 2s以内.</p>
+</blockquote>
+<p>打前几的表发现感觉 $k&#x3D;3$ 可以做到任意大.</p>
+<p>正解是乱搞, 猜测概率上不会出现一个很长的平方串, 只维护100以内的平方串, 就是随机一段拼上去, 然后暴力查是否有100以内的平方串, 有就只删掉组成平方串的一小部分, 不断重复. 可以过 $10^5$</p>
+<p>更正的正解是, popcount的奇偶性的差分是无平方串的. 可以当冷知识积累</p>
+<h3 id="图论一顿套模板"><a href="#图论一顿套模板" class="headerlink" title="图论一顿套模板"></a>图论一顿套模板</h3><blockquote>
+<p><strong>图论</strong>现在遇到了一个图论问题. 有一张无向连通图, 没有自环但可能有重边, 保证存在至少一个环经过每条边恰好一次. 图上的点就只是点, 而边有长度 $\mathbf{2}l_i$ . 你有一个体力, 一开始是 $0$ , 每走 $1$ 单位长度会消耗 $1$ . 第 $i$ 条边的正中间有权值为 $w_i$ 的<strong>一顿</strong>, 你经过正中间的瞬间会吃一顿, 获得 $w_i$ 的体力. 现在你要选择一条边的正中间作为起点, 从它出发经过这张图的每条边<strong>恰好</strong>一次, 如果中间你的体力低于 $0$ , 你就需要橘长摸一天的课去救你. 我们不希望这样的事情发生, 所以图论<strong>套</strong>了几个<strong>模板</strong>试图解决这个问题. 但是由于橘长希望这样的事情发生, 图论的模板并不足以解决这个问题, 所以还是要你这个模板大师来秒一秒.</p>
+<p>$n\leq 10^5$ , 多组数据.</p>
+</blockquote>
+<p>跑出任意一条欧拉路, 然后Raney定理. 做完了.</p>
+<h1 id="Day4-Qyc"><a href="#Day4-Qyc" class="headerlink" title="Day4-Qyc"></a>Day4-Qyc</h1><h2 id="模拟赛-2"><a href="#模拟赛-2" class="headerlink" title="模拟赛"></a>模拟赛</h2><h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><blockquote>
+<p>给定 $a, b$ , 可以让 $a\times 2, a: &#x3D;a+b, b\times 2, b: &#x3D;a+b$ , 200次以内操作让 $a&#x3D;b$ .<br>$a, b\le 10^9$</p>
+</blockquote>
+<p>考虑 $c&#x3D;\dfrac{a-b}{\gcd (a, b)}$</p>
+<p>用翻倍操作把0补齐, 此时再 $a\times 2$ 相当于 $b&#x2F;2$</p>
+<p>考虑如果 $a&gt;b$ , 就 $a&#x3D;a+b, a&#x2F;&#x3D;2$ , 一直做就行了.</p>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><blockquote>
+<p>万邦先生的电脑中了<strong>高科技糹乙万恶木馬</strong>, 现在他的诗作都被打乱了. 不过<strong>木馬</strong>的作者只是想找点乐子, 所以<strong>木馬</strong>告诉万邦先生, 它的打乱方式是每次选择两个相邻的长偶数的区间, 然后把它们交换. 万邦先生的诗作可以看成一个整数序列 $a$ . 现在你拿到了打乱后的万邦先生的一首诗 $a^\prime$ 和他尝试复原的一首诗 $a$ , 请你帮他求出他的复原是否有可能正确, 也就是复原的诗是否有可能经<strong>木馬</strong>的打乱变成打乱后的诗. $n\leq 10^5$ , 多组数据.<br>对于 $100 %$ 的数据, $n\leq 10^5, \sum n\leq 5\times 10^5, 1\leq a_i\leq n$ .</p>
+</blockquote>
+<p>首先操作不改变数位置的奇偶性</p>
+<p>然后想到一种策略: 确定了前面的之后每次把后面的一个换到这一个, 类似选择排序吧.</p>
+<p>然后做到最后, 发现剩下3个的时候可能能行可能不能行. 这个跟逆序对有关, 发现操作不改变逆序对奇偶性, 而最后应该剩下一个, 没有重复元素的就做完了.</p>
+<p>如果相同奇偶性内部的有相同元素, 你一定可以钦定一个对应使得可以, 所以此时一定可以.</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>直接贪心, 覆盖1到第一个z前面, 覆盖第二个z到第三个z前面. . . z用完了用 $y$ . . .</p>
+<p>然后现在卫生纸用完了之后, 后面可能不能全覆盖, 此时相当于前面一定确定, 我们要选择一个字典序最大的后缀.</p>
+<p>一个正常的方法是用SA跑</p>
+<p>一个不正常的办法是用OIWiki上的最小表示法的算法.</p>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><blockquote>
+<p><strong>圣诞节后</strong>, 万邦先生和他的 $n-1$ 个朋友们聚会, 他们要玩一个古老的**<em><em>国进口<strong>游戏. 大家坐成一排, 从左往右编号 $1, . . . , n$ . 每个人头上有一个数, 这些数形成一个序列 $a$ , 每个人可以看到别人的数, 但是看不到自己的. 大家都知道两个长 $n-1$ , 下标从 $2$ 开始的序列 $b, c$ , 定义一个序列 $a$ 是</strong>轴心**的, 当且仅当对于每个 $i$ 都有 $a</em>{i+1}\in[a_i+b</em>{i+1}, a_i+c_{i+1}]$ , 而真实的序列 $a$ 必然不是轴心的. 接下来游戏进行若干轮, 每轮大家充分思考, 然后同时分别决定是报出一个必然不在自己头上的数, 还是什么都不做. 假设每个人都绝顶聪明, 不希望报错, 并且希望在尽可能少的轮数报出一个数. 给出 $a, b, c$ , 请你求出第一次有人发言是在第几轮, 可以证明必然有人发言. $n\leq 10^5, \vert a_i\vert, \vert b_i\vert, \vert c_i\vert\leq 10^{11}, b_i\leq c_i$ .<br>对于 $100 %$ 的数据, $n\leq 10^5, \vert a_i\vert, \vert b_i\vert, \vert c_i\vert\leq 10^{11}, b_i\leq c_i$ .</p>
+</blockquote>
+<p>结论是答案是所有轴心序列中到真实序列的最小距离. 距离指位置不同的个数.</p>
+<p>考虑一个简化问题, 每一个人有一个0&#x2F;1, 看不见自己拿的, 那么第一次有人确定自己头上是1的轮数是1的个数. 这个很简单, 和那个蓝眼红眼小岛是一个.</p>
+<p>归纳. 我们假设如果第k轮第一次有人声明, 那么最小距离恰好是k.</p>
+<p>考虑如果最小距离是 $k$ , 那么根据归纳假设前 $k−1$ 轮没有人声明, 此时每个人都知道最小距离至少是 $k$ . 由于每个人都只不知道自己, 每个人看到的部分的最小距离要么至少是 $k$ 要么是 $k−1$ , 那么看到 $k−1$ 的人就知道实际上最小距离应该是 $k$ , 于是他会声明. 如果没有人看到 $k−1$ , 则没有人声明.</p>
+<p>结论完了之后要考虑怎么求这个最小距离. 设 $f_{i}$ 表示前 $i$ 个, 第 $i$ 个和 $a$ 相同, 那么直接转移有序列维, $sumb$ , $sumc$ 三维限制. 此时已经可以做了.</p>
+<p>因为 $b_i&lt;c_i$ , 所以 $sumc-sumb$ 是单调的, 这样可以把下标一维扔掉. 复杂度1log.</p>
+<h2 id="讲课-1"><a href="#讲课-1" class="headerlink" title="讲课"></a>讲课</h2><h3 id="CF1301F"><a href="#CF1301F" class="headerlink" title="CF1301F"></a>CF1301F</h3><blockquote>
+<p>$n\times m$ 的棋盘, 每个点有一个颜色, 颜色一共有 $k$ 种, 你每一步可以走到四连通的点, 或者传送到和当前点颜色相同的任意一个点, 多次查询两个点之间的最短路. $n, m\leq 1000, k\leq 40, q\leq 10^5$ .</p>
+</blockquote>
+<p>$qk^2$ 比较简单, 考虑直接把每个相同颜色做成一个点, 在这个40个点上跑floyd, 那么现在问题是对于一个询问确定从哪两个颜色传送, 于是复杂度是 $nmk+qk^2$ 这样的</p>
+<p>然后实际上我们在一个颜色上传送只会是第一次遇到它, 于是从每一个颜色作为起点跑多源bfs, 状态仍然是 $nm$ 的.</p>
+<p>或者看成给每一个颜色建一个中转点的套路, 从每一个中转点出发跑一遍bfs.</p>
+<h3 id="poi-2003-2004-Bramki"><a href="#poi-2003-2004-Bramki" class="headerlink" title="poi 2003~2004 Bramki"></a>poi 2003~2004 Bramki</h3><blockquote>
+<p>有向图, 每个点点权可能是 $0, 1, \frac{1}{2}$ , 点从 $0$ 开始标号, $0, 1$ 没有出边, 权值总分别是 $0, 1$ . 一个点的点权合法, 当且仅当它的点权是它连向的点的点权中, 去掉 $\frac{1}{2}$ 后的中位数(如果 $0, 1$ 数量相同, 则点权应是 $\frac{1}{2}$ ). 求对于所有合法的点权分配, 每个点的点权是不是唯一的, 如果是的话, 唯一的点权是哪一种. $n, m\leq 10^5$ .</p>
+</blockquote>
+<p>考虑求每个点的最大值最小值</p>
+<p>直接全赋值为0&#x2F;1, 然后找到一个不合法的去调整, 每次找不合法的点调整, 然后再把受影响的点都放到队列里去调整, 因为调整点权的方向是固定的(大到小, 小到大), 复杂度线性.</p>
+<h3 id="xix-open-cup-gp-of-siberia-B-Birthday"><a href="#xix-open-cup-gp-of-siberia-B-Birthday" class="headerlink" title="xix open cup, gp of siberia B. Birthday"></a>xix open cup, gp of siberia B. Birthday</h3><blockquote>
+<p>无向图, 把点集划分成 $k$ 部分然后拼成一个序列, 要求只有相邻两部分或者一部分内部有边. $n\leq 1000, m\leq \frac{n(n-1)}{2}$ .</p>
+</blockquote>
+<p>把一个点放到一边, 把所有和他相连的放到下一层, 把所有和这一层相连且不在上一层的放在下一层. 我们希望bfs树深度尽量大, 所以第一层只有一个点, 这个过程用bitset优化. (深度大了可以直接后面的全塞进一层).</p>
+<h3 id="ptzsc16-D6-C-Counter-manifestation"><a href="#ptzsc16-D6-C-Counter-manifestation" class="headerlink" title="ptzsc16 D6 C. Counter-manifestation"></a>ptzsc16 D6 C. Counter-manifestation</h3><blockquote>
+<p>求有向图所有环的交.<br>$n\le 10^5, m\le 2\times 10^5$</p>
+</blockquote>
+<p>交是一个环或链. 先随便找一个环.</p>
+<p>把环上的点编号 $1\ldots n$ , 若环上点 $i&lt;j$ 在环外有 $i\to j$ , 则环内 $i\to j$ 会不成立. 反过来也一样.</p>
+<p>对于固定的点 $i$ , 第一种只有最大的 $j$ 有用, 第二种只有最小的 $j$ 有用, 然后都记搜去看最大的和最小的.</p>
+<p>复杂度是线性, 虽然qyc现在不知道为何.</p>
+<h3 id="ptzsc16-D9-C-Edge-Coloring"><a href="#ptzsc16-D9-C-Edge-Coloring" class="headerlink" title="ptzsc16 D9 C. Edge Coloring"></a>ptzsc16 D9 C. Edge Coloring</h3><blockquote>
+<p>无向图, 每条边有一个目标颜色, 一开始每条边都没有颜色. 你从任意一个点出发, 在奇数步把边染红, 偶数步染蓝, 如果已经走过则覆盖之前的颜色, 求能否达到目标. $n, m\leq 2000$ .</p>
+</blockquote>
+<p>时间倒流. 此时走到一个边之后它的颜色就不会变了, 这样我们可以在我们已经走过的地方随便走. 然后枚举起点(实际上是终点)dfs就行了.</p>
+<h3 id="hdu多校16-D7-Colosseo"><a href="#hdu多校16-D7-Colosseo" class="headerlink" title="hdu多校16 D7 Colosseo"></a>hdu多校16 D7 Colosseo</h3><blockquote>
+<p>竞赛图, 给一个把点集划分成两部分 $A, B$ 的方案, 保证两部分的导出子图都是无环的. 现在希望把 $B$ 中的点加入 $A$ , 使得 $A$ 仍然是无环的, 求最多加入多少个点. $n\leq 1000$ .</p>
+</blockquote>
+<p>无环相当于一个全序(任意两点可比且满足传递性, 反自反性)</p>
+<p>于是可以把 $A$ , $B$ 分别排序, 此时因为 $B$ 插进去也可比, 所以 $B$ 只能插入到一个固定间隔. 于是一个方案合法当且仅当插进去的 $B$ 的位置正确且有序, 可以dp.</p>
+<p>相当于我们通过全序确定了一个dp的扫描线顺序.</p>
+<h3 id="ptzsc16-D6-B-Colourings"><a href="#ptzsc16-D6-B-Colourings" class="headerlink" title="ptzsc16 D6 B. Colourings"></a>ptzsc16 D6 B. Colourings</h3><blockquote>
+<p>无向图, 给定两个独立集划分 $A, B$ , $A$ 中所有独立集是非平凡的(大小 $&gt;1$ ), 而 $B$ 中的独立集个数设为 $k$ . 找到一个独立集划分, 使得其中所有独立集是非平凡的, 并且独立集个数不超过 $k$ . $n, m\leq 2\times 10^5$ .</p>
+</blockquote>
+<p>把每个点画在平面上, 坐标分别是它在两个独立集划分中属于的独立集的编号. 按任意方向扫描, 如果一行只有一个点就让它和同一列的点组成独立集, 否则让他和同一行的组成.</p>
+<p>因为一列一定不只有一个, 且恰好有 $k$ 行.</p>
+<p>如果这一行只有一个点, 那么这一列一起给他没有问题. 并且我们走一行就能分配一个独立集, 正好 $k$ 个. 所以是可行的.</p>
+<h3 id="xix-open-cup-gp-of-Zhejiang-H-Hamilton-Path"><a href="#xix-open-cup-gp-of-Zhejiang-H-Hamilton-Path" class="headerlink" title="xix open cup gp of Zhejiang H. Hamilton Path"></a>xix open cup gp of Zhejiang H. Hamilton Path</h3><blockquote>
+<p>有向图, 求所有哈密顿链, 设链上点的序列是 $p$ , 满足对于任意 $i&lt; j$ , 存在边 $p_i\rightarrow p_j$ 当<b>且仅当</b> $i+1&#x3D;j$ . . 这样的链可能很多, 你只需要对每一条输出它的某种字符串哈希的值. $n\leq 5\times 10^5, m\leq 10^6$ .</p>
+</blockquote>
+<p>首先限制是哈密顿路中没有向后连的边(后是没有走过的方向)</p>
+<p>然后考虑如果一个点往后走方案不是唯一的(有两条边走向没有走过的)那就不满足条件, 所以已经可以 $nm$ 模拟.</p>
+<p>考虑每一个点开始维护一条链, 那么如果在一个点向后扩展的时候到了另一条链的起点就可以直接接上, 但如果走着走着到了这条链中间的一个点呢?</p>
+<p>此时最后的终点只能是两条链连向这个公共点的点中的一个, 因为其他点走过来都会面临两边的选择.</p>
+<p>最后因为扩展出的每一条链都是答案上的一段, 所以你得到的是唯一的答案或者得到一个环. 如果是个环就复制一份算哈希(并且环外每一条边会让一个区间不合法).</p>
+<h3 id="xix-open-cup-gp-of-Udmurtia-D-Road-Connectivity"><a href="#xix-open-cup-gp-of-Udmurtia-D-Road-Connectivity" class="headerlink" title="xix open cup gp of Udmurtia D. Road Connectivity"></a>xix open cup gp of Udmurtia D. Road Connectivity</h3><blockquote>
+<p>无向图, 有一个初始状态, 每天等概率随机一条边, 把它的存在情况反转, 每次给定 $l, r$ , 求在第 $l$ 天到第 $r$ 天中至少一天整个图连通的概率. $n\leq 5, l, r\leq 10^{15}$ .</p>
+</blockquote>
+<p>暴力是用 $2^{n(n-1)&#x2F;2}$ 种状态矩阵快速幂dp.</p>
+<p>图的标号没有意义! 标号是完全无用的. 所以本质不同的图只有34种. 预处理系数再转移矩阵快速幂.</p>
+<h3 id="xix-open-cup-gp-of-Gomel-F-Six-Words"><a href="#xix-open-cup-gp-of-Gomel-F-Six-Words" class="headerlink" title="xix open cup gp of Gomel F. Six Words"></a>xix open cup gp of Gomel F. Six Words</h3><blockquote>
+<p>无向图, 点有点权, 边有边权. 定义一个图的线图是, 每条边建一个点, 点权是这条边的边权; 如果两条边有公共端点, 则在它们对应的点之间连一条边, 边权是这个点的点权. 求一张图的线图的线图的最小生成树. $n\leq 10^5, m\leq 2\times 10^5$ .</p>
+</blockquote>
+<p>线图是点边互换那个东西, 此时原图一个点变成一个团, 一个边变成一个点, 但此时再考虑线图的线图时发现一个团该变成什么这个问题可以让你混乱.</p>
+<p>考虑反过来看: 线图上一个点代表一个边, 一个边代表一个有公共定点的边对. 于是线图上线图上一个点代表一个有公共顶点点边对, 一个边代表线图上有公共顶点的边对, 是原图上两个有公共边的, 有公共点的边对, 是原图上边的连通三元组. 若三条边有公共点我们叫它一类边, 否则二类边. 且线图线图上的点权是边对公共点的权值, 边权是原图上公共边的权值.</p>
+<p>发现优先连一类边把每个点连成连通块必然不劣. 考虑边集的并的MST(这里MST指MST的边集)等于这些边集分别MST的并的MST. 发现一个二类边不能把一类边从环上顶下去, 所以原图每个点对应的一类边的集合一定可以先自己形成MST.</p>
+<p>然后就是容易的了, 对于原图上同一个点的一类边的集合, 按照其边对两条边的排名为坐标变成平面上一个三角形, 看看我们会怎么连, 显然会连出若干行, 再连一条左下到右上的对角线(这里左下角是(1, 1)).</p>
+<p>这里, 一类边不会被顶掉是因为考虑这个三角形的图, 连接两个边对的链上边权最大值, 是这两个(边对所在行列编号(也就是rk)的min)的max, 发现向外面连的边的边长是(边对所在行列编号(也就是rk)的min), 其中较大的一个就也取max, 所以它只能和链上边权最大值相等, 所以一类最大值不会被顶掉.</p>
+<p>于是此时原图每个点对应线图上一个连通块, 每个边对应一个二类边, 直接Kru即可.</p>
+<p>[conclusion] 边集的并的MST等于这些边集分别MST的并的MST.</p>
+<h3 id="poi-1999-2000-Skiers-加强版"><a href="#poi-1999-2000-Skiers-加强版" class="headerlink" title="poi 1999~2000 Skiers 加强版"></a>poi 1999~2000 Skiers 加强版</h3><blockquote>
+<p>有向平面图, 有恰好一个源和一个汇, 把它平面嵌入, 满足每条边都从上面连向下面, 然后按照从左往右的顺序给你所有边. 求从源到汇最多能选出多少边不交的路径. $n, m\leq 10^6$ .</p>
+</blockquote>
+<p>贪心走最左边的即可.</p>
+<p>注意这个不交路径是最大流!</p>
+<h3 id="ptzwc22-D3-G-Maximal-Subsequence"><a href="#ptzwc22-D3-G-Maximal-Subsequence" class="headerlink" title="ptzwc22 D3 G. Maximal Subsequence"></a>ptzwc22 D3 G. Maximal Subsequence</h3><blockquote>
+<p>上个题的trick. 序列, 求最少删掉多少数才能使得lis长度减少. $n\leq 10^5$ .</p>
+</blockquote>
+<p>首先这个题好像SDOI还是哪有个经典的网络流: 仿照lis的dp, $f_i$ 设一个点, 若可以转移就连边容量 $inf$ . 每个点拆入点, 出点, 容量为1, 表示删掉. 源点连所有 $f&#x3D;1$ . 然后最小割最大流.</p>
+<p>想象一下这个图, 贪心选字典序最小的一个LIS, 复杂度 $O(n)$ .</p>
+<h3 id="CF1019C-Sergey’s-problem"><a href="#CF1019C-Sergey’s-problem" class="headerlink" title="CF1019C Sergey’s problem"></a>CF1019C Sergey’s problem</h3><blockquote>
+<p>有向图, 求一个独立集, 满足任何一个点可以被集合中的某个点走不超过两步到达(可以走 $0$ 步). $n, m\leq 10^6$ .</p>
+</blockquote>
+<p>在无向图只需要扫一遍, 过程中如果这个点没有被覆盖就选上. 这样所有点都可以被走不超过一步到达.</p>
+<p>但在有向图上, 有可能过程中没有被选上的某些点却连向我们已经选的. 但却不被我们已经选的覆盖.</p>
+<p>但是考虑, 如果有两个点 $u\to v$ , 我们显然不用选 $u$ , 那么我们可能又选了一个 $w\to u$ , 那么我们应该直接把 $u$ 删了就行了.</p>
+<p>因为只有可能后面影响前面, 所以倒着再把被后面覆盖过的点删掉.</p>
+<h3 id="sdoi2019-R2D2A-热闹的聚会与尴尬的聚会"><a href="#sdoi2019-R2D2A-热闹的聚会与尴尬的聚会" class="headerlink" title="sdoi2019 R2D2A 热闹的聚会与尴尬的聚会"></a>sdoi2019 R2D2A 热闹的聚会与尴尬的聚会</h3><blockquote>
+<p>无向图, 你要选 $p, q$ , 构造一个每个点度数至少是 $p$ 的点集, 一个大小是 $q$ 的独立集, 要求 $(p+1)(q+1)&gt;n$ . $n, m\leq 10^6$ .</p>
+</blockquote>
+<p>不停删掉度数最小的点, 可以得到一个最大的, 度数至少是某个数的点集.</p>
+<p>考虑独立集, 直接退火是可行的, 或者按照删掉的顺序贪心选独立集, 每个点最多和后面 $p$ 个点有边, 于是独立集大小至少是 $\dfrac{n}{p+1}$ . 就行了.</p>
+<h3 id="poi2003-2004-Turniej"><a href="#poi2003-2004-Turniej" class="headerlink" title="poi2003~2004 Turniej"></a>poi2003~2004 Turniej</h3><blockquote>
+<p>有一些波特要比赛, 其中某些波特之间的胜负是确定的, 而剩下的都是不确定的. 胜负可能成环. 比赛过程是, 每次选择任意两个还没被淘汰的波特比赛, 输掉的淘汰, 最后一个波特获胜. 求哪些波特有可能获胜. $n, m\leq 10^5$ .</p>
+</blockquote>
+<p>对于一个能赢的 $u$ , 那么若 $v&gt;u$ , 则 $v$ 也能赢.</p>
+<p>然后因为 $u$ 不能干掉 $v$ 一定意味着 $v$ 可以干掉 $u$ 及其走到的所有点, 所以出度(在已知部分)最大的波特必然可能赢.</p>
+<p>然后要找到其他能赢的. 如果不是所有能赢的都到某个有变, 那么这个也能赢, 于是用类似bfs的方法做即可.</p>
+<h3 id="poi2003-2004-Kaglony"><a href="#poi2003-2004-Kaglony" class="headerlink" title="poi2003~2004 Kaglony"></a>poi2003~2004 Kaglony</h3><blockquote>
+<p>定义一张图是好的, 当且仅当它是单点, 或者是两张好图放在一起得到的, 或者是两张好图放在一起, 中间连成完全二分图得到的. 给一张图, 判定它是不是好图. $n, m\leq 10^5$ .</p>
+</blockquote>
+<p>首先一个好图的补图还是好图, 考虑一个好图的补图可以由合成这个补图的过程中的两个操作取反(连完全二分图&lt;-&gt;不连)得到. 所以一个好图的补图也是好图.</p>
+<p>那么考虑对于一个好图, 如果它最后一次由直接放在一起得到, 可以直接把连通块分开. 如果加边的情况, 那么就在补图上把连通块分开.</p>
+<p>算补图的连通块方法是, 维护所有连通块列表, 每次加入一个点枚举这个列表中的连通块进行合并.</p>
+<p>因为每一轮边数减少至少 $n$ 并且 $n$ 轮一定结束所以复杂度是一轮的 $m$ 乘上轮数 $\min n, \dfrac{m}{n}$ , 于是就是 $m\sqrt m$ .</p>
+<h3 id="poi2004-2005-Dziuple"><a href="#poi2004-2005-Dziuple" class="headerlink" title="poi2004~2005 Dziuple"></a>poi2004~2005 Dziuple</h3><blockquote>
+<p>无向图, 平面上有两条从x轴出发平行于y轴的射线, 上面分别有无穷个点, 你要把图上每个点放到射线上一个点, 边变成两点间的线段, 要求没有两条边相交, 求方案数. $n, m\leq 10^6$ .</p>
+</blockquote>
+<p>能嵌入的一定是若干毛毛虫, 然后组合数搞一搞就行了</p>
+<h3 id="ptzsc16-D9-B-Point-Pairs"><a href="#ptzsc16-D9-B-Point-Pairs" class="headerlink" title="ptzsc16 D9 B. Point Pairs"></a>ptzsc16 D9 B. Point Pairs</h3><blockquote>
+<p>平面上有 $2n+1$ 个点, 如果两个点横坐标或者纵坐标相同则连一条边, 求删掉每个点后是否存在完美匹配. $n\leq 10^5$ .</p>
+</blockquote>
+<h3 id="ioi2022-千岛"><a href="#ioi2022-千岛" class="headerlink" title="ioi2022 千岛"></a>ioi2022 千岛</h3><blockquote>
+<p>有向图, 你走过一条边之后, 边的方向会反转. 求一个从 $1$ 出发回到 $1$ , 并且最后图和开始相同的方案. $n\leq 10^5, m\leq 2\times 10^5$ .</p>
+</blockquote>
+<p>首先用手摸出一个只要有两个环就可以了. 然后考虑不断删掉所有没有出度的点, 此时你从1开始向外走, 一定可以走到一个环.</p>
+<p>如果这个环上所有点出度都为1, 显然就寄了. 考虑若有一个不为1, 你会出去走一圈, 走到一个新的环或者直接走进原来那个环, 画图表面两种情况都可以.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/%E9%9B%86%E8%AE%AD/">集训</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/07/14/2023_sdsc/" title="2023SDSC"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-14</div><div class="title">2023SDSC</div></div></a></div><div><a href="/2022/08/01/2022_sdsc/" title="2022SDSC"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-01</div><div class="title">2022SDSC</div></div></a></div><div><a href="/2022/06/18/2022_sdjx1/" title="一轮省集1杂题选讲"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-18</div><div class="title">一轮省集1杂题选讲</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Day1-Wyj"><span class="toc-number">1.</span> <span class="toc-text">Day1-Wyj</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%B5%9B"><span class="toc-number">1.1.</span> <span class="toc-text">模拟赛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1"><span class="toc-number">1.1.1.</span> <span class="toc-text">T1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2"><span class="toc-number">1.1.2.</span> <span class="toc-text">T2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3"><span class="toc-number">1.1.3.</span> <span class="toc-text">T3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T4"><span class="toc-number">1.1.4.</span> <span class="toc-text">T4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B2%E8%AF%BE"><span class="toc-number">1.2.</span> <span class="toc-text">讲课</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#T1-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">T1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T2-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">T2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T3-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">T3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T4-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">T4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T5"><span class="toc-number">1.2.5.</span> <span class="toc-text">T5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T6"><span class="toc-number">1.2.6.</span> <span class="toc-text">T6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T7"><span class="toc-number">1.2.7.</span> <span class="toc-text">T7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T8"><span class="toc-number">1.2.8.</span> <span class="toc-text">T8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T9"><span class="toc-number">1.2.9.</span> <span class="toc-text">T9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T10"><span class="toc-number">1.2.10.</span> <span class="toc-text">T10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T11"><span class="toc-number">1.2.11.</span> <span class="toc-text">T11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T12"><span class="toc-number">1.2.12.</span> <span class="toc-text">T12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T13"><span class="toc-number">1.2.13.</span> <span class="toc-text">T13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T14"><span class="toc-number">1.2.14.</span> <span class="toc-text">T14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T15"><span class="toc-number">1.2.15.</span> <span class="toc-text">T15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#T16"><span class="toc-number">1.2.16.</span> <span class="toc-text">T16</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Day2-Qyc"><span class="toc-number">2.</span> <span class="toc-text">Day2-Qyc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%B5%9B-1"><span class="toc-number">2.1.</span> <span class="toc-text">模拟赛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E9%9D%A0%E8%BF%90%E6%B0%94"><span class="toc-number">2.1.1.</span> <span class="toc-text">组合数学靠运气</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E8%AE%BA%E4%B8%80%E9%A1%BF%E5%A5%97%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.1.2.</span> <span class="toc-text">图论一顿套模板</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Day4-Qyc"><span class="toc-number">3.</span> <span class="toc-text">Day4-Qyc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%B5%9B-2"><span class="toc-number">3.1.</span> <span class="toc-text">模拟赛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#D"><span class="toc-number">3.1.1.</span> <span class="toc-text">D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B"><span class="toc-number">3.1.2.</span> <span class="toc-text">B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">3.1.3.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A"><span class="toc-number">3.1.4.</span> <span class="toc-text">A</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B2%E8%AF%BE-1"><span class="toc-number">3.2.</span> <span class="toc-text">讲课</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1301F"><span class="toc-number">3.2.1.</span> <span class="toc-text">CF1301F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poi-2003-2004-Bramki"><span class="toc-number">3.2.2.</span> <span class="toc-text">poi 2003~2004 Bramki</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xix-open-cup-gp-of-siberia-B-Birthday"><span class="toc-number">3.2.3.</span> <span class="toc-text">xix open cup, gp of siberia B. Birthday</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ptzsc16-D6-C-Counter-manifestation"><span class="toc-number">3.2.4.</span> <span class="toc-text">ptzsc16 D6 C. Counter-manifestation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ptzsc16-D9-C-Edge-Coloring"><span class="toc-number">3.2.5.</span> <span class="toc-text">ptzsc16 D9 C. Edge Coloring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hdu%E5%A4%9A%E6%A0%A116-D7-Colosseo"><span class="toc-number">3.2.6.</span> <span class="toc-text">hdu多校16 D7 Colosseo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ptzsc16-D6-B-Colourings"><span class="toc-number">3.2.7.</span> <span class="toc-text">ptzsc16 D6 B. Colourings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xix-open-cup-gp-of-Zhejiang-H-Hamilton-Path"><span class="toc-number">3.2.8.</span> <span class="toc-text">xix open cup gp of Zhejiang H. Hamilton Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xix-open-cup-gp-of-Udmurtia-D-Road-Connectivity"><span class="toc-number">3.2.9.</span> <span class="toc-text">xix open cup gp of Udmurtia D. Road Connectivity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xix-open-cup-gp-of-Gomel-F-Six-Words"><span class="toc-number">3.2.10.</span> <span class="toc-text">xix open cup gp of Gomel F. Six Words</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poi-1999-2000-Skiers-%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number">3.2.11.</span> <span class="toc-text">poi 1999~2000 Skiers 加强版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ptzwc22-D3-G-Maximal-Subsequence"><span class="toc-number">3.2.12.</span> <span class="toc-text">ptzwc22 D3 G. Maximal Subsequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1019C-Sergey%E2%80%99s-problem"><span class="toc-number">3.2.13.</span> <span class="toc-text">CF1019C Sergey’s problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sdoi2019-R2D2A-%E7%83%AD%E9%97%B9%E7%9A%84%E8%81%9A%E4%BC%9A%E4%B8%8E%E5%B0%B4%E5%B0%AC%E7%9A%84%E8%81%9A%E4%BC%9A"><span class="toc-number">3.2.14.</span> <span class="toc-text">sdoi2019 R2D2A 热闹的聚会与尴尬的聚会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poi2003-2004-Turniej"><span class="toc-number">3.2.15.</span> <span class="toc-text">poi2003~2004 Turniej</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poi2003-2004-Kaglony"><span class="toc-number">3.2.16.</span> <span class="toc-text">poi2003~2004 Kaglony</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poi2004-2005-Dziuple"><span class="toc-number">3.2.17.</span> <span class="toc-text">poi2004~2005 Dziuple</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ptzsc16-D9-B-Point-Pairs"><span class="toc-number">3.2.18.</span> <span class="toc-text">ptzsc16 D9 B. Point Pairs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ioi2022-%E5%8D%83%E5%B2%9B"><span class="toc-number">3.2.19.</span> <span class="toc-text">ioi2022 千岛</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

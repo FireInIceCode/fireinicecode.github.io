@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CF | FireInIce's Blog</title><meta name="keywords" content="日志"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="CF1827B Range Sorting 对一个数组 ${p_i}$ 的一段区间 $[l, r]$ 排序的代价为 $r-l$ , 对整个数组 $p_i$ 排序的代价为选定若干区间并排序, 使得整个数组有序的代价之和.求 ${a_i}$ 的所有子段排序的代价之和.$n\le 3\times 10^5$  首先排序区间不交, 不然相交的用一个大的代替. 考虑贡献拆分到, 没有一个区间覆盖 $i, i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF">
+<meta property="og:url" content="https://fireinicecode.github.io/2023/05/18/cf/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="CF1827B Range Sorting 对一个数组 ${p_i}$ 的一段区间 $[l, r]$ 排序的代价为 $r-l$ , 对整个数组 $p_i$ 排序的代价为选定若干区间并排序, 使得整个数组有序的代价之和.求 ${a_i}$ 的所有子段排序的代价之和.$n\le 3\times 10^5$  首先排序区间不交, 不然相交的用一个大的代替. 考虑贡献拆分到, 没有一个区间覆盖 $i, i">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2023-05-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2023/05/18/cf/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CF',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2023-05-17T16:00:00.000Z" title="Created 2023-05-18 00:00:00">2023-05-18</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="CF1827"><a href="#CF1827" class="headerlink" title="CF1827"></a>CF1827</h2><h3 id="B-Range-Sorting"><a href="#B-Range-Sorting" class="headerlink" title="B Range Sorting"></a>B Range Sorting</h3><blockquote>
+<p>对一个数组 ${p_i}$ 的一段区间 $[l, r]$ 排序的代价为 $r-l$ , 对整个数组 $p_i$ 排序的代价为选定若干区间并排序, 使得整个数组有序的代价之和.<br>求 ${a_i}$ 的所有子段排序的代价之和.<br>$n\le 3\times 10^5$</p>
+</blockquote>
+<p>首先排序区间不交, 不然相交的用一个大的代替.</p>
+<p>考虑贡献拆分到, 没有一个区间覆盖 $i, i+1$ 之间的间隔, 等价于 $\max p_{l: i}\le \min p_{i+1: r}$, 计数 $l, r$ 组数即可</p>
+<p>直接枚举间隔+维护单调栈+双指针可以过 B1</p>
+<p>考虑一个剪枝, 扫 $[i+1: ]$ 时若 $\min p_{i+1: j}&lt;p_i$ 则显然可以跳, 复杂度可以考虑一个小根笛卡尔树, 在后半部分前缀min的单调栈上走相当于身为左儿子跳父亲.</p>
+<h3 id="C-Palindrome-Partition"><a href="#C-Palindrome-Partition" class="headerlink" title="C Palindrome Partition"></a>C Palindrome Partition</h3><blockquote>
+<p>称一个字符串是好的, 当且仅当它是一个长度为偶数的回文串或由若干长度为偶数的回文串拼接而成.</p>
+<p>给定一个长度为 $n$ 的字符串 $s$, 求有多少 $s$ 的子串是好的.</p>
+<p>$1\le n\le5\times10^5$, $s$ 仅包含小写字母.</p>
+</blockquote>
+<p>结论是, 每个字符串存在唯一的最小划分. 考虑选了一个大的偶回文串, 又选了一个小的, 那么如果小的长度不超过大的一半的情况是显然的, 而可以证明如果存在一个长度超过大的一半的, 一定存在一个不超过的: 因为回文串, 于是一定其中短的是长的border, 超过一半长的border对应一个不到一半长的周期, 而周期倍数也是周期, 所以一定可以扩到一个超过一半的周期对应一个不超过一半的border, 所以一定存在.</p>
+<p>于是只要每次选最短的长度即可. 先一遍求出所有回文串, 然后用一个单调栈维护所有中心(关于位置的后缀max)求出以每个位置结尾的最短的回文串, 然后一遍dp.</p>
+<h3 id="D-Two-Centroids"><a href="#D-Two-Centroids" class="headerlink" title="D Two Centroids"></a>D Two Centroids</h3><blockquote>
+<p>给定 $n$ 点树, 每次往一个点上挂一个叶子, 并询问此时至少加几个点才能让树有两个重心</p>
+<p>$n\le 5\times 10^5$</p>
+</blockquote>
+<p>显然要加几个点才能让树有两个重心, 就是找一条边当最后的重心, 等价于找到一个点最小化 $\vert n-siz_u-siz_u \vert$.</p>
+<p>然后这条边实际上和重心十分类似, 都是最小化删了之后剩下部分的差, 考虑去掉重心得到的连通块中大于一半的那一个和重心的连边即是这条边.</p>
+<p>于是加点时维护当前这条边, 维护子树大小即可.</p>
+<h3 id="E-Bus-Routes"><a href="#E-Bus-Routes" class="headerlink" title="E Bus Routes"></a>E Bus Routes</h3><blockquote>
+<p>给定 $n$ 个点的树和 $m$ 条路径, 求是否任意两个点都可以通过沿着走不超过两条路径的区间到达.</p>
+<p>$n, m\le 5\times 10^5$</p>
+</blockquote>
+<p>骗你一手点分治.</p>
+<p>考虑所有叶子节点, 如果它们互相可达那么显然中间的点都可以.</p>
+<p>考虑每个叶子找到一条路径内能到达的最浅点, 树合法当且仅当所有最浅点构成一条链.</p>
+<p>复杂度 $n\log n$ </p>
+<h2 id="CF1830"><a href="#CF1830" class="headerlink" title="CF1830"></a>CF1830</h2><h3 id="A-Copil-Copac-Draws-Trees"><a href="#A-Copil-Copac-Draws-Trees" class="headerlink" title="A. Copil Copac Draws Trees"></a>A. Copil Copac Draws Trees</h3><p>一眼题</p>
+<h3 id="B-The-BOSS-Can-Count-Pairs"><a href="#B-The-BOSS-Can-Count-Pairs" class="headerlink" title="B. The BOSS Can Count Pairs"></a>B. The BOSS Can Count Pairs</h3><p>根号分治一眼题.</p>
+<h3 id="C-Hyperregular-Bracket-Strings"><a href="#C-Hyperregular-Bracket-Strings" class="headerlink" title="C. Hyperregular Bracket Strings"></a>C. Hyperregular Bracket Strings</h3><blockquote>
+<p>给定 $n, k$ 和 $l_k, r_k$, 求有多少个合法括号序列满足 $\forall i, [l_i, r_i]$ 也是合法括号序列.</p>
+<p>$\sum n, \sum k\le 3\times 10^5$</p>
+</blockquote>
+<p>看到括号序列考虑前缀和. 设前缀和为 $s_n$</p>
+<p>考虑如果有两个 $l_1\le l_2\le r_1\le r_2$, 因为 $s_i\ge s_{l}&#x3D;s_{r}, i\in [l, r]$, 所以显然 $s_{l_1}&#x3D;s_{l_2}&#x3D;s_{r_1}&#x3D;s_{r_2}$, 等价于要求三个不交的区间合法.</p>
+<p>再考虑如果两个区间是包含的就更好处理了, 方案数就是子区间的合法括号方案数乘外面去掉子区间的.</p>
+<p>于是一种方案就是直接暴力模拟上面的过程, 假设两个相交的区间有边, 就是找到连通块拆了, 剩下随便做.</p>
+<p>官方题解省略了拆分的过程, 而是考虑把所有由同一子集的区间覆盖的位置拿出来, 每个子集对应的所有位置要构成括号序列.</p>
+<h3 id="D-Mex-Tree"><a href="#D-Mex-Tree" class="headerlink" title="D. Mex Tree"></a>D. Mex Tree</h3><blockquote>
+<p>给定一棵 $n$ 点树, 给边赋值 $v\in {0, 1}$, 最大化 $\sum_i \sum_j \operatorname{mex}{k\vert k \in path_{i, j}}$.</p>
+<p>$n\le 2\times 10^5$</p>
+</blockquote>
+<p>考虑一个暴力dp, $f_{i, j, 0&#x2F;1}$ 表示如果 $i$ 的父边是 $0&#x2F;1$, $i$ 子树中有 $j$ 个点到 $i$ 只经过和父边相同颜色的边的情况下, $i$ 子树内的最大贡献.</p>
+<p>转移到 $u$ 时, 只要逐个添加儿子, 维护前面有多少个点到 $u$ 只经过 $0$, 多少个只经过 $1$ 即可. 复杂度是树形dp的 $n^2$</p>
+<p>不会做了, 猜 $j$ 很小.</p>
+<p>考虑 $j$ 就是与 $i, fa_i$ 相连的同色连通块大小. 考虑二分染色构造下, $n(n-1)-ans\le 2n$, 于是在任何比二分染色优的方案中, 对于一个大小为 $s$ 的连通块, $\dfrac{s(s-1)}{2}\le 2n$. 也就是说 $s\le \sqrt 2n$</p>
+<p>胜利, 复杂度 $n\sqrt n$</p>
+<h3 id="E-Bully-Sort"><a href="#E-Bully-Sort" class="headerlink" title="E. Bully Sort"></a>E. Bully Sort</h3><blockquote>
+<p>给定一个长度为 $n$ 的排列 $p$, 定义一个”bully swap”操作如下: 找到最大元素 $p_i$(且 $p_i\neq i$), 再找到最小的 $p_j$($i&lt;j$), 交换 $p_i$ 和 $p_j$. 定义 $f(p)$ 为通过执行”bully swap”操作将 $p$ 变成有序排列的次数. 给定 $n$ 和排列 $p$, 需要处理 $q$ 个更新操作, 每个操作给出两个整数 $x$ 和 $y$, 交换 $p_x$ 和 $p_y$, 然后计算新排列 $p$ 的 $f(p)$ 值. 注意, 更新是持久的, 对排列 $p$ 的更改将应用于处理未来的更新.</p>
+<p>$n\le 5\times 10^5, q\le 5\times 10^4$</p>
+</blockquote>
+<p>注意到往左移的应该是一个后缀 $\min$, 其他的往右走, 左右是分开的.</p>
+<p>当把一个最大值 $i$ 与后面最小值 $j$ 交换时, 逆序对变化为 $2(j-i)-1$. 考虑此时最小值移动了 $j-i$ 步, 而每个最小值一共应该移动 $i-p_i$ 步, 那么 $2\text{一开始的逆序对}-2\text{\sum_i \vert i-p_i\vert}&#x3D;ans$</p>
+<p>于是问题就是动态维护逆序对了. 复杂度 $n\log^2 n$</p>
+<h3 id="F-The-Third-Grace"><a href="#F-The-Third-Grace" class="headerlink" title="F. The Third Grace"></a>F. The Third Grace</h3><blockquote>
+<p>给定一个数轴上的 $n$ 个区间和 $m$ 个点. 第 $i$ 个区间覆盖坐标 $[l_i, r_i]$, 第 $i$ 个点在坐标 $i$ 处, 并且具有系数 $p_i$.</p>
+<p>最初, 所有点都未激活. 你需要选择一些点来激活. 对于每个区间 $i$, 我们定义它的代价为:</p>
+<ul>
+<li>若区间内没有被激活的点, 则代价为 $0$;</li>
+<li>否则, 代价为在区间内坐标最大的被激活点的系数.</li>
+</ul>
+<p>你的任务是通过选择哪些点激活, 使得所有区间的代价之和最大.</p>
+</blockquote>
+<p>容易想到dp $f_i$ 表示最后一个选在 $i$, 不计算 $i$ 的贡献的情况下的最大价值. 转移就是枚举上一个点: $f_i&#x3D;\max_j f_j + W(i, j)*p_j$, 其中 $W(l, r)$ 表示覆盖 $l$ 不覆盖 $r$ 的区间个数.</p>
+<p>考虑扫描过程中 $w_l$ 表示 $W(l, i)$, $g_i$ 表示 $f_i+p_i*w_i$, $i\to i+1$ 时, 所有 $[l, i]$ 区间执行 $g_i: &#x3D;g_i+p_i$.</p>
+<p>考虑KTT, 就是区间右移函数, 单点改, 查询最大值, 复杂度2log.</p>
+<h2 id="CF1835"><a href="#CF1835" class="headerlink" title="CF1835"></a>CF1835</h2><h3 id="B-Lottery"><a href="#B-Lottery" class="headerlink" title="B. Lottery"></a>B. Lottery</h3><blockquote>
+<p>给定 $[0, m]$ 数轴上的 $n$ 个点, 现在随机一个点 $x$, 离 $x$ 最近的点 $k$ 个点被选中, 一样进优先不选你, 求 $p$ 最大化被选中的概率.</p>
+<p>$n, k\le 10^6, m\le 10^{18}$</p>
+</blockquote>
+<p>$m$ 向右扫描, 过程中维护左边最远被选中的, 右边还没被选中的, 更新一定是把左边最后一个换成右边, 一定在中点切换, 这样就只用枚举更新位置了. 加上排序复杂度1log.</p>
+<h3 id="C-Twin-Clusters"><a href="#C-Twin-Clusters" class="headerlink" title="C. Twin Clusters"></a>C. Twin Clusters</h3><blockquote>
+<p>给定 $a_n$, 求 $a, b, c, d$ 满足 $[a, b]$, $[c, d]$ 不交且异或和相等.</p>
+<p>$n&#x3D;2^{k+1}, a_i&lt; 4^k, k\le 17$</p>
+</blockquote>
+<p>显然相交直接删掉中间就是对的.</p>
+<p>发现值域和区间个数是一样的.</p>
+<p>于是期望 $\sqrt n$ 次随到相同数, 结束.</p>
+<h3 id="D-Doctor’s-Brown-Hypothesis"><a href="#D-Doctor’s-Brown-Hypothesis" class="headerlink" title="D. Doctor’s Brown Hypothesis"></a>D. Doctor’s Brown Hypothesis</h3><blockquote>
+<p>与此同时, 在征服行星中的一个星球上, 卢克正在准备参加一场非法的街头赛车比赛(考虑到他的家庭背景, 这也不奇怪). 卢克以速度表上的88英里每小时到达终点线. 下车后, 他迎来了一个新的现实. 事实证明, 战斗尚未发生, 将在恰好k个小时后开始.</p>
+<p>叛军在每个星球上放置了一艘战舰. m个单向虫洞连接着各个星球. 通过每个虫洞需要一小时时间. 帝国的将军们精确地计划了战斗, 但是他们的部队无法动态适应不断变化的情况. 因此, 叛军足以在战斗前移动一些船只以混淆敌人、获得胜利并改变银河系的命运.</p>
+<p>由于众多战略考虑, 现在我们暂时忽略, 叛军想选择两艘船来交换位置, 使它们都在整个时间(恰好k小时)内处于活动状态. 换句话说, 叛军寻找两个行星x和y, 使从x到y和从y到x的长度为k的路径存在.</p>
+<p>由于燃料供应有限, 选择一艘船也是可以接受的. 这艘船应该在经过虫洞k小时后返回其初始星球.</p>
+<p>有多少种方法可以选择完成任务的船只?</p>
+<p>$n\le 10^5, m\le 2\times 10^5$</p>
+</blockquote>
+<p>注意到, 因为两个顶点有至少两条路径, 所以必然在同一个SCC.</p>
+<p>考虑计算图中所有循环的gcd, 那么绕圈不会改变膜gcd余数. 找的方法是, 先随便找一个环, 让 $g$ 为环长, 然后不断看是否可以给 $g$ 除掉一个质因数, 判断的方法是是否存在 $[0, d-1]$ 中数染色使得每条边都满足 $color_v&#x3D;color_u+1 \pmod d$.</p>
+<p>然后开始数答案, $(i, j)$ 成立可以是 $color_i&#x3D;color_j, g\vert k$, 也可以是 $k&#x3D;g&#x2F;2$ 的情况下两个的 $color$ 差 $k&#x2F;2$</p>
+<h3 id="Old-Mobile"><a href="#Old-Mobile" class="headerlink" title="Old Mobile"></a>Old Mobile</h3><blockquote>
+<p>给定序列 $a_n, a_i \in [0, m-1]$, 有 $m+1$ 个按钮, 包括 $[0, m-1]$ 和退格, 初始不知道每个按钮代表什么, 在按下一次之后知道, 求最优策略下期望多少次按出 $a_n$<br>$n\le 10^6, m\le 10^3$</p>
+</blockquote>
+<p>容易发现只有每个按钮第一次按的时候是重要的, 设第 $i$ 个出现的数出现位置为 $p_i$, 退格的发现时间是重要的.</p>
+<p>考虑按的过程, 其中退格发现时间是重要的:</p>
+<ul>
+<li>发现之前<ul>
+<li>a. 当前串是正确的前缀<ul>
+<li>随地乱按, 遇到已知的直接敲上</li>
+</ul>
+</li>
+<li>b. 当前串是错误的前缀<ul>
+<li>随地乱按, 直到出现退格, 现在按的所有按钮都会被删</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>c. 发现之后<ul>
+<li>先消除按的那下退格的影响</li>
+<li>知道下一位直接敲上, 不知道随地乱按</li>
+</ul>
+</li>
+</ul>
+<p>考虑一个数不是第一次出现的出现, 如果在发现退格之后代价显然是 $1$, 如果在发现之前也是 $1$: 如果前面是对的我们会直接按上, 前面是错的会在都删除后重新按上. 所以只留每个数第一次出现组成一个新串, 最后再加上删掉的部分.</p>
+<p>那dp, 因为不知道下一位是否已经出现过, 考虑在按错的时候(第一次发现这个按键的时候)处理贡献, 此时分成两种情况, 如果这个按键出现在 $a$ 中, 那么贡献 $3$(按下, 删除, 在下一次碰到时按下), 否则贡献 $2$(按下, 删除), 并且这两种情况转移到位置不同. 想到 $f_{i, j, 0&#x2F;1&#x2F;2}$ 表示当前知道按钮 $i$ 个, 其中 $j$ 个在 $a$ 中并且按过且按对了, 当前状态是过程中的a&#x2F;b&#x2F;c, 的贡献期望.</p>
+<p>复杂度 $n^2$</p>
+<p>感觉这个题就是, 观察出只和第一次出现有关的性质, 费用提前计算按错的代价, 转移的时候发现现在按错了可以用按对表示于是把状态设计成 $j$ 为已知且按下的来兼顾那些后面被按下且被提前算贡献的位置.</p>
+<h2 id="CF1844"><a href="#CF1844" class="headerlink" title="CF1844"></a>CF1844</h2><h3 id="A-Subtraction-Game"><a href="#A-Subtraction-Game" class="headerlink" title="A. Subtraction Game"></a>A. Subtraction Game</h3><p>暴力</p>
+<h3 id="B-Permutations-amp-Primes"><a href="#B-Permutations-amp-Primes" class="headerlink" title="B. Permutations &amp; Primes"></a>B. Permutations &amp; Primes</h3><p>首先肯定要包含 $1$, 于是 $1$ 一定在正中间, 然后因为要让尽量多的是 $2$ 肯定把 $2$ 放在头上, 又因为包含 $2$ 的如果不包含 $3$ 也很棒就把 $3$ 放在另一头上, 而同时包含 $2, 3$ 的一定是整个序列, 值是确定的, 所以问题解决.</p>
+<h3 id="C-Particles"><a href="#C-Particles" class="headerlink" title="C. Particles"></a>C. Particles</h3><p>一开始为奇数的部分和一开始为偶数的部分是独立的, 不会相互合并, 于是枚举最后是奇数还是偶数留下. 然后显然把负数都删了.</p>
+<h3 id="D-Row-Major"><a href="#D-Row-Major" class="headerlink" title="D. Row Major"></a>D. Row Major</h3><p>暴力处理不等关系, 复杂度 $nd(n)$</p>
+<h3 id="E-Great-Grids"><a href="#E-Great-Grids" class="headerlink" title="E. Great Grids"></a>E. Great Grids</h3><p>难</p>
+<p>改为填 $0, 1, 2$, 发现对于二乘二的矩形<br>$$<br>\begin{bmatrix}<br>a &amp; b\<br>c &amp; d<br>\end{bmatrix}<br>$$<br>满足 $a+b&#x3D;c+d \pmod 3$, 也就是 $a-c&#x3D;b-d\pmod 3$</p>
+<p>于是相邻两行&#x2F;两列变化是相等的, 可以设 $c_i&#x3D;a_{i, j}-a_{i-1, j}$, $d_i&#x3D;a_{j, i}-a_{j, i-1}$, 那么若刚才小矩形中 $a$ 位于 $i, j$, 限制 $a&#x3D;d$ 就是 $c_i+d_i&#x3D;0\pmod 3$, $b&#x3D;c$ 就是 $c_{i+1}&#x3D;d_{i+1}$.</p>
+<p>问题转化为 $2n$ 个01变量($c_i, d_i\ne 0$)和若干组相等&#x2F;不等关系, 直接并查集.</p>
+<h3 id="F-Min-Cost-Permutation"><a href="#F-Min-Cost-Permutation" class="headerlink" title="F. Min Cost Permutation"></a>F. Min Cost Permutation</h3><p>如果 $c\ge 0$, 最小且字典序最小一定是升序</p>
+<p>如果 $c\le 0$, 最小但不一定字典序最小一定是降序.</p>
+<p>然后满足字典序的方法是调整, F1直接考虑把位置 $j&gt;i$ 移动到 $i$ 是否保持价值不变, 若 $f(x)&#x3D;\vert x-c\vert$ 列出式子应该是 $f(a_{j+1}-a_{j-1})+f(a_{i}-a_{j})+f(a_{j}-a_{i-1})&#x3D;f(a_i-a_{i-1})+f(a_j-a_{j-1})+f(a_{j+1}-a_j)$</p>
+<p>注意到等式中部分绝对值内正负是确定的, 拆开发现变成了 $a_i-a_{i-1}-c\ge 0$ 和 $a_j-a_{i-1}-c\ge 0$, 用set维护满足条件 $a_j$, 再用链表维护 $a$ 序列支持快速插入即可.</p>
+<h2 id="CF1858"><a href="#CF1858" class="headerlink" title="CF1858"></a>CF1858</h2><h3 id="B-The-Walkway"><a href="#B-The-Walkway" class="headerlink" title="B. The Walkway"></a>B. The Walkway</h3><p>遇到商人一定会吃, 所以每个商人前后独立, 所以直接枚举哪个商人被删了即可.</p>
+<h3 id="C-Yet-Another-Permutation-Problem"><a href="#C-Yet-Another-Permutation-Problem" class="headerlink" title="C. Yet Another Permutation Problem"></a>C. Yet Another Permutation Problem</h3><p>只有不超过一半的数才能取到, 于是每个数和两倍放到一起.</p>
+<h3 id="D-Trees-and-Segments"><a href="#D-Trees-and-Segments" class="headerlink" title="D. Trees and Segments"></a>D. Trees and Segments</h3><p>考虑对每个 $l_0$ 求对应 $l_1$, 然后拿出凸壳回答询问.</p>
+<p>对于一个 $l_0$, 枚举最终的区间, 那么剩下一个前缀一个后缀, 只考虑前缀, 要求 $f_{i, j}$ 表示前 $i$ 个点修改 $j$ 次的最大长度.</p>
+<p>那么显然让 $g_{i, j}$ 表示 $1$ 的区间强制延伸到 $i$ 的最大长度即可, 复杂度 $n^2$</p>
+<h3 id="E-Rollbacks"><a href="#E-Rollbacks" class="headerlink" title="E. Rollbacks"></a>E. Rollbacks</h3><p>直接考虑困难版强制在线.</p>
+<p>一个实现减法的考虑可以把查询范围改成序列前若干位, 于是做法就有了, 对每个数只在第一次出现位置统计, 维护序列长度 $l$, 加法则添加到 $l+1$ 位置上并存储原来这里是什么, 减法就直接改 $l$, 查询则是问 $1\ldots l$ 第一次出现的数的个数, 因为所有修改都在最后位置可以用前缀和代替树状数组.</p>
+<h2 id="CF1856"><a href="#CF1856" class="headerlink" title="CF1856"></a>CF1856</h2><h3 id="B-Good-Arrays"><a href="#B-Good-Arrays" class="headerlink" title="B. Good Arrays"></a>B. Good Arrays</h3><p>不是 $1$ 就填 $1$, 是 $1$ 就填 $2$, 最后一位全满上, 重的话, 把一个是 $2$ 的加 $1$ 这个减 $1$</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C."></a>C.</h3><p>模拟</p>
+<h3 id="D-More-Wrong"><a href="#D-More-Wrong" class="headerlink" title="D. More Wrong"></a>D. More Wrong</h3><p>考虑判定一个位置 $p$ 是 $n$ 的办法发现不会, 但是问 $[1, p]$ 和 $[1, p-1]$, 如果相等则它是 $1, p$ 的最大值.</p>
+<p>那么因为问一次看起来是个 $n^2$ 小常数代价, 那么基本是 $\log n$ 复杂度, 考虑先问出左右区间各自的最大值, 再用上面的办法判断右边的最大值是否比左边的大, 代价为 $T(n)&#x3D;2T(n&#x2F;2)+2n^2&lt;4n^2$, 于是可过.</p>
+<h3 id="E-PermuTree"><a href="#E-PermuTree" class="headerlink" title="E. PermuTree"></a>E. PermuTree</h3><p>二叉树显然就是中序遍历, 对于多叉, 就是决定哪些点在根前哪些点在根后, 最大化两边点的乘积, 可以直接上一个树形背包算可以表示出哪些东西, 复杂度 $n^2$.</p>
+<p>对于 $10^6$ 次方, 看上去subsetsum怎么也不能优化到线性或者单log啊, 考虑对于每一层的点容易做到 $\dfrac{n\sqrt n\log n}{w}$(二进制分组多重背包), 但再仔细考虑能拆出 $2^i$ 的数的集合假设为 $S_i$, 则 $\sum_{j\in S_I} j2^i \le n, \sum_j j \le \dfrac{n}{2^i}$, 又因为 $S$ 中元素互不相同所以开一个根号, 得到 $\vert \S_i\vert\le \sqrt{\dfrac{n}{2^i}}$, 求和发现收敛, 最后只有 $n\sqrt n$.</p>
+<p>再考虑整颗树的复杂度, 每一层的复杂度是 $\dfrac{n\sqrt n}{w}$, 因为如果有一个点存在大于一半的儿子那么一定把这个子树放在根前面就行了, 于是每下一层至少除以 $2$, 但是又拿出来 $n\sqrt n$ 发现这个东西对除以 $2$ 累加它又收敛了. 所以最终复杂度还是 $\dfrac{n\sqrt n}{w}$</p>
+<p>所以价值和为 $n$ 的 $01$ 背包二进制拆分是 $n\sqrt n$ 个物体! 好厉害!</p>
+<h2 id="CF1854"><a href="#CF1854" class="headerlink" title="CF1854"></a>CF1854</h2><h3 id="A-Dual"><a href="#A-Dual" class="headerlink" title="A. Dual"></a>A. Dual</h3><p>考虑只是正数怎么做: 前缀和. 于是负数就后缀和. 考虑有负有正.</p>
+<p>那么找到绝对值最大的数然后给 $n-1$ 个数都加一遍, 一共是 $2(n-1)$.</p>
+<p>继续优化, 考虑假设是加少的一边, 比如有 $9$ 个正数, $11$ 个负数是边界, 那么选取负数里最小的, 但有可能这个最小值是 $-1$, 正数最大值是 $20$, 那么需要先花 $5$ 次让负数最小值大于正数最小值, 然后最多还能花 $7$ 次, 考虑 $8&#x2F;9$ 个正数的情况, 你突然发现只要把那 $5$ 次不敢了再加上 $7$ 次, 正好可以干完所有负数变成正的. 也就是总有一边是可以的, 于是就做完了.</p>
+<h3 id="B-Earn-or-Unlock"><a href="#B-Earn-or-Unlock" class="headerlink" title="B. Earn or Unlock"></a>B. Earn or Unlock</h3><p>就是要从所有牌中选出若干牌用于摸牌.</p>
+<p>那么设 $f_{i, j}$ 表示前 $i$ 张牌, 用于摸牌的牌和为 $j$ 是否可行, 这样可以转移到 $f_{i+1, j}$, 或者转移到 $f_{i+1, j+a_i}$, 条件是 $j&gt;&#x3D;i$. 发现这个容易bitset优化, 统计答案就是找到 $f_{i, j}&#x3D;1, i&#x3D;j$ 的地方了.</p>
+<h3 id="C-Expected-Destruction"><a href="#C-Expected-Destruction" class="headerlink" title="C. Expected Destruction"></a>C. Expected Destruction</h3><p>考虑计算每个 $x$ 实际走到了哪. 显然如果 $i$ 走到 $p_i$ 没了, 那么最后答案就会加上 $p_i-i$.</p>
+<p>那么问题就成了如何求 $i$ 到 $p_i$ 的概率, 可以只考虑它和一开始它前面那个元素, 对于任意一个操作序列, 我们总可以抽出对这两个元素的操作考虑, 此时下一位是谁都是 $\dfrac{1}{2}$, 设 $f_{i, j}$ 表示自己走到 $i$, 对方走到 $j$ 的概率即可统计答案了. 这样是 $nm^2$</p>
+<p>仍然是观察数数中独立的性质.</p>
+<h3 id="E-Game-Bundles"><a href="#E-Game-Bundles" class="headerlink" title="E. Game Bundles"></a>E. Game Bundles</h3><p>因为子集和非常多, 能看出可能的解应该非常多, 而这个问题看上去很没有靠谱的做法, 考虑乱搞.</p>
+<p>于是想到我放 $x$ 个 $1$, 再放若干个 $&lt;60-x$ 的数, 这样贡献只能由 $1$ 和一个其他数产生, 也就是用 $\binom{x}{i}$ 去凑 $m$, 于是从小到大枚举 $x$, 爆搜剩下的数, 加上朴素的可行性最优性剪枝, 发现 testcase 46 搜不出来. 问题基本上是, 假设用了大量的 $1$, 那么搜到细节处时微调的能力就很弱了, 因为一调就至少动 $x-1$, 导致会和 $m$ 很接近但差一点点,</p>
+<p>于是再加上 $2$, 放 $x$ 个 $1$ 和 $2$ 满足它们的和小于 $60$, dp算出 $f_i$ 表示用 $1, 2$ 凑出 $i$ 的方案数, 但是枚举 $1, 2$ 太慢了, 直接枚举总数 $x$, 随一个 $2$ 的个数, 可以搜出只有 $1$ 的部分. 但仍然会TLE.</p>
+<p>最后想到, 从小往大枚举 $x$ 是很劣的, 因为刚刚可行(存在一种方案大于 $m$)的部分在 $m$ 附近的解的数量比较少, 所以改成从大到小枚举 $x$, 通过.</p>
+<h2 id="CF1849"><a href="#CF1849" class="headerlink" title="CF1849"></a>CF1849</h2><h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><p>直接用集合hash, 加法就能过.</p>
+<p>但字符串hash方式被卡了, 可能也因为没随素数</p>
+<p>好吧正解就是等效的缩小到实际发生排序的区间, 任意两个实际排序区间不同的都不同</p>
+<h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>简单dp</p>
+<p>还可以贪心, 先染非0段, 再尝试干掉0段</p>
+<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>这种东西一律无脑扫描线, 对于某个 $r$ 维护, 区间最大值, 最小值分别是两个单调栈, 就是要求每个单调栈最小值距离他前面第一个最大值单调栈元素的距离和, 考虑用一个并查集维护连到一个最大值上的所有最小值, 那么新来一个最小值就是连到最大值栈顶, 弹出的时候每次并查集查对应元素减去贡献, 新来一个最大值就若干次弹栈, 每次合并当前集合到前面并计算贡献. 这样复杂度是 $n\alpha(n)$. 然后其实这个并查集注意到每个集合一定是连续的一段, 于是这种并查集可以做到线性, 考虑按 $w$ 分块, 块间开一个并查集, 块内直接位运算找lowbit.</p>
+<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>不断把最小值的点对加边直到不是二分图, 等价于找一个最小异或生成树, 右转去CF888G</p>
+<h2 id="CF1852"><a href="#CF1852" class="headerlink" title="CF1852"></a>CF1852</h2><h3 id="A-Ntarsis’-Set"><a href="#A-Ntarsis’-Set" class="headerlink" title="A. Ntarsis’ Set"></a>A. Ntarsis’ Set</h3><blockquote>
+<p>有一个集合, 初始状态里面有数字 $1$ 、 $2$ 、 $3$ 、 $4$ 、 $5$ 、. . . . . . 、 $10^{1000}$.</p>
+<p>现在给你一个长度为 $n$ 数组 $a (1\leq a_i \leq 10^9 )$, 要进行 $k$ 次操作, 每次操作将当前集合中第 $a_1$ 小、第 $a_2$ 小、. . . . . . 、第 $a_n$ 小的数同时移除.</p>
+<p>请问 $k$ 次操作之后, 最小的数是多少.</p>
+</blockquote>
+<p>容易发现每个数往后删的部分是好统计的, 因为 $a_i$ 不会影响 $a_j$ 若 $i&lt;j$, 于是直接从后往前就容易得到暴力</p>
+<p>然后二分, 对于给定的答案, 对每个 $a_i$ 统计它删了 $[1, x]$ 的多少个数, 判断是否删空了即可.</p>
+<h3 id="B-Imbalanced-Arrays"><a href="#B-Imbalanced-Arrays" class="headerlink" title="B. Imbalanced Arrays"></a>B. Imbalanced Arrays</h3><blockquote>
+<p>对于一个给定的长度为 $n$ 的数组 $A$, 定义一个长度为 $n$ 的数组 $B$ 是不平衡的当且仅当以下全部条件满足:</p>
+<ul>
+<li><p>$-n \leq B_{i} \leq n$ 且 $B_{i} \ne 0$. 即每个数在 $[-n, n]$ 内且不为 $0$.</p>
+</li>
+<li><p>$\forall i, j \in [1, n], B_{i} + B_{j} \neq 0$. 即数组内不存在一对相反数.</p>
+</li>
+<li><p>$\forall i \in [1, n], \sum_{j &#x3D; 1}^{n} [ \left (B_{i} + B_{j} \right) &gt; 0] &#x3D; A_{i}$. 即对于任意的 $i$, 数组中与 $B_{i}$ 和大于 $0$ 的数的个数恰好为 $A_{i}$. **注意: 这里需要计算本身. 也即 $i$ 与 $j$ 可以相等. **</p>
+</li>
+</ul>
+<p>请构造长度为 $n$ 的不平衡序列.</p>
+</blockquote>
+<p>$b_i$ 要满足 $b_j&gt;-b_i$ 的有恰好 $a_i$ 个, 那么显然 $a_i$ 越大, $-b_i$ 就要越小, 于是得到结论若 $a_i&lt;a_j$, 则 $b_i&lt;b_j$. 对于相等的 $a_i$ 显然可以随意钦定顺序.</p>
+<p>因为有了 $b$ 的顺序, 可以确定每个 $a_i$ 的 $-b_i\in [b_{n-a_i}, b_{n-a_i+1}]$, 属于同一个区间的 $-b_i$ 又因为已知 $b_i$ 的大小关系而可以确定, 于是我们得到了一条包含 $b_i$ 和 $-b_i$ 的大小关系的长 $2n$ 的不等式链, 因为一共只有 $2n$ 个数, 只要从小到大对应赋值, 然后判定是否对应位置为相反数即可.</p>
+<h3 id="C-Ina-of-the-Mountain"><a href="#C-Ina-of-the-Mountain" class="headerlink" title="C. Ina of the Mountain"></a>C. Ina of the Mountain</h3><p>首先, 如果没有膜 $k$ 的话这是简单题, 答案是所有正的差分的和.</p>
+<p>那么考虑膜 $k$ 之后, 相当于每个位置需要被减 $km_i+a_i$ 次. 考虑每个位置的贡献, 则 $i, i+1$ 的贡献就是 $\max (a_{i+1}-a_i+k(m_{i+1}-m_i), 0)$, 考虑 $m$ 的差分数组 $c$, 发现要保证 $\sum c_i&#x3D;0$(认为 $m_0&#x3D;0$), 不然会忽略一开始 $a_1$ 处的贡献. 那么直接成对贡献, 当扫到 $i$ 的时候, 要么 $c_i&#x3D;0$, 要么就要从前面找到一个位置让它的 $c_i$ 减 $1$, 注意到 $\vert c_i\vert&gt;1$ 一定不好, 于是每个地方只贡献一次, 又发现减 $1$ 的贡献和加一位置无关, 于是直接开堆维护.</p>
+<p>有时dp第二维状态开不下可以像这样成对贡献的转移.</p>
+<h3 id="D-Miriany-and-Matchstick"><a href="#D-Miriany-and-Matchstick" class="headerlink" title="D. Miriany and Matchstick"></a>D. Miriany and Matchstick</h3><p>容易想到一个朴素dp, $f_{i, j, 0&#x2F;1}$ 表示前 $i$ 个位置, 形成 $j$ 个对, 最后结尾是 $A&#x2F;B$ 是否可行.</p>
+<p>然后发现 $f_{i, 0&#x2F;1}$, 为 $1$ 的 $j$ 是一个区间扣去一个点. 考虑归纳证明, 若 $f_{i-1}$ 满足条件, 那么转移的时候是 $f_{i, j, c}&#x3D;f_{i-1, j-[c&#x3D;0]-[c\ne a_i], 1} \operatorname{or} f_{i-1, j-[c&#x3D;1]-[c\ne a_i], 0}$, 那么若要 $f_{i-1, 0}$ 对应的孔没被堵上, 必须要对应一个为 $0$ 的 $f_{i-1, j, 1}$, 这个位置如果是区间外那没有关系, 如果也是孔则正好过来还是一个孔, 问题解决.</p>
+<p>于是直接dp就好了! 但这个结论好厉害! 我觉得应该是先猜是区间, 然后打个表发现不是但没关系.</p>
+<h2 id="CF1859-Codeforces-Round-892-Div-2"><a href="#CF1859-Codeforces-Round-892-Div-2" class="headerlink" title="CF1859 Codeforces Round 892 (Div. 2)"></a>CF1859 Codeforces Round 892 (Div. 2)</h2><h3 id="A-United-We-Stand"><a href="#A-United-We-Stand" class="headerlink" title="A. United We Stand"></a>A. United We Stand</h3><p>最大值放第一数组, 其他的都去第二</p>
+<h3 id="B-Olya-and-Game-with-Arrays"><a href="#B-Olya-and-Game-with-Arrays" class="headerlink" title="B. Olya and Game with Arrays"></a>B. Olya and Game with Arrays</h3><p>移动不是最小值的没有意义. 每个最小值尽量去找次小值比它小的移动, 这样没有影响, 然后剩下的你要希望空出的次小最大, 于是全部移动向次小最小的里面.</p>
+<p>然后你仔细想想, 后面那部分其实就是, 把所有最小值扔到次小最小的里面.</p>
+<h3 id="C-Another-Permutation-Problem"><a href="#C-Another-Permutation-Problem" class="headerlink" title="C. Another Permutation Problem"></a>C. Another Permutation Problem</h3><p>最暴力的, 直接枚举 $ij$ 是最大值, 确定一个, 剩下的从大到小把每个数放到能放的最大位置上. 那要支持: ban掉一个点, 查找一个点往前能用的位置, 可以并查集整一个, 看起来是没啥问题.</p>
+<p>然后比较厉害的: 打表发现是答案是 $1-n$ 的一个前缀加一个翻转了的后缀, 然后好像还是凸的()</p>
+<h3 id="D-Andrey-and-Escape-from-Capygrad"><a href="#D-Andrey-and-Escape-from-Capygrad" class="headerlink" title="D. Andrey and Escape from Capygrad"></a>D. Andrey and Escape from Capygrad</h3><p>那这个完全可以线段树建图, 然后我直接从后往前走反图把所有能到的点打上标记. 好吧你这么建图多余, 注意到你不可能往回走(因为大包含小, 不可能出现需要往回才能到更远的地方的情况), 那你从后往前就是线段树进行区间取max-单点查.</p>
+<h3 id="E-Maximum-Monogonosity"><a href="#E-Maximum-Monogonosity" class="headerlink" title="E. Maximum Monogonosity"></a>E. Maximum Monogonosity</h3><p>朴素dp是 $f_{i, j}$ 表示前 $i$ 个总长为 $j$, 转移 $O(k)$, 爆炸. 回忆一个性质说绝对值外面是max可以直接拆成4个, 那么就成了 $f_{i, j}&#x3D;\max f_{k, j-i+k}+a_i+a_{k+1}-b_i-b_{k+1}$ 等四种情况, 然后发现能转移过来的是一条斜线, 里面就成了 $f(j-i, k)+sgn_1 a_{k+1}+sgn_2 b_{k+1}$ 的形式, 那么直接把这玩意记录下来就可以 $O(1)$ 转移了, 设 $g_{x, 0&#x2F;1&#x2F;2&#x2F;3}$ 表示 $j-i&#x3D;x$, 且 $sgn_1, sgn_2$ 的情况是哪种的里面的值即可.</p>
+<p>要点是拆绝对值和观察 $f$.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2022/07/02/count/" title="数数"><img class="cover" src="/img/2022-11-23-20-33-31-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">数数</div></div></a></div><div><a href="/2022/05/18/dp/" title="dp选做"><img class="cover" src="/img/2022-11-23-20-19-47-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-18</div><div class="title">dp选做</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1827"><span class="toc-number">1.</span> <span class="toc-text">CF1827</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Range-Sorting"><span class="toc-number">1.1.</span> <span class="toc-text">B Range Sorting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Palindrome-Partition"><span class="toc-number">1.2.</span> <span class="toc-text">C Palindrome Partition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Two-Centroids"><span class="toc-number">1.3.</span> <span class="toc-text">D Two Centroids</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Bus-Routes"><span class="toc-number">1.4.</span> <span class="toc-text">E Bus Routes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1830"><span class="toc-number">2.</span> <span class="toc-text">CF1830</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Copil-Copac-Draws-Trees"><span class="toc-number">2.1.</span> <span class="toc-text">A. Copil Copac Draws Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-The-BOSS-Can-Count-Pairs"><span class="toc-number">2.2.</span> <span class="toc-text">B. The BOSS Can Count Pairs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Hyperregular-Bracket-Strings"><span class="toc-number">2.3.</span> <span class="toc-text">C. Hyperregular Bracket Strings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Mex-Tree"><span class="toc-number">2.4.</span> <span class="toc-text">D. Mex Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Bully-Sort"><span class="toc-number">2.5.</span> <span class="toc-text">E. Bully Sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-The-Third-Grace"><span class="toc-number">2.6.</span> <span class="toc-text">F. The Third Grace</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1835"><span class="toc-number">3.</span> <span class="toc-text">CF1835</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Lottery"><span class="toc-number">3.1.</span> <span class="toc-text">B. Lottery</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Twin-Clusters"><span class="toc-number">3.2.</span> <span class="toc-text">C. Twin Clusters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Doctor%E2%80%99s-Brown-Hypothesis"><span class="toc-number">3.3.</span> <span class="toc-text">D. Doctor’s Brown Hypothesis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Old-Mobile"><span class="toc-number">3.4.</span> <span class="toc-text">Old Mobile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1844"><span class="toc-number">4.</span> <span class="toc-text">CF1844</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Subtraction-Game"><span class="toc-number">4.1.</span> <span class="toc-text">A. Subtraction Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Permutations-amp-Primes"><span class="toc-number">4.2.</span> <span class="toc-text">B. Permutations &amp; Primes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Particles"><span class="toc-number">4.3.</span> <span class="toc-text">C. Particles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Row-Major"><span class="toc-number">4.4.</span> <span class="toc-text">D. Row Major</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Great-Grids"><span class="toc-number">4.5.</span> <span class="toc-text">E. Great Grids</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Min-Cost-Permutation"><span class="toc-number">4.6.</span> <span class="toc-text">F. Min Cost Permutation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1858"><span class="toc-number">5.</span> <span class="toc-text">CF1858</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-The-Walkway"><span class="toc-number">5.1.</span> <span class="toc-text">B. The Walkway</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Yet-Another-Permutation-Problem"><span class="toc-number">5.2.</span> <span class="toc-text">C. Yet Another Permutation Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Trees-and-Segments"><span class="toc-number">5.3.</span> <span class="toc-text">D. Trees and Segments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Rollbacks"><span class="toc-number">5.4.</span> <span class="toc-text">E. Rollbacks</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1856"><span class="toc-number">6.</span> <span class="toc-text">CF1856</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Good-Arrays"><span class="toc-number">6.1.</span> <span class="toc-text">B. Good Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">6.2.</span> <span class="toc-text">C.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-More-Wrong"><span class="toc-number">6.3.</span> <span class="toc-text">D. More Wrong</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-PermuTree"><span class="toc-number">6.4.</span> <span class="toc-text">E. PermuTree</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1854"><span class="toc-number">7.</span> <span class="toc-text">CF1854</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Dual"><span class="toc-number">7.1.</span> <span class="toc-text">A. Dual</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Earn-or-Unlock"><span class="toc-number">7.2.</span> <span class="toc-text">B. Earn or Unlock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Expected-Destruction"><span class="toc-number">7.3.</span> <span class="toc-text">C. Expected Destruction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Game-Bundles"><span class="toc-number">7.4.</span> <span class="toc-text">E. Game Bundles</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1849"><span class="toc-number">8.</span> <span class="toc-text">CF1849</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-1"><span class="toc-number">8.1.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D"><span class="toc-number">8.2.</span> <span class="toc-text">D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E"><span class="toc-number">8.3.</span> <span class="toc-text">E</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F"><span class="toc-number">8.4.</span> <span class="toc-text">F</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1852"><span class="toc-number">9.</span> <span class="toc-text">CF1852</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Ntarsis%E2%80%99-Set"><span class="toc-number">9.1.</span> <span class="toc-text">A. Ntarsis’ Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Imbalanced-Arrays"><span class="toc-number">9.2.</span> <span class="toc-text">B. Imbalanced Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Ina-of-the-Mountain"><span class="toc-number">9.3.</span> <span class="toc-text">C. Ina of the Mountain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Miriany-and-Matchstick"><span class="toc-number">9.4.</span> <span class="toc-text">D. Miriany and Matchstick</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CF1859-Codeforces-Round-892-Div-2"><span class="toc-number">10.</span> <span class="toc-text">CF1859 Codeforces Round 892 (Div. 2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-United-We-Stand"><span class="toc-number">10.1.</span> <span class="toc-text">A. United We Stand</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Olya-and-Game-with-Arrays"><span class="toc-number">10.2.</span> <span class="toc-text">B. Olya and Game with Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Another-Permutation-Problem"><span class="toc-number">10.3.</span> <span class="toc-text">C. Another Permutation Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Andrey-and-Escape-from-Capygrad"><span class="toc-number">10.4.</span> <span class="toc-text">D. Andrey and Escape from Capygrad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Maximum-Monogonosity"><span class="toc-number">10.5.</span> <span class="toc-text">E. Maximum Monogonosity</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

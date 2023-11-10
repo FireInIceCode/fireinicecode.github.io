@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网络流题目选做 | FireInIce's Blog</title><meta name="keywords" content="日志,图论,网络流"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="网络流选做建图套路深 费用流边的描述用 $u \stackrel{f, c}{\longrightarrow} v$ , $f, c$ 分别是流量和费用. 题目P5458 水晶 [网络流] [最小割]对于水晶, 染色时能量源染成一种, 能量源周围六个点间隔着染两种, 发现若共振则一定三种颜色都包含且相邻, 同色格子互不影响 于是可以每个能量源拆三个点, 分别表示三种颜色删去哪一种, 串联起来跑最小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流题目选做">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/06/08/flow/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="网络流选做建图套路深 费用流边的描述用 $u \stackrel{f, c}{\longrightarrow} v$ , $f, c$ 分别是流量和费用. 题目P5458 水晶 [网络流] [最小割]对于水晶, 染色时能量源染成一种, 能量源周围六个点间隔着染两种, 发现若共振则一定三种颜色都包含且相邻, 同色格子互不影响 于是可以每个能量源拆三个点, 分别表示三种颜色删去哪一种, 串联起来跑最小">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2022-06-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="网络流">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2022/06/08/flow/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络流题目选做',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络流题目选做</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2022-06-07T16:00:00.000Z" title="Created 2022-06-08 00:00:00">2022-06-08</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="网络流选做"><a href="#网络流选做" class="headerlink" title="网络流选做"></a>网络流选做</h1><p>建图套路深</p>
+<p>费用流边的描述用 $u \stackrel{f, c}{\longrightarrow} v$ , $f, c$ 分别是流量和费用.</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="P5458-水晶-网络流-最小割"><a href="#P5458-水晶-网络流-最小割" class="headerlink" title="P5458 水晶 [网络流] [最小割]"></a>P5458 水晶 [网络流] [最小割]</h3><p>对于水晶, 染色时能量源染成一种, 能量源周围六个点间隔着染两种, 发现若共振则一定三种颜色都包含且相邻, 同色格子互不影响</p>
+<p>于是可以每个能量源拆三个点, 分别表示三种颜色删去哪一种, 串联起来跑最小割, 表示从这三种任意删一个</p>
+<h3 id="P2774-方格取数问题-网络流-最小割"><a href="#P2774-方格取数问题-网络流-最小割" class="headerlink" title="P2774 方格取数问题 [网络流] [最小割]"></a>P2774 方格取数问题 [网络流] [最小割]</h3><p>黑白染色, 做成二分图, 两种颜色各一边.</p>
+<p>对于一个格子, 向源点或汇点连自己点权的边(取决于自己在哪一边), 向周围四个格子连容量inf的边, 跑最小割即可</p>
+<p>[思考] : 限制明显而许可(可以这么做)不明显时最小割</p>
+<h3 id="P5038-奇怪的游戏-网络流-思维"><a href="#P5038-奇怪的游戏-网络流-思维" class="headerlink" title="P5038 奇怪的游戏 [网络流] [思维]"></a>P5038 奇怪的游戏 [网络流] [思维]</h3><p>看到相邻的两个格子想到黑白染色后一定一黑一白</p>
+<p>于是黑白染色, 统计黑, 白色格子个数和权值和, 记为 $cnt_b, cnt_w, sum_b, sum_w$ , $sum_b-sum_w$ 始终不变 设最后所有数都变成x, 接下来分两种情况</p>
+<ul>
+<li><p>如果黑白格子数量相同, 因为权值差不变, 如果一开始不相等可以直接特判掉, 所以 $sum_u&#x3D;sum_v$ 发现两者相同的情况下, 棋盘的长或宽一定有一个是偶数, 所以可以用相邻格子平铺使x+1, 所以答案具有单调性, 可二分</p>
+</li>
+<li><p>如果不同, 则 $sum_b - sum_w &#x3D; x\times(cnt_b - cnt_w)$ , 解释一下就是因为操作时两者差始终不变, 所以一开始的差等于结束的差, 解出x后也要判断一下</p>
+</li>
+</ul>
+<p>于是要考虑如何判断是否可行, 对每个格子算出还剩几次操作到 x, 然后染色后分成两边, 向源点汇点连自己剩余次数的边, 中间连inf, 判断最大流是否流满</p>
+<h3 id="P4553-80人环游世界-网络流"><a href="#P4553-80人环游世界-网络流" class="headerlink" title="P4553 80人环游世界 [网络流]"></a>P4553 80人环游世界 [网络流]</h3><p>每个点拆入点出点, 之间连上下界都是经过次数的边, 费用为0, 然后点之间正常连, 跑费用流</p>
+<h3 id="P4043-支线剧情-网络流"><a href="#P4043-支线剧情-网络流" class="headerlink" title="P4043 支线剧情 [网络流]"></a>P4043 支线剧情 [网络流]</h3><p>上下界网络流板子, 下界为1, 上界inf</p>
+<p>上下界网络流方式是, 每个边流量设成上界-下界, 然后对于每个点出边下界和和入边下节和之差进行补流, 最后还要记得给汇点到源点连一条流量inf的边</p>
+<h3 id="P1646-happiness-网络流-最小割"><a href="#P1646-happiness-网络流-最小割" class="headerlink" title="P1646 happiness [网络流] [最小割]"></a>P1646 happiness [网络流] [最小割]</h3><p>建两个点表示文理, 从文科连到同学连到理科, 对于两个人同时选一科的情况建一个点, 一边连文理, 流量为共同选这个科目的开心程度, 另一边连这两个人, 边权为inf, 最后跑最小割</p>
+<h3 id="CF277E-Binary-Tree-on-Plane-网络流"><a href="#CF277E-Binary-Tree-on-Plane-网络流" class="headerlink" title="CF277E Binary Tree on Plane [网络流]"></a>CF277E Binary Tree on Plane [网络流]</h3><p>拆点成u1, u2, 每个点u1向所有可能的儿子的u2连容量1, 费用为距离, 源点像所有u1连容量2, 所有u2向汇点连容量1, 费用为0, 跑最小费用流.</p>
+<h3 id="CF103E-Buying-Sets-网络流-最小割"><a href="#CF103E-Buying-Sets-网络流-最小割" class="headerlink" title="CF103E Buying Sets [网络流] [最小割]"></a>CF103E Buying Sets [网络流] [最小割]</h3><blockquote>
+<p>有一个大小为 $n$ 的全集, 每个元素是一个数 $a_i$ , 有 $n$ 个子集. 题目保证任意 $k$ 个子集的并的大小 $\ge k$ .<br>每个子集有一个可正可负的权值, 你需要选出一些子集使得这些子集并的大小等于子集个数, 且所选子集的权值和最小. 可以为空集.<br>$n\le 300$ , $a_i\in [1, n]$</p>
+</blockquote>
+<p>好厉害的网络流!</p>
+<p>当你试着搞费用流模型建图, 你会发现边需要是阶跃函数, 就寄, 此时如果确实是网络流题多半是最小割题了. 但这个题还是见过的极为巧妙的最小割问题.</p>
+<p>建图是源点向所有表示集合的点连 $inf-a_i$ , 集合向元素连 $inf$ 的边, $inf$ 向汇点连 $inf$ 的边. 并且选择一个集合是保留它的边, 选择一个数字是断掉它的边, 最后局面就是选了的集合里所有数字被断掉.</p>
+<p>那么考虑这么做能保证集合数量等于元素数量, 由于每条边都加 $inf$ , 我们会断尽量少的边, 再考虑可以直接断所有右边的数字, 所以我们一定只断 $n$ 条边, 于是选的数字的个数和不选的集合的个数总和是 $n$ , 那么选的数字的个数就是选的集合的个数了.</p>
+<p>十分巧妙啊!</p>
+<p>要点主要是, 想到最小割后要想到全集是一种方案, 且不选集合的个数和选的数字的个数一定, 那么你很容易想到都加 $inf$ 这一步, 然后再针对构造.</p>
+<h3 id="CF132E-Bits-of-merry-old-England-时间轴建图-最大流-网络流"><a href="#CF132E-Bits-of-merry-old-England-时间轴建图-最大流-网络流" class="headerlink" title="CF132E Bits of merry old England [时间轴建图] [最大流] [网络流]"></a>CF132E Bits of merry old England [时间轴建图] [最大流] [网络流]</h3><blockquote>
+<p>一个有 $n$ 个数组成的序列 $a$ , 你有 $m$ 个寄存器, 每次你可以给一个寄存器赋值为 $x$ , 代价为 $\operatorname{popcount}{x}$ , 或者输出一个寄存器, 代价为 $0$ , 求最小的代价按顺序输出这个序列. 输出方案.<br>$n\le 250, m\le 26$</p>
+</blockquote>
+<p>极为厉害的网络流.</p>
+<p>只能对时间建图. 并且有个贡献消除.</p>
+<p>变量可以一直保留这件事十分毒瘤, 考虑变量不能保留, 但如果一个变量从上一次保留到这里, 我们在后面减去这一次赋值的代价.</p>
+<p>看这个建图:</p>
+<p><img src="/img/2022-10-12-17-22-00-image.png" alt="buildgraph"></p>
+<ul>
+<li>对每个 $a_i$ 建立两个点 $u_i, u_i’$ .<ul>
+<li>$u_i\stackrel{1, 0}{\longrightarrow}u_i’$ 表示输出 $a_i$ 这一变量</li>
+<li>$s\stackrel{1, \operatorname{popcount}(a_i)}{\longrightarrow} u_i$ 表示这一时刻你进行赋值 $1$ 个变量, 花费 $1$ 的代价.</li>
+<li>$u_i’\stackrel{1, 0}{\longrightarrow} t$ 表示你输出 $1$ 个变量.</li>
+</ul>
+</li>
+<li>对每个 $u_i\stackrel{m-1, 0}{\longrightarrow} u_{i+1}$ , 表示上一时刻赋值的变量中有 $m-1$ 个.</li>
+<li>对每个 $u_i$ , 设 $j$ 是最大的满足 $a_j&#x3D;a_i$ , 连边 $a_i\stackrel{1, -\operatorname{popcount}(a_i)}{\longrightarrow}a_j$ . 表示上一次在 $j$ 处没有流 $u_j\to u_j’$ , 而是顺着 $u_i\to u_{i+1}$ 的边一直流到 $u_j$ , 再从这里回去流 $u_j’\to t$ , 就相当于把 $j$ 时刻的一个变量一直保留到现在.</li>
+</ul>
+<p>然后就做完了, 输出方案的时候哪些 $u_i\to u_j’$ 的边被流了就能知道是不是被保留了.</p>
+<p>太神仙了网络流.</p>
+<h3 id="CF164C-Machine-Programming-时间轴建图-最大流-费用流-网络流"><a href="#CF164C-Machine-Programming-时间轴建图-最大流-费用流-网络流" class="headerlink" title="CF164C Machine Programming [时间轴建图] [最大流] [费用流] [网络流]"></a>CF164C Machine Programming [时间轴建图] [最大流] [费用流] [网络流]</h3><blockquote>
+<p>直线上 $n$ 线段 $[l_i, r_i]$ , 每个线段有价值 $c_i$ , 你要选择若干条线段, 可以重叠, 但一点处最多有 $k$ 个区间重叠<br>$n\le 1000, k\le 50$</p>
+</blockquote>
+<p>居然没见过这类网络流. . . 见识少了. 但一旦提示网络流, 想到时间轴建图还挺简单的. (可能是受上面那题影响? )</p>
+<p>时间轴建图, 那么一个点最多有 $k$ 个重叠可以看作最多有 $k$ 个区间左右端点分属区间两侧, 那么直接每个时刻建一个点, 用 $(k, 0)$ 的边串起来, 对每个区间 $r_i\stackrel{1, c_i}{\longrightarrow}l_i$ , 跑最大费用任意流, 但因为权值全是正的所以跑最大流就行了.</p>
+<h3 id="P3980-NOI2008-志愿者招募-网络流-时间轴建图"><a href="#P3980-NOI2008-志愿者招募-网络流-时间轴建图" class="headerlink" title="P3980 NOI2008 志愿者招募 [网络流] [时间轴建图]"></a>P3980 NOI2008 志愿者招募 [网络流] [时间轴建图]</h3><p>其实很早以前就做过了, 不过qyc今天在看这个题学网络流.</p>
+<blockquote>
+<p>给定长 $n$ 的数轴和序列 $a$ , 有 $m$ 种区间 $[l_i, r_i]$ , 费用是 $c_i$ , 求最小代价使得位置 $i$ 至少被 $a_i$ 个区间覆盖.</p>
+<p>$n\le 1000, m\le 10^4$</p>
+</blockquote>
+<p>考虑时间轴建图, 每个区间从 $r_i\stackrel{1, c_i}{\longrightarrow} l_i$ , 每个点向下一个点连 $(inf, 0)$ , 每个点拆成两个, 内部连 $(a_i, 0)$ , 就做完了.</p>
+<p>qyc: “<strong>这种建图本质上是用一个环表示一个区间</strong>“</p>
+<h3 id="ABC193F-Zebraness"><a href="#ABC193F-Zebraness" class="headerlink" title="[ABC193F] Zebraness"></a>[ABC193F] Zebraness</h3><blockquote>
+<p>给你一个 $n\times n$ 的黑白矩阵, 格子 $(i, j)$ 可能是白的(W), 黑的(W), 不确定(? ). 现在让你确定每个不确定格子的黑白, 使得两边颜色不一样的边数最大, 输出这个最大值. (这里的边指的是每个格子的边)<br>$n\le 100$</p>
+</blockquote>
+<p>小清新网络流, 来自dwt的vp.</p>
+<p>容易想到最小割建图.</p>
+<p>然后你只需要把相邻各自颜色反向就可以把很容易做的相同限制(若 $u\in S$, 则 $v\in S$)变成相反限制(若 $u\in S$ 则 $v\in T$)</p>
+<h2 id="qyc讲课"><a href="#qyc讲课" class="headerlink" title="qyc讲课"></a>qyc讲课</h2><h3 id="建图"><a href="#建图" class="headerlink" title="建图"></a>建图</h3><h4 id="CTT22001177-无限之环"><a href="#CTT22001177-无限之环" class="headerlink" title="CTT22001177 无限之环"></a>CTT22001177 无限之环</h4><p>提示网络流题后, 容易想到相邻两个格子接头染色,</p>
+<p>于是每个格子建表示向上下左右四个方向接头的四个点, 然后逐个分析出每个管子的边权即可.</p>
+<h4 id="CF1404E-Bricks"><a href="#CF1404E-Bricks" class="headerlink" title="CF1404E Bricks"></a>CF1404E Bricks</h4><p>注意到, 分析每个格子的边, 一个格子的邻边不能同时在同一个矩形内, 若一条边两边有一个格子是白色那就不能选, 于是就在每个格子内建边, 选的是二分图最大独立集.</p>
+<h3 id="循环流"><a href="#循环流" class="headerlink" title="循环流"></a>循环流</h3><p>做法是, 先强制满流正边(相当于上下界网络流预先流下界), 然后超级源和超级汇向每个点连边平衡, 此部分流量用来抵去所有超额部分, 这部分一定要满流才有解. (就是上下界弱化版啊).</p>
+<h4 id="志愿者招募"><a href="#志愿者招募" class="headerlink" title="志愿者招募"></a>志愿者招募</h4><p>have done</p>
+<h4 id="ARC137E"><a href="#ARC137E" class="headerlink" title="ARC137E"></a>ARC137E</h4><p>循环流, 一条边表示一个位置, 一条反向边表示一个区间(类似上一个志愿者招募), 然后对 $a_i$ 取min是十分简单的, 两条费用不同的边即可.</p>
+<h4 id="HNOI2013-切糕"><a href="#HNOI2013-切糕" class="headerlink" title="HNOI2013 切糕"></a>HNOI2013 切糕</h4><p>对每个格子建一列点, 割掉第 $i$ 条边表示第 $i$ 个点, 然后黑白染色, 相邻两个格子, 在两列格子跨度为 $d$ 的连 $inf$ 的边, 每列点顶上连源底下连汇, 但此时问题是可能会在一条链上删好几条边, 于是你在每个边权都加 $inf$ 就可以避免这件事.</p>
+<h4 id="人员雇佣"><a href="#人员雇佣" class="headerlink" title="人员雇佣"></a>人员雇佣</h4><p>先全选, 用最小割表示限制, 让 $S\to i$ 表示选, 割 $i\to T$ 表示不选, 然后在任意两个 $i-&gt;j$ 连边, 在这个基础上赋边权跑最小割即可.</p>
+<p>要点应该是你让它至少选不选都先断一条.</p>
+<h4 id="THUPC22-I-分组"><a href="#THUPC22-I-分组" class="headerlink" title="THUPC22 I. 分组"></a>THUPC22 I. 分组</h4><p>考虑仍然 $S\to i, i\to T$, 在上个题的基础上, 对 $(i, j)$ 建一个点 $c$ 也向源汇连边, 并让 $i\stackrel{inf}{\longrightarrow} c$, 最后只要给一些 $c\to i$ 这种东西就行了.</p>
+<h3 id="特殊图"><a href="#特殊图" class="headerlink" title="特殊图"></a>特殊图</h3><h4 id="单位圆图最大团"><a href="#单位圆图最大团" class="headerlink" title="单位圆图最大团"></a>单位圆图最大团</h4><blockquote>
+<p>平面上任意两个距离少于1连边, 求最大团. $n\le 100$</p>
+</blockquote>
+<p>注意到最大团必然在最远点对画半径为 $1$ 的圆的交里, 连这两个点把交划分成两部分, 则左右两部分都是团, 因此两部分都是二分图. 因为最大团是补图的最大独立集, 于是网络流跑二分图最大独立集即可.</p>
+<h4 id="CCPC2021-WEIHAI-L-SHAKE-HANDS"><a href="#CCPC2021-WEIHAI-L-SHAKE-HANDS" class="headerlink" title="CCPC2021 WEIHAI L. SHAKE HANDS"></a>CCPC2021 WEIHAI L. SHAKE HANDS</h4><p>注意到 $\forall i &lt; j &lt; k$, 若 $i, j$ 没换过, $j, k$ 没有换过, 那么 $i, k$ 也没有换过, 于是小于并且没换过是偏序, 按照这个发现这个图的补图是可比图, 于是原图最大团补图最大独立集就是补图最长反链就是最小链覆盖.</p>
+<p>剩下部分被qyc割了.</p>
+<h3 id="模拟费用流"><a href="#模拟费用流" class="headerlink" title="模拟费用流"></a>模拟费用流</h3><p>费用流关于流量是凸的大家都知道</p>
+<h4 id="XX-OPEN-CUP-GP-OF-KAZAN-H-HONORABLE-MENTION"><a href="#XX-OPEN-CUP-GP-OF-KAZAN-H-HONORABLE-MENTION" class="headerlink" title="XX OPEN CUP GP OF KAZAN H. HONORABLE MENTION"></a>XX OPEN CUP GP OF KAZAN H. HONORABLE MENTION</h4><p>先考虑全局, 用每条边表示一个 $a_i$, 费用为 $a_i$ 容量为 $1$, 每个点向源汇连边, 然后再加一些随便拆点就可以了. 于是要模拟费用流, 你可以建个线段树, $f_{i, j, 0&#x2F;1, 0&#x2F;1}$ 表示节点 $i$, 内部流量为 $j$, 左右端点连出去是否有流量, 因为费用流可以说明 $f$ 关于 $j$ 是凸的, 而你发现每次转移就是左右儿子做闵和.</p>
+<p>那么区间问题的时候你要归并线段树上 $\log n$ 个区间, 因为我们只要求一个位置的值, 相当于你排序这 $log n$ 个区间的函数的差分取前 $k$ 大, 于是你二分那个第 $k$ 大的值, 然后在每个凸函数上求有多少个小于它的个数即可判定, 复杂度是 $3log$, ~~分散层叠成 $2log$ ~~</p>
+<h4 id="XX-OPEN-CUP-GP-OF-SPB-F-FESTIVE-BAOBAB"><a href="#XX-OPEN-CUP-GP-OF-SPB-F-FESTIVE-BAOBAB" class="headerlink" title="XX OPEN CUP GP OF SPB F. FESTIVE BAOBAB"></a>XX OPEN CUP GP OF SPB F. FESTIVE BAOBAB</h4><p>首先费用流就是源连到根, 每个点连到汇, 因为源汇边不退流, 那么模拟费用流, 实际上这个图根本不带反悔的, 所以你干的就是每次找最小的.</p>
+<h4 id="ICPC-SHENYANG-L-FORGED-IN-THE-BARRENS"><a href="#ICPC-SHENYANG-L-FORGED-IN-THE-BARRENS" class="headerlink" title="ICPC SHENYANG L. FORGED IN THE BARRENS"></a>ICPC SHENYANG L. FORGED IN THE BARRENS</h4><p>考虑先把极差变成段内任意两个的差.</p>
+<p>那么 $a_i$ 向源, 汇连边表示自己的贡献为正&#x2F;负, 然后把所有 $a_i$ 双向穿一排, 但可能会有相交的, 于是拆两排解决掉这个问题.</p>
+<p>然后你分析增广路发现, 每次要么是新加一个区间, 要么是在一个区间内再选一个最大一个最小, 用线段树维护区间最大最小值和区间内拆一个子区间的贡献, 再用set维护外部区间, 开一个堆维护全局最大值即可.</p>
+<h4 id="PA2013-RAPER"><a href="#PA2013-RAPER" class="headerlink" title="PA2013 RAPER"></a>PA2013 RAPER</h4><p>费用流怎么做是显然的. $S\to i, i\to i+1, i\to T$</p>
+<p>那么你每次干的增广路是上去正着走或者上去反着走.</p>
+<p>于是线段树维护, 注意到一个反向边容量有 $0$ 的区间不会再被减, 所以要维护每个区间当前的答案和所有点都减去区间最小值的答案, 后者维护左边极长有流量, 右边极长有流量的部分, 以及这个部分的最小值, 以及其他一些平凡物, 一共九个.</p>
+<h4 id="P1484-种树"><a href="#P1484-种树" class="headerlink" title="P1484 种树"></a>P1484 种树</h4><p>考虑费用流建图, 假设用流量表示树, 那么可以用边表示坑, 用点表示坑之间的间隔, 就可以做到相邻两个只能选一个了.</p>
+<p>于是就是每次取反一个区间并和左右两边的合并</p>
+<h3 id="增量网络"><a href="#增量网络" class="headerlink" title="增量网络"></a>增量网络</h3><h4 id="CF865D-BUY-LOW-SELL-HIGH"><a href="#CF865D-BUY-LOW-SELL-HIGH" class="headerlink" title="CF865D BUY LOW SELL HIGH"></a>CF865D BUY LOW SELL HIGH</h4><p>费用流和RAPER那个一样, 注意在一天买卖等于啥也没干所以不用管, 所以图建出来也是 $S\to i, i\to i+1, i\to T$.</p>
+<p>然后分析增广路和负环, 决策仅有两种: 把这一支等到现在在卖, 或者把之前一次卖的不卖了现在卖. 一个堆即可.</p>
+<h4 id="UER8-雪灾与外卖"><a href="#UER8-雪灾与外卖" class="headerlink" title="UER8 雪灾与外卖"></a>UER8 雪灾与外卖</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/uakioi/snow-disaster-and-take-out">题解很长, qyc写的很好</a></p>
+<h3 id="怪题"><a href="#怪题" class="headerlink" title="怪题"></a>怪题</h3><h4 id="CF724E-GOODS-TRANSPORTATION"><a href="#CF724E-GOODS-TRANSPORTATION" class="headerlink" title="CF724E GOODS TRANSPORTATION"></a>CF724E GOODS TRANSPORTATION</h4><p>出现在lyh那篇</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E8%AE%BA/">图论</a><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">网络流</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/11/15/graph/" title="图论"><img class="cover" src="/img/2022-11-15-20-29-09-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">图论</div></div></a></div><div><a href="/2022/05/17/network_simplex/" title="感性理解网络单纯形"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">感性理解网络单纯形</div></div></a></div><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%81%E9%80%89%E5%81%9A"><span class="toc-number">1.</span> <span class="toc-text">网络流选做</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P5458-%E6%B0%B4%E6%99%B6-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%B0%8F%E5%89%B2"><span class="toc-number">1.1.1.</span> <span class="toc-text">P5458 水晶 [网络流] [最小割]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2774-%E6%96%B9%E6%A0%BC%E5%8F%96%E6%95%B0%E9%97%AE%E9%A2%98-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%B0%8F%E5%89%B2"><span class="toc-number">1.1.2.</span> <span class="toc-text">P2774 方格取数问题 [网络流] [最小割]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5038-%E5%A5%87%E6%80%AA%E7%9A%84%E6%B8%B8%E6%88%8F-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%80%9D%E7%BB%B4"><span class="toc-number">1.1.3.</span> <span class="toc-text">P5038 奇怪的游戏 [网络流] [思维]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4553-80%E4%BA%BA%E7%8E%AF%E6%B8%B8%E4%B8%96%E7%95%8C-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">P4553 80人环游世界 [网络流]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4043-%E6%94%AF%E7%BA%BF%E5%89%A7%E6%83%85-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.1.5.</span> <span class="toc-text">P4043 支线剧情 [网络流]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P1646-happiness-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%B0%8F%E5%89%B2"><span class="toc-number">1.1.6.</span> <span class="toc-text">P1646 happiness [网络流] [最小割]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF277E-Binary-Tree-on-Plane-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.1.7.</span> <span class="toc-text">CF277E Binary Tree on Plane [网络流]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF103E-Buying-Sets-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%B0%8F%E5%89%B2"><span class="toc-number">1.1.8.</span> <span class="toc-text">CF103E Buying Sets [网络流] [最小割]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF132E-Bits-of-merry-old-England-%E6%97%B6%E9%97%B4%E8%BD%B4%E5%BB%BA%E5%9B%BE-%E6%9C%80%E5%A4%A7%E6%B5%81-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.1.9.</span> <span class="toc-text">CF132E Bits of merry old England [时间轴建图] [最大流] [网络流]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF164C-Machine-Programming-%E6%97%B6%E9%97%B4%E8%BD%B4%E5%BB%BA%E5%9B%BE-%E6%9C%80%E5%A4%A7%E6%B5%81-%E8%B4%B9%E7%94%A8%E6%B5%81-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.1.10.</span> <span class="toc-text">CF164C Machine Programming [时间轴建图] [最大流] [费用流] [网络流]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3980-NOI2008-%E5%BF%97%E6%84%BF%E8%80%85%E6%8B%9B%E5%8B%9F-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%97%B6%E9%97%B4%E8%BD%B4%E5%BB%BA%E5%9B%BE"><span class="toc-number">1.1.11.</span> <span class="toc-text">P3980 NOI2008 志愿者招募 [网络流] [时间轴建图]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC193F-Zebraness"><span class="toc-number">1.1.12.</span> <span class="toc-text">[ABC193F] Zebraness</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qyc%E8%AE%B2%E8%AF%BE"><span class="toc-number">1.2.</span> <span class="toc-text">qyc讲课</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">建图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CTT22001177-%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">CTT22001177 无限之环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CF1404E-Bricks"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">CF1404E Bricks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%B5%81"><span class="toc-number">1.2.2.</span> <span class="toc-text">循环流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%97%E6%84%BF%E8%80%85%E6%8B%9B%E5%8B%9F"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">志愿者招募</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARC137E"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">ARC137E</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HNOI2013-%E5%88%87%E7%B3%95"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">HNOI2013 切糕</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E5%91%98%E9%9B%87%E4%BD%A3"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">人员雇佣</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#THUPC22-I-%E5%88%86%E7%BB%84"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">THUPC22 I. 分组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%9B%BE"><span class="toc-number">1.2.3.</span> <span class="toc-text">特殊图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E5%9C%86%E5%9B%BE%E6%9C%80%E5%A4%A7%E5%9B%A2"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">单位圆图最大团</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CCPC2021-WEIHAI-L-SHAKE-HANDS"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">CCPC2021 WEIHAI L. SHAKE HANDS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%B4%B9%E7%94%A8%E6%B5%81"><span class="toc-number">1.2.4.</span> <span class="toc-text">模拟费用流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XX-OPEN-CUP-GP-OF-KAZAN-H-HONORABLE-MENTION"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">XX OPEN CUP GP OF KAZAN H. HONORABLE MENTION</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XX-OPEN-CUP-GP-OF-SPB-F-FESTIVE-BAOBAB"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">XX OPEN CUP GP OF SPB F. FESTIVE BAOBAB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ICPC-SHENYANG-L-FORGED-IN-THE-BARRENS"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">ICPC SHENYANG L. FORGED IN THE BARRENS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PA2013-RAPER"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">PA2013 RAPER</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P1484-%E7%A7%8D%E6%A0%91"><span class="toc-number">1.2.4.5.</span> <span class="toc-text">P1484 种树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.2.5.</span> <span class="toc-text">增量网络</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CF865D-BUY-LOW-SELL-HIGH"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">CF865D BUY LOW SELL HIGH</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UER8-%E9%9B%AA%E7%81%BE%E4%B8%8E%E5%A4%96%E5%8D%96"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">UER8 雪灾与外卖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%AA%E9%A2%98"><span class="toc-number">1.2.6.</span> <span class="toc-text">怪题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CF724E-GOODS-TRANSPORTATION"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">CF724E GOODS TRANSPORTATION</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

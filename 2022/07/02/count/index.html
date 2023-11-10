@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数数 | FireInIce's Blog</title><meta name="keywords" content="日志,dp"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="数数题会把计数相关问题放在这里. 一做数数发现现在已经不会做蓝题了. 1. Appleblue17这一部分是appleblue17的cf和其他数数选做里的前几个. CF1515E Phoenix and Computers 有 $n$ 台电脑排成一排, 每次可以手动打开一台没被打开的, 同时若一台电脑左右的电脑都被打开, 那么它会自动打开. 求把所有电脑打开的方案数. $n\le 400$   发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数数">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/07/02/count/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="数数题会把计数相关问题放在这里. 一做数数发现现在已经不会做蓝题了. 1. Appleblue17这一部分是appleblue17的cf和其他数数选做里的前几个. CF1515E Phoenix and Computers 有 $n$ 台电脑排成一排, 每次可以手动打开一台没被打开的, 同时若一台电脑左右的电脑都被打开, 那么它会自动打开. 求把所有电脑打开的方案数. $n\le 400$   发">
+<meta property="og:locale">
+<meta property="og:image" content="https://fireinicecode.github.io/img/2022-11-23-20-33-31-image.png">
+<meta property="article:published_time" content="2022-07-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/img/2022-11-23-20-33-31-image.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2022/07/02/count/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数数',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/2022-11-23-20-33-31-image.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2022-07-01T16:00:00.000Z" title="Created 2022-07-02 00:00:00">2022-07-02</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数数题"><a href="#数数题" class="headerlink" title="数数题"></a>数数题</h1><p>会把计数相关问题放在这里.</p>
+<p>一做数数发现现在已经不会做蓝题了.</p>
+<h2 id="1-Appleblue17"><a href="#1-Appleblue17" class="headerlink" title="1. Appleblue17"></a>1. Appleblue17</h2><p>这一部分是appleblue17的cf和其他数数选做里的前几个.</p>
+<h3 id="CF1515E-Phoenix-and-Computers"><a href="#CF1515E-Phoenix-and-Computers" class="headerlink" title="CF1515E Phoenix and Computers"></a>CF1515E Phoenix and Computers</h3><blockquote>
+<p>有 $n$ 台电脑排成一排, 每次可以手动打开一台没被打开的, 同时若一台电脑左右的电脑都被打开, 那么它会自动打开. 求把所有电脑打开的方案数. $n\le 400$ </p>
+</blockquote>
+<p>发现自动打开的电脑两边一定是手动打开的, 即它们不可能相邻, 所以其实是若干段手动打开的, 段段之间夹着一个自动打开的.</p>
+<p>手动打开一个连续区间的方案数是 $2^{len-1}$ , 原因是我们每次只能像左边和右边拓展, 那么设第一个打开的是第 $k$ 个, 方案就是在剩下 $len-1$ 步中选 $k-1$ 步是向左拓展的, 所以方案数是</p>
+<p>$$<br>\sum_{k&#x3D;1}^{len} \binom{len-1}{k-1}&#x3D;2^{n-1}<br>$$ </p>
+<p>那么把一个自动打开的和紧跟着的一段手动打开的作为一段, 设 $f_i$ 表示前 $i$ 个的方案, 则加上一个新段的方案数时除了乘上这一段的方案, 还要再在总步数里选若干步是新的这段的方案, 那么我们要知道总步数, 所以还要记录总步数或者之前分了几段, 增加一维, 设 $f_{i, j}$ 表示前 $i$ 个分了 $j$ 段, 转移就是</p>
+<p>$$<br>f_{i, j}&#x3D;f_{k-1, j-1}\times \binom {i-j+1}{i-k}\times 2^{i-k+1}\<br>f_{-1, 0}&#x3D;1<br>$$ </p>
+<p>要把0当成一个自动开启的电脑留出来, 所以边界就成了-1, 实际实现可以所有下标一起加一</p>
+<h3 id="P6944-x2F-LOJ3405-ICPC2018-WF-Gem-Island"><a href="#P6944-x2F-LOJ3405-ICPC2018-WF-Gem-Island" class="headerlink" title="P6944&#x2F;LOJ3405 [ICPC2018 WF]Gem Island"></a>P6944&#x2F;LOJ3405 [ICPC2018 WF]Gem Island</h3><blockquote>
+<p>有 $n$ 个人每个人有一个宝石, 每天会随机一个宝石分裂成两个, 求 $d$ 天后拥有宝石前 $r$ 多的人所拥有的宝石数之和的期望, 不膜. $n, d\le 500$ </p>
+</blockquote>
+<p>设序列 $A$ , $a_i$ 表示 $d$ 天后第 $i$ 个人拥有的宝石数, 试着算算它出现的概率.</p>
+<p>$$<br>\begin{aligned}<br>\text{A的方案数}&amp;&#x3D;\dfrac {d! }{\prod_i (a_i-1)! }\times \prod(a_i-1)! \<br>&amp;&#x3D;d!<br>\end{aligned}<br>$$ </p>
+<p>解释一下这个式子:</p>
+<ul>
+<li><p>乘号左边的部分是我们确定下来每一天是给哪个人加的, 这个过程相当于对于一个天数构成的排列对一个排列我们让前 $1-a_1$ 个给第一个人, 接下来 $a_2$ 个给第二个人. . . 再除掉这么每一组分组后组内相对顺序.</p>
+</li>
+<li><p>乘号右边的部分是把每天由谁得这个关于人的方案数再变成关于宝石的方案数, 考虑一个人第 $i$ 次收获宝石的方案数是 $i-1$ , 那么这个人 $i$ 得到宝石的方案数就是 $(a_i-1)!$ 再乘起来.</p>
+</li>
+</ul>
+<p>于是发现每个 $A$ 的概率是相同的, 那么接下来就是算对于所有的 $A$ 它们的前 $r$ 大之和, 先考虑如何求 $A$ 的方案数, 此时可以先减去每个人一开始有的那个宝石方便计算:</p>
+<p>这时有一种十分奇妙的状态设计, 考虑由于我们不关心 $a_i$ 的顺序, 所以我们假定它是递减的, 我们把宝石排成一个矩阵, 第 $i$ 列表示第 $i$ 个人的情况, 像这个样:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">****</span><br><span class="line">******</span><br><span class="line">*********</span><br><span class="line">*********</span><br><span class="line">***********</span><br><span class="line">***********</span><br></pre></td></tr></table></figure>
+
+<p>这个图对应的 $A$ 是 $6, 6, 6, 6, 5, 5, 4, 4, 4, 2, 2$ </p>
+<p>横着关于人递推是困难的, 于是把它竖着递推, 由于此时向上递推时更高的顶大小一定小于更低的所以我们要知道顶的大小, 由于最后要求 $\sum a_i&#x3D;d$ 所以要记录和, 于是设 $f_{i, j}$ 表示一共有 $j$ 个宝石, 其中有顶有 $i$ 个的方案数, 那么转移就是枚举上一层的大小, 即</p>
+<p>$$<br>\begin{aligned}<br>f_{i, j}&amp;&#x3D;\sum f_{k, j-i}\times\binom{k}{i}\<br>f_{n, 0}&amp;&#x3D;1<br>\end{aligned}<br>$$ </p>
+<p>可以类比这个列出和的, 设顶大小为 $i$ , 共 $j$ 个的所有情况前 $r$ 大和的和为 $g_{i, j}$ , 则有转移:</p>
+<p>$$<br>\begin{aligned}<br>g_{i, j}&amp;&#x3D;\sum (g_{k, j-k}+f_{k, j-k}*min(r, i))*\binom{k}{i}\<br>g_{n, 0}&amp;&#x3D;0<br>\end{aligned}<br>$$ </p>
+<p>然后dp就行了, 这个题不膜, 要直接带着long double从头算到尾.</p>
+<h3 id="CF1630E-Expected-Components"><a href="#CF1630E-Expected-Components" class="headerlink" title="CF1630E Expected Components"></a>CF1630E Expected Components</h3><p>收录到<a href="https://fireinicecode.github.io/2022/07/01/polya/">polya定理初学</a>中</p>
+<h3 id="ARC132E-Paw"><a href="#ARC132E-Paw" class="headerlink" title="ARC132E Paw"></a>ARC132E Paw</h3><blockquote>
+<p>给定字符串 $s$ 包含 $\texttt{&lt; &gt; . }$ 三种, 表示向左的足迹, 向右的足迹和洞. 你每次会随机一个洞钻出来, 把洞填平, 然后随机左右两个方向走到下一个洞或走出字符串, 并把沿途所有位置都覆盖为你走的方向的足迹(沿途不包括你停止的那个洞). 直到没有洞. 求最后局面向左足迹的期望个数.<br>$\vert s\vert \le 10^5$</p>
+</blockquote>
+<p>这种题要考虑形成局面的性质.</p>
+<p>发现我们最后的局面一定是 $\texttt{&lt;&lt;\ldots&lt;&lt;. &#x3D;&#x3D;\ldots&#x3D;&#x3D;. &gt;&gt;\ldots&gt;&gt;}$ , 且 $\texttt{&#x3D;}$ 两边两个洞中间没有洞, 这里 $&#x3D;$ 表示未走过的地方. 因为考虑不会出现 $\texttt{&gt;&gt;&lt;&lt;}$ 的情况是因为停止需要一个洞, 而由这个洞出发的时候要么覆盖顺延右边的 $\texttt{&lt;}$ 的要么顺延左边的, 一定会把这个局面填掉. 不会出现 $\texttt{&lt;&lt;&gt;&gt;}$ 因为这个点在出发一个之后就没了不能出发一个相反的, 所以局面只能是相邻两个洞向外发出的足迹.</p>
+<p>那么枚举相邻两个洞, 考虑形成这个局面的概率, 发现左右是独立的, 以向右部分为例, 若 $f_i$ 表示向右形成前 $i$ 个的全局概率(所有方案中右边是对的的概率), 则有 $f_i&#x3D;f_{i-1}\times (1-\dfrac{1}{2n})$ , 意思是只有选到 $i$ 这个位置并且向左走不行. 发现直接把左右两边对应概率乘起来即可因为两边都是全局的概率且互不影响.</p>
+<h3 id="CF1621G-Weighted-Increasing-Subsequences"><a href="#CF1621G-Weighted-Increasing-Subsequences" class="headerlink" title="CF1621G Weighted Increasing Subsequences"></a>CF1621G Weighted Increasing Subsequences</h3><blockquote>
+<p>给定 $a_n$ , 对于 $a$ 的所有上升子序列 $a_{i_1}\ldots a_{i_k}$ , 其权值为 $a_{i_j}&lt;a_x\And x&gt;k$ 的 $j$ 个数, 对所有上升子序列求和.<br>$n\le 2\times 10^5$</p>
+</blockquote>
+<p><strong>钦定每个上升子序列 $a_{i_1}\ldots a_{i_k}$ 被最后一个大于a_{i_k}的 $x$ 贡献</strong>.</p>
+<p>于是枚举 $x$ , 考虑计算贡献.</p>
+<p>那么 $a_x$ 与 $a_j$ 行成的贡献是在 $[1, x)$ 中的上升子序列个数(这里是于拆贡献成 $x$ 与上升子序列中每一个小于它的数对的个数).</p>
+<p>这个就是以 $i$ 结尾的, 乘上以 $i$ 开头但没有接到 $x$ 的个数. 因为 $x$ 是最后一个大于 $a_k$ 的, 所以<strong>没有接到 $x$ 后面的子序列</strong>, 于是后面这个等于以 $i$ 开头的个数减去以 $i$ 开头, $x$ 结尾的个数.</p>
+<p>考虑直接把这些数都拿出来跑一遍dp, 那么这两个都可以1log算. 注意到设 $y$ 为大于 $x$ 的最大的 $y$ , 则 $a_x\in [a_y, a_z)$ , 并且 $y$ 恰好是下一个 $x$ ( $x$ 就是后缀 $\max$ , $y$ 恰好是下一个后缀 $\max$ ), 所以每个 $x$ 只会被拿出来算一遍. 就结束了.</p>
+<p>[think] 钦点的东西可能也需要枚举, 第一个, 最后一个, 最大的这样的.</p>
+<h2 id="2-luogu某题单"><a href="#2-luogu某题单" class="headerlink" title="2. luogu某题单"></a>2. luogu某题单</h2><p>然后做不动了appleblue太强悍. 随便找点, 下面是luogu上的一个题单</p>
+<h3 id="CF1657E-Star-Mst"><a href="#CF1657E-Star-Mst" class="headerlink" title="CF1657E Star Mst"></a>CF1657E Star Mst</h3><blockquote>
+<p>求 $n$ 个点的无向完全图有多少个满足最小生成树的权值和等于所有和点1相连的边的权值和, 每条边边权为 $[1, v]$ , $n, v \le 250$ </p>
+</blockquote>
+<p>qyc场切</p>
+<p>这个条件首先等价于以1为根的菊花是它的最小生成树, 再考虑Kruskal的过程, 又等价于对于每个点, 1都是离它最近的点之一.</p>
+<p>考虑对于一条 $u\to v, u, v\ne 1$ 的边, 在我们不知道 $1\to u$ 和 $1\to v$ 前是无法确定的, 所以要明确一个确定边权的顺序, 发现如果从小到大确定边权那么所有新的满足 $1\to u, 1\to v$ 已经确定的 $u\to v$ 的边权都只依赖于我们新加的边权而不依赖于旧的, 根据这个, 设 $f_{i, j}$ 表示加入了边权在 $[1, i]$ 的边, 一共有 $j$ 个连到 $1$ 上, 当转移时, 我们考虑新加入的这些边确定了哪些:</p>
+<p>$$<br>f_{i, j}&#x3D;f_{i-1, k}\times (v-i+1)^{\binom{j}{2}-\binom{k}{2}}\times \binom{j}{k}<br>$$ </p>
+<p>推转移式子的时候别忘了最后那个组合数.</p>
+<p>注意指数上那个二项式系数不是对 $P$ 取模, 但其实也没事因为它们根本到不了要取模的大小.</p>
+<p>然后你就做完了.</p>
+<h3 id="P5664-CSP-S2019-Emiya-家今天的饭"><a href="#P5664-CSP-S2019-Emiya-家今天的饭" class="headerlink" title="P5664 [CSP-S2019] Emiya 家今天的饭"></a>P5664 [CSP-S2019] Emiya 家今天的饭</h3><blockquote>
+<p>给一个 $n$ 行 $m$ 列的矩阵 $A$ , 每个格子有个数表示选这个格子的方案数, 可以选任意多个格子, 要求每行只能选一个, 且若一共选了 $k$ 个数, 则不能有一列选超过 $\lfloor\dfrac{k}{2}\rfloor$ 个数. $n \le 100, m\le 1000$ </p>
+</blockquote>
+<p>这题首先看起来很dp, 发现这个每列个数不超过一半很难计算, 而又因为只可能有一列选的个数超过一半, 所以可以容斥, 枚举是哪一列超过了一半.</p>
+<p>于是现在钦定第 $r$ 列超过一半计算方案数, 很容易想到设 $f_{i, j, k}$ 表示考虑这一列的前 $i$ 个数, 选了 $j$ 个第 $r$ 列的和其他 $k$ 个不在第 $r$ 列的. 这里记 $s_i&#x3D;\sum_j A_{i, j}$ , 则转移为:</p>
+<p>$$<br>f_{i, j, k}&#x3D;f_{i-1, j-1, k}\times a_{r, i}+f_{i-1, j, k-1}\times (s_i-a_{r, i})<br>$$ </p>
+<p>但这样做算上枚举每一列的话复杂度是 $O(mn^3)$ 的, 无法通过, 发现我们之所以记录 $j$ 和 $k$ 是因为判断最后是否要这个值, 即是否在这一列里选了超过一半, 那么其实我们只要知道 $j-k$ 就行, 所以考虑设 $f_{i, j}$ 表示考虑这一列的前 $i$ 个数, 在这一列的比外面的多 $j$ 的方案数, 发现转移是简单的, 复杂度就成了 $O(mn^2)$ </p>
+<p>启发一种优化状态设计的方法.</p>
+<h3 id="P3214-HNOI2011-卡农"><a href="#P3214-HNOI2011-卡农" class="headerlink" title="P3214 [HNOI2011] 卡农"></a>P3214 [HNOI2011] 卡农</h3><blockquote>
+<p>有 $m$ 个音, 要求选出无序的 $n$ 个互不相同的音的集合, 满足所有音都出现了偶数次. 对 $10^8+7$ 取模.</p>
+<p>$n, m\le 10^6$ </p>
+</blockquote>
+<p>首先 $10^8+7$ 居然也是质数, 长见识.</p>
+<p>首先这个的无序没有任何用处, 有序的除以 $n!$ 就行.</p>
+<p>由于是偶数次, 让人想到异或, 所以转化为:</p>
+<p>在 $[1, 2^m -1]$ 个数中选 $n$ 个互不相同的数满足异或和为0.</p>
+<p>设选前 $i$ 个数的答案为 $f_i$ , 如果我们先随便放 $[1, i-1]$ , 最后在 $i$ 的位置放一个数 $x&#x3D;a_1\operatorname{xor}a2. . . \operatorname{xor}a_{i-1}$ 就满足了条件, 这样的方案数是 $A^{i-1}_{2^m-1}$ 但却多算了以下两种情况:</p>
+<ul>
+<li><p>$x&#x3D;0$ , 说明前 $i-1$ 个已经异或起来是0了, 多算了 $f_{i-1}$ 个方案.</p>
+</li>
+<li><p>$x$ 在前面出现过, 那么把那个出现过的也删去, 剩下的还有 $f_{i-2}$ 个方案, 此时 $x$ 有 $2^m-1 -(i-2)$ 种可能(与前面的其他数互不相同), 同时与其相同的那个数的下标有 $i-1$ 种, 一共多算了 $(2^m-1-(i-2))(i-1)f_{i-2}$ 个方案.</p>
+</li>
+</ul>
+<p>最后注意</p>
+<p>$$<br>A^k_n\bmod P&#x3D;A^k_{n\bmod P} \bmod P<br>$$ </p>
+<p>可以简单归纳法证明.</p>
+<h3 id="P2606-ZJOI2010-排列计数"><a href="#P2606-ZJOI2010-排列计数" class="headerlink" title="P2606 [ZJOI2010]排列计数"></a>P2606 [ZJOI2010]排列计数</h3><blockquote>
+<p>求有多少个长为 $n$ 的排列满足 $p_{i}&gt;p_{\frac{i}{2}}$ . $n \le 10^6$ </p>
+</blockquote>
+<p>容易想到若 $i$ 向 $\dfrac{i}{2}$ 连边会得到一棵完全二叉树, 而此时根一定是当前最小值, 左右子树则是互不干扰的, 形成一个递归结构, 于是我们考虑dp.</p>
+<p>设 $f_i$ 表示长度为 $i$ 的排列的答案, 也就是节点数为 $i$ 的树的答案, 同时设 $lson_i, rson_i$ 表示它左右子树的大小, 则有:</p>
+<p>$$<br>f_{i}&#x3D;\binom i {lson_i}\times f_{lson_i}\times f_{rson_i}<br>$$ </p>
+<p>然后做完了.</p>
+<h3 id="P6453-SP3734-PERIODNI-Periodni"><a href="#P6453-SP3734-PERIODNI-Periodni" class="headerlink" title="P6453 SP3734 PERIODNI - Periodni"></a>P6453 SP3734 PERIODNI - Periodni</h3><blockquote>
+<p>给定一个 $n$ 列直方图(底部对齐的若干矩形)网格, 每列高度各不相同, 现在要在其中摆放 $k$ 个车, 要求车相互无法攻击. 求摆放方案数.<br>$n, k\le 500$ .</p>
+</blockquote>
+<p>看到这个直方图想到给定直方图求最大矩形那个题的笛卡尔树做法, 我们把笛卡尔树建出来dp, 考虑以序列下标为二叉查找树的关键字, 以矩形高度建小根笛卡尔树, 因为每一列高度各不相同所以, 所以相当于把直方图横向分隔成若干层, 如图:</p>
+<p><img src="/img/2022-10-15-16-23-30-image.png" alt="picture 2"></p>
+<p>那么接下来只要考虑如何在这棵树上dp, 容易想到设 $f_{u, i}$ 表示 $u$ 的子树内放了 $i$ 个车的方案数, 若 $v$ 为 $u$ 的儿子, 发现仅仅在自己这里选择 $j$ 个的方案数就是 $\binom{w}{j}\binom{h}{j}j!$ , 然后按这个转移即可.</p>
+<h3 id="P3244-HNOI2015-落忆枫音"><a href="#P3244-HNOI2015-落忆枫音" class="headerlink" title="P3244 [HNOI2015]落忆枫音"></a>P3244 [HNOI2015]落忆枫音</h3><blockquote>
+<p>给定 $n$ 个点 $m$ 条边的DAG, 在此基础上再添加一条 $x\to y$ 的边, 求此时以1为根的不同的生成树个数. $n\le 10^5$ </p>
+</blockquote>
+<p>在DAG上这个东西时好求的, 只要把每个点的入度乘起来即可, 意思是给每个点选一个父亲. 但现在又多了一条边, 可能形成至多一个环, 那么只要减去恰好选了这个环的方案, 相当于我们只确定了环上点的父亲, 所以方案数就是不在环上的所有点的入度的乘积, 两者相减即可.</p>
+<h3 id="P6672-清华集训2016-你的生命已如风中残烛"><a href="#P6672-清华集训2016-你的生命已如风中残烛" class="headerlink" title="P6672 [清华集训2016] 你的生命已如风中残烛"></a>P6672 [清华集训2016] 你的生命已如风中残烛</h3><blockquote>
+<p>$m$ 张牌的牌堆, <strong>牌是区分的</strong>, 同时 $n$ 张牌还有属性 $w$ 表示可以打出后能再摸几张, 求有多少种牌堆的排列使得你一轮可以把所有牌都摸没. 保证 $\sum w&#x3D;m$ .</p>
+</blockquote>
+<p>首先可以把没有属性 $w$ 的牌看成 $w&#x3D;0$ .</p>
+<p>考虑摸没的条件, 摸完前 $k$ 张牌的手牌数为 $1+\sum_{i&#x3D;1}^k w_i - k$ , 所以要求对于任意 $k$ 这个式子为正, 于是可以给每个 $w_i$ 先减去1. 变成保证 $\sum_i w_i&#x3D;0$ , 要求所有前缀和都非负的个数.</p>
+<p>有一个Raney引理: 对任意和为1的整数排列, 其所有循环平移形成的排列中, 有且仅有一个满足任意前缀和为正.</p>
+<p>这个证明很简单, 看成折线图后就是只有从折线图的最低点出发的情况满足条件. 如果有多个相同的最低点则只能选最后一个, 所以只有一个出发点满足条件.</p>
+<p>但这个问题没有和圆排列的直接一一对应的关系, 原因是当出现多个最低点时可以选择任意一个.</p>
+<p>可能会想到在开头处添加一个1转化过去, 会发现我们在原始问题上添加1可能导致去掉这个1后两种方案本质相同. 因为第一个位置的数不一定是1.</p>
+<p>但如果在最后添加一个-1就没有问题, 因为假设仍有多个最低点只能选第一个, 否则我们会跨过这个-1来到第一个最低点, 那么第一个最低点的位置就会比当前的更低. 于是我们又建立起了一一对应的关系.</p>
+<p>接下来计算答案就简单了. 要注意这里 $w$ 相等的卡牌是区分的, 所以不用Polya而可以直接圆排列计数, $m+1$ 个卡牌的圆排列一共有 $\dfrac{(m+1)! }{m+1}&#x3D;m!$ 个, 同时由于我们添加的-1和其他-1是不区分的, 所以除掉-1个数 $m-n+1$ , 答案为 $\dfrac{m! }{m-n+1}$ .</p>
+<h2 id="3-CF板刷"><a href="#3-CF板刷" class="headerlink" title="3. CF板刷"></a>3. CF板刷</h2><p>CF选择标签combination板刷</p>
+<h3 id="CF1730E-Maximums-and-Minimums"><a href="#CF1730E-Maximums-and-Minimums" class="headerlink" title="CF1730E Maximums and Minimums"></a>CF1730E Maximums and Minimums</h3><blockquote>
+<p>给定序列 $a$ , 求区间中最大值是最小值的倍数的区间个数.<br>$n\le 5\times 10^5, a_i\le 10^6$ </p>
+</blockquote>
+<p>$10^6$ 以内因数个数不到300. 于是算法复杂度有可能是 $nd$ 的. (不然应该出到 $10^9$ )吧.</p>
+<p>枚举最大值和对应因数, 我们能做到 $nd\log n$ . 这个部分还很套路: 就是考虑能做最大值的区间, 对应最小值能做最小值的区间. . . $\log n$ 出现在对于每一个最大值找出左边&#x2F;右边第一个最小值的位置.</p>
+<p>但是问题是, 怎么去 $\log n$ 呢? 好, 打开jiangly代码, <strong>lower_bound</strong>, 嗯, 结束了. 原来是 $nd\log n$ .</p>
+<p>哦去 $\log$ 是简单的, 考虑我们相当于 $nd$ 次询问一个数左边等于另一个数的位置. 那么假设最大值枚举的时候从左往右, 就只需要对于每一个值维护它最后一次的位置即可.</p>
+<p>另一个做法是分治, 但是我不会啊.</p>
+<h3 id="CF1728G-Illumination"><a href="#CF1728G-Illumination" class="headerlink" title="CF1728G Illumination"></a>CF1728G Illumination</h3><blockquote>
+<p>给定一条长 $d$ 数轴上的 $n$ 个灯和 $m$ 个点的位置序列 $l, p$ , 灯 $i$ 可以照亮 $[l_i-w_i, l_i+w_i]$ 范围内的点, 其中 $w_i$ 是 $[0, d]$ 的整数.<br>$q$ 次询问, 每次询问在已有 $n$ 个灯的基础上添加一个新灯后 $w$ 的方案数使得每一个点都能被照亮.<br>$n\le 2\times 10^5, m\le 16, q\le 5\times 10^5, d\le 3\times 10^5$ .</p>
+</blockquote>
+<p>先考虑一次询问怎么做, 能dp吗?</p>
+<p>$f_{i, j}$ 表示前 $i$ 个灯照亮前 $j$ 个点, 发现可以转移. 那么直接转移写成矩阵, 预处理前缀积和后缀积就行了. 复杂度是 $nm^3+qm^3$ </p>
+<p>另一个做法是考虑容斥, 枚举点集 $S$ , 确定它们都被覆盖是困难的, 但要求 $S$ 内的点都不被覆盖只要让相邻两个属于 $S$ 的点之间的灯照不到这两个端点即可. 相当于直接限制每个灯的最大值. 那么预处理数组 $f_{l, r}$ 表示 $[l, r]$ 中的灯照不到点 $l$ 和 $r$ 即可.</p>
+<p>现在有了多组询问, 枚举新加的点照亮的范围, 并预处理照亮这个范围外的点的方案. 注意范围外的点这一点集一定是前缀和后缀, 所以点集只有 $m^2$ 个.</p>
+<h3 id="CF1671F-Permutation-Counting"><a href="#CF1671F-Permutation-Counting" class="headerlink" title="CF1671F Permutation Counting"></a>CF1671F Permutation Counting</h3><blockquote>
+<p>求逆序对数为 $k$ , 下降数为 $x$ 的长 $n$ 的排列数量.<br>$n\le 998244352, k, x\le 11$<br>下降数是 $\sum [a_i&gt;a_{i+1}]$ </p>
+</blockquote>
+<p>牛逼题.</p>
+<p>观察性质拆贡献, 把满足 $i&lt;\max_{j\le i} a_j$ 的连续的一段称为一段, 那么发现段间没有贡献.</p>
+<p>对于每一段, 考虑其内部排列, 一段长度最多是 $12$ 否则逆序对数就会超过 $11$ , 于是就先考虑内部排列, 设 $f_{s, j, k}$ 表示 $s$ 集合已经选了, 有 $j$ 个逆序对, $k$ 个下降的一段的个数, 枚举下一个填几即可转移. 就能 $2^12\times 11^2\times 12$ 的dp它了.</p>
+<p>接下来考虑, 一个长度是 $2$ 的段会产生 $1$ 个逆序对, 所以我们最多拼 $11$ 个段, 于是设 $g_{i, j, k, l}$ 表示拼了 $i$ 个段, 这 $i$ 个段一共 $j$ 个数, 有 $k$ 个逆序对, $l$ 个下降的方案数, 转移是类似背包的dp.</p>
+<p>最后算答案的时候, 我们累加所有 $k, l$ 是题目要求的那些状态值, 那么对于除了这些长为 $2$ 的段之外的那些长为1的段, 每一个数都是唯一确定的, 于是直接用隔板法再乘一个组合数即可.</p>
+<p>很厉害啊</p>
+<p>更好想的感觉是另一个: 猜测固定 $i, j$ 后答案是关于 $n$ 的, 次数不超过 $11$ 的多项式, dp打出 $11\times 11\times 11$ 的表, 然后拉格朗日差值.</p>
+<h3 id="CF383E-Vowels"><a href="#CF383E-Vowels" class="headerlink" title="CF383E Vowels"></a>CF383E Vowels</h3><blockquote>
+<p>给出 $n$ 个长度为 $3$ 的由 $\texttt{a}\ldots\texttt{z}$ 组成的单词, 一个单词是正确的当且仅当其包含至少一个元音字母. 这里的元音字母是 $\texttt{a}\ldots\texttt{x}$ 的一个子集. 对于所有元音字母集合, 求这 $n$ 个单词中正确单词的数量平方的异或和.<br>$n\le 10^4$ </p>
+</blockquote>
+<p>一个单词是错误的当且仅当这个单词与元音字母集合不交, 等价于它的补集是元音字母集合超集, 于是补集之后做超集和就能得到数量.</p>
+<p>但问题是这样是 $10^7$ 的, 且没有利用单词长度为3的特性.</p>
+<p>看题解, “注意到4s, 所以 $O({\vert\sigma\vert}2^{\vert\sigma\vert})$ 完全能过. “这样啊.</p>
+<h3 id="CF1603F-October-18-2017"><a href="#CF1603F-October-18-2017" class="headerlink" title="CF1603F October 18, 2017"></a>CF1603F October 18, 2017</h3><p>给出 $n, k, x$ , 求长 $n$ , 每一项在 $[0, 2^k)$ , 且任意子序列异或和不为 $x$ 的序列个数. $n\le 10^9, k\le 10^7, \sum k\le 5\times 10^7, x&lt; 2^20$ </p>
+<p>$x&#x3D;0$ 是特殊的, 其他是相同的.</p>
+<p>当 $x&#x3D;0$ 时, 相当于选出若干个线性无关向量. 方案数为 $\prod 2^k-2^{i}$ , 就是每一次选前面不能表示的. 复杂度 $O(k)$ </p>
+<p>当 $x\ne 0$ 时, 每个数的情况相同, 所以求对于一个序列其能表示的数的个数求和后再除以数的总数就是答案. 而一个数列能表示的数的个数就是, 若把这个数列中所有数视作向量弄成一个矩阵后矩阵的秩为 $r$ , 个数就是 $2^r$ . 于是只要求长 $n$ 的序列秩为 $1\ldots n$ 的分别是多少即可.</p>
+<p>考虑dp这个东西, 设 $f_{i, r}$ 表示前 $i$ 行, 秩为 $r$ 的方案数. 有</p>
+<p>$$<br>f_{i, r}&#x3D;f_{i-1, r}\times 2^{r}+f_{i-1, r-1}\times (2^k-2^{r-1})<br>$$</p>
+<p>复杂度 $nk$ </p>
+<p>用生成函数求, 写成生成函数, 我们可以先选出一组基, 方案数是 $\prod_i (2^k-2^i)$ , 然后再把其他的数添加进去, 第 $i$ 个数后添加方案数是 $2^i$ . 后面这个生成函数是<br>$$<br>\prod \dfrac{1}{1-2^ix}<br>$$<br>而<br>$$<br>\dfrac{1}{\prod ^n_{i&#x3D;0}(1-q^ix)}&#x3D;\sum_{i&gt;&#x3D;0}x^i{i+n\brack n}_q<br>$$<br>所以后面这个生成函数 $n-r$ 项系数就是 ${n\brack n-r}_q$ </p>
+<p>于是就做完了.</p>
+<p>生成函数&#x3D;不可做</p>
+<h3 id="CF1295F-Good-Contest"><a href="#CF1295F-Good-Contest" class="headerlink" title="CF1295F Good Contest"></a>CF1295F Good Contest</h3><blockquote>
+<p>求长 $n$ 序列 $a$ 单调不增的概率, 其中 $a_i$ 在 $[l_i, r_i]$ 中等概率随机.<br>$n\le 50, l_i, r_i\le 998244353$ </p>
+</blockquote>
+<p>$f_{i, j}$ 表示前 $i$ 个单调不增以 $j$ 结尾的方案数, 则</p>
+<p>$$<br>f_{i, j}&#x3D;(\sum_{k\ge j} f_{i-1, k})<br>$$</p>
+<p>但值域很大, 会寄.</p>
+<p>$f_i$ 是 $f_{i-1}$ 做后缀和再截取一个区间, 有什么好办法?</p>
+<p>离散化成若干值域区间! 变成 $a_i$ 在第 $j$ 个值域区间, 那么此时转移要考虑一个区间内转移到当前区间内的情况, 发现根本不会做.</p>
+<p>考虑不枚举 $j$ 转而枚举 $i$ , 即从 $f_{k}{j+1}$ 转移过来, 这样只要算从最后一段里选一个不降的序列即可. 而从长 $l$ 的值域段选长 $a$ 的不降序列只要组合数 $\binom {l+a-1}{a-1}$ 即可.</p>
+<p>另一个方法, 容易想到直接维护分段函数, 那么需要对分段函数求前缀和, 是容易的.</p>
+<h3 id="CF1523E-Crypto-Lights"><a href="#CF1523E-Crypto-Lights" class="headerlink" title="CF1523E Crypto Lights"></a>CF1523E Crypto Lights</h3><blockquote>
+<p>有 $n$ 个台灯初始时都是暗的, 每次等概率随机一个暗台灯将其点亮, 若点亮后存在一个长度为 $k$ 的连续段有大于一个台灯被点亮则立刻停止, 求期望点亮多少台灯. 答案对 $10^9+7$ 取模.<br>$n, k\le 12^5$ </p>
+</blockquote>
+<p>考虑算开启 $i$ 个后能继续的概率.</p>
+<p>那么这个就是从这 $n$ 个灯中选 $i$ 个灯相隔 $k$ 以上的概率. 这个考虑选 $i$ 个相隔 $k$ 以上的灯可以看作选 $i$ 个灯亮, 再在其中插入剩下的灯. 那么方案数就是 $\binom {n-i+(i-1)(k-1)+i}{i}\times i!$ . 就结束了.</p>
+<h3 id="CF1495D-BFS-Trees"><a href="#CF1495D-BFS-Trees" class="headerlink" title="CF1495D BFS Trees"></a>CF1495D BFS Trees</h3><blockquote>
+<p>给定一张图, 以 $s$ 为根的生成树是厉害的指 $s$ 到任意一点的树上距离等于实际距离. 求有多少个生成树同时是以 $x$ 为根厉害的也是以 $y$ 为根厉害的. 对所有 $(x, y)$ 求答案.<br>$n\le 400, m\le 600$ </p>
+</blockquote>
+<p>考虑如果 $x\to y$ 有两条及以上最短路, 那么一定不行.</p>
+<p>找到这一条后, 这一条链一定原封不动照搬到这棵树上. 对于剩下的点, $u$ 的父亲可以为 $f$ 当且仅当 $dis(u, x)&#x3D;dis(x, f)+1, dis(u, y)&#x3D;dis(y, f)+1$ .</p>
+<p>然后统计每个点可以的父亲个数, 直接乘起来就结束了.</p>
+<h3 id="CF1264D-Beautiful-Bracket-Sequence"><a href="#CF1264D-Beautiful-Bracket-Sequence" class="headerlink" title="CF1264D Beautiful Bracket Sequence"></a>CF1264D Beautiful Bracket Sequence</h3><blockquote>
+<p>给定一个含 $\texttt{? }$ 的括号序列. 定义一个括号序列的权值为删除一些字符使其成为合法的匹配括号串后, 括号匹配的最深深度. 求把 $\texttt{? }$ 替换成括号的所有方案中, 括号序列的权值之和.</p>
+</blockquote>
+<h4 id="Version1"><a href="#Version1" class="headerlink" title="Version1"></a>Version1</h4><blockquote>
+<p>$n\le 2000$ </p>
+</blockquote>
+<p>注意不要求替换之后的合法.</p>
+<p>我们枚举深度最大的匹配之间的空隙(如果有多个, 算在第一个空隙). 设左边有 $l$ 个左括号, 右边有 $r$ 个右括号, 左边有 $x$ 个问号, 右边有 $y$ 个. 那么方案数就是</p>
+<p>$$<br>\sum_{i&#x3D;0}^{x} (l+i)\times \binom xi \binom {y}{l+i-r}<br>$$</p>
+<p>含义是枚举左边有多少个问号是左括号, 那么 $l+i$ 是深度, $\binom xi$ 是从左边挑出 $x$ 个, $l+i-r$ 是右边需要这么多括号定为右括号. 是我们钦定它是第一个深度最大的空隙并且右边确定了对应数量的右括号, 所以左边所有左括号都是可以贡献给这个空隙的. 所以这是正确的. 复杂度 $O(n^2)$ </p>
+<h4 id="Version2"><a href="#Version2" class="headerlink" title="Version2"></a>Version2</h4><blockquote>
+<p>$n\le 10^6$ </p>
+</blockquote>
+<p>考虑化简这个式子:</p>
+<p>$$<br>\begin{aligned}<br>     &amp;  \sum_{i&#x3D;0}^{x} (l+i)\times \binom xi \binom {y}{l+i-r}\<br>    &#x3D;&amp;  l\sum_{i&#x3D;0}^{x}  \binom xi \binom {y}{l+i-r} +<br>        \sum_{i&#x3D;0}^{x} i\binom xi \binom {y}{l+i-r}\<br>    &#x3D;&amp;  l\sum_{i&#x3D;0}^{x} \binom xi \binom {y}{l+i-r} +<br>        x\sum_{i&#x3D;0}^{x} \binom {x-1}{i-1} \binom {y}{l+i-r}\<br>    &#x3D;&amp; l\sum_{i&#x3D;0}^{x} \binom {x}{x-i}\binom {y}{l+i-r}+x\sum_{i&#x3D;0}^{x} \binom{x-1}{x-i}\binom {y}{l+i-r}\<br>    &#x3D;&amp;l\binom{x+y}{x+l-r}+x\binom{x+y-1}{x+l-r}<br>\end{aligned}<br>$$</p>
+<p>拿这个做即可.</p>
+<p>第二部分知道范德蒙德卷积应该是简单的. 主要是第一部分枚举一个关键(最大值)的位置后计算组合数这个方法比较巧妙.</p>
+<h3 id="CF1437F-Emotional-Fishermen"><a href="#CF1437F-Emotional-Fishermen" class="headerlink" title="CF1437F Emotional Fishermen"></a>CF1437F Emotional Fishermen</h3><blockquote>
+<p>给定长 $n$ 的序列 $a$ , 求 $a$ 重新排列后, 对于每一个位置 $a_i$ 和 $x&#x3D;\max_{j\in[1, i-1]} a_j$ , 满足 $x\ge 2a_i$ 或 $a_i\ge 2x$<br>膜998244353. $n\le 5000$ </p>
+</blockquote>
+<p>考虑用 $a_i\ge 2x$ 的把序列分成若干段, 每一个段内 $2a_i\le x$ , 每一个数可以作为划分点, 或放在第一个大于自己二倍的划分点之后. 排序后用这个dp. 设 $f_i$ 表示最大值是 $a_i$ 的方案数(加入小于 $\dfrac{a_i}{2}$ 的所有数), 此时排列中被加入的数目设为 $len_i$ .</p>
+<p>$$<br>f_i&#x3D;\sum f_j \times A^{len_i-len_j-1}_{n-len_j-2}<br>$$</p>
+<p>$f_i$ 位置是 $a_j$ 后第一个没被放的位置(否则空出来一个位置没有东西可以放), 它的位置是确定的. 而在值域 $(\dfrac{a_j}{2}, \dfrac{a_i}{2}]$ 中的这些数可以再这一次被加入. 并且可以在自己后面任意放(不能在前面, 前面已经没空位了). 于是就是这个样子了. 复杂度 $n^2$ .</p>
+<p>仍然是费用提前计算的思想(不过把费用改成方案数). 我们应该有意识枚举所有可能都状态设法和转移方向. 并且dp排列的时候由于其每个值只能出现一次基本都是从值域入手把值域分成若干段去计算.</p>
+<h3 id="CF1237F-Balanced-Domino-Placements"><a href="#CF1237F-Balanced-Domino-Placements" class="headerlink" title="CF1237F Balanced Domino Placements"></a>CF1237F Balanced Domino Placements</h3><blockquote>
+<p>给定一个 $n\times m$ 的棋盘, 上面放了 $k$ 个 $1\times 2$ 的骨牌, 要再任意放骨牌, 要求同一行, 同一列只有最多有一个骨牌, 求方案数.<br>$n, m\le 3600, k\le 2400$ </p>
+</blockquote>
+<p>行和列是隐晦的独立的.</p>
+<p>看起来似乎行和列会互相影响. 但实际上可以看作, 若选择 $x$ 个横放和 $y$ 个竖放, 就是要选择 $x+2y$ 行, 其中有 $y$ 对两两相邻. 对列也一样. 那么确定这个选择的方案之后剩下就是两两配对了. 所以预处理 $f_{x, y}, g_{x, y}$ 分别表示在确定横竖个数之后选行列的方案数, 答案就是</p>
+<p>$$<br>\sum f_{x, y}g_{x, y}x! y!<br>$$</p>
+<p>注意这里不是 $(x+y)!$ , 因为 $2y$ 个相邻行和只能和 $y$ 列匹配, $2x$ 个相邻列和 $x$ 行匹配, 两组匹配是独立的.</p>
+<p>最后就是处理 $f, g$ 的问题了. 以 $f$ 为例, 对于每一个能选的行当连续段且确定 $x, y$ 后方案数很好确定. 那么这么背包上去只能做到三次方.</p>
+<p>我们不需要同时考虑 $x$ 和 $y$ , 可以先确定选 $y$ 个行对当方案数, 再在剩下的里面选单独行是直接组合数. 而第一个就dp就好了. 前 $i$ 行选 $j$ 对的方案这样的. 就做完了.</p>
+<p>dwt钦定是简单题</p>
+<p><img src="/img/2022-10-14-19-17-47-image.png" alt="dwt"></p>
+<h3 id="CF1185G-Playlist-for-Polycarp"><a href="#CF1185G-Playlist-for-Polycarp" class="headerlink" title="CF1185G Playlist for Polycarp"></a>CF1185G Playlist for Polycarp</h3><blockquote>
+<p>有 $n$ 首歌, 每一首长 $t_i$ , 类型为 $g_i$ , 求选择一些歌并排列的方案使得任意两个相邻 $g_i$ 不同且总时长恰好为 $T$ .<br>$g_i\le 3$ </p>
+</blockquote>
+<h4 id="Version1-1"><a href="#Version1-1" class="headerlink" title="Version1"></a>Version1</h4><blockquote>
+<p>$n\le 15, T\le 225, t_i\le 15$ </p>
+</blockquote>
+<p>直接状压dp. $f_{s, i}$ 表示 $s$ 已经被选了, 最后一个选的第 $i$ 首.</p>
+<h4 id="Version2-1"><a href="#Version2-1" class="headerlink" title="Version2"></a>Version2</h4><blockquote>
+<p>$n\le 50, T\le 2500, t_i\le 50$ </p>
+</blockquote>
+<p>不能直接状压dp了, 需要组合数学靠运气.</p>
+<p>我们可以直接处理满足编号限制的dp: $f_{i, j, k, 0&#x2F;1&#x2F;2}$ 表示 $i$ 个第一种, $j$ 个第二种, $k$ 个第三种, 最后一个是哪一种的方案数. 暴力转移.</p>
+<p>那么接下来就要考虑一个合法集合使得满足时间限制. 看看数据很小可以直接枚举 $i, j, k$ , 那么就要知道此时等于时间的方案数. 这是一个subset sum, 不过有三个集合. 所以就使劲背包就好了.</p>
+<h3 id="CF1558D-Top-Notch-Insertions"><a href="#CF1558D-Top-Notch-Insertions" class="headerlink" title="CF1558D Top-Notch Insertions"></a>CF1558D Top-Notch Insertions</h3><blockquote>
+<p>对于一个长度为 $n$ 的序列 $a$  做插入排序, 即依次考虑 $a_2, \cdots, a_n$ 每个元素:</p>
+<ul>
+<li><p>如果 $a_i \ge a_{i - 1}$ , 即前缀依然保持不下降, 不做操作.</p>
+</li>
+<li><p>否则, 找到最靠前的位置 $p$ , 使得 $a_i &lt; a_p$ , 然后将 $a_i$ 插入到 $a_p$  前面, 并重新标号序列. 记这次插入为 $(i, p)$ .</p>
+</li>
+</ul>
+<p>接下来给定 $m$ 个二元组 $(x_i, y_i)$ , 求有多少个长度为 $n$ 的序列 $a$ , 满足 $\forall i, a_i \in [1, n] \cap \mathbb N$ 且做插入排序恰好按照给出的元组进行给定的 $m$ 次插入.</p>
+<p>输出序列的数量对 $998244353$ 取模的结果.</p>
+</blockquote>
+<p>根据若干个插入条件, 可以唯一确定原序列相对顺序. (就是这些插入相当于对原序列做了一个置换重排, 根据这个可以获得 $a$ 的排序.</p>
+<p>但此时拿到的 $a$ 并不是一个不降的要求(我们会得到若干 $&gt;$ 和若干 $\ge$ 串起来的关系), (可以理解一下这个关系蕴含了能获得的全部信息), 我们需要知道其中有几个是大于几个是大于等于. 一个数前面是小于当且仅当是另一个数直接插入到自己前面, 于是用平衡树维护序列即可.</p>
+<p>平衡树不断插入有些麻烦, 反过来变成删除即可.</p>
+<h3 id="CF1536F-Omkar-and-Akmar"><a href="#CF1536F-Omkar-and-Akmar" class="headerlink" title="CF1536F Omkar and Akmar"></a>CF1536F Omkar and Akmar</h3><blockquote>
+<p>两个人在一个长度为 $n$ 的环上放黑白棋, 每个人在一个空格子里放一个颜色不能与相邻棋子相同的棋子, 问如果两人都采用最优策略, 可能的游戏过程有多少种.<br>$n\le 10^6$ </p>
+</blockquote>
+<p>手玩几组发现后手好像总会赢.</p>
+<p>结论是: <strong>后手只要走, 无论怎么走都赢</strong>. 因为最后一定是若干个黑白交替连续段中间夹着单个空格, 且空格两边颜色一定不同. 所以总棋子数一定是偶数. 所以这俩人实际上是随便走, 然后后手能赢.</p>
+<p>于是就可以直接计数最后的局面再乘一个排列.</p>
+<p>最后的排列数也很好算, 枚举空格个数, 方案数就是</p>
+<p>$$<br>2n\sum_i \binom{n-i}{i} (n-i-1)!<br>$$</p>
+<p>阶乘减一是因为前面方案数实际上是 $\dfrac{\binom{n-i}{i}}{n-i}$ , 因为插板插完是个环.</p>
+<h3 id="CF1111D-Destroy-the-Colony"><a href="#CF1111D-Destroy-the-Colony" class="headerlink" title="CF1111D Destroy the Colony"></a>CF1111D Destroy the Colony</h3><p>什么鬼题面</p>
+<blockquote>
+<p>给一个字符串 $s$ , $q$ 次询问对于两个字符 $x, y$ , 有多少种方法可以使得每一种字符都只出现在 $s$ 的前一半或后一半, 并且 $x, y$ 处于同一边.<br>$\vert s \vert \le 10^5, \vert \Sigma \vert \le 52, q\le 10^5$ </p>
+</blockquote>
+<p>首先 $q\le 10^5$ 是在诈骗, 一共只有 ${ \vert s \vert }^2$ 种询问.</p>
+<p>$n&#x3D;\dfrac{ \vert s \vert }{2}$ </p>
+<p>考虑没有限制的话, 就是要我们从中选若干个数和为 $n$ 求方案数, 这个方案数乘上 ${(m! )}^2$ 再除掉 $\prod cnt_i!$ 就是没限制的答案. 有限制的时候就用从背包里删物品的做法删了再加进去一个他俩算作同一种的即可.</p>
+<h3 id="CF1466G-Song-of-the-Sirens"><a href="#CF1466G-Song-of-the-Sirens" class="headerlink" title="CF1466G Song of the Sirens"></a>CF1466G Song of the Sirens</h3><blockquote>
+<p>给定字符串 $s_0, t$ , 满足 $s_{i+1}&#x3D;s_it_is_i$ . 多次询问, 每次询问字符串 $w$ 在指定的 $s_k$ 中的出现次数. 答案对 $10^9+7$ 取模.<br>$n, q\le 10^5$ </p>
+</blockquote>
+<p>考虑 $s_i$ 对询问的贡献是跨过 $t_i$ 的出现次数, 长度是 $2\vert w\vert +1$ , 用kmp, hash可以做到 $k\vert w\vert$ 回答单次询问.</p>
+<p>那么考虑, 对于 $i, j$ , 如果 $\vert s_i\vert &gt;\vert w\vert, \vert s_j\vert &gt;\vert w\vert, t_i&#x3D;t_j$ , 它们的贡献应该相同.</p>
+<p>而由于每次 $s$ 长度翻一倍, 只用 $\log w$ 次就超过了, 那么复杂度就是 $\min{\log w, k} \vert w\vert$ . 结束了.</p>
+<h3 id="CF1400G-Mercenaries"><a href="#CF1400G-Mercenaries" class="headerlink" title="CF1400G Mercenaries"></a>CF1400G Mercenaries</h3><blockquote>
+<p>有 $n$ 个人和 $m$ 对敌对关系, 每一个人有一个条件区间 $[l_i, r_i]$ .</p>
+<p>现在要在这 $n$ 个人中选<strong>若干个人</strong>. 定义一个合法的选择 ${S}$ , 当且仅当对于 ${S}$ 中的所有人 $i$ , $l_i\le  \vert S \vert  \le r_i$ , 且 ${S}$ 中所有人互不敌对.</p>
+<p>求有多少种合法的选择, 答案对 $998244353$ 取模.</p>
+<p>$1\le n\le 3\times 10^5$ , $0\le m\le \min{20, \frac{n(n-1)}{2}}$ , $1\le l_i\le r_i\le n$ .</p>
+</blockquote>
+<p>考虑如果 $m&#x3D;0$ , 直接枚举选的人数就做完了.</p>
+<p>考虑容斥, 于是要求满足不限制集合 $s$ , 那么就是强制选若干点的方案数.</p>
+<p>那么若原来我们枚举人数 $x$ 的时候方案数是 $\binom{n}{x}$ , 现在强制选了 $cnt$ 个点, 方案数就是 $\binom{n-cnt}{x-cnt}$ </p>
+<p>要对所有这个求和会寄, 但因为这个 $cnt$ 最大到 $2m$ , 所以可以直接一遍处理所有 $cnt$ , 再一遍容斥枚举点集 $O(1)$ 算, 复杂度就是 $nm+2^m$ .</p>
+<h3 id="CF285E-Positions-in-Permutations"><a href="#CF285E-Positions-in-Permutations" class="headerlink" title="CF285E Positions in Permutations"></a>CF285E Positions in Permutations</h3><blockquote>
+<p>称一个 $1\sim n$ 的排列的完美数为有多少个 $i$ 满足 $\vert P_i-i \vert &#x3D;1$ .<br>求有多少个长度为 $n$ 的完美数恰好为 $m$ 的排列. 答案对 $10^9+7$ 取模.</p>
+<p> $1 \le n \le 1000, 0 \le m \le n$ .</p>
+</blockquote>
+<p>二项式反演. $f(n)$ 表示完美数至少为 $k$ 的方案数, $g(n)$ 表示恰好为 $k$ 的, 于是有 $f(n)&#x3D;\sum_i \binom{i}{n} g(i)$ , 反演后 $g(n)&#x3D;\sum_i {(-1)}^{n-i}\binom{i}{n} f(i)$ .</p>
+<p>现在转而求钦定 $k$ 个完美位的方案数. 考虑dp. $f_{i, j, 0&#x2F;1, 0&#x2F;1}$ 表示值域上前 $i$ 个选了 $j$ 个, 且 $i, i+1$ 是否作为完美位, 复杂度 $n^2$ 然后乘上一个阶乘就上上文的 $f(n)$ , 反演掉即可.</p>
+<h3 id="CF1530F-Bingo"><a href="#CF1530F-Bingo" class="headerlink" title="CF1530F Bingo"></a>CF1530F Bingo</h3><blockquote>
+<ul>
+<li><p>给定一个 $n\times n$ 的表格, 表格中的每个元素有 $p_{i, j}$ 的概率为 $1$ , 否则为 $0$ .</p>
+</li>
+<li><p>求至少有一行或一列或一条对角线全为 $1$ 的概率. 对角线指主对角线或副对角线.</p>
+</li>
+<li><p>$n\le 21$</p>
+</li>
+</ul>
+</blockquote>
+<p>对角线看做特殊的列.</p>
+<p>考虑容斥, 复杂度 $n\times 2^{2n+2}$ , 是不行的.</p>
+<p>考虑只容斥列, 对于行带着容斥系数dp. 那么钦定一些列选不选之后, 这一行的系数就是没有被强制选的部分的概率的乘积, 设为 $p$ , 注意因为带着系数, 多选这一行之后应该乘 $-1$ , 两个加起来就行了.</p>
+<h3 id="CF1486F-Pairs-of-Paths"><a href="#CF1486F-Pairs-of-Paths" class="headerlink" title="CF1486F Pairs of Paths"></a>CF1486F Pairs of Paths</h3><blockquote>
+<p>给定一棵树和树上若干条路径, 求有多少个对 $i\ne j$ 满足路径 $i$ 和路径 $j$ 有且仅有一个公共点.</p>
+<p>$n\le 3\times 10^5$ </p>
+</blockquote>
+<p>一开始糊了个强力做法, 假了, 不会.</p>
+<p>考虑两个路径的交点一定是两个路径的lca中深的那一个.</p>
+<p>考虑如果两个lca相同, 问题是简单的: 统计lca相同, 且路径经过的子树不同, 只要容斥算相同的就行了.</p>
+<p>不同的做法感觉很鬼, 说的是LCA从小到大排序, 每次给小于当前lca的lca点的子树加1. , 查的时候查一下, 以lca为根的子树和减去序列两段点子树和.</p>
+<p>另一个做法是离谱的点边容斥.</p>
+<h3 id="CF140E-New-Year-Garland"><a href="#CF140E-New-Year-Garland" class="headerlink" title="CF140E New Year Garland"></a>CF140E New Year Garland</h3><blockquote>
+<p>现在小 $A$ 手上有 $m$ 种小球, 他要用这些小球装饰一棵圣诞树.</p>
+<p>这是一棵神奇的圣诞树, 一共有 $n$ 层, 每层由 $l_i$ 个小球组成.</p>
+<p>对于每一层内部, 相邻的小球的都不相同.</p>
+<p>同时, 外部来看, 相邻的两层的小球集合不相同.</p>
+<p>现在小 $A$ 想要知道一共有多少种合法装饰方案, 答案对 $p$ 取模.</p>
+<p>数据范围: ( $1\le n, m\le 10^6, 2\le p\le 10^9, 1\le l_i\le 5000, \sum\limits^n_{i&#x3D;1}l_i\le 10^7$ )</p>
+</blockquote>
+<p>考虑对于一层的计数方案, 只取决于这一层能用的颜色数和这层的球总数. 数量是 $m\times (m-1)^{c-1}$ , $c$ 为能用的数量.<br>那么差分完了就是恰好用 $c$ 种的, 设这个为 $g(l, c)$ </p>
+<p>那就直接 $f_{i, j}$ 表示前 $i$ 层, 最后一层用了 $j$ 个颜色, 就行了吧.</p>
+<p>$$<br>f_{i, j} &#x3D; (\sum f_{i-1, k}) \times {m}^{\underline{j}}\times g(l_i, j) - f_{i-1, j}\times j! \times g(l_i, j)<br>$$</p>
+<p>然后发现我是智障, $g(l, c)$ 不能用至多的差分得到, 关系是一个二项式反演, 这个 $g$ 还是直接递推比较好. 式子是 $g(i, j)&#x3D;g(i-1, j-1)+g(i-1, j)\times (j-1)$ </p>
+<h3 id="P5204-USACO19JAN-Train-Tracking-2-P"><a href="#P5204-USACO19JAN-Train-Tracking-2-P" class="headerlink" title="P5204 [USACO19JAN] Train Tracking 2 P"></a>P5204 [USACO19JAN] Train Tracking 2 P</h3><blockquote>
+<p>给出长 $n$ 的序列的每个区间 $[i, i+k-1]$ 的最小值, 求值域不超过 $10^9$ 的原序列 $a$ 的方案数, 膜 $10^9+7$ .<br>$n, k\le 10^5, a\le 10^9$ </p>
+</blockquote>
+<p>考虑假设所有 $c$ 都是相同的, 怎么做? 相当于每 $k$ 个就要选一个 $c$ . 然后我们设可以选的数总数是 $x+1$ (多了个 $c$ )</p>
+<p>暴力dp就是 $f_{i, j}$ 表示前 $i$ 个, 且没选 $c$ 已经有 $j$ 个. 转移 $f_{i, j}&#x3D;f_{i-1, j-1}\times x, f_{i, 0}&#x3D;\sum f_{i-1, j}$ , 可以直接记录一下上移多少位和全局乘法标记. 就是通过数据结构优化dp做.</p>
+<p>题解区一个老哥用等差数列写了一把, 惊叹于他的脑回路, 但还是应该积累一下这个方法, 就是对一维状态的dp可以用类似数列的方法做.</p>
+<p>最后, 实际上可以法法塔, 是1log的.</p>
+<p>当然重点是接下来的, 考虑 $c$ 分成若干段, 对于每个连续段, 考虑 $c_i&#x3D;\ldots&#x3D;c_j$ , 那么现在有 $c_{i-1}&gt;c_i$ , 就有:</p>
+<p>$\min {a_i\ldots a_{i+k-1}}&#x3D;c_i&lt;c_{i-1}&#x3D;\min {a_{i-1}\ldots a_{i+k-2}}$ </p>
+<p>于是有 $a_{i+k-1}&#x3D;c_i$ 确定下来了, 那么它前面的都可以随便选, 直接归到上一个连续段考虑即可. 后面相同的同理. 这样处理之后每一段是独立的, 最后直接乘起来就是答案. 如果一段空了那么显然不用管它们.</p>
+<h3 id="P3643-APIO2016-划艇"><a href="#P3643-APIO2016-划艇" class="headerlink" title="P3643 [APIO2016] 划艇"></a>P3643 [APIO2016] 划艇</h3><blockquote>
+<p>计数长 $n$ 的序列 $a$ , 满足要求</p>
+<ul>
+<li>若 $a_i\ne 0, a_i\in [l_i, r_i]$ </li>
+<li>若 $a_i\ne 0, a_i\ge a_{i-1}$<br>$n\le 500, a_i\le b_i\le 10^9$</li>
+</ul>
+</blockquote>
+<p>和上面CF1295F Good Contest类似吧.</p>
+<p>仍然离散化区间, 设 $f_{i, j}$ 表示前 $i$ 个, 最后一个是 $j$ 区间的方案数, 然后不从 $i$ 转移而从 $j$ 转移, 就结束了.</p>
+<h3 id="CF367E-Sereja-and-Intervals"><a href="#CF367E-Sereja-and-Intervals" class="headerlink" title="CF367E Sereja and Intervals"></a>CF367E Sereja and Intervals</h3><blockquote>
+<p>有 $n$ 个区间, 你需要为每个区间分配左右端点, 端点属于 $[1, m]\cap \mathbb{N}$ . 你需要保证区间两两互不包含且至少存在一个区间的左端点等于 $x$ , 输出方案数对 $10^9+7$ 取模的结果, 区间有标号. $nm\leqslant 10^5$ , $1\leqslant x\leqslant m$ .</p>
+</blockquote>
+<p>还可以吧.</p>
+<p>考虑很显然的因为不互相包含, 所以按 $l$ 排序之后 $r$ 递增.</p>
+<p>于是方案数是左右端点分别的方案再给一个阶乘(标号).</p>
+<p>然后这个可以直接dp. 就直接设 $f_{i, j, k}$ 前 $i$ 个有 $j$ 个左端点 $k$ 个右端点. 复杂度就 $nm^2$ </p>
+<h3 id="P6189-跑步"><a href="#P6189-跑步" class="headerlink" title="P6189 跑步"></a>P6189 跑步</h3><blockquote>
+<p>划分数. $n\le 10^5$ , 对 $p\le 2^{30}$ 取模.</p>
+</blockquote>
+<p>多项式? ? ?</p>
+<p>居然是根号分治. 设 $B&#x3D;\sqrt n$ </p>
+<p>完全背包前 $B$ 个数的方案, 记结果 $g_{i}$ 表示凑 $i$ 的方案数.</p>
+<p>dp出只有大于 $B$ 的数凑成的方案, 然后卷起来.</p>
+<h3 id="CF1651E-Sum-of-Matchings"><a href="#CF1651E-Sum-of-Matchings" class="headerlink" title="CF1651E Sum of Matchings"></a>CF1651E Sum of Matchings</h3><p>收录在greedy里</p>
+<h3 id="CF1613F-Tree-Coloring"><a href="#CF1613F-Tree-Coloring" class="headerlink" title="CF1613F Tree Coloring"></a>CF1613F Tree Coloring</h3><blockquote>
+<p>给一棵有根树, 求排列 $c$ 的方案数使得 $\forall u, \ c_{fa}-1\ne c_u$ .</p>
+<p>膜998244353, $n\le 250000$</p>
+</blockquote>
+<p>原来是多项式题.</p>
+<p>考虑钦定 $i$ 个点不合法, 直接容斥就是 $i$ 为偶数的方案减去奇数的.</p>
+<p>二项式反演也一样. 考虑钦定 $i$ 个点不合法的方案数是 $f(i)$ , 恰好 $i$ 个点不合法的方案数 $g(i)$ , $f(i)&#x3D;\sum \binom{i}{j}g(j)$ , 这个是因为 $i$ 个点不合法的方案是等价的, 于是反演得 $g(0)&#x3D;\sum f(i)\times (-1)^i$ , 可以扩展到其它恰好其它 $i$ 个不对的.</p>
+<p>那么考虑如何求 $f_i$ . 我们只需要知道从这里面选 $i$ 个不合法的方案数, 因为剩下的可以随便排, 问题就变成了钦定 $i$ 个点不合法的方案数.</p>
+<p>考虑点 $u$ 有 $k$ 个儿子, 则在其中钦定一个不合法点的方案数是 $k$ , 钦定其中没有的方案数是1, 所以把 $1+kx$ 卷起来就行了. 分治ntt可以做 $n\log^2 n$ .</p>
+<h3 id="CF1580B-Mathematics-Curriculum"><a href="#CF1580B-Mathematics-Curriculum" class="headerlink" title="CF1580B Mathematics Curriculum"></a>CF1580B Mathematics Curriculum</h3><blockquote>
+<p>求有多少排列长度为 $n$ , 恰有 $k$ 个数满足所有包含这个数的区间中, 不同的最大值有恰好 $m$ 个.</p>
+<p>$n\le 100, m, k\le n, p\le 10^9$</p>
+</blockquote>
+<p>对于一个数来说, 其包含这个数的区间的不同最大值个数恰好是这个数向前向后的前缀min个数之和. 而这个等价于笛卡尔树(大根)上的层数, 所以就是计数笛卡尔树上 $m$ 层恰好有 $k$ 个元素的方案数.</p>
+<p>考虑dp笛卡尔树的结构, 设 $f_{i, j, k}$ 表示 $i$ 个点的笛卡尔树, 深度为 $j$ 的有 $k$ 个的方案数即可.</p>
+<h3 id="CF1278F-Cards"><a href="#CF1278F-Cards" class="headerlink" title="CF1278F Cards"></a>CF1278F Cards</h3><blockquote>
+<p>有 $m$ 张牌, 其中一张是王牌, $n$ 次洗牌后查看第一张牌, 看见王牌的次数 $x$ . 认为洗牌时 $m!$ 排列概率均等. 求 $x^k$ 的期望.<br>$n, m\le 998244353, k\le 5000$</p>
+</blockquote>
+<p>直接推式子.</p>
+<p>$$<br>\begin{aligned}<br>&amp;\sum_i i^k\binom {n}{i}{(\dfrac{1}{m})}^i{(\dfrac{m-1}{m})}^{n-i} \<br>&#x3D;&amp;\dfrac{1}{m^n}\sum_i i^k{(m-1)}^{n-i}\binom{n}{i}\<br>&#x3D;&amp;\dfrac{1}{m^n}\sum_i {(m-1)}^{n-i}\binom{n}{i}\sum_j {k\brace j}i^{\underline{j}}\<br>&#x3D;&amp;\dfrac{1}{m^n}\sum_j{k\brace j}\sum_i{(m-1)}^{n-i}\binom{n}{i}i^{\underline{j}}\<br>\<br>&amp;\binom{n}{i}i^{\underline{j}}&#x3D;[i\ge j]\dfrac{n^{\underline{i}}}{i^{\underline{i}}}i^{\underline{j}}&#x3D;\dfrac{n^{\underline{j}}{(n-j)}^{\underline{i-j}}}{(i-j)! }&#x3D;n^{\underline{j}}\binom{n-j}{i-j}\<br>\<br>&amp;\sum_i {(m-1)^{n-i}}\binom {n}{i}i^{\underline{j}}\<br>&#x3D;&amp;n^{\underline{j}}\sum_i \binom{n-j}{i-j}{(m-1)^{n-i}}\<br>&#x3D;&amp;n^{\underline{j}}\sum_i \binom{n-j}{n-i}{(m-1)^{n-i}}\<br>&#x3D;&amp;n^{\underline{j}}{(m+1-1)}^{n-j}\<br>&#x3D;&amp;n^{\underline{j}}m^{n-j}\<br>\<br>&amp;\dfrac{1}{m^n}\sum_j{k\brace j}\sum_i{(m-1)}^{n-i}\binom{n}{i}i^{\underline{j}}\<br>&#x3D;&amp;\dfrac{1}{m^n}\sum_j{k\brace j}n^{\underline{j}}m^{n-j}<br>\end{aligned}<br>$$</p>
+<p>可以枚举 $j$ 直接做了.</p>
+<p>告诉我们要相信式子的力量.</p>
+<h3 id="CF1153F-Serval-and-Bonus-Problem"><a href="#CF1153F-Serval-and-Bonus-Problem" class="headerlink" title="CF1153F Serval and Bonus Problem"></a>CF1153F Serval and Bonus Problem</h3><blockquote>
+<p>给定长为 $l$ 的数轴, 有 $n$ 个在 $[0, l)$ 间随机的区间, 求被被至少 $k$ 个区间覆盖的期望长度.</p>
+<p>$k, n\le 2000, l\le 10^9$ , 膜998244353.</p>
+</blockquote>
+<p>首先实际上 $l$ 是没用的, 按 $l&#x3D;1$ 的算直接乘上就行了.</p>
+<p>考虑位置 $x$ 被覆盖一次的概率是 $2x(1-x)$   </p>
+<p>$$<br>f(x)&#x3D;\sum_{i\in[k, n]} \binom{n}{i}(2x(1-x))^{i} (1-2x(1-x))^{n-i}<br>$$</p>
+<p>对这个求积分就是答案.</p>
+<p>这个是关于 $x$ 的多项式, 如果直接暴力是 $n^3$ 的.</p>
+<p>中间部分是卷积, 可以 $ntt$ 做成 $n^2\log n$ .</p>
+<p>考虑算点值再插值回去, 最后再求积分也是可行的, 那么 $O(n^2)$ 算 $n$ 个点值就行了.</p>
+<p>好厉害啊.</p>
+<h3 id="CF814E-An-unavoidable-detour-for-home"><a href="#CF814E-An-unavoidable-detour-for-home" class="headerlink" title="CF814E An unavoidable detour for home"></a>CF814E An unavoidable detour for home</h3><blockquote>
+<p>$n$ 个点, 每个点有度数 $d_i$ , 构造无向图满足点 $1$ 到点 $i$ 的最短路唯一且比到 $i-1$ 的长. 求方案数.<br>$n\le 50, 2\le d_i\le 3$</p>
+</blockquote>
+<p>想想以1为根的最短路树. 那么图是这个的基础上连若干同深度的边得到的.</p>
+<p>然后dp计数. 设 $f_{i, j}$ 表示后 $i$ 个节点, 最后一层有 $j$ 个的方案数. <strong>从下往上dp</strong>.</p>
+<p>这里不记点的度数, 因为从下往上dp保证每个点都还有一个度留给往上的. 每个点的儿子数量不确定但父亲数量确定是从下往上的原因.</p>
+<p>那么相邻两层之间的边, 一层内的边都分别预处理即可.</p>
+<p>反正还是很不会数数啊.</p>
+<h3 id="CF382E-Ksenia-and-Combinatorics"><a href="#CF382E-Ksenia-and-Combinatorics" class="headerlink" title="CF382E Ksenia and Combinatorics"></a>CF382E Ksenia and Combinatorics</h3><blockquote>
+<p>求有多少个以 $1$ 为根的 $n$ 节点二叉树最大匹配为 $k$ , 树相同判定为每个节点的相连节点相同.</p>
+<p>膜 $10^9+7$</p>
+</blockquote>
+<p>第一反应是, 很像SDOI2022D2T1吧</p>
+<p>所以还是类似dp of dp的思路, 但注意树的最大匹配是不需要dp的, 实际上做法是直接贪心, 从叶子开始匹配, 那么这里就设 $f_{u, i, 0&#x2F;1}$ 表示 $u$ 节点内有 $i$ 个匹配, 其中 $u$ 自身是否被匹配即可.</p>
+<p>注意因为判定是树同构所以钦定左儿子小于右儿子, 大小相同除以2. 并且转移的时候要带编号.</p>
+<h3 id="CF235E-Number-Challenge"><a href="#CF235E-Number-Challenge" class="headerlink" title="CF235E Number Challenge"></a>CF235E Number Challenge</h3><p>一个莫反题有贪心和组合数学标签上让人问号的.</p>
+<p>收录在greedy中.</p>
+<h3 id="CF1548C-The-Three-Little-Pigs"><a href="#CF1548C-The-Three-Little-Pigs" class="headerlink" title="CF1548C The Three Little Pigs"></a>CF1548C The Three Little Pigs</h3><blockquote>
+<p>$q$ 次给定 $x$ , 询问 $\sum_{i&#x3D;1}^n \binom{3i}{x}\pmod {10^9+7}$ .</p>
+<p>$n\le 10^6, q\le 2\times 10^5, x\le 3n$</p>
+</blockquote>
+<p>考虑那一定是对着这一堆 $x$ 一起算. 但这个式子关于 $x$ 不是多项式.</p>
+<p>但还是简单的, $\binom{3i}{x}&#x3D;[z^x] (z+1)^{3i}$ , 那么直接求和然后暴力求即可求出对所有 $x$ 的答案.</p>
+<h3 id="CF840C-On-the-Bench"><a href="#CF840C-On-the-Bench" class="headerlink" title="CF840C On the Bench"></a>CF840C On the Bench</h3><blockquote>
+<p>给定序列 $a_n$ , 求排列个数使得相邻两个的乘积不为完全平方数. 膜 $10^9+7$ .<br>$n\le 300, V\le 10^9$</p>
+</blockquote>
+<p>考虑直接给所有数除掉自己的平方因子, 就成了求相邻两数不同的排列个数.</p>
+<p>考虑把所有类的数一一插进去, 假设现在已有的排列长 $m$ , 要再插进 $k$ 个相同值, 方案数显然是 $\binom{m+1}{k}k!$ . 就结束了吧</p>
+<p>哦暴露了垃圾的数数水平, 这个显然是错的啊原因是有可能出现现在有若干个位置相邻但以后被插入了东西.</p>
+<p>那就再加一维, 逐个数字dp直接记 $f_{i, j, k}$ 表示前 $i$ 类数, 并且当前有 $j$ 个相邻的数之间需要被插入新的数, 其中有 $k$ 个是等于 $i$ 的, dp就行了. 复杂度是 $n^3$ 的. 这个dp转移比较像那种连续段dp.</p>
+<p>有个更厉害点的做法, 考虑仍然容斥, 那么钦定 $i$ 对彼此相邻的方案数记为 $f_i$ , 那么显然答案就是 $\sum f_i\times  (-1)^i$ , 而 $f_i$ 可以由各个颜色的直接卷积合并. 复杂度 $n^2$ .</p>
+<h3 id="CF997C-Sky-Full-of-Stars"><a href="#CF997C-Sky-Full-of-Stars" class="headerlink" title="CF997C Sky Full of Stars"></a>CF997C Sky Full of Stars</h3><blockquote>
+<p>给定 $n\times n$ 的正方形网格, 用三种颜色染色, 求没有一行或一列颜色相同的方案数. 膜998244353.</p>
+<p>$n\le 10^6$</p>
+</blockquote>
+<p>看到这种直接考虑容斥反演类技术. 于是钦定选了 $i$ 行 $j$ 列颜色相同方案数是 $f(i, j)$ , 没有相同的方案数就是</p>
+<p>$$<br>\sum_i \sum_j f(i, j)\binom{n}{i}\binom{n}{j}\times (-1)^{i+j}<br>$$</p>
+<p>(高维容斥反演时系数是各维度之积, 也可以分部理解)</p>
+<p>考虑 $f$ 是十分容易计算的:</p>
+<p>$$<br>f(i, j)&#x3D;<br>\begin{cases}<br>  3^{(n-i)(n-j)+1}, \ ij\ne 0\<br>  3^{i+j}3^{n(n-i-j)}\ ij&#x3D;0<br>\end{cases}<br>$$</p>
+<p>发现 $ij&#x3D;0$ 的情况可以直接单独计算(此时只有一个变量, 直接暴力求). 考虑 $ij\ne 0$ 的情况:</p>
+<p>$$<br>\begin{aligned}<br>    &amp;\sum_i \sum_j \binom{n}{i}\binom{n}{j}\times (-1)^{i+j}\times 3^{(n-i)(n-j)+1}\<br>    &#x3D;&amp;\sum_i \sum_j \binom{n}{i}\binom{n}{j}\times (-1)^{i+j}\times 3^{ij}3^{ni}3^{nj}3^{n^2+1}\<br>    &#x3D;&amp;3^{n^2+1}\sum_i (-1)^i \binom{n}{i}3^{ni} \sum_j \binom{n}{j}(-1)^j\times 3^{nj}\times 3^{ij}<br>\end{aligned}<br>$$</p>
+<p>$ij$ 不会处理了. 大多数组合恒等式这里不行因为这个次幂很难看, 考虑少数有正常幂的二项式定理</p>
+<p>$$<br>\begin{aligned}<br>    &amp;3^{n^2+1}\sum_i (-1)^i \binom{n}{i}3^{ni} \sum_j \binom{n}{j}(-1)^j\times 3^{nj}\times 3^{ij}\<br>    &#x3D;&amp;3^{n^2+1}\sum_i (-1)^i \binom{n}{i}3^{ni} \sum_j \binom{n}{j}(-1\times 3^{n+i})^j\<br>    &#x3D;&amp;3^{n^2+1}\sum_i (-1)^i \binom{n}{i}3^{ni} (-1\times 3^{n+i}+1)^n<br>\end{aligned}<br>$$</p>
+<p>就结束了.</p>
+<h3 id="CF1327F-AND-Segments"><a href="#CF1327F-AND-Segments" class="headerlink" title="CF1327F AND Segments"></a>CF1327F AND Segments</h3><blockquote>
+<p>给定 $n, k, m$ 以及 $m$ 个限制 $(l_1, r_1, x_1)\ldots (l_m, r_m, x_m)$</p>
+<p>求每个数都在 $[0, 2^k]$ 中, 且 $\forall i, a_{l_i}\operatorname{ans} a_{l_i+1}\operatorname{ans}\ldots a_{r_i}&#x3D;x$ , 且长度为 $n$ 的序列个数</p>
+<p>$n, m\le 5\times 10^5, k\le 30$</p>
+<p>膜998244353</p>
+</blockquote>
+<p>考虑每一位是相同的. 问题变成了, 指定一段全是1或者其中至少有一个0, 求方案数.</p>
+<p>那直接用全1段把它们拆成若干段, 每段就只有限制至少有一个0的方案了.</p>
+<p>可以设 $f_i$ 表示前 $i$ 个且第 $i$ 个为0的方案数, 则 $f_i$ 是一个区间的和, 前缀和优化即可.</p>
+<h3 id="CF1174E-Ehab-and-the-Expected-GCD-Problem"><a href="#CF1174E-Ehab-and-the-Expected-GCD-Problem" class="headerlink" title="CF1174E Ehab and the Expected GCD Problem"></a>CF1174E Ehab and the Expected GCD Problem</h3><blockquote>
+<p>关于排列 $p_n$ , 设 $g_i$ 表示 $\gcd {a_1, a_2, \ldots, a_i}$ , $g_i$ 的数量为 $f(p)$ , $f$ 的最大值为 $f_max$ , 求有多少个排列 $p$ 满足 $f(p)&#x3D;f_max$<br>$n\le 10^6$</p>
+</blockquote>
+<p>考虑 $f$ 的最大值, 显然一种构造是从头开始2的幂下降一定能达到最大. 于是最大值已知.</p>
+<p>那么也能顺便得到结论: 不会有 $5$ 及以上的下降(下降指前缀 $\gcd$ 除以了 $5$ ), 不会有两个 $3$ 的下降, 因为都可以调整为数量更多的 $2$ 下降.</p>
+<p>于是直接dp, $f_{i, j, k}$ 表示前 $i$ 个, 其中当前gcd为 $2^i3^j$ 的方案数, 从序列维转移.</p>
+<p>dp排列值域扫多了都要忘了能序列了.</p>
+<h3 id="CF1367F-Flying-Sort"><a href="#CF1367F-Flying-Sort" class="headerlink" title="CF1367F Flying Sort"></a>CF1367F Flying Sort</h3><blockquote>
+<p>给定 $n$ 个正整数构成的序列, 每次可以将序列中的任意一项放到最前面或最后面, 求最少操作次数让序列不降.</p>
+</blockquote>
+<h4 id="Easy-Version"><a href="#Easy-Version" class="headerlink" title="Easy Version"></a>Easy Version</h4><blockquote>
+<p>保证每个数互不相同, $n\le 3000$</p>
+</blockquote>
+<p>每个数最多操作一次. 显然.</p>
+<p>那么找到可以保留的最多的数. 并且因为中间不能插进数, 所以就是保留最长的相差为1的上升的子序列. 设 $f_i$ 表示前 $i$ 个以 $i$ 结尾的答案, 那么 $f_{a_i}&#x3D;f_{a_i-1}+1$</p>
+<h4 id="Hard-Version"><a href="#Hard-Version" class="headerlink" title="Hard Version"></a>Hard Version</h4><blockquote>
+<p>可以有相等的数, $n\le 2\times 10^5$</p>
+</blockquote>
+<p>首先你觉得这个就是直接把上面的dp搬过来, 加上可以相等.</p>
+<p>但实际上区别在于, 中间可能要取完, 比如排列<code>1 1 2 2 3 3 2</code>中, 我们不能选<code>1 1 2 2 3 3</code>因为这样<code>2</code>是插不进来的.</p>
+<p>所以就是分三种情况: 都等于一个值, 两段不一定取完, 三段, 其中中间段必须取完这三种, dp即可.</p>
+<h3 id="CF510D-Fox-And-Jumping"><a href="#CF510D-Fox-And-Jumping" class="headerlink" title="CF510D Fox And Jumping"></a>CF510D Fox And Jumping</h3><blockquote>
+<p>给出 $n$ 张卡片, 分别有 $l_i$ 和 $c_i$ . 在一条无限长的纸带上, 你可以选择花 $c_i$ 的钱来购买卡片 $i$ , 从此以后可以向左或向右跳 $l_i$ 个单位. 问你至少花多少元钱才能够跳到纸带上全部位置. 若不行, 输出 $-1$ .</p>
+<p>$n\le 300, l_i\le 10^9$</p>
+</blockquote>
+<p>能从0到1等价于能完成任务. 考虑若干数凑出1等价于它们 $\gcd$ 为1, 直接冲用map记状态就行.</p>
+<h3 id="BZOJ3864-Hero-meet-devil"><a href="#BZOJ3864-Hero-meet-devil" class="headerlink" title="BZOJ3864 Hero meet devil"></a>BZOJ3864 Hero meet devil</h3><blockquote>
+<p>给定 $s$ , 求有多少长 $m$ 的串 $t$ 满足 $lcs(t, s)&#x3D;i$ , 对所有 $i$ 输出答案.</p>
+<p>$\vert s\vert \le 15, m\le 1000$</p>
+</blockquote>
+<p>内层dp显然是求lcs的dp $f_{i, j}$ 表示 $s$ 前 $i$ 个和 $t$ 前 $j$ 个那个, 是众所周知的, 关键是如何压缩状态.</p>
+<p>发现做到 $2^{\vert s\vert}m$ 左右可能正好? 考虑我们显然扫描 $j$ , 维护所有 $f_{i}$ , 和LCS Again那题一样有个经典结论 $f_{i, j}-f_{i, j-1}\le 1$ 所以可以差分压成二进制就做完了.</p>
+<h3 id="CF1043F-Make-It-One"><a href="#CF1043F-Make-It-One" class="headerlink" title="CF1043F Make It One"></a>CF1043F Make It One</h3><blockquote>
+<p>给定序列 $a_n$ , 求选最少的数使得它们gcd为1.</p>
+<p>$n, a_i\le 3\times 10^5$</p>
+</blockquote>
+<p>考虑 $3\times 10^5$ 内的数的最多不同质因数个数有 $6$ 个.</p>
+<p>那么答案最大是不是不超过 $6$ 呢.</p>
+<p>发现实际上界是7, 构造出来应该是 $2, 3, 5, 7, 11, 13, 17$ 分别删去一个数得到的集合.</p>
+<p>qyc给出强力做法: 直接gcd卷积, 若答案为 $k$ , 则卷恰好 $k$ 次的时候 $f_1\ne 0$ .</p>
+<p>复杂度是 $n\log n$ 或 $n \log^2 \log n$</p>
+<h3 id="CF1792F1-Graph-Coloring-easy-version"><a href="#CF1792F1-Graph-Coloring-easy-version" class="headerlink" title="CF1792F1 Graph Coloring (easy version)"></a>CF1792F1 Graph Coloring (easy version)</h3><blockquote>
+<p>给定 $n$ 个点的完全图, 求有多少个红蓝染色方案, 使得对任意一个点集 $S$, 满足其导出子图仅看红色边是连通的, 或满足仅看蓝色边上连通的, 但不0同时满足两个限制.</p>
+<p>$n\le 5000$</p>
+</blockquote>
+<p>行</p>
+<p>[conclusion] 一个图和它的补图中至少有一个是连通的.</p>
+<p>对于原图中不连通的两个联通块, 其中一个的点 $x$ 必然和另一个的所有点相连, 所以这个连通块在补图中是连通的, 剩下部分显然.</p>
+<p>整张图必然是蓝&#x2F;红连通的, 假设是红连通, 蓝不连通.</p>
+<p>那么考虑计数策略之一, 看所有和 $1$ 蓝连通的点组成的块, 组成了一个规模更小的问题, 而剩下的点和这个块之间全是红边, 剩下的点是另一个规模更小的问题, 可以 $n^2$ dp出来.</p>
+<p>$$<br>f_n&#x3D;\sum_{x&lt;n} \binom{n, x} f_x \cdot (f_{n-x}\cdot (2-[x&#x3D;n-1]))<br>$$</p>
+<p>$n-x$ 的部分可能是蓝连通的也可能是红连通的, 但当只有一个点的时候就只有一种了.</p>
+<h3 id="CF1781F-Bracket-Insertion"><a href="#CF1781F-Bracket-Insertion" class="headerlink" title="CF1781F Bracket Insertion"></a>CF1781F Bracket Insertion</h3><blockquote>
+<p>进行 $n$ 次操作, 设当前序列为 $s$(初始为空), 每次从 $s$ 中随机选一个空位(若长度为 $k$, 有 $k+1$ 个空位), 以 $p$ 概率插入<code>()</code>或以 $1-p$ 概率插入<code>)(</code>, 求最后得到合法序列的概率.</p>
+<p>膜 $998244353$.<br>$n\le 500$.</p>
+</blockquote>
+<p>考虑把插入的包含关系建树, 设<code>()</code>是 $1$, <code>)(</code>是 $-1$, 看起来要求任意根开始的路径和非负.</p>
+<p>那考虑dp, 设 $f_{i, j}$ 表示 $i$ 个点, 节点到当前根的和最小为 $j$ 的方案数dp应该就行.</p>
+<h3 id="CF1750F-Majority"><a href="#CF1750F-Majority" class="headerlink" title="CF1750F Majority"></a>CF1750F Majority</h3><blockquote>
+<p>求有多少个01串 $s$, 满足允许任意次把一个1个数大于等于0个数的区间变成全1的操作下, 变成全1串.<br>对 $m$ 取模.<br>$n\le 5000, m\le 10^9$.</p>
+</blockquote>
+<p>看起来是让你dp的, 并且我们显然应该对着操作完了的串dp.</p>
+<p>容易发现操作完了的串是0, 1连续段交替, 且0的长度大于两边1的长度, 当然两头必须是1.</p>
+<p>于是设 $f_{i, j}$ 表示长度为 $i$, 操作完最后一个1段长 $j$ 的方案数, 发现很遗憾的不会转移.</p>
+<p>你发现 $f_{i, j}, j&lt;i$ 的转移方式是能写的, 考虑去掉结尾 $j$ 个 $1$, 再枚举去掉 $k$ 个 $0$, 再枚举剩下的最后长 $l$ 个 $1$ 即可. 而 $f_{i, i}$ 十分遗憾的等于自身</p>
+<p>于是 $f_{i, i}$ 的用 $f2^{i-2}-\sum f_{i, j}$ 表示了.</p>
+<p>用一些前缀和优化做到 $n^2$.</p>
+<h3 id="CF1617E-Christmas-Chocolates"><a href="#CF1617E-Christmas-Chocolates" class="headerlink" title="CF1617E Christmas Chocolates"></a>CF1617E Christmas Chocolates</h3><blockquote>
+<p>你有一个长度为 $n$ 的数组 $a_1, a_2, \dots, a_n$, 一开始数组中的所有元素都<strong>互不相同</strong>.<br>你可以选择两个数组中的元素 $a_x, a_y$, 然后执行若干次操作, 每次操作你可以选择一个非负整数 $k$, 然后将 $a_x$ 替换为 $2^k-a_x$. 如果在某次操作之后 $a_x&#x3D;a_y$, 那么不再执行操作. 任意时刻, $a_i$ 不能为负数.</p>
+<p>你是一个很聪明的人, 所以在选择一对 $(x, y)$ 之后你知道如何用最少的操作次数使得 $a_x&#x3D;a_y$. 但是你并不满足于此, 你现在还想知道使得最少操作次数最大的 $(x, y)$. 请求出 $x, y$ 和这个最大的最少操作次数 $m$.</p>
+<p>数据范围:</p>
+<ul>
+<li>$2\leqslant n\leqslant 2\times 10^5$.</li>
+<li>$0\leqslant a_i\leqslant 10^9$.</li>
+</ul>
+</blockquote>
+<p>考虑一个数经过操作形成一棵树(对于一个树, 只有最小的 $k$ 变成的数小于自己). 于是路径是唯一的, 要求最长路.</p>
+<p>求虚树需要求lca, dfn, 完全不会啊.</p>
+<p>停, 一个点的深度是 $\log v$ 的, 那么根据直径性质就直接求最远的点, 再求最远的点就做完了.</p>
+<h3 id="CF1574F-Occurrences"><a href="#CF1574F-Occurrences" class="headerlink" title="CF1574F Occurrences"></a>CF1574F Occurrences</h3><blockquote>
+<p>有 $n$ 个值域在 $[1, k]$ 的数列 $A_1, A_2, \cdots, A_n$, 要求构造一个长为 $m$ 的值域在 $[1, k]$ 的序列 $a$, 满足对于所有数列 $A_i$, $A_i$ 在序列 $a$ 中的出现次数大于等于其任意一个非空子段在 $a$ 中的出现次数.<br>求不同的 $a$ 的数量, 答案 $\bmod 998244353$.<br><strong>数据范围</strong>: $1\le n, m, k\le 3\times 10^5, \sum c_i\le 3\times 10^5$.</p>
+</blockquote>
+<p>考虑限制的意思是, 如果 $a$ 中的一个数出现了, 那么 $a$ 必须按顺序完整出现一遍.</p>
+<p>于是对于 $i, j$, $A_{i, j}\to A_{i, j+1}$ 连边, 要求每次可以选择一个入度为 $0$ 的点走一条链拼出整个串.</p>
+<p>那后面这个问题背包求方案数啊.</p>
+<h3 id="CF1542E-Abnormal-Permutation-Pairs"><a href="#CF1542E-Abnormal-Permutation-Pairs" class="headerlink" title="CF1542E Abnormal Permutation Pairs"></a>CF1542E Abnormal Permutation Pairs</h3><blockquote>
+<p>给定 $n, m$, 求有多少对长度为 $n$ 的排列 $p, q$, 满足以下条件.</p>
+<ul>
+<li>$p$ 的字典序小于 $q$</li>
+<li>$p$ 的逆序对个数大于 $q$.</li>
+</ul>
+<p>答案对 $m$ 取模.</p>
+<p>$1\le n\le 500, 1\le m\leq 10^9$, <strong>不保证</strong> $m$ 为素数.</p>
+</blockquote>
+<p>容易想到枚举前面相同的前缀长度, 也容易想到笛卡尔树dp排列.</p>
+<p>那么注意到, 枚举一个相同的长 $l$ 前缀后, 只要看后面的逆序对数就能比较.</p>
+<p>于是dp后面的, $f_{i, j, 0&#x2F;1&#x2F;2}$ 表示从小到大插入 $i$ 个数, 目前两个排列逆序对个数的差为 $j$, 第一个数现在是 $p&#x2F;q&#x2F;$ 一样大的方案数. 如果枚举插入位置复杂度是 $n^5$ 的吧.</p>
+<p>然后考虑从 $f_{i, j}$ 转移到 $f_{i+1, j+k}$ 时, $k$ 是插入的两个数的位置的下标的差, 于是就是乘一个 $n-\vert k\vert+C$ 的系数.</p>
+<p>那么用一些奇妙的二阶差分就能区间加等差数列了吧, 或者把 $k$ 拆成 $(j+k)-j$ 后在两边分别贡献.</p>
+<p>复杂度 $n^3$.</p>
+<p>Froggy的”显然生成函数是”没有看懂啊</p>
+<h3 id="CF1511F-Chainword"><a href="#CF1511F-Chainword" class="headerlink" title="CF1511F Chainword"></a>CF1511F Chainword</h3><blockquote>
+<p>给出一个 $n$ 个词的字典 $S_1, S_2, \dots , S_n$, 求由长度均为 m 的字符串<br>S 和划分 $P, Q$ 组成的三元组 $(S, P, Q)$ 数量, 满足:</p>
+<ul>
+<li>对于 $P$ 中划分的每一段 $[l, r]$, 均满足 $S[l, r]$ 在字典中.</li>
+<li>对于 $Q$ 中划分的每一段 $[l, r]$, 均满足 $S[l, r]$ 在字典中.</li>
+</ul>
+<p>答案对 $998244353$ 取模.<br>$n\le 8, m\le 10^9$</p>
+</blockquote>
+<p>先考虑 $O(mC)$ 的东西, 那么dp过程中看起来我们需要记录最后几位的是啥, 但实际上显然只关心匹配情况, 所以就是都插到字典树里, $f_{i, j, k}$ 记录一共长 $i$, 当前 $P$ 在字典树的 $j$, $Q$ 在字典树的 $k$.</p>
+<p>然后显然和 $i$ 没啥关系, 就矩阵快速幂.</p>
+<p>8个字符串, 每个有5个字符, 最大有 $40$ 个节点, 复杂度爆炸了.</p>
+<p>观察性质, $j, k$ 都是当前填好的后缀, 所以他俩一个是另一个的后缀.</p>
+<p>于是现在状态数减少到 $5<em>8</em>8&#x3D;320$, 过了.</p>
+<h3 id="CF1487G-String-Counting"><a href="#CF1487G-String-Counting" class="headerlink" title="CF1487G String Counting"></a>CF1487G String Counting</h3><blockquote>
+<p>你有 $26$ 个不同的字符, 第 $i$ 个字符有 $c_i$ 个($\frac{n}{3} &lt; c_i \leq n$).</p>
+<p>你希望用这些字符, 构造出一个长度为 $n$ 的字符串(每个字符在字符串中出现的个数不超过 $c_i$), 使得这个字符串上不存在长度为奇数且大于 $1$  的回文串. 求出方案数对 $998244353$ 取模的结果.</p>
+<p>$n\le 400$, 10s, 1G</p>
+</blockquote>
+<p>注意到 $\frac{n}{3}&lt;c_i\le n$ 的意思是, 你只能有两个字符超出限制.</p>
+<p>那么先不考虑字符数限制的话, 考虑添加一个字符 $c$ 时只要求它不能和上上次添加的相同即可, 是随便做.</p>
+<p>那么容斥, 钦点两个字符次数过多, 于是 $f_{i, j, k, 0&#x2F;1&#x2F;2, 0&#x2F;1&#x2F;2}$ 表示添加 $i$ 个字符, 如果 $a, b$ 的次数分别是 $j, k$, 最后两个位置是 $a&#x2F;b&#x2F;$ 其他的情况下的答案. 仍然可以转移.</p>
+<h3 id="CF1540C1-x2F-2-Converging-Array"><a href="#CF1540C1-x2F-2-Converging-Array" class="headerlink" title="CF1540C1&#x2F;2 Converging Array"></a>CF1540C1&#x2F;2 Converging Array</h3><blockquote>
+<p>这是这道题的困难版, 与简单版唯一不同是 $1 \le q \le 10^5$</p>
+<p>现在有长度为 $n$ 的数组 $a$ 和长度为 $n - 1$ 的数组 $b$, 进行无穷次如下过程直至 $a$ 数组值收敛</p>
+<ol>
+<li>选择一个数字 $i$</li>
+<li>同时使 $a_i &#x3D; min(a_i, \frac{a_i + a_{i + 1} - b_i}{2}), \ a_{i + 1} &#x3D; max(a_{i + 1}, \frac{a_i + a_{i + 1} + b_i}{2})$ (没有取整)</li>
+</ol>
+<p>定义 $F(a, b)$ 为操作完成后 $a_1$ 的值</p>
+<p>现在你知道数组 $b$ 和 长度为 $n$ 的数组 $c$, 保证 $\forall i \in [1, n], \ 0 \le a_i \le c_i$</p>
+<p>有 $q$ 组询问, 每次问使 $F(a, b) \ge x$ 的数组 $a$ 有多少个</p>
+<p>答案对 $1\ 000\ 000\ 007$ 取模</p>
+</blockquote>
+<p>考虑简单版($q&#x3D;1$).</p>
+<p>考虑操作就是, 对于 $a_i, a_{i+1}$, 如果 $a_{i+1}&lt;a_i+b_i$ 就把它们两个以平均值为中心差调整到 $b_i$</p>
+<p>考虑现在的限制, 因为一个前缀的和随操作是不增的, 再通过分析收敛后, $a_i\ge x+\sum_j b_j$, 容易得出前缀和 $s_i\ge ix+\sum b_j$.</p>
+<p>问题来到充分性, 考虑如果一开始 $a_1&gt;x$, 那么要让它调整到小于 $x$ 必须让 $a_2&lt;x+b_i$, 以此类推.</p>
+<p>那么 $q&#x3D;1$ 是简单背包, 可以优化到 $n^3$</p>
+<p>那么注意到通过分析 $a_1, a_n$ 的取值范围, 得出不同的 $x$ 只有 $200$ 种(剩下都不可能), 就过了.</p>
+<h2 id="4-2021sdpttday3"><a href="#4-2021sdpttday3" class="headerlink" title="4. 2021sdpttday3"></a>4. 2021sdpttday3</h2><h3 id="AGC028B"><a href="#AGC028B" class="headerlink" title="AGC028B"></a>AGC028B</h3><blockquote>
+<p>现在有 $N$ 条线段排成一行, 其中第 $i$ 条线段的长度为 $A_i$. 现在要按照一个顺序删除所有线段, 以下定义其代价:</p>
+<ul>
+<li>相邻的没有被删除的线段会连在一起.</li>
+<li>删除连起来的一些线段中的任意一条线段, 花费的代价为这些线段的总长.</li>
+<li>一个删除顺序的代价, 就是每条线段的删除代价总和.<br>对于所有 $1, 2, \cdots, N$ 的排列 $p_1, p_2, \cdots, p_N$, 求依次删除 $p_1, p_2, \cdots, p_N$ 的代价之和. 答案对 $10^9+7$ 取模.<br>$N\leq 10^5, 1\leq A_i\leq 10^9, 2s, 1GB$.</li>
+</ul>
+</blockquote>
+<p>考虑一条线段的贡献, 也就是其在删除时间的笛卡尔树上深度, 只要考虑一个点是它祖先的概率, $i$ 是 $j$ 的祖先要求 $i$ 被删的时候区间 $[i, j]$ 保留, 就是 $\dfrac{1}{\vert i-j\vert +1}$, 累加起来就是祖先概率, 就会做了.</p>
+<h3 id="CF605E-Intergalaxy-Trips"><a href="#CF605E-Intergalaxy-Trips" class="headerlink" title="CF605E Intergalaxy Trips"></a>CF605E Intergalaxy Trips</h3><blockquote>
+<p>给定一张 $n$ 个点的图, 目标是花费最小的天数从 $1$ 到 $n$.<br>每一天, 都有 $p_{ij}$ 的概率存在边 $\langle i, j\rangle$, 花费恰好 $1$ 天.<br>每天可以选定一条存在的边出发, 也可以选择留在原地不动(即 $p_{i, i}&#x3D;1$).<br>求最优策略下的期望天数.<br>$n\leq 1000, 2s, 256MB$.</p>
+</blockquote>
+<p>$f_u&#x3D;p_{u, v}f_v+(1-p_{u, v})f_u$</p>
+<h2 id="1-其他"><a href="#1-其他" class="headerlink" title="-1. 其他"></a>-1. 其他</h2><h3 id="Nowcoder某题"><a href="#Nowcoder某题" class="headerlink" title="Nowcoder某题"></a><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/42819/E">Nowcoder某题</a></h3><blockquote>
+<p>$n$ 行 $2n$ 列的网格图, 每行每列最多有两个棋子, 求本质不同方案数.</p>
+<p>本质相同定义为可以通过交换若干行列得到相同的方案.</p>
+<p>$n\le 10^5$ , 膜998244353</p>
+</blockquote>
+<p>汪娟介绍的</p>
+<p>考虑这是一个经典网络流模型, 可以把一个方案对应到一个二分图上(建行点列点, 有棋子则连对应行列).</p>
+<p>于是变成计数无标号二分图个数, 并且<strong>每个点度数不超过2</strong>, 一边 $n$ 个点一边 $2n$ 个点.</p>
+<p>发现因为度数限制, $n$ 个点这边怎么选 $2n$ 个点都够用, 所以可以只考虑左边的大小, 视右边大小为无限.</p>
+<p>那么度数限制为 $2$ 的二分图只有链和环两种. 那么就是计数若干个链和环且左边为 $n$ 个点.</p>
+<p>然后在仅考虑左边点的情况, 它们的区别仅在于左边至少一个点(左边点少的链, 左右数量相等的链, 环)或者至少两个点(左边数量多一个的链), 所以写成生成函数就是 $\prod_{i&#x3D;1} \dfrac{1}{1-x^k} * \prod_{i&#x3D;2} \dfrac{1}{1-x^k}$</p>
+<p>一个简单做法是分治ntt或ln+exp.</p>
+<p>常数小做法是五边形数四次方乘 $1-x$ . 复杂度 $n\log n$ .</p>
+<h3 id="CF930E-Coins-Exhibition"><a href="#CF930E-Coins-Exhibition" class="headerlink" title="CF930E Coins Exhibition"></a>CF930E Coins Exhibition</h3><blockquote>
+<p>有 $k(1 \leq k \leq 10^9)$ 个硬币, 每个硬币有正面朝上和反面朝上两种状态.</p>
+<p>现有 $n+m(0 \leq n, m \leq 10^5)$ 个限制条件, 每个限制条件形如 $(l_i, r_i)(1 \leq l_i \leq r_i \leq k)$ . 前 $n$ 个限制条件限制区间 $[l_i, r_i]$ 内至少有一个硬币正面朝上, 后 $m$ 个限制条件限制区间 $[l_i, r_i]$ 内至少有一个硬币反面朝上.</p>
+<p>问共有多少种摆放硬币的方案使得所有限制条件都被满足. 答案对 $10^9+7$ 取模.</p>
+</blockquote>
+<p>考虑dp, $k$ 这么大肯定要离散化, 不过先想一个关于 $k$ 线性的东西, 考虑限制是在说一个什么, 序列上数数自然设 $f_{i, 0&#x2F;1}$ 表示前 $i$ 个最后一个是 $0&#x2F;1$ 的方案, 那么想到钦点从最近的0&#x2F;1转移, 于是发现一个限制 $[l, r]$ 中至少一个0等价于对于大于等于 $r$ 的位置其找0的时候需要在 $l$ 之后, 那么前缀和优化就线性了. 最后上一个划艇的套路: 离散化区间即可.</p>
+<p>我天, 不会写dp了.</p>
+<h3 id="P5492-PKUWC2018-随机算法"><a href="#P5492-PKUWC2018-随机算法" class="headerlink" title="P5492 [PKUWC2018]随机算法"></a>P5492 [PKUWC2018]随机算法</h3><blockquote>
+<p>我们知道, 求任意图的最大独立集是一类NP完全问题, 目前还没有准确的多项式算法, 但是有许多多项式复杂度的近似算法.</p>
+<p>例如, 小 C 常用的一种算法是:</p>
+<ol>
+<li><p>对于一个 $n$ 个点的无向图, 先等概率随机一个 $1\ldots n$ 的排列 $p[1\ldots n]$.</p>
+</li>
+<li><p>维护答案集合 $S$ , 一开始 $S$ 为空集, 之后按照 $i&#x3D;1\ldots n$ 的顺序, 检查 ${p[i]}\cup S$ 是否是一个独立集, 如果是的话就令 $S&#x3D;{p[i]}\cup S$.</p>
+</li>
+<li><p>最后得到一个独立集 $S$ 作为答案.</p>
+</li>
+</ol>
+<p>小 C 现在想知道, 对于给定的一张图, 这个算法的正确率, 输出答案对 $998244353$ 取模.</p>
+</blockquote>
+<p>考虑枚举排列就是每次选一个点, 一个自然的状态是设 $f_S$ 表示当前已经加入了 $S$ 内的点, 答案是对的的概率. 再设 $siz_S$ 表示 $S$ 点集的最大独立集.</p>
+<p>那么 $siz$ 转移显然, 主要考虑 $f$ 的转移.</p>
+<p>一开始考虑枚举 $u$, 若 $siz_{S&#x2F;u}+check(u, S&#x2F;u)&#x3D;siz_S$ 则转移过来, 但这个是不对的, $u$ 的相邻点可能贡献了 $S&#x2F;u$ 的 $siz$, 不如删掉这些相邻点从 $f_T$ 转移过来.</p>
+<h3 id="P4705-玩游戏"><a href="#P4705-玩游戏" class="headerlink" title="P4705 玩游戏"></a>P4705 玩游戏</h3><blockquote>
+<p>给定 $a_n, b_n$, 对每个 $k$ 求 $\dfrac{1}{nm} \sum_i \sum_j (a_i+b_j)^k$</p>
+<p>$n, m, k\le 10^5$</p>
+</blockquote>
+<p>$$<br>\begin{gathered}<br>    \sum_i \sum_j (a_i+b_j)^k\<br>    &#x3D;\sum_i \sum_j \sum_l \binom{k}{l}{a_i}^l{b_j}^{k-l}\<br>    &#x3D;\dfrac{1}{k! } \sum_l \dfrac{l! }{(k-l)! } (\sum_i {a_i}^l) (\sum_j {b_j}^{k-l})<br>\end{gathered}<br>$$</p>
+<p>可以看出卷积, 问题变成如何求 $c_k&#x3D;\sum_i {a_i}^k$, 注意到</p>
+<p>$$<br>    \sum_k \dfrac{ {a_i}^k\cdot z^k}{k}&#x3D;-\ln(1-a_iz)<br>$$</p>
+<p>于是</p>
+<p>$$<br>C(z)&#x3D;\sum_i -\ln(1-a_iz)&#x3D;-\ln \prod_i (1-a_iz)<br>$$</p>
+<p>分治FFT算里面的即可.</p>
+<h3 id="校内模拟Circle"><a href="#校内模拟Circle" class="headerlink" title="校内模拟Circle"></a>校内模拟Circle</h3><blockquote>
+<p>ehzeux 给了你一个圆, 圆上均等地放着 $2n$ 个点, 其中 35 已经帮你在 $k$ 对点之间连好了线段, 你需要从中选择剩下 $n-k$<br>对点随意连线段 (每个点只连一条线段), 并求出所有连边方案中联通块的个数总和. 两点联通当且仅当两点在同一<br>条线段上或两点所属于的线段相交. 答案对 $10^9+7$ 取模.</p>
+<p>$n\le 300$</p>
+</blockquote>
+<p>考虑看起来是dp</p>
+<p>但是区间dp试一试发现进行不下去, 连出去的根本做不到</p>
+<p>考虑设 $f_{i, j}$ 表示 $i, j$ 是一个连通块内编号最小和最大的点, $[i, j]$ 中的点都已经经过配对, 此时的方案数.</p>
+<p>那么这个连通块出现的次数就是上面那个再乘上剩下的点乱连的方案数.</p>
+<p>于是问题来到如何算 $f$, 考虑先在 $[i, j]$ 中乱连, 显然不会连出去, 但与 $i$ 相连的连通块最大值不一定是 $j$, 考虑枚举最大值 $a$, 那么此时分成了两部分, 分别是 $f_{i, a}$ 中的部分加上 $[a+1, j]$ 乱连, 用这个容斥即可.</p>
+<h3 id="P5401-CTS2019-珍珠"><a href="#P5401-CTS2019-珍珠" class="headerlink" title="P5401 [CTS2019] 珍珠"></a>P5401 [CTS2019] 珍珠</h3><blockquote>
+<p>有 $n$ 个在范围 $[1, D]$ 内的整数均匀随机变量.</p>
+<p>求至少能选出 $m$ 个瓶子, 使得存在一种方案, 选择一些变量, 并把选出来的每一个变量放到一个瓶子中, 满足每个瓶子都恰好装两个值相同的变量的概率.</p>
+<p>请输出概率乘上 $D^n$ 后对 $998244353$ 取模的值. 取模部分说明可参考第一题.<br>$D\le 10^5$</p>
+</blockquote>
+<p>考虑</p>
+<p>$$<br>\sum_i \dfrac{cnt_i}{2} \ge m\<br>\leftrightarrow \sum_i (cnt_i \bmod 2) \le 2m-n<br>$$</p>
+<p>钦点 $k$ 个数出现奇数次, 奇数的一个数的EGF是 $\dfrac{e^x-e^{-x}}{2}$, 所以总式子是</p>
+<p>$$<br>\binom{D}{k} n! (\dfrac{e^x-e^{-x}}{2})^k e^{D-k}\<br>\binom{D}{k} \dfrac{n! }{2^k} \sum_i \binom{k}{i} (-1)^{k-j} e^{D-2k+2j}x<br>$$</p>
+<p>因为 $[x^n]e^ax&#x3D;\dfrac{a^n}{n! }$, 所以再带进去, 就有了卷积的形式.</p>
+<p>然后卷积优化二项式反演.</p>
+<h3 id="P3978-TJOI2015-概率论"><a href="#P3978-TJOI2015-概率论" class="headerlink" title="P3978 [TJOI2015]概率论"></a>P3978 [TJOI2015]概率论</h3><blockquote>
+<p>对于一棵随机生成的 $n$ 个结点的有根二叉树(所有互相不同构的形态等概率出现), 它的叶子节点数的期望是多少呢?<br>$n\le 10^9$</p>
+</blockquote>
+<p>~~发现答案是 $n-1$ 个点的二叉树个数乘 $n$ ~~</p>
+<p>证明就是, 一个 $n$ 个点的树假设有 $k$ 个叶子, 去掉每一个都得到一个 $n-1$ 个点的树. 考虑每个 $n-1$ 的被算了多少次, 相当于能在多少点底下挂一个叶子, 显然是 $n$, 于是就做完了.</p>
+<p>另外EI的拉反很厉害.</p>
+<h3 id="P7364-有标号二分图计数"><a href="#P7364-有标号二分图计数" class="headerlink" title="P7364 有标号二分图计数"></a>P7364 有标号二分图计数</h3><blockquote>
+<p>$n$ 个点的二分图, $n\le 10^5$</p>
+</blockquote>
+<p>考虑第一反应是枚举左半边, 然后枚举连边:<br>$$<br>f_n&#x3D;\sum_i \binom{n}{i}2^{i(n-i)}\<br>\sum_i \dfrac{n! }{i! (n-i)! }2^2\cdot 2^{n-i}<br>$$</p>
+<p>这个可以随便卷卷算.</p>
+<p>但注意到这个不完全正确: 对于有 $x$ 个连通块的二分图, 因为你这么二染色, 会有 $2^x$ 种.</p>
+<p>那么设刚才求的这个生成函数是 $F$, 连通二分图的为 $H$, 答案为 $G$.</p>
+<p>容易发现 $e^{2H}&#x3D;F$ 和 $e^H&#x3D;G$, 于是实际上就对 $F$ 开根.</p>
+<h3 id="ABC290F-Maximum-Diameter"><a href="#ABC290F-Maximum-Diameter" class="headerlink" title="[ABC290F] Maximum Diameter"></a>[ABC290F] Maximum Diameter</h3><blockquote>
+<p>对于一个长度为 $n$ 的正整数序列 $X&#x3D;(X_1, X_2, \cdots, X_n)$, 定义 $f(X)$ 为:</p>
+<ul>
+<li>对于所有节点数量为 $n$, 且点 $i$ 的度数恰好为 $X_i$ 的树, 其直径的最大值. 如不存在, 则值为 $0$.</li>
+</ul>
+<p>你需要对于所有长度为 $n$ 的正整数序列 $X$ 计算 $f(X)$ 的和, 可以证明其为有限值. 答案对 $998244353$ 取模.</p>
+<p>$T$ 组数据. $1\le T\le2\times10^5$, $2\le n\le10^6$.</p>
+</blockquote>
+<p>看到杜赢做这个题.</p>
+<p>考虑对于某个整数序列, 让直径最长一定是串一条链, 然后把多出来的一度点直接挂在链上的点.</p>
+<p>因此对于 $a_n$, 答案是 $\sum_i [a_i&gt;1]$</p>
+<p>考虑枚举一个一度点的个数 $k$, 答案是</p>
+<p>$$<br>\sum_k (n-k+1)\binom{n}{k}\binom{n-2}{n-k-1}<br>$$</p>
+<p>然后用范德蒙德卷积就可以化简完了.</p>
+<h3 id="P4709-信息传递"><a href="#P4709-信息传递" class="headerlink" title="P4709 信息传递"></a>P4709 信息传递</h3><blockquote>
+<p>给定置换<br>$$<br>f &#x3D; \begin{pmatrix} 1 &amp; 2 &amp; . . . &amp; n \\ a_1 &amp; a_2 &amp; . . . &amp; a_n \end{pmatrix}<br>$$<br>求有多少个置换 $g$ , 满足<br>$$<br>g ^ n &#x3D; f<br>$$<br>答案对 $998244353$ 取模.</p>
+<p>$n \le {10} ^ 5$.</p>
+</blockquote>
+<p>考虑拆环, 对于单个环考虑, 对于一个数 $i$, 乘上一个数就相当于在环上走一步 $i\to p_i\to p_{p_i}\ldots$.</p>
+<p>那么, 若走 $x$ 步, 环长为 $l$, 环会变成 $gcd(x, l)$ 个小环, 按照膜 $gcd(x, l)$ 分类</p>
+<p>于是你可以对着 $f$, 考虑有 $a$ 个环能拼成 $g$ 中的一个环, 条件是长度均为 $k$, 满足 $gcd(ak, n)&#x3D;a$.</p>
+<p>然后显然每个长度的环互不影响, 就能做了, 对于所有长度为 $k$ 的环, 设 $f_i$ 表示使用 $i$ 个的方案数, 钦定用 $a$ 个环拼起来时以第一个环第一个数为首, 又因为每个环地位相等, 所以用 $\binom{i-1}{a-1}$</p>
+<p>$$<br>f_i&#x3D;\sum_a [gcd(ak, n)&#x3D;a]\binom{i-1}{a-1}f_{i-a} k^{a-1}k!<br>$$</p>
+<h3 id="SDOI2017-序列计数"><a href="#SDOI2017-序列计数" class="headerlink" title="[SDOI2017]序列计数"></a>[SDOI2017]序列计数</h3><blockquote>
+<p>Alice 想要得到一个长度为 $n$ 的序列, 序列中的数都是不超过 $m$ 的正整数, 而且这 $n$ 个数的和是 $p$ 的倍数.</p>
+</blockquote>
+<blockquote>
+<p>Alice 还希望, 这 $n$ 个数中, 至少有一个数是质数.</p>
+</blockquote>
+<blockquote>
+<p>Alice 想知道, 有多少个序列满足她的要求.</p>
+<p>$1\leq n \leq 10^9, 1\leq m \leq 2\times 10^7, 1\leq p\leq 100$.</p>
+</blockquote>
+<p>观察数据范围, 考虑 $f_{i, j, 0&#x2F;1}$ 表示前 $i$ 个数, 和膜 $p$ 余 $j$, 是否选了质数的方案数.</p>
+<p>看到至少一个, 想到全都不是, 发现全都不是的只要做的时候只考虑非素数求就行了, 所以去掉 $0&#x2F;1$ 维.</p>
+<p>那么矩阵快速幂优化上面那个即可. 容易发现转移固定.</p>
+<h3 id="P6694-强迫症"><a href="#P6694-强迫症" class="headerlink" title="P6694 强迫症"></a>P6694 强迫症</h3><blockquote>
+<p>给定圆上 $n$ 个点, 有点权 $a_i$, 将它连成一张图, 使得边不在非端点处相交, 边 $u\to v$ 的权值为 $a_u\cdot a_v$, 求期望权值和.</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>考虑方案数是好求的: 设 $n$ 个点方案数为 $f_n$, 钦定一号点连向编号最小的边为 $1\to i$, 则 $f_n&#x3D;f_{i-1}\cdot f_{n-i}$, 直接卷.</p>
+<p>那么考虑一条边 $u\to v, u&lt;v$ 的贡献是 $a_u a_v f_{v-u+1}f_{n-(v-u+1)}&#x2F;4$(除4是除必须选 $u\to v$).</p>
+<p>还需要进一步优化, 注意到两个 $f$ 可以合成一个 $h_{v-u+1}$, 然后它和 $a_u$ 可以先卷出一个关于 $v$ 的东西, 就能行了.</p>
+<h3 id="P5363-SDOI2019-移动金币"><a href="#P5363-SDOI2019-移动金币" class="headerlink" title="P5363 [SDOI2019]移动金币"></a>P5363 [SDOI2019]移动金币</h3><blockquote>
+<p>Alice和Bob将要进行如下的一场游戏. 二人轮流操作, 且Alice先行.<br>当轮到一个玩家的时候, 他可以选择一枚金币, 并将其向左移动任意多格, 且至少移动一格.<br>金币不能被移出棋盘, 也不能越过其它金币.</p>
+<p>一个 $1\times n$ 的棋盘上最初摆放有 $m$ 枚金币. 其中每一枚金币占据了一个独立的格子, 任意一个格子内最多只有一枚金币.</p>
+<p>如果轮到一个玩家的时候他已经无法做出任何有效操作了(显然这个时候 $m$ 枚金币恰好落在最左侧的 $m$ 个格子中), 则被判定为输家. 已经知道Alice和Bob都是极致聪明的人, 他们在任何局面下总能做出最优的操作. 那么有多少初始状态能保证Alice必胜呢?</p>
+<p>$m\le 50, n\le 150000$</p>
+</blockquote>
+<p>发现不会判定.</p>
+<p>学到了一个叫阶梯博弈的东西.</p>
+<p>说的是考虑有 $n$ 堆石子, 每次可以把第 $i$ 堆的移动到第 $i-1$ 堆, (规则为把第 $i$ 堆移动到左边任意一堆的同理), 那么实际上相当于一个仅考虑奇数堆的普通NIM游戏. 具体可以考虑, 如果对方移动一个偶数堆到奇数堆, 你立刻把它再往下移动到偶数堆, 这个操作一定可以进行且对奇数堆情况没有改变且不导致先后手变化, 相当于没干, 所以只要考虑一次把一个奇数堆移动没了就行了.</p>
+<p>于是这个题, 把两个金币之间的距离当做石子堆, 问的就是有多少个序列 $a_m$, $\sum a_m&lt;n$, 且 $\operatorname{xor}_{i&#x3D;2k+1}{a_i\ne 0}$</p>
+<p>这个东西同时要求 和 与 异或和, 看起来不是二进制多项式可以解决的.</p>
+<p>考虑逐位考虑, 考虑只考虑奇数位上的数, 每位有偶数个 $1$, 层层之间无关, 对于每一层, 枚举选几个 $1$ 方案数得到一个 $a_i$ 表示和为 $i$ 的方案数, 卷起来就是总方案数.</p>
+<p>最后再卷上偶数位上的方案数即可.</p>
+<p>哦, 发现模数上智障的 $10^9+9$.</p>
+<p>注意到奇数堆每一层最多选 $m&#x2F;2$ 个盘子, 所以暴力卷复杂度是 $nm\log n$. 最后卷偶数堆的时候求的是后缀和, 也可以做到线性.</p>
+<h3 id="P3228-HNOI2013-数列"><a href="#P3228-HNOI2013-数列" class="headerlink" title="P3228 [HNOI2013]数列"></a>P3228 [HNOI2013]数列</h3><blockquote>
+<p>求有多少个序列 $a_k$ 满足 $a_i-a_{i-1}\in [1, m], a_k\le n$<br>保证 $m(k-1)&lt;n$<br>$n, k, m\le 10^9$.</p>
+</blockquote>
+<p>显然式子是</p>
+<p>$$<br>\sum_{i}^{n-1} (n-i) <a href="%5Cdfrac%7Bx-x%5E%7Bm+1%7D%7D%7B1-x%7D">x^i</a>^{k-1}<br>$$</p>
+<p>关键在于 $m(k-1)&lt;n$, 说明把多项式所有项都提取了.</p>
+<p>那么问题变得清新: 多项式代入 $x&#x3D;1$ 就是系数和, 而对于 $x^i\to ix^i$ 只需要求个导代入(展开带)</p>
+<p>那么就是 $nm^{k-1}-(k-1)m^{k-2}\cdot m(1+m)&#x2F;2$</p>
+<h3 id="CF960G-Bandit-Blues"><a href="#CF960G-Bandit-Blues" class="headerlink" title="CF960G Bandit Blues"></a>CF960G Bandit Blues</h3><blockquote>
+<p>给你三个正整数 $n$, $a$, $b$, 定义 $A$ 为一个排列中是前缀最大值的数的个数, 定义 $B$ 为一个排列中是后缀最大值的数的个数, 求长度为 $n$ 的排列中满足 $A &#x3D; a$ 且 $B &#x3D; b$ 的排列个数. $n \le 10^5$, 答案对 $998244353$ 取模.</p>
+</blockquote>
+<p>当设 $f_{i, a, b}$ 表示 $i$ 个数, $a$ 个前缀max, $b$ 个后缀max时, 会有</p>
+<p>$$<br>f_{n, a, b}&#x3D;\sum_{i&#x3D;1}^n f_{i-1, a-1, any} f_{n-i, any, b-1} \binom{n-1}{i-1}<br>$$</p>
+<p>于是你的状态就只有两维, 设 $f_{i, j}$ 表示 $i$ 个数, $j$ 个前缀max即可.</p>
+<p>又注意到, 考虑往后追加一个数这个数的排名, 易得 $f_{i, j}&#x3D;f_{i-1, j-1}+(i-1)f_{i-1, j}$, 这是第一类斯特林数.</p>
+<p>此时暴力应该是把两个求两个斯特林列然后卷起来. 为了好看</p>
+<p>考虑组合意义, 它就是你从 $n-1$ 个数选 $i-1$ 个排成 $a-1$ 个环, 剩下的排成 $b-1$ 个环. 等价于从 $n-1$ 个数排成 $a+b-2$ 个环, 再从这里面选出 $a-1$ 个环.</p>
+<p>所以 $f_{n, a, b}&#x3D;{n-1 \brack a+b-2}\binom{a+b-2}{a-1}$</p>
+<h3 id="P6144-USACO20FEB-Help-Yourself-P"><a href="#P6144-USACO20FEB-Help-Yourself-P" class="headerlink" title="P6144 [USACO20FEB]Help Yourself P"></a>P6144 [USACO20FEB]Help Yourself P</h3><blockquote>
+<p>计算给定线段集(大小为 $n$)的所有子集并的连通块数目的 $k$ 次方的和对 $10^9+7$ 取模.</p>
+<p>变量范围:</p>
+<ul>
+<li>$1 \leq n \leq 10^5$</li>
+<li>$2 \leq k \leq 10$</li>
+<li>$1 \leq l_i \lt r_i \leq 2n$, 且任意两个端点都不在同一位置上.</li>
+</ul>
+</blockquote>
+<p>处理次幂的常见套路是组合意义和生成函数?</p>
+<p>生成函数的话, 注意到 $e^{x+y}&#x3D;e^xe^y$, 但 $\dfrac{1}{1-x-y}$ 不怎么好, 所以用EGF.</p>
+<p>于是 $f_i$ 表示线段集合最右端在 $i$ 上的方案数EGF, 考虑插入线段 $[l, r]$ 后带来的影响:</p>
+<ul>
+<li>对于 $i&lt;r$, $f_i$ 没有影响</li>
+<li>对于 $f_r$:<ul>
+<li>$f_i, i&lt;l$ 部分多了一条不交线段, $f_r : &#x3D; f_r + e^x(\sum f_i)$</li>
+<li>$f_i, i\in[l, r]$ 部分相交的连通块数不变: $f_r : &#x3D; f_r+\sum f_i$</li>
+</ul>
+</li>
+<li></li>
+<li>对于 $i\ge [l, r]$, 不知道右边的左端点, 但如果按照 $l$ 从小到大考虑线段, 就一定所有情况都相交(且包含), 选不选没关系, 所以 $f_i: &#x3D;2f_i$</li>
+</ul>
+<p>要求区间多项式和, 区间多项式乘2, 单点修改, 可以上个线段树. 而乘法暴力卷积就行了. 复杂度是 $nk^2+nk\log n$</p>
+<h3 id="P7483-50-年后的我们"><a href="#P7483-50-年后的我们" class="headerlink" title="P7483 50 年后的我们"></a>P7483 50 年后的我们</h3><blockquote>
+<p>给出了 $n$ 个点, 每个点有一个权值 $c_i$ 和坐标值 $d_i$.</p>
+<p>另外还有 $m$ 条线段, 第 $i$ 条线段的两个端点分别为 $l_i$ 和 $r_i$, 表示该线段覆盖了从 $l_i$ 到 $r_i$ 之间的所有点, 线段 $i$ 有 $p_i$ 几率被选中.</p>
+<p>定义权值给出为所有点中, 至少被一条选中的线段覆盖的点的权值之和的 $k$ 次幂. $0^0&#x3D;1$</p>
+<p>求出权值的期望膜 $998244353$</p>
+<p>$1\leq n\leq 400, 0\leq k\leq 400, 1\leq m\leq 10^5, 1\leq d_i\leq 10^9, 1\leq l_i\leq r_i\leq 10^9, 0\leq c_i, p_i&lt;998244353$.</p>
+</blockquote>
+<p>类比上一题处理次幂.</p>
+<p>设 $f_i$ 表示 $i$ 为右端点的EGF. 插入一条线段 $[l, r]$ 时:</p>
+<ul>
+<li>$i&lt;r$: $f_i: &#x3D;(1-p)f_i$</li>
+<li>$f_r$: $f_r: &#x3D;(f_r+p\sum_{i\in [l, r)} f_i)\cdot e^{\sum c_i}$($[l, r]$ 中的 $f$ 转移过来再卷上所有被包含的电)</li>
+<li>$i&gt;r$: 无影响</li>
+</ul>
+<p>要区间乘一个东西, 区间多项式和, 还有暴力卷积, 复杂度是 $nk^2+nk\log n$ 吧</p>
+<h3 id="「SiR-1」Bracket"><a href="#「SiR-1」Bracket" class="headerlink" title="「SiR-1」Bracket"></a>「SiR-1」Bracket</h3><blockquote>
+<p>给定仅有<code>(</code>, <code>)</code>的括号序列 $s_n$, 求 $\sum_{l&lt;r} f(S_{l, r})$, 其中 $f(S)$ 表示, 可以进行任意循环移位 和 任意添加一个左或右括号 的情况下使得 $S$ 是匹配括号串的最小次数. $n\le 2\times 10^7$</p>
+</blockquote>
+<p>对于固定的 $S$ 考虑 $f$ 如何求.</p>
+<p>首先括号个数肯定要对, 调完之后此时前缀和就是 $0$ 了, 容易想到Raney定理说你最多只会进行一次循环移位.</p>
+<p>再考虑什么时候需要循环移位, 仍然考虑前缀和折现, 众所周知加括号一定加在最前或最后, 设前缀和数组为 $a$, 那么发现加完括号不用再操作当且仅当: $\forall i, a_i\ge 0$ 或 $a_n&#x3D;\min_i a_i$, 画画图还是很显然的.</p>
+<p>那么开始数数, 先不考虑循环移位, 那就是数 $\sum_{l<r>} \vert a_r-a_{l-1} \vert$, 这个可以直接拆贡献: 对于一个 $a_{r}$, 考虑前面有多少个 $a_i$ 大于它即可, $a_{l-1}$ 部分同理.</p>
+<p>然后数不用再操作的个数, 两个条件同时满足当且仅当已经是合法序列, 那么这个是好数的, 接下来对于同一个 $l$, 可以直接二分出满足 $a_i\ge 0$ 条件的区间, 对于同一个 $r$ 可以直接二分出自己作为最小值的区间, 总复杂度1log.</p>
+<p>单调站可以线性啊, 拉了.</p>
+<h3 id="群友题"><a href="#群友题" class="headerlink" title="群友题"></a>群友题</h3><blockquote>
+<p>对于序列 $a_n$, 求有序对 $(i, j, k)$ 个数满足 $i&lt;j&lt;k, 2a_j&#x3D;a_i+a_k$. $n, a_i\le 10^5$</p>
+</blockquote>
+<p>对序列分块, 枚举 $j$, 其中 $i, k$ 与 $j$ 在同一块的直接用桶处理掉, 不在同一块的考虑fft即可.</p>
+<h3 id="P2012-拯救世界2"><a href="#P2012-拯救世界2" class="headerlink" title="P2012 拯救世界2"></a>P2012 拯救世界2</h3><blockquote>
+<p>求有多少个长 $n$ 序列满足 $\texttt{a, b, c, d}$ 出现任意次, $\texttt{e, f, g, h}$ 出现奇数次, $\texttt{i, j, k, l}$ 出现偶数次.<br>$n\le 2^63$, 多次询问</p>
+</blockquote>
+<p>以前只知道egf:</p>
+<ul>
+<li>$\texttt{a, b, c, d}$: $e^x$</li>
+<li>$\texttt{e, f, g, h}$: $\dfrac{1}{2}(e^x+e^{-x})$</li>
+<li>$\texttt{i, j, k, l}$: $\dfrac{1}{2}(e^x-e^{-x})$<br>全都卷起来提取系数即可.</li>
+</ul>
+<p>另一种做法是直接矩阵乘法优化dp, 设 $f_{i, j}$ 表示前 $i$ 位, 后 $8$ 种字符中有 $j$ 种出现奇数次, 用矩阵乘法优化dp.</p>
+<h3 id="AGC008E-Next-or-Nextnext"><a href="#AGC008E-Next-or-Nextnext" class="headerlink" title="[AGC008E] Next or Nextnext"></a>[AGC008E] Next or Nextnext</h3><blockquote>
+<p>给定正整数 $n$ 和一个长度为 $n$ 的序列 $a$, 问有多少长度为 $n$ 的排列 $p$, 满足对于任意 $i$ 有 $p_i&#x3D;a_i$ 或 $p_{p_i}&#x3D;a_i$.</p>
+<p>答案对 $10^9+7$ 取模.</p>
+<p>$n \leq 10^5$.</p>
+</blockquote>
+<p>见到排列还有这个 $p_{p_i}$ 直接拆环考虑. 一开始读错题以为 $a$ 也是排列, 那显然 $p$ 中的环在 $a$ 中也是一个环, 对于单独一个环, 方案数是 $1+(n\bmod 2)$, 两个大小相同的环可以合并, 方案变为 $len$. 这个数起来就, 对每个大小的环分别考虑, 相当于算从 $n$ 个中选 $k$ 个匹配的方案数, 可以简单组合数.</p>
+<p>然后要考虑 $a$ 组成的图中的基环树, 也是好做的, 容易发现一个基环树无法和环合并, 树上每个点除了环边最多有一个入度, 看起来像是把一堆链的链头串起来. 那么因为无法合并每个基环树单独做, 对于一个基环树上的一个点 $i$ 在环外有长为 $l$ 的链, 如果 $i$ 在环上往前走 $l$ 个点都没挂链方案数是 $1$, 如果往前 $l+1$ 个都没挂链方案数是 $2$, 否则是 $0$, 于是就做完了.</p>
+<h3 id="50年后的我们"><a href="#50年后的我们" class="headerlink" title="50年后的我们"></a>50年后的我们</h3><p>todo</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/dp/">dp</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/18/dp/" title="dp选做"><img class="cover" src="/img/2022-11-23-20-19-47-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-18</div><div class="title">dp选做</div></div></a></div><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2022/05/17/unsorted_problems/" title="杂题(tricks)"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">杂题(tricks)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%95%B0%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">数数题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Appleblue17"><span class="toc-number">1.1.</span> <span class="toc-text">1. Appleblue17</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1515E-Phoenix-and-Computers"><span class="toc-number">1.1.1.</span> <span class="toc-text">CF1515E Phoenix and Computers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6944-x2F-LOJ3405-ICPC2018-WF-Gem-Island"><span class="toc-number">1.1.2.</span> <span class="toc-text">P6944&#x2F;LOJ3405 [ICPC2018 WF]Gem Island</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1630E-Expected-Components"><span class="toc-number">1.1.3.</span> <span class="toc-text">CF1630E Expected Components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC132E-Paw"><span class="toc-number">1.1.4.</span> <span class="toc-text">ARC132E Paw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1621G-Weighted-Increasing-Subsequences"><span class="toc-number">1.1.5.</span> <span class="toc-text">CF1621G Weighted Increasing Subsequences</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-luogu%E6%9F%90%E9%A2%98%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. luogu某题单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1657E-Star-Mst"><span class="toc-number">1.2.1.</span> <span class="toc-text">CF1657E Star Mst</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5664-CSP-S2019-Emiya-%E5%AE%B6%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A5%AD"><span class="toc-number">1.2.2.</span> <span class="toc-text">P5664 [CSP-S2019] Emiya 家今天的饭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3214-HNOI2011-%E5%8D%A1%E5%86%9C"><span class="toc-number">1.2.3.</span> <span class="toc-text">P3214 [HNOI2011] 卡农</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2606-ZJOI2010-%E6%8E%92%E5%88%97%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.4.</span> <span class="toc-text">P2606 [ZJOI2010]排列计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6453-SP3734-PERIODNI-Periodni"><span class="toc-number">1.2.5.</span> <span class="toc-text">P6453 SP3734 PERIODNI - Periodni</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3244-HNOI2015-%E8%90%BD%E5%BF%86%E6%9E%AB%E9%9F%B3"><span class="toc-number">1.2.6.</span> <span class="toc-text">P3244 [HNOI2015]落忆枫音</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6672-%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2016-%E4%BD%A0%E7%9A%84%E7%94%9F%E5%91%BD%E5%B7%B2%E5%A6%82%E9%A3%8E%E4%B8%AD%E6%AE%8B%E7%83%9B"><span class="toc-number">1.2.7.</span> <span class="toc-text">P6672 [清华集训2016] 你的生命已如风中残烛</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CF%E6%9D%BF%E5%88%B7"><span class="toc-number">1.3.</span> <span class="toc-text">3. CF板刷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1730E-Maximums-and-Minimums"><span class="toc-number">1.3.1.</span> <span class="toc-text">CF1730E Maximums and Minimums</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1728G-Illumination"><span class="toc-number">1.3.2.</span> <span class="toc-text">CF1728G Illumination</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1671F-Permutation-Counting"><span class="toc-number">1.3.3.</span> <span class="toc-text">CF1671F Permutation Counting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF383E-Vowels"><span class="toc-number">1.3.4.</span> <span class="toc-text">CF383E Vowels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1603F-October-18-2017"><span class="toc-number">1.3.5.</span> <span class="toc-text">CF1603F October 18, 2017</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1295F-Good-Contest"><span class="toc-number">1.3.6.</span> <span class="toc-text">CF1295F Good Contest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1523E-Crypto-Lights"><span class="toc-number">1.3.7.</span> <span class="toc-text">CF1523E Crypto Lights</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1495D-BFS-Trees"><span class="toc-number">1.3.8.</span> <span class="toc-text">CF1495D BFS Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1264D-Beautiful-Bracket-Sequence"><span class="toc-number">1.3.9.</span> <span class="toc-text">CF1264D Beautiful Bracket Sequence</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Version1"><span class="toc-number">1.3.9.1.</span> <span class="toc-text">Version1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Version2"><span class="toc-number">1.3.9.2.</span> <span class="toc-text">Version2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1437F-Emotional-Fishermen"><span class="toc-number">1.3.10.</span> <span class="toc-text">CF1437F Emotional Fishermen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1237F-Balanced-Domino-Placements"><span class="toc-number">1.3.11.</span> <span class="toc-text">CF1237F Balanced Domino Placements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1185G-Playlist-for-Polycarp"><span class="toc-number">1.3.12.</span> <span class="toc-text">CF1185G Playlist for Polycarp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Version1-1"><span class="toc-number">1.3.12.1.</span> <span class="toc-text">Version1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Version2-1"><span class="toc-number">1.3.12.2.</span> <span class="toc-text">Version2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1558D-Top-Notch-Insertions"><span class="toc-number">1.3.13.</span> <span class="toc-text">CF1558D Top-Notch Insertions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1536F-Omkar-and-Akmar"><span class="toc-number">1.3.14.</span> <span class="toc-text">CF1536F Omkar and Akmar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1111D-Destroy-the-Colony"><span class="toc-number">1.3.15.</span> <span class="toc-text">CF1111D Destroy the Colony</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1466G-Song-of-the-Sirens"><span class="toc-number">1.3.16.</span> <span class="toc-text">CF1466G Song of the Sirens</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1400G-Mercenaries"><span class="toc-number">1.3.17.</span> <span class="toc-text">CF1400G Mercenaries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF285E-Positions-in-Permutations"><span class="toc-number">1.3.18.</span> <span class="toc-text">CF285E Positions in Permutations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1530F-Bingo"><span class="toc-number">1.3.19.</span> <span class="toc-text">CF1530F Bingo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1486F-Pairs-of-Paths"><span class="toc-number">1.3.20.</span> <span class="toc-text">CF1486F Pairs of Paths</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF140E-New-Year-Garland"><span class="toc-number">1.3.21.</span> <span class="toc-text">CF140E New Year Garland</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5204-USACO19JAN-Train-Tracking-2-P"><span class="toc-number">1.3.22.</span> <span class="toc-text">P5204 [USACO19JAN] Train Tracking 2 P</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3643-APIO2016-%E5%88%92%E8%89%87"><span class="toc-number">1.3.23.</span> <span class="toc-text">P3643 [APIO2016] 划艇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF367E-Sereja-and-Intervals"><span class="toc-number">1.3.24.</span> <span class="toc-text">CF367E Sereja and Intervals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6189-%E8%B7%91%E6%AD%A5"><span class="toc-number">1.3.25.</span> <span class="toc-text">P6189 跑步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1651E-Sum-of-Matchings"><span class="toc-number">1.3.26.</span> <span class="toc-text">CF1651E Sum of Matchings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1613F-Tree-Coloring"><span class="toc-number">1.3.27.</span> <span class="toc-text">CF1613F Tree Coloring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1580B-Mathematics-Curriculum"><span class="toc-number">1.3.28.</span> <span class="toc-text">CF1580B Mathematics Curriculum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1278F-Cards"><span class="toc-number">1.3.29.</span> <span class="toc-text">CF1278F Cards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1153F-Serval-and-Bonus-Problem"><span class="toc-number">1.3.30.</span> <span class="toc-text">CF1153F Serval and Bonus Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF814E-An-unavoidable-detour-for-home"><span class="toc-number">1.3.31.</span> <span class="toc-text">CF814E An unavoidable detour for home</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF382E-Ksenia-and-Combinatorics"><span class="toc-number">1.3.32.</span> <span class="toc-text">CF382E Ksenia and Combinatorics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF235E-Number-Challenge"><span class="toc-number">1.3.33.</span> <span class="toc-text">CF235E Number Challenge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1548C-The-Three-Little-Pigs"><span class="toc-number">1.3.34.</span> <span class="toc-text">CF1548C The Three Little Pigs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF840C-On-the-Bench"><span class="toc-number">1.3.35.</span> <span class="toc-text">CF840C On the Bench</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF997C-Sky-Full-of-Stars"><span class="toc-number">1.3.36.</span> <span class="toc-text">CF997C Sky Full of Stars</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1327F-AND-Segments"><span class="toc-number">1.3.37.</span> <span class="toc-text">CF1327F AND Segments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1174E-Ehab-and-the-Expected-GCD-Problem"><span class="toc-number">1.3.38.</span> <span class="toc-text">CF1174E Ehab and the Expected GCD Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1367F-Flying-Sort"><span class="toc-number">1.3.39.</span> <span class="toc-text">CF1367F Flying Sort</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Easy-Version"><span class="toc-number">1.3.39.1.</span> <span class="toc-text">Easy Version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hard-Version"><span class="toc-number">1.3.39.2.</span> <span class="toc-text">Hard Version</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF510D-Fox-And-Jumping"><span class="toc-number">1.3.40.</span> <span class="toc-text">CF510D Fox And Jumping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BZOJ3864-Hero-meet-devil"><span class="toc-number">1.3.41.</span> <span class="toc-text">BZOJ3864 Hero meet devil</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1043F-Make-It-One"><span class="toc-number">1.3.42.</span> <span class="toc-text">CF1043F Make It One</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1792F1-Graph-Coloring-easy-version"><span class="toc-number">1.3.43.</span> <span class="toc-text">CF1792F1 Graph Coloring (easy version)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1781F-Bracket-Insertion"><span class="toc-number">1.3.44.</span> <span class="toc-text">CF1781F Bracket Insertion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1750F-Majority"><span class="toc-number">1.3.45.</span> <span class="toc-text">CF1750F Majority</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1617E-Christmas-Chocolates"><span class="toc-number">1.3.46.</span> <span class="toc-text">CF1617E Christmas Chocolates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1574F-Occurrences"><span class="toc-number">1.3.47.</span> <span class="toc-text">CF1574F Occurrences</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1542E-Abnormal-Permutation-Pairs"><span class="toc-number">1.3.48.</span> <span class="toc-text">CF1542E Abnormal Permutation Pairs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1511F-Chainword"><span class="toc-number">1.3.49.</span> <span class="toc-text">CF1511F Chainword</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1487G-String-Counting"><span class="toc-number">1.3.50.</span> <span class="toc-text">CF1487G String Counting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1540C1-x2F-2-Converging-Array"><span class="toc-number">1.3.51.</span> <span class="toc-text">CF1540C1&#x2F;2 Converging Array</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2021sdpttday3"><span class="toc-number">1.4.</span> <span class="toc-text">4. 2021sdpttday3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AGC028B"><span class="toc-number">1.4.1.</span> <span class="toc-text">AGC028B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF605E-Intergalaxy-Trips"><span class="toc-number">1.4.2.</span> <span class="toc-text">CF605E Intergalaxy Trips</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%B6%E4%BB%96"><span class="toc-number">1.5.</span> <span class="toc-text">-1. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nowcoder%E6%9F%90%E9%A2%98"><span class="toc-number">1.5.1.</span> <span class="toc-text">Nowcoder某题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF930E-Coins-Exhibition"><span class="toc-number">1.5.2.</span> <span class="toc-text">CF930E Coins Exhibition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5492-PKUWC2018-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.3.</span> <span class="toc-text">P5492 [PKUWC2018]随机算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4705-%E7%8E%A9%E6%B8%B8%E6%88%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text">P4705 玩游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%A1%E5%86%85%E6%A8%A1%E6%8B%9FCircle"><span class="toc-number">1.5.5.</span> <span class="toc-text">校内模拟Circle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5401-CTS2019-%E7%8F%8D%E7%8F%A0"><span class="toc-number">1.5.6.</span> <span class="toc-text">P5401 [CTS2019] 珍珠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3978-TJOI2015-%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="toc-number">1.5.7.</span> <span class="toc-text">P3978 [TJOI2015]概率论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7364-%E6%9C%89%E6%A0%87%E5%8F%B7%E4%BA%8C%E5%88%86%E5%9B%BE%E8%AE%A1%E6%95%B0"><span class="toc-number">1.5.8.</span> <span class="toc-text">P7364 有标号二分图计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC290F-Maximum-Diameter"><span class="toc-number">1.5.9.</span> <span class="toc-text">[ABC290F] Maximum Diameter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4709-%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92"><span class="toc-number">1.5.10.</span> <span class="toc-text">P4709 信息传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDOI2017-%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0"><span class="toc-number">1.5.11.</span> <span class="toc-text">[SDOI2017]序列计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6694-%E5%BC%BA%E8%BF%AB%E7%97%87"><span class="toc-number">1.5.12.</span> <span class="toc-text">P6694 强迫症</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5363-SDOI2019-%E7%A7%BB%E5%8A%A8%E9%87%91%E5%B8%81"><span class="toc-number">1.5.13.</span> <span class="toc-text">P5363 [SDOI2019]移动金币</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3228-HNOI2013-%E6%95%B0%E5%88%97"><span class="toc-number">1.5.14.</span> <span class="toc-text">P3228 [HNOI2013]数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF960G-Bandit-Blues"><span class="toc-number">1.5.15.</span> <span class="toc-text">CF960G Bandit Blues</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6144-USACO20FEB-Help-Yourself-P"><span class="toc-number">1.5.16.</span> <span class="toc-text">P6144 [USACO20FEB]Help Yourself P</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7483-50-%E5%B9%B4%E5%90%8E%E7%9A%84%E6%88%91%E4%BB%AC"><span class="toc-number">1.5.17.</span> <span class="toc-text">P7483 50 年后的我们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%8CSiR-1%E3%80%8DBracket"><span class="toc-number">1.5.18.</span> <span class="toc-text">「SiR-1」Bracket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%A4%E5%8F%8B%E9%A2%98"><span class="toc-number">1.5.19.</span> <span class="toc-text">群友题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2012-%E6%8B%AF%E6%95%91%E4%B8%96%E7%95%8C2"><span class="toc-number">1.5.20.</span> <span class="toc-text">P2012 拯救世界2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AGC008E-Next-or-Nextnext"><span class="toc-number">1.5.21.</span> <span class="toc-text">[AGC008E] Next or Nextnext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#50%E5%B9%B4%E5%90%8E%E7%9A%84%E6%88%91%E4%BB%AC"><span class="toc-number">1.5.22.</span> <span class="toc-text">50年后的我们</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

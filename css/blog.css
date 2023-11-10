@@ -1,0 +1,56 @@
+.site-heading {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.mfolder{
+    border-radius:15px;
+    border:solid 2px #a8a8ff;
+    box-shadow:5px 5px 5px #a8a8ff;
+    padding:5px;
+    margin: 20px;
+}
+.mfolder>blockquote{
+    border:none;
+    background: none;
+}
+
+.mfolder.mfold>blockquote {
+    display: none;
+}
+
+.mfolderbutton{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    background-color:#a8a8ff;
+    border-radius:15px;
+    padding:3px;
+    color:white;
+    cursor:pointer;
+    text-align:center;
+    user-select:none;
+    box-sizing:border-box;
+    border:solid 2px #a8a8ff;
+    transition: ease-in-out .2s;
+}
+.mfolderbutton:hover{
+    background-color:white;
+    color:#a8a8ff;
+    border:solid 2px #a8a8ff;
+}
+.emoji-img{
+    display: inline-block !important;
+    margin: 0 !important;
+}
+
+p.has-jax{
+    overflow: visible !important;
+}
+
+.particle-canvas{
+    position: relative;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+    /* z-index: 99; */
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>NOI系列题目 | FireInIce's Blog</title><meta name="keywords" content="日志,咕咕,noi"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="NOI系列刷题P7738 [NOI2021] 量子通信 [乱搞] 给定一个 $n$ 个单词的字典, 每个单词为长256的01串, $q$ 次询问一个串是否可以由字典中的串翻转 $k$ 位得到.$n\le 4\times 10^5, q\le 1. 2\times 10^5, k\le 15$ , 字典是随机生成的.  没看输入格式的时候没有意识到字典是随机生成的, 想了些字典树上dp之类的东西.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOI系列题目">
+<meta property="og:url" content="https://fireinicecode.github.io/2022/07/30/noi_problems/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="NOI系列刷题P7738 [NOI2021] 量子通信 [乱搞] 给定一个 $n$ 个单词的字典, 每个单词为长256的01串, $q$ 次询问一个串是否可以由字典中的串翻转 $k$ 位得到.$n\le 4\times 10^5, q\le 1. 2\times 10^5, k\le 15$ , 字典是随机生成的.  没看输入格式的时候没有意识到字典是随机生成的, 想了些字典树上dp之类的东西.">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2022-07-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.271Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="咕咕">
+<meta property="article:tag" content="noi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2022/07/30/noi_problems/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NOI系列题目',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NOI系列题目</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2022-07-29T16:00:00.000Z" title="Created 2022-07-30 00:00:00">2022-07-30</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="NOI系列刷题"><a href="#NOI系列刷题" class="headerlink" title="NOI系列刷题"></a>NOI系列刷题</h1><h3 id="P7738-NOI2021-量子通信-乱搞"><a href="#P7738-NOI2021-量子通信-乱搞" class="headerlink" title="P7738 [NOI2021] 量子通信 [乱搞]"></a>P7738 [NOI2021] 量子通信 [乱搞]</h3><blockquote>
+<p>给定一个 $n$ 个单词的字典, 每个单词为长256的01串, $q$ 次询问一个串是否可以由字典中的串翻转 $k$ 位得到.<br>$n\le 4\times 10^5, q\le 1. 2\times 10^5, k\le 15$ , <strong>字典是随机生成的</strong>.</p>
+</blockquote>
+<p>没看输入格式的时候没有意识到字典是随机生成的, 想了些字典树上dp之类的东西. 没想到其实是个乱搞题.</p>
+<p><strong>如果把每个单词每16位一组分成16组, 那么翻转15位的情况下至少有一组是相同的</strong>. 所以对于询问的串直接枚举是哪一位相同, 字典里这一位恰好相同的只有 $\dfrac{n}{65536}$ 个, 于是复杂度就是 $\dfrac{nq}{256}$ .</p>
+<p>最后的问题就是如何快速找到字典里确定了某一组所有单词, 用vector存即可. 不要智障的打算插入到set&#x2F;map&#x2F;有序数组里就不会TLE.</p>
+<h3 id="P7737-NOI2021-庆典-图论-tarjan-虚树-拓扑排序"><a href="#P7737-NOI2021-庆典-图论-tarjan-虚树-拓扑排序" class="headerlink" title="P7737 [NOI2021] 庆典 [图论] [tarjan] [虚树] [拓扑排序]"></a>P7737 [NOI2021] 庆典 [图论] [tarjan] [虚树] [拓扑排序]</h3><blockquote>
+<p>给定一张 $n$ 点 $m$ 边有向图, 记 $a\Rightarrow b$ 表示 $a$ 可以走到 $b$ , 那么若有 $x\Rightarrow z, y\Rightarrow z$ 则一定有 $x\Rightarrow y$ 或 $y\Rightarrow x$ .<br>有 $q$ 次询问, 每次额外添加 $k$ 条边, 询问从 $s$ 到 $t$ 的路径<strong>可以</strong>经过多少点. 询问间独立. 新添加的边可以不满足原图的限制.<br>可以经过指有一条从 $s$ 到 $t$ 的路径经过这个点.<br>$n, q\le 3\times 10^5, m\le 6\times 10^5, k\le 2$ . 保证在把有向图视为无向图后图连通.</p>
+</blockquote>
+<p>有一个简单暴力, 一个点能出现在路径上当且仅当它能到达终点且反图上能到起点. 所以就在正图和反图分别处理每个点能到哪些点, 每次暴力判就好了. 复杂度 $O(nm)$ </p>
+<p>首先发现缩点是不影响答案的, 先缩SCC, 图变成了DAG.</p>
+<p>考虑能不能想办法把DAG搞成树, 发现因为原图的限制, 若有边 $x\to z, y\to z, x\to y$ 我们可以删掉边 $x\to z$ . 也就是说, 每个点的入边可以只留一条, 于是就成了一棵树. 具体的, DAG上应该只保留拓扑序最晚的即可.</p>
+<p>如果 $k&#x3D;0$ , 那么求的就是一条链上的SCC大小的和. 但现在我们的树上又多了两条边, 产生了114514种分类讨论, 于是有另一种做法: 把两条边的端点以及询问的起点终点这6个点建一棵虚树, 再连上新加的两条边, 在这个小的DAG上跑一开始那个暴力, 复杂度 $n\log n$ , 瓶颈在于求lca和虚树.</p>
+<p>200+行代码预警</p>
+<h3 id="P1224-NOI2013-向量内积"><a href="#P1224-NOI2013-向量内积" class="headerlink" title="P1224 [NOI2013] 向量内积"></a>P1224 [NOI2013] 向量内积</h3><blockquote>
+<p>给定 $n$ 个 $d$ 维向量, $q$ 次询问找出两个向量点积为 $k$ 的倍数, 或者判断无解.</p>
+<p>$k\in {2, 3}$ , 复杂度 $nd^2$ </p>
+</blockquote>
+<p>首先 $k$ 只有两个想到分类讨论:</p>
+<h4 id="若-k-x3D-2"><a href="#若-k-x3D-2" class="headerlink" title="若 $k&#x3D;2$ :"></a>若 $k&#x3D;2$ :</h4><p>重点是<strong>结合律可以改变矩阵的运算代价</strong>.</p>
+<p>把 $n$ 个向量排成矩阵 $A$ , 则无解当且仅当 $AA^T$ 所有位置都为 $1\pmod 2$ </p>
+<p>然而直接 $AA^T$ 复杂度是 $n^3$ 爆炸, 考虑不精准判断, 这里的奇妙之处在于拿一个 $1\times n$ 向量 $R$ 乘上它们: 若 $RAA^T$ 中有一个位置不等于原来 $R$ 的和则对应 $AA^T$ 中的一列中有一个 $1$ , 在其中判断即可. 而且 $RAA^T&#x3D;(RA)A^T$ , 复杂度 $nd$ </p>
+<h4 id="若-k-x3D-3"><a href="#若-k-x3D-3" class="headerlink" title="若 $k&#x3D;3$ :"></a>若 $k&#x3D;3$ :</h4><p>有了 $k&#x3D;2$ 后考虑膜3意义下每个数都平方后就又成了01矩阵, 设 $B&#x3D;AA^T$ , 则要得到 $B_{i, j}^2r_i&#x3D;B_{i, j}r_i B^T_{j, i}$ . 所以把 $r$ 变成只有一个对角的 $n\times n$ 矩阵 $R$ , 则 $BRB^T$ 的对角线就是所有 $B^2_{i, j}r_i$ 了.</p>
+<p>然后因为这三个都是 $n\times n$ 的不能直接乘, 而是要变成 $AA^TRAA^T&#x3D;(A(A^T(RA)))A^T$ , 并且最后一次矩阵乘的时候只计算对角线, 复杂度 $nd^2$ .</p>
+<p>为了保证正确率可以多随几次, 就通过本题了.</p>
+<h3 id="P6772-NOI2020-美食家"><a href="#P6772-NOI2020-美食家" class="headerlink" title="P6772 [NOI2020] 美食家"></a>P6772 [NOI2020] 美食家</h3><blockquote>
+<p>精灵王国共有 $n$ 座城市, 城市从 $1$ 到 $n$ 编号, 其中城市 $i$ 的美食能为小 W 提供 $c_i$ 的愉悦值. 精灵王国的城市通过 $m$ 条<strong>单向道路</strong>连接, 道路从 $1$ 到 $m$ 编号, 其中道路 $i$ 的起点为城市 $u_i$ , 终点为城市 $v_i$ , 沿它通行需要花费 $w_i$ 天. 也就是说, 若小 W 在第 $d$ 天从城市 $u_i$ 沿道路 $i$ 通行, 那么他会在第 $d + w_i$ 天到达城市 $v_i$ .</p>
+</blockquote>
+<blockquote>
+<p>小 W 计划在精灵王国进行一场为期 $T$ 天的旅行, 更具体地: 他会在第 $0$ 天从城市 $1$ 出发, 经过 $T$ 天的旅行, 最终在<strong>恰好第 $T$ 天</strong>回到城市 $1$ 结束旅行. 由于小 W 是一位美食家, 每当他到达一座城市时(包括第 $0$ 天和第 $T$ 天的城市 $1$ ), 他都会品尝该城市的美食并获得其所提供的愉悦值, 若小 W 多次到达同一座城市, 他将<strong>获得多次愉悦值</strong>. 注意旅行途中小 W <strong>不能在任何城市停留</strong>, 即当他到达一座城市且还未结束旅行时, 他当天必须立即从该城市出发前往其他城市.</p>
+</blockquote>
+<blockquote>
+<p>此外, 精灵王国会在<strong>不同</strong>的时间举办 $k$ 次美食节. 具体来说, 第 $i$ 次美食节将于第 $t_i$ 天在城市 $x_i$ 举办, 若小 W 第 $t_i$ 天时恰好在城市 $x_i$ , 那么他在品尝城市 $x_i$ 的美食时会<strong>额外得到</strong> $y_i$ 的愉悦值. 现在小 W 想请作为精灵王国接待使者的你帮他算出, 他在旅行中能获得的愉悦值之和的<strong>最大值</strong>.</p>
+</blockquote>
+<blockquote>
+<p>对于所有测试点, $1 \leq n \leq 50$ , $n \leq m \leq 501$ , $0 \leq k \leq 200$ , $1 \leq t_i \leq T \leq 10^9$ , $1 \leq w_i \leq 5$ , $1 \leq c_i \leq 52501$ , $1 \leq u_i, v_i, x_i \leq n$ , $1 \leq y_i \leq 10^9$ .</p>
+</blockquote>
+<p>在这图上走是随便走的, 使得大部分处理路径的科技不能用, 而看看数据范围想到邻接矩阵自乘的trick.</p>
+<p>但这张图上是点权而不是点权, 朴素的把点权转移到入边上再特判起点.</p>
+<p>但我们不是求路径条数, 定义矩阵乘法为外 $\max$ 内加.</p>
+<p>但边有通过时间, 拆边复杂度很高. 于是把一个点拆成5个用, 不能共用一共5个点是因为要区分从哪里走进来的.</p>
+<p>对于美食节在相邻两次之间用矩阵快速幂即可.</p>
+<p>复杂度看起来过不了实际能过.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/%E5%92%95%E5%92%95/">咕咕</a><a class="post-meta__tags" href="/tags/noi/">noi</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2023/07/14/2023_sdsc/" title="2023SDSC"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-14</div><div class="title">2023SDSC</div></div></a></div><div><a href="/2022/11/15/graph/" title="图论"><img class="cover" src="/img/2022-11-15-20-29-09-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">图论</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NOI%E7%B3%BB%E5%88%97%E5%88%B7%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">NOI系列刷题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P7738-NOI2021-%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1-%E4%B9%B1%E6%90%9E"><span class="toc-number">1.0.1.</span> <span class="toc-text">P7738 [NOI2021] 量子通信 [乱搞]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7737-NOI2021-%E5%BA%86%E5%85%B8-%E5%9B%BE%E8%AE%BA-tarjan-%E8%99%9A%E6%A0%91-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text">P7737 [NOI2021] 庆典 [图论] [tarjan] [虚树] [拓扑排序]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P1224-NOI2013-%E5%90%91%E9%87%8F%E5%86%85%E7%A7%AF"><span class="toc-number">1.0.3.</span> <span class="toc-text">P1224 [NOI2013] 向量内积</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8B%A5-k-x3D-2"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">若 $k&#x3D;2$ :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8B%A5-k-x3D-3"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">若 $k&#x3D;3$ :</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6772-NOI2020-%E7%BE%8E%E9%A3%9F%E5%AE%B6"><span class="toc-number">1.0.4.</span> <span class="toc-text">P6772 [NOI2020] 美食家</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

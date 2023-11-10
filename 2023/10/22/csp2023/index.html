@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSP2023游记 | FireInIce's Blog</title><meta name="keywords" content="游记"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="CSP2023游记文中杜赢指do_while_true. Day -n开始停课, 打了4场模拟赛, 第一场爆了一个标, 剩下的都挺寄. Day 0上午复习数位dp, 看以前的blog, 中午出发, 晚上到达日照一个民宿, 晚霞很好! 试机, 抽到win10. 发现虚拟机不能用, 说晚上解决. 机子上放了3个不同的mingw, 最后只有dev自带的那个能用. 但是机子配了vscode, 即使没有c+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSP2023游记">
+<meta property="og:url" content="https://fireinicecode.github.io/2023/10/22/csp2023/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="CSP2023游记文中杜赢指do_while_true. Day -n开始停课, 打了4场模拟赛, 第一场爆了一个标, 剩下的都挺寄. Day 0上午复习数位dp, 看以前的blog, 中午出发, 晚上到达日照一个民宿, 晚霞很好! 试机, 抽到win10. 发现虚拟机不能用, 说晚上解决. 机子上放了3个不同的mingw, 最后只有dev自带的那个能用. 但是机子配了vscode, 即使没有c+">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2023-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T08:34:11.285Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="游记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2023/10/22/csp2023/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSP2023游记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-11-09 16:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSP2023游记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2023-10-21T16:00:00.000Z" title="Created 2023-10-22 00:00:00">2023-10-22</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="CSP2023游记"><a href="#CSP2023游记" class="headerlink" title="CSP2023游记"></a>CSP2023游记</h1><p>文中杜赢指do_while_true.</p>
+<h2 id="Day-n"><a href="#Day-n" class="headerlink" title="Day -n"></a>Day -n</h2><p>开始停课, 打了4场模拟赛, 第一场爆了一个标, 剩下的都挺寄.</p>
+<h2 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h2><p>上午复习数位dp, 看以前的blog, 中午出发, 晚上到达日照一个民宿, 晚霞很好!</p>
+<p>试机, 抽到win10. 发现虚拟机不能用, 说晚上解决. 机子上放了3个不同的mingw, 最后只有dev自带的那个能用. 但是机子配了vscode, 即使没有c++插件也是vscode, 即使没有虚拟机也是vscode. 最可惜的是没有python. 考试过程中习惯性拿python当计算器&#x2F;暴力弹出的是微软商店. 面到杜赢, 他们机房虚拟机能用. 面到whc, 面到一个也来打比赛的初中同学.</p>
+<p>晚上复习圆方树, 虚树, kmp. 没有python于是背了一个bat对拍板子.</p>
+<h2 id="Day-1-比赛"><a href="#Day-1-比赛" class="headerlink" title="Day 1 比赛"></a>Day 1 比赛</h2><p>上午又看了看字符串<del>打开知乎</del>, 听说普及组某机房没断网(问号脸). 特意带了杯咖啡和零食, 切一个题吃一个.</p>
+<p>提前30min左右进场, 配vscode, 打了空模板, 考场大概提前几分钟给了压缩包密码, 压缩包里看到名字”tree”打一个存树的模板, 看”struct”大样例猜是结构体对齐之类的模拟猜是T1(大模拟放T3? ? ), lock不知道是什么, game像个数数题, 但有字符串, 果断打一个kmp一个sam. 都没用上. 提醒自己去年寄大了今年要稳打要写对拍.</p>
+<p>开题先看30min, 看T1, 想了1min发现诶好像不用计数可以枚举. 看T2, 这莫不是原, 发现在杜赢OJ上做过, 现在都这么搬题了吗? 看T3, 大模拟! 看T4, 暂时没思路, 先写前面的.</p>
+<p>大概15min过了T1, 正解就是暴力就只测两组手造样例没拍.</p>
+<p>然后写T2, 记得正解是dp, 但直接模拟括号序列匹配对过程中的栈哈希的做法也能过(甚至先学到的就是这种). 当时做杜赢OJ单hash会寄就写了个任意重hash的, 写unordered_map自定义hash函数, CE10min, 先用map, 发现大样例单hash果然过不了换双, 结果极限数据要跑2s. 于是还是得环unordered_map. 给自定义hash函数所有地方加上const终于不CE进了1s, 但是也塞不下3hash的时间了. 发现自己平时没背模数, 选择了1e9+7和998244853(出题人就算卡, 也想不到我用的居然不是998244353? ). 搞完T2记得大概还剩下2. 5h. 要是平常背背pbds的hashmap是不是能更稳一点.</p>
+<p>再不开咖啡就来不及了, 喝咖啡.</p>
+<p>开T3, 大模拟, 发现它还是能用类型套出 $10^{18}$ 的内存占用的, 一个一个操作的写很快就写完了, 然后调了一会发现自己印象里的结构体对齐和它的不一样(题目中结构体中的第 $i$ 个变量对 $a_i$ 对齐, 而不是对 $\max_j a_j$ 对齐), 改过来过大样例, 现在还剩1. 5h.</p>
+<p>想T4, 能种树的形状很难dp且同一个父亲的不同兄弟之间不能独立出来, 感觉不是dp. 想二分答案, 然后发现可以忽略 $a, b, c$ 找到每个点 $u$ 最晚必须被种的时间 $t_u$, 因为排除了dp只能是贪心, 发现对于点 $u, v$, 若当前状态分别需要 $d_u, d_v$ 步能在它们的位置种下树, 那么一定要 $d_u\le t_u, d_v\le t_v$, 先种 $u$ 再种 $v$ 要求 $d_u+d_v\le t_v$, 先 $v$ 要求 $d_u+d_v\le t_u$, 于是直接按 $t$ 排序模拟应该就是对的. 那模拟只要暴力跳父亲就是均摊线性, 总复杂度是二分log和内层排序&#x2F;算 $t$ 二分log一共2log, 开冲, 调完测大样例答案是对的但最后一个T了.</p>
+<p>二分算 $t$ 可以不二分直接解方程, 于是开始改解方程, 发现根本解不对, 一直解到还有40min, 先复制出一个原版的测一下过了大样例, 又把其它3个题拖进noi linux里测, 发现T2在 longlong 数组初始化写<code>1e9+7</code>在 noi linux 里会报错紧急修了. 然后接着解方程解到最后没解出来交了2log大概是寄了.</p>
+<h2 id="Day-1-比赛结束"><a href="#Day-1-比赛结束" class="headerlink" title="Day 1 比赛结束"></a>Day 1 比赛结束</h2><p>面到杜赢一问他不挂分就AK了, 但T2写的dp, 我说这是你们学校OJ上原题, T4写的是2log且过了1s而且做法不一样, 开始怀疑我的贪心, 还没等讨论T4杜赢说他正在约npy(? ? ? )就扔下我走了. 出来的时候没面到人.</p>
+<p>带进去一包零食都忘拿了, 捐CCF肉铺能加分吗?</p>
+<p>发现WJQ会T4并且也不一样(二分+树剖之类的没有懂), <del>于是开摆</del></p>
+<p>深夜教练发来代码, 但我已经关电脑了. 发来说云斗390, 到前面有两个400, 但这仍然是挂分挂的最少的一次.</p>
+<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><p>因为前一天的民测令人震撼, 就又开洛谷测了一遍也是390, zyb测的榜也是390, T42logTLE了两个点, 都在1. 2s以内. 然后大概20min就从2log上重写了一遍解方程版本调出来过了云斗, 测luogu1WA1RE, 发现WA是边界错误云斗没测出来, RE是数据里有 $b&#x3D;0, c&#x3D;0$ 的点. 好像考试从最后1h就开始心跳加速了脑子比较急, 方程的式子错了也没检查出来. (赛时十年功, 赛后一分钟)</p>
+<p>杜赢大模拟寄了&#x2F;kk&#x2F;kk&#x2F;kk T4 $\log^2$ T了 &#x2F;kk&#x2F;kk&#x2F;kk AK失败</p>
+<p>在山上看日出.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%B8%E8%AE%B0/">游记</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSP2023%E6%B8%B8%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">CSP2023游记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Day-n"><span class="toc-number">1.1.</span> <span class="toc-text">Day -n</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day-0"><span class="toc-number">1.2.</span> <span class="toc-text">Day 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day-1-%E6%AF%94%E8%B5%9B"><span class="toc-number">1.3.</span> <span class="toc-text">Day 1 比赛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day-1-%E6%AF%94%E8%B5%9B%E7%BB%93%E6%9D%9F"><span class="toc-number">1.4.</span> <span class="toc-text">Day 1 比赛结束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day2"><span class="toc-number">1.5.</span> <span class="toc-text">Day2</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/04/note/" title="2023.11">2023.11</a><time datetime="2023-11-03T16:00:00.000Z" title="Created 2023-11-04 00:00:00">2023-11-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/03/constructive/" title="构造!">构造!</a><time datetime="2023-11-02T16:00:00.000Z" title="Created 2023-11-03 00:00:00">2023-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/nfls/" title="南外集训">南外集训</a><time datetime="2023-10-23T16:00:00.000Z" title="Created 2023-10-24 00:00:00">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
