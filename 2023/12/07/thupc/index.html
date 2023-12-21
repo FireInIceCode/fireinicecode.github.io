@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>THUPC2024 邮寄 | FireInIce's Blog</title><meta name="keywords" content="日志"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="THUPC2024 邮寄和Mikefeng和Harry23182组队, 来看看往年题. THUPC2023 PreP9140 [THUPC 2023 初赛] 背包因为 $V$ 远大于 $v_i$ 和 $n$, 所以考虑贪心, 选出其中性价比最高的元素 $i$, 则就是要在模 $m&#x3D;v_i$ 的意义下求恰好为 $V$ 的最大价值, 这个几乎是同余最短路, 因为此时总代价是 $\dfrac{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="THUPC2024 邮寄">
+<meta property="og:url" content="https://fireinicecode.github.io/2023/12/07/thupc/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="THUPC2024 邮寄和Mikefeng和Harry23182组队, 来看看往年题. THUPC2023 PreP9140 [THUPC 2023 初赛] 背包因为 $V$ 远大于 $v_i$ 和 $n$, 所以考虑贪心, 选出其中性价比最高的元素 $i$, 则就是要在模 $m&#x3D;v_i$ 的意义下求恰好为 $V$ 的最大价值, 这个几乎是同余最短路, 因为此时总代价是 $\dfrac{">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2023-12-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-21T02:36:49.229Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2023/12/07/thupc/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'THUPC2024 邮寄',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2023-12-21 10:36:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">THUPC2024 邮寄</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2023-12-06T16:00:00.000Z" title="Created 2023-12-07 00:00:00">2023-12-07</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="THUPC2024-邮寄"><a href="#THUPC2024-邮寄" class="headerlink" title="THUPC2024 邮寄"></a>THUPC2024 邮寄</h1><p>和Mikefeng和Harry23182组队, 来看看往年题.</p>
+<h2 id="THUPC2023-Pre"><a href="#THUPC2023-Pre" class="headerlink" title="THUPC2023 Pre"></a>THUPC2023 Pre</h2><h3 id="P9140-THUPC-2023-初赛-背包"><a href="#P9140-THUPC-2023-初赛-背包" class="headerlink" title="P9140 [THUPC 2023 初赛] 背包"></a>P9140 [THUPC 2023 初赛] 背包</h3><p>因为 $V$ 远大于 $v_i$ 和 $n$, 所以考虑贪心, 选出其中性价比最高的元素 $i$, 则就是要在模 $m&#x3D;v_i$ 的意义下求恰好为 $V$ 的最大价值, 这个几乎是同余最短路, 因为此时总代价是 $\dfrac{V-v}{m}c_i + res$, 其中 $res$ 为选出的元素的 $c$ 之和, 所以实际上是最大化 $res-\dfrac{v}{m}c_i$, 于是同余最短路时先 $i\to j+v_i$ 连 $c_i-\dfrac{v_i+j}{m}c_i$ 的代价即可.</p>
+<p>然后同余最短路实际上不用写最短路, 它是个模 $m$ 的完全背包问题, 加入物品时这个物品的转移形成 $gcd(m, v_i)$ 个环, 只要对每个环转移两圈即可保证转移完全. 复杂度 $nm$</p>
+<h3 id="P9143-THUPC-2023-初赛-众数"><a href="#P9143-THUPC-2023-初赛-众数" class="headerlink" title="P9143 [THUPC 2023 初赛] 众数"></a>P9143 [THUPC 2023 初赛] 众数</h3><p>从大到小排即可.</p>
+<h3 id="P9134-THUPC-2023-初赛-拧螺丝"><a href="#P9134-THUPC-2023-初赛-拧螺丝" class="headerlink" title="P9134 [THUPC 2023 初赛] 拧螺丝"></a>P9134 [THUPC 2023 初赛] 拧螺丝</h3><p>老板肯定每次拿走最大的, 小E肯定尽量平均的加, 于是反向考虑, 最后拿走时是 $n$ 个, 那么上一次一定是 $n-k, n-k$, 往后推下去, 则老板每次会让最大值数量增加 $1$, 然后小E让最大的若干个减少 $1$, 暴力就是朴素的模拟这个直到最大值变成 $0$. 于是同一时刻只有最大值和最大值减 $1$ 两个数.</p>
+<p>那么考虑把最大值次大值不变的一段压到一起处理, 又因为高精所以复杂度 $n^2$, 然后再特判掉 $n&#x3D;2$ 时答案是 $2^{n-2}$.</p>
+<h3 id="P9133-THUPC-2023-初赛-大富翁"><a href="#P9133-THUPC-2023-初赛-大富翁" class="headerlink" title="P9133 [THUPC 2023 初赛] 大富翁"></a>P9133 [THUPC 2023 初赛] 大富翁</h3><p>支配的代价实际上是有祖先关系的点对代价 $1$, 那么就是最后局面 $\text{敌方点祖先中我方个数}-\text{我方点祖先中敌方个数}$, 于是对于每个我方点 $u$, 答案是 $\text{深度}-\text{我方祖先个数}+\text{敌方子孙个数}$, 转化贡献, 变成每个点给所有子树中的我方点贡献 $-1$, 就成了 $dep_u-siz_u$, 于是按照 $dep_u-siz_u+w_u$ 排序贪心选即可.</p>
+<h3 id="P9142-THUPC-2023-初赛-欺诈游戏"><a href="#P9142-THUPC-2023-初赛-欺诈游戏" class="headerlink" title="P9142 [THUPC 2023 初赛] 欺诈游戏"></a>P9142 [THUPC 2023 初赛] 欺诈游戏</h3><p>纳什博弈的结论好像就是最优策略下所有情况期望收益相等.</p>
+<p>但是不排除可能双方各自放弃一些决策的情况, 不过发现看起来放弃任意一个位置都是不优的.</p>
+<p>如果猜到结论, 选取任意情况期望都相等, 就可以直接列式子解出策略了, 当然不能高斯消元, 注意到式子形如 $x\sum_{i&lt;x} p_i+\sum+{i&gt;x} p_i dfrac{i}{2}$, 此时 $x+1$ 减 $x$ 的式子是 $\sum_{i&lt;x} p_i+p_x+p_{x+1}\dfrac{x+1}{2}&#x3D;0$, 此时可以递推的把所有 $p$ 用 $p_1$ 表示, 最后用 $\sum_i p_i&#x3D;1$ 就能解出来.</p>
+<h3 id="P9137-THUPC-2023-初赛-速战速决"><a href="#P9137-THUPC-2023-初赛-速战速决" class="headerlink" title="P9137 [THUPC 2023 初赛] 速战速决"></a>P9137 [THUPC 2023 初赛] 速战速决</h3><p>分类讨论, 如果你手里有两张相同的则你可以保证对面一张也收不回去(保持牌底的另一张在你手中), 否则对面至少收回去一次, 并且可以让它最多收回去一次, 发现只要第一次放 $n$, 后面跟着小 $J$ 放即可.</p>
+<h3 id="P9138-THUPC-2023-初赛-公平合作"><a href="#P9138-THUPC-2023-初赛-公平合作" class="headerlink" title="P9138 [THUPC 2023 初赛] 公平合作"></a>P9138 [THUPC 2023 初赛] 公平合作</h3><p>后手策略一定是一直装直到大于先手装的的或者爆了. 那么可以设 $f_i$ 表示要求至少装到 $i$ 的情况下不爆的概率(先手选 $i$ 时后手胜的概率), 那么先求 $g_i$ 表示装到 $i$ 的概率 $g_i&#x3D;\sum_k g_{i-a_k}\dfrac{1}{n}$, $f_i&#x3D;1-(\sum_{k&lt;i} g_k\sum_{k+a_l&gt;n} \dfrac{1}{n})$, 最后先手再列一个递推式 $h_i&#x3D;\min f_i, (\sum_k \dfrac{1}{n}h_{i+a_k})$. 于是获得了一个 $nL$ 的做法.</p>
+<p>然后不会了, 然后发现这三个都是常系数线性递推, 可以做到 $n\log n\log L$</p>
+<h3 id="P9144-THUPC-2023-初赛-最后的活动"><a href="#P9144-THUPC-2023-初赛-最后的活动" class="headerlink" title="P9144 [THUPC 2023 初赛] 最后的活动"></a>P9144 [THUPC 2023 初赛] 最后的活动</h3><p>注意到只有 $6$ 层, 于是可以直接设 $f_i$ 表示打到当前还剩 $i$ 到 $m$ 的情况下的概率, 枚举每一层的策略然后每次转移一整局, 如果这一局收益为 $x$ 那么转移到 $f_{i-x}$, 但是转移可能成环, 即 $x&#x3D;0$, 于是考虑直接二分, 因为 $f_i$ 一定会乘上一个系数所以答案一定比你赋的初值更接近真实值, 就做完了.</p>
+<h3 id="P9135-THUPC-2023-初赛-快速-LCM-变换"><a href="#P9135-THUPC-2023-初赛-快速-LCM-变换" class="headerlink" title="P9135 [THUPC 2023 初赛] 快速 LCM 变换"></a>P9135 [THUPC 2023 初赛] 快速 LCM 变换</h3><p>只操作一次, 就是删掉两个数再插入一个数. 但是lcm的和对每个质因数没有好的独立性, 所以只能一起做.</p>
+<p>现在只考虑一个因数 $d$, 删除了数 $p, q$, $d$ 的最大值会变成 $\max (smx, p+q)$, 那么如果 $p+q$ 有贡献一定意味着 $p, q$ 都是 $mx$, 此时一定不会让 $d$ 的最终指数减少, 也就是说它们的贡献可以独立着看, 要么是 $p$ 或 $q$ 带来的减少要么是 $p+q$ 带来的增加, 或者说可以写出函数使得 $f(x)$ 为删掉 $x$ 的贡献, $g(x)$ 为增加 $x$ 的贡献, 则答案为 $\operatorname{lcm}({a_i})f(x)f(y)g(x+y)$</p>
+<p>于是这个就好做了啊, 卷卷即可.</p>
+<h3 id="P9139-THUPC-2023-初赛-喵了个喵-II"><a href="#P9139-THUPC-2023-初赛-喵了个喵-II" class="headerlink" title="P9139 [THUPC 2023 初赛] 喵了个喵 II"></a>P9139 [THUPC 2023 初赛] 喵了个喵 II</h3><p>先考虑如果 $2$ 次怎么做, 则若有两种数的出现位置发生包含 $a, b, b, a$, 则一定无解, 因为一定是一个 $a, b$ 一个 $b, a$. 否则一定有解(一个子序列都放第一次出现的).</p>
+<p>然后 $4$ 次, 考虑能不能把这 $4$ 个位置 $a, b, c, d$ 先分成两个颜色, 则只有 $(a, c), (b, d)$ 和 $(a, b), (c, d)$ 是可能的划分, 那么可以写出2sat关系.</p>
+<p>但是直接2sat关系爆炸了, 注意到实际上每个2sat关系限制是矩形: $(a, c), (b, d)$ 连向有区间被 $(a, c)$ 或 $(b, d)$ 包含的区间选择另一种方式, 而包含是矩形, 于是主席树建图优化2sat即可.</p>
+<h3 id="P9136-THUPC-2023-初赛-种苹果"><a href="#P9136-THUPC-2023-初赛-种苹果" class="headerlink" title="P9136 [THUPC 2023 初赛] 种苹果"></a>P9136 [THUPC 2023 初赛] 种苹果</h3><p>就是加叶子, 边上加点, 区间加, 区间rank, 因为这个东西序列上都不能低于根号所以树上你肯定也得根号复杂度.</p>
+<p>于是树分块, 此时区间加区间rank就维护有序数组和加法标记上去二分, 加叶子和边上加点, 发现可以直接上去调整, 树的形态只维护父亲就行, 然后保证复杂度需要根号重构, 最后平衡复杂度是 $n\sqrt{n\log n}$</p>
+<h2 id="THUPC2022-Pre"><a href="#THUPC2022-Pre" class="headerlink" title="THUPC2022 Pre"></a>THUPC2022 Pre</h2><h3 id="P8213-THUPC2022-初赛-挑战"><a href="#P8213-THUPC2022-初赛-挑战" class="headerlink" title="P8213 [THUPC2022 初赛] 挑战"></a>P8213 [THUPC2022 初赛] 挑战</h3><p>直接倒着dp就行吧</p>
+<h3 id="P8207-THUPC2022-初赛-最小公倍树"><a href="#P8207-THUPC2022-初赛-最小公倍树" class="headerlink" title="P8207 [THUPC2022 初赛] 最小公倍树"></a>P8207 [THUPC2022 初赛] 最小公倍树</h3><p>考虑要么是Kru要么是Brovka, 同时这个lcm大概让你考虑gcd.</p>
+<p>考虑枚举gcd值 $d$, 对于 $dk, d(k+1)\ldots d(k+p)$, 暴力会连 $p^2$ 条边, 但后面的都只要和 $dk$ 连就好了, 于是总连边数是调和级数过了.</p>
+<h3 id="P8208-THUPC2022-初赛-骰子旅行"><a href="#P8208-THUPC2022-初赛-骰子旅行" class="headerlink" title="P8208 [THUPC2022 初赛] 骰子旅行"></a>P8208 [THUPC2022 初赛] 骰子旅行</h3><p>根据期望线性考虑能不能单独求每个点的期望经过次数, 那么暴力dp是计算 $f_{u, i, t}$ 表示现在在 $u$, 走了 $i$ 次, $t$ 的期望经过次数, 复杂度是 $(\sum m)nT$, 同理可以出 $g_{u, i, t}$ 表示现在在 $u$, 走了 $i$ 次曾经过 $t$ 的概率.</p>
+<h3 id="P8211-THUPC2022-初赛-搬砖"><a href="#P8211-THUPC2022-初赛-搬砖" class="headerlink" title="P8211 [THUPC2022 初赛] 搬砖"></a>P8211 [THUPC2022 初赛] 搬砖</h3><p>注意到如果所有 $b\ge 1$ 则最多只会进行 $\sqrt n$ 次, 按照 $d$ 是否 $&gt;\sqrt n$ 讨论即可证明.</p>
+<p>于是肯定考虑一次处理一段 $d$ 不变的, 而这个只要找到下一个不为 $0$ 的 $b$, 直接二分就是单log, 并查集可以整成线性.</p>
+<p>但是不对, 因为可能在这过程中因为没有搬完一摞而结束, 所以考虑对每个 $d&lt;\sqrt n$, 按 $d$ 分块, 根据一开始的偏移维护 $d$ 个长 $\dfrac{n}{d}$ 的数组, 每次插入一个数遍历每个 $d$, 会修改两个偏移区间的同一个位置的值, 于是就是 $\sqrt n$ 次单点修改和查询, 总复杂度 $n\sqrt n\alpha(n)$</p>
+<p>关键大概是 $\sqrt n$ 次以及对小于 $\sqrt n$ 的每个长度和偏移分块是 $n\sqrt n$ 的</p>
+<h3 id="P8212-THUPC2022-初赛-喵喵花園"><a href="#P8212-THUPC2022-初赛-喵喵花園" class="headerlink" title="P8212 [THUPC2022 初赛] 喵喵花園"></a>P8212 [THUPC2022 初赛] 喵喵花園</h3><p>确定一个起始位置就都确定了, 那么考虑随着起始位置变化本来每个点位置都在直线上移动, 直到有一个点移动到下一条边, 于是整个函数是 $n$ 段的. 就成了已知每个点坐标为 $p_i+v_it$ 求面积, 而面积是相邻两项叉积的和, 是二次函数, 那么每次暴力算下一个段的起始点并暴力求二次函数看起来是简单的啊.</p>
+<p>但是是不是, 当你修改一个位置的时候你只是单点改 $p$ 和 $v$, 于是二次函数修改可以 $O(1)$, 而每次要找下一个起始点也可以维护, 是单点改大, 求最小值, 看起来可以单log整体.</p>
+<h3 id="P8215-THUPC2022-初赛-分组作业"><a href="#P8215-THUPC2022-初赛-分组作业" class="headerlink" title="P8215 [THUPC2022 初赛] 分组作业"></a>P8215 [THUPC2022 初赛] 分组作业</h3><p>看到这么离谱的东西应该想流, 先给每个人建一个点</p>
+<p>然后首先最基本的是愿意, 可以用一边的边建成割&#x2F;不割表示是否愿意, 也可以用两边的与源汇连边表示愿意, 看起来后者信息更多, 这里认为割源点的边表示愿意.</p>
+<p>然后对于合作, 只要两者各建一条边连 inf 到一个新点, 新点向汇点连代价, 这样只有这条汇边被保留表示合作. 同时再用一条边连到源点, 也是二选一表示合作和不合作即可.</p>
+<p>然后对于 $e$ 的代价显然只要两个人之间连有向边.</p>
+<p>然后喜欢就是刚才的合作建出来的点向另一边表示愿意的点连边即可.</p>
+<p>然后你要保证你做的是不能一个人&#x2F;组把连到源点汇点都割了, 因为这么连人和组都至少割一个, 所以给这些边每个加 $inf$ 最后减掉即可.</p>
+<h2 id="THUPC-乱做"><a href="#THUPC-乱做" class="headerlink" title="THUPC 乱做"></a>THUPC 乱做</h2><h3 id="P7609-THUPC2021-游戏"><a href="#P7609-THUPC2021-游戏" class="headerlink" title="P7609 [THUPC2021] 游戏"></a>P7609 [THUPC2021] 游戏</h3><p>让人想起移动金币那个题, 考虑逐位做, 设 $f_{i, S, j, 0&#x2F;1}$ 表示考虑完低 $i$ 位, 当前 $S$ 中的数顶上界, 他们的和进位为 $j$, 总和是否小于等于 $n$ 的方案数.</p>
+<p>然后直接做复杂度带 $4^m$ 爆炸, 这里按位从低往高不如从高往低, 因为那样只要考虑 $S$ 中的数, 其他数都不可能变的顶上界, 复杂度会变成 $3^n$,<strong>因为数位dp从高往低性质其实是比从低往高好在大小限制变化单调</strong></p>
+<h3 id="P7604-THUPC2021-形式语言与自动机"><a href="#P7604-THUPC2021-形式语言与自动机" class="headerlink" title="P7604 [THUPC2021] 形式语言与自动机"></a>P7604 [THUPC2021] 形式语言与自动机</h3><p>考虑分成三段后它们的把括号看成 $\pm 1$ 序列后的和以及前缀 $min$ 的值 $s_1, s_2, s_3, m_1, m_2, m_3$, 则换完之后显然要满足 $m_1\ge 0, s_1+m_3\ge 0, s_1+s_3+m_2\ge 0$.</p>
+<p>我们大概率扫描 $r$ 也就是枚举 $3$, 那么看起来第二个条件转化成 $m_2-s_2\ge 0$, 也就是后缀 $min&#x3D;sm_2\ge 0$, 这样转化的好处是满足第二个条件的变成了一个区间, 显然 $m_1\ge 0$ 也是一个区间, 剩下的是 $m_3+s_1\ge 0$, 其中 $m_3$ 确定, 就是求 $s_1$ 的和大于某个值了. 总结一下发现这就是下标一维和一维的二维数点, 做完了.</p>
+<h3 id="P7605-THUPC2021-小-E-爱消除"><a href="#P7605-THUPC2021-小-E-爱消除" class="headerlink" title="P7605 [THUPC2021] 小 E 爱消除"></a>P7605 [THUPC2021] 小 E 爱消除</h3><p>容易想到区间dp, 那么设 $f_{l, r}$ 为答案后要转移, 以左边为例, 要么 $l$ 最后也没被消掉可以直接从 $f_{l+1, r}$ 转移, 否则假设找到与 $l$ 颜色相同的另一个位置 $i$, 则一定是拿出 $l$, 消空 $i$ 左边或右边(可能用到没被消空的一边), 比如消没左边, 那么枚举用了右边的 $k$ 个, 就转移到 $f_{i+1, r-k}$, 于是需要知道把 $j, k$ 端不可被删除的区间 $[i, j], [k, l]$ 完全消空的最小杯子大小 $g_{i, j, k, l}$, 而 $g$ 可以用一样的方式转移, 最后复杂度 $n^6$, 然后靠玄学常数过题.</p>
+<h3 id="P7606-THUPC2021-混乱邪恶"><a href="#P7606-THUPC2021-混乱邪恶" class="headerlink" title="P7606 [THUPC2021] 混乱邪恶"></a>P7606 [THUPC2021] 混乱邪恶</h3><p>好棒的题</p>
+<p>就是, 本来你肯定直接dp设 $f_{i, l, g, x, y}$ 表示考虑完前 $i$ 个idea, 然后 $l, g$ 的值和自己的坐标 $x, y$(六边形可以转化成走 $x, y$ 和沿着 $y&#x3D;x$ 走), 然后获得复杂度 $n^3p^2$ 再靠bitset压上 $\dfrac{n^3p^2}{w}$</p>
+<p>见识新dp优化方案了. 一个众所周知的结论是二维平面随机游走期望距离 $\sqrt n$, 所以可以把输入的idea随机打乱然后把 $x, y$ 只开到 $\sqrt n$, 使得转移过程中不会出现很大的 $x, y$, 复杂度就成了 $\dfrac{n^2p^2}{w}$</p>
+<p>[trick] 随机游走结论更改添加物品顺序以优化dp状态</p>
+<h3 id="P7136-THUPC2021-初赛-方格游戏"><a href="#P7136-THUPC2021-初赛-方格游戏" class="headerlink" title="P7136 [THUPC2021 初赛] 方格游戏"></a>P7136 [THUPC2021 初赛] 方格游戏</h3><p>注意到最关键的部分: 对任意 $i, j$, $D_i+1&lt;U_j$ 或 $D_j+1&lt;U_i$ 以及横向的, 这个说明不可能用障碍物围迷宫之类的, 甚至任意两点只会被一个障碍物影响, 因为横竖独立可以光看一边, 以纵向绕远为例, 因为某个障碍物绕远的条件是起点终点都属于障碍覆盖的纵坐标区间, 则会绕一下.</p>
+<p>而绕远距离是简单一次函数, 求完和二次函数乱算即可.</p>
+<h3 id="P7607-THUPC2021-初赛-赌徒问题"><a href="#P7607-THUPC2021-初赛-赌徒问题" class="headerlink" title="P7607 [THUPC2021 初赛] 赌徒问题"></a>P7607 [THUPC2021 初赛] 赌徒问题</h3><p>看起来枚举 $s$, 然后拿出所有因数暴力背包的复杂度是 $m^2d(mk)$, 其中 $d(mk)$ 大约是 $6000\sim 10000$ 之间, 过不了.</p>
+<p>考虑背包的时候 $k$ 的约数先都加进去, 每次只插入不是 $k$ 的约数而是 $sk$ 的约数的部分, 复杂度就下来了.</p>
+<h2 id="于是开打THUPC2024-pre"><a href="#于是开打THUPC2024-pre" class="headerlink" title="于是开打THUPC2024 pre"></a>于是开打THUPC2024 pre</h2><p>7题, 但自己只过了一个, 被队友带飞了.</p>
+<h3 id="M-你说得对-但是AIGC"><a href="#M-你说得对-但是AIGC" class="headerlink" title="M. 你说得对, 但是AIGC"></a>M. 你说得对, 但是AIGC</h3><p>如果是<code>You are right, but</code>开头就是AI.</p>
+<h3 id="H-二进制"><a href="#H-二进制" class="headerlink" title="H. 二进制"></a>H. 二进制</h3><blockquote>
+<p>今天也是喜欢二进制串的一天, 小 F 开始玩二进制串的游戏.</p>
+<p>小 F 给出了一个这里有一个长为 $n$ 的二进制串 $s$, 下标从 $1$ 到 $n$, 且 $\forall i\in[1, n], s_i\in {0, 1}$, 他想要删除若干二进制子串.</p>
+<p>具体的, 小 F 做出了 $n$ 次尝试.</p>
+<p>在第 $i\in[1, n]$ 次尝试中, 他会先写出正整数 $i$ 的二进制串表示 $t$(无前导零, 左侧为高位, 例如 $10$ 可以写为 $1010$).</p>
+<p>随后找到这个二进制表示 $t$ 在 $s$ 中从左到右<strong>第一次</strong>出现的位置, 并删除这个串.</p>
+<p>注意, 删除后左右部分的串会拼接在一起<strong>形成一个新的串</strong>, 请注意新串下标的改变.</p>
+<p>若当前 $t$ 不在 $s$ 中存在, 则小 F 对串 $s$ 不作出改变.</p>
+<p>你需要回答每一次尝试中, $t$ 在 $s$ 中第一次出现的位置的左端点以及 $t$ 在 $s$ 中出现了多少次.</p>
+<p>定义两次出现不同当且仅当出现的位置的左端点不同.</p>
+<p>请注意输入输出效率.</p>
+<p>$n\le 10^6$</p>
+</blockquote>
+<p>Harry秒了</p>
+<p>显然这个尝试的串长度是 $\log_{10}(n)$ 的, 非常短, 那么直接字符串哈希(都不用哈希, 直接拿这个串表示的二进制数就行), Harry写的是可删堆去维护hash值的出现位置并求位置最小值(因为删掉原序列一个数两边拼起来会减少一些hash形成一些新的hash, 要暴力更新, 所以要支持删除), 上链表维护删除一个数并把两边拼起来的操作, 用BIT维护被删了的元素的位置.</p>
+<p>复杂度是2log, 但有一个log底数是10.</p>
+<h3 id="C-前缀和"><a href="#C-前缀和" class="headerlink" title="C. 前缀和"></a>C. 前缀和</h3><blockquote>
+<p>小兰很喜欢随机数.</p>
+<p>TA 首先选定了一个实数 $0 &lt; p &lt; 1$, 然后生成了 $n$ 个随机数 $x_1, \dots, x_n$, 每个数是独立按照如下方式生成的:</p>
+<ul>
+<li>$x_i$ 有 $p$ 的概率是 $1$, 有 $(1-p)p$ 的概率是 $2$, 有 $(1-p)^2p$ 的概率是 $3$, 以此类推.</li>
+</ul>
+<p>生成完这些随机数之后, 小艾对这个数列求了前缀和, 得到了数列 $y_1, \dots, y_n$.</p>
+<p>给定 $1\leq l\leq r\leq n$, 小兰想知道, 期望有多少 $y_i$ 落在 $[l, r]$ 内?</p>
+<p>$n, l, r\le 10^9$</p>
+</blockquote>
+<p>赛时代数推导天地灭式子的角标推错了, 还是靠Mikefeng, 喵的重推一遍.</p>
+<p>$x_i$ 为 $n$ 的概率显然是</p>
+<p>$$<br>[z^k]\dfrac{pz}{1-(1-p)z}<br>$$</p>
+<p>于是 $y_k$ 为 $n$ 的概率是</p>
+<p>$$<br>\begin{gathered}<br>[z^n]\dfrac{p^kz^k}{(1-(1-p)z)^k}\<br>&#x3D;[z^n]p^kz^k\sum_j \binom{-k}{j}(-1)^j(1-p)^jz^j\<br>&#x3D;[z^n]p^kz^k\sum_{j&#x3D;0}^{n-k} \binom{k+j-1}{j}(1-p)^jz^j<br>\end{gathered}<br>$$</p>
+<p>原来要求 $[l, r]$ 中的可以改成求 $[1, r]$ 中的差分, 其中少于 $r$ 的期望个数为</p>
+<p>$$<br>\begin{gathered}<br>\sum_{i&#x3D;1}^n \sum_{j&#x3D;0}^{r-i} p^i(1-p)^j\binom{k+j-1}{j}\<br>&#x3D;\sum_{i&#x3D;0}^{r-1}\sum_{j&#x3D;0}^{r-1}p^{i-j+1}(1-p)^j\binom{i}{j}\<br>&#x3D;\sum_{i&#x3D;0}^{r-1}p(1-p+p)^{i}\<br>&#x3D;rp<br>\end{gathered}<br>$$<br>所以答案就是 $(r-l+1)p$</p>
+<h3 id="K-三步棋"><a href="#K-三步棋" class="headerlink" title="K. 三步棋"></a>K. 三步棋</h3><blockquote>
+<p>K 家里有一条不成文的规矩. 如果家里只有 K 和 H 两个人, 那么两个人会通过一种叫作”三步棋”的游戏来决定谁做饭. 三步棋的规则与五子棋有一些相似之处. 众所周知, 五子棋是一种先连出五枚己方棋子者获胜的游戏. 与五子棋相同的是, 三步棋中双方也轮流在网格状的棋盘上摆放棋子, 并根据是否连成指定的图案决定胜负. 与五子棋不同的是:</p>
+<ol>
+<li>三步棋不区分双方的棋子, 即可以认为双方执同色棋子进行游戏;</li>
+<li>在判定时, 指定的图案不能旋转;</li>
+<li>如果连成指定的图案时, 棋盘上的棋子数量恰好为 $3$ 的倍数, 则连成指定的图案的一方获胜, 否则判定该方负(即对方获胜).</li>
+</ol>
+<p>在 K 家, 为了节约时间, 通常使用 $5\times 5$ 的初始为空的棋盘进行三步棋. 同时, 每次也只会随机选择一个由不超过 $4$ 枚棋子组成的四连通图案. 显然三步棋不存在平局, 所以 K 和 H 约定由输的一方负责做饭. K 想知道, 如果自己和 H 都足够聪明, 那么以选中的图案进行的三步棋游戏是否为<strong>先手必胜</strong>; 因为如果她更容易赢, 她就要偷偷地给自己的妹妹放水.</p>
+</blockquote>
+<p>首先容易看出这是个爆搜题.</p>
+<p>然后HarryTLE了, 爆搜冲不过, 需要打表. . .</p>
+<p>打完就过了, 这里可以用对称性少打几个.</p>
+<h3 id="J-套娃"><a href="#J-套娃" class="headerlink" title="J. 套娃"></a>J. 套娃</h3><blockquote>
+<p>我们定义一个集合的 $\operatorname{mex}$ 是最小的不在 $S$ 中的非负整数.</p>
+<p>给定一个序列 $a_1, \dots, a_n$, 对于每个 $1\leq k\leq n$, 我们按照如下方式定义 $b_k$:</p>
+<ul>
+<li>对于 $a$ 的所有长为 $k$ 的子区间, 求出这个子区间构成的数集的 $\operatorname{mex}$.</li>
+<li>对于求出的所有 $\operatorname{mex}$, 求出这个数集自己的 $\operatorname{mex}$, 记为 $b_k$.</li>
+</ul>
+<p>请你求出序列 $b$.</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>Mikefeng秒了.</p>
+<p>包含某个出现了 $cnt$ 次的值的区间在平面上是 $O(cnt)$ 个矩形, 不包含的是一个下阶梯, 那么相当于平面上若干个矩形取min后得到的就是mex, 那么转换维度, 从小大大枚举值, 维护mex小于当前值的区域(一个下阶梯), 每次插入一个矩形就是给阶梯新添加一块, 且新加的区域的mex恰好是当前枚举的值, 而且新加的一块在 $x+y$ 上一定是一个区间, 也就是新加的区域的区间长度是一个区间, 而当前值插入的所有矩形求出的区间的并就是那些包含至少一个区间以当前值作为mex的所有长度.</p>
+<p>求出长度区间扫一遍就做完了.</p>
+<h3 id="E-转化"><a href="#E-转化" class="headerlink" title="E. 转化"></a>E. 转化</h3><blockquote>
+<p>小 E 有 $n$ 种颜色的球, 其中第 $i$ 种有 $a_i$ 个. 有两类工具, 第一类可以把一个指定颜色的球变成一个<strong>任意</strong>颜色的球; 第二类可以把一个指定颜色的球变成两个<strong>这种</strong>颜色的球. 一个变化之后的球也可以通过工具产生新的变化. 关于第 $i$ 种颜色的第一类工具有 $b_i$ 个, 第二类工具有 $c_i$ 个.</p>
+<p>小 E 想知道, 如果每一<strong>个</strong>工具最多只能使用一次, 那么对于每种颜色 $i$, 第 $i$ 种颜色的球最后最多能有多少个. 以及, 小 E 最后最多能有多少个球.</p>
+<p>$n\le 5\times 10^5, a_i, b_i, c_i\le 10^9$</p>
+</blockquote>
+<p>C过之后去开E了, 很好想, 但是一直在写愚蠢错误, 并且没有大样例不知道错哪的贪心题.</p>
+<p>先考虑第一问求到第 $k$ 种颜色的最多有多少, 那么把其他球分成三类, $b_i&#x3D;0$ 的部分不用考虑, $b_i\ne 0, a_i\ne 0$ 的可以直接 $a_i’\equalscolon a_i+c_i$, 并可以提供 $d_i\min (b_i, a_i’)$ 的贡献(这里把贡献定义成可以根据需要转换成任意颜色的球数), 然后 $b_i\ne 0, a_i&#x3D;0$ 的球, 需要先消耗一个球, 然后用二类工具, 则它们的贡献是 $\min (b_i-1, c_i)$, $-1$ 是把转入的球转出去的代价. 这样答案就是所有点的贡献, 再加上 $a_k$, 此时求出来的结果如果不为 $0$ 就再加 $c_k$.</p>
+<p>对于第二问, $a_i\ne 0, b_i\ne 0$ 的球不变, $a_i&#x3D;0, b_i\ne 0$ 变成了如果转入一个球会贡献 $\min(b_i-1, c_i)$, 会给总数增加 $(c_i)$, 此时你会剩下若干贡献可以转换成其他球, 这些应该送到 $b_i&#x3D;0 0, a_i&#x3D;0$ 中 $c_i$ 前若干大的球, 然后对于 $b_i&#x3D;0, a_i\ne 0$ 的球直接把 $a_i+c_i$ 到总数.</p>
+<p>调了一年, wa了4发&#x2F;&#x2F;&#x2F;fn</p>
+<h3 id="D-多折较差验证"><a href="#D-多折较差验证" class="headerlink" title="D. 多折较差验证"></a>D. 多折较差验证</h3><blockquote>
+<p>对于所有折痕互相平行的说明书, 可以按照说明书上文字的阅读顺序从上到下给每条折痕分别编号 $1, 2, \cdots, N$, 这 $N$ 条折痕将说明书分成了 $(N+1)$ 条纸带. 每条折痕可能为两种形态之一: 一种是垂直纸面向内凸出, 对应将纸的上下两半向前对折; 一种是垂直纸面向外凸出, 对应将上下两半向后对折. 根据折痕截面的形状, 分别使用小写字母 <code>v</code> 表示向内凸出的折痕, <code>^</code> (ASCII 码为 $94$)表示向外凸出的折痕. 假设所有纸带的宽度都是一样的, 并且折纸的过程中说明书不发生形变, 那么沿着一条折痕对折后两侧的纸能够重合, 当且仅当两侧的折痕是相反的; 即, 如果沿着第 $k$ 条折痕折叠, 那么对于所有满足 $1\le k-m&lt;k+m\le N$ 的正整数 $m$, 第 $(k-m)$ 条折痕和第 $(k+m)$ 条折痕的形态是相反的. 例如, 对于折痕依次为 <code>v^v^^^^v</code> 的说明书, 可以沿其第 $7$ 条折痕进行折叠. 根据定义可知, 一张说明书总能沿着第一条或最后一条折痕进行折叠. 折叠之后的说明书可以用被折叠的折痕两侧中, 剩余折痕数量较多一侧的折痕表示, 如 <code>v^v^^^^v</code> 沿着第 $7$ 条折痕折叠后得到 <code>v^v^^^</code>. 如果被折叠的折痕两侧折痕数量相等, 那么用哪一侧的折痕表示折叠后的纸都可以, 因为折痕在三维空间中是旋转对称的. 特别地, 对只剩下一条折痕的说明书, 即 <code>v</code> 或 <code>^</code> 进行折叠后, 所有 $(N+1)$ 条纸带都重叠在一起, 此时称这张说明书被折叠整齐.</p>
+<p>虽然按顺序依次折叠每一条折痕, 总能将说明书折叠整齐, 但 Kanan 觉得这样并不美观. 一种美观的折法应该尽量少折, 并且每次折的时候折痕两侧应该尽可能的对称. 定义一种折法的不对称程度为每次折叠时, 被折叠的折痕两侧的折痕数量之差的总和. 给出一张说明书的折痕, Kanan 想知道最少需要折多少次才能将这张说明书折叠整齐, 以及所有折叠次数最少的折法中, 不对称程度的最小值.</p>
+<p>$n\le 5000$</p>
+</blockquote>
+<p>长得像区间dp, 真的是区间dp, 直接区间dp显然是 $n^3$ 的.</p>
+<p>然后你看到这个就会猜有效转移不多, 因为条件看着很苛刻, 所以考虑求出所有有效转移只转移这些, 然后过了.</p>
+<p>题解表示能卡到 $n^2\log n$, 但也没证出来.</p>
+<h3 id="B-一棵树"><a href="#B-一棵树" class="headerlink" title="B. 一棵树"></a>B. 一棵树</h3><blockquote>
+<p>这里有一棵树, 具体的, 这是一张有 $n$ 个节点和 $n-1$ 条边组成的无向联通图.</p>
+<p>每个节点初始颜色为白色, 你需要恰好将其中 $k$ 个节点染成黑色, 定义一条边的权值是, 断开这条边之后, 两个连通块的黑色节点个数之差, 定义一棵树的权值为所有边的权值求和, 你需要最小化整棵树的权值.</p>
+<p>$n\le 5\times 10^5$, 1s</p>
+</blockquote>
+<p>赛时最后1. 5h会了这个题, 结果没调出来寄了.</p>
+<p>以 $1$ 为根, 首先显然可以把贡献转化成 $\sum_{u\ne 1} \vert k-2cnt_u\vert$, 其中 $cnt$ 为 $u$ 内黑点个数.</p>
+<p>于是dp, $f_{u, i}$ 表示 $u$ 子树内染了 $i$ 个黑点, 转移的话是先把所有子树做 $\min, +$ 卷积然后再加上绝对值函数 $\vert k-2i\vert$, 这东西是很典的凸性题.</p>
+<p>实现的话因为这个绝对值加的位置固定所以直接开两个大根堆, 堆里塞 $pair(k, l)$ 表示一个斜率为 $k$, 长度为 $l$ 的斜率连续段, 这样区间加直接打标记, 然后用启发式合并. 复杂度 $n\log^2 n$, 赛时先T一发, 卡常完了还CE了然后比赛结束.</p>
+<p>靠这里启发式合并直接换可并堆就单log啊.</p>
+<p>[think] 碰到这种凸性题之后要想到底要维护什么, 维护原数组, 差分数组(用数据结构维护每个位置即对应差分)&#x2F;差分连续段(搭配堆&#x2F;数据结构)&#x2F;差分变化 $1$ 的位置. 要做闵和而且不是和 $O(1)$ 段函数做闵和的时候基本上只有差分连续段是能用的对应直接数据结构合并. 此外一般需要你维护&#x2F;能快速求某个特定位置的dp值来求答案.</p>
+<p>比赛结束之后发现写的会WA, 输麻了, 码力过低.</p>
+<h3 id="G-采矿"><a href="#G-采矿" class="headerlink" title="G. 采矿"></a>G. 采矿</h3><blockquote>
+<p>矿坑是二叉树形结构, 有 $n$ 个节点. $1$ 号点为地面, 对于所有的 $2\le i\le n$, $i$ 号节点与更浅层的 $f_i$ 号节点通过通道相连, 其中 $f_i&lt;i$, 且相同的 $f_i$ 最多出现两次. 矿坑的不同节点的产量和开采难度均不相同. 对于 $i$ 号节点 $(2\le i\le n)$, 如果派一个机器人开采, 一单位时间内能有 $r_i$ 的产出; 如果派一个人类开采, 一单位时间内能有 $p_i$ 的产出. 地面没有产出. 你有一个机器人, 初始位于 $s$ 号节点. 你的矿坑里初始没有人类工人.</p>
+<p>你现在有 $q$ 条计划需要按顺序执行. 每个计划分为准备、执行、调整、开采四个阶段.</p>
+<p>在准备阶段, 人类可以在满足移动规则的前提下任意移动, 但不能进入或离开矿坑(矿坑内的工人到达 $1$ 号节点不算离开矿坑), 移动的顺序和次数均没有限制. 机器人不能移动.</p>
+<p>在执行阶段, 不同计划需要做的事情可能不同, 共分为 $4$ 种:</p>
+<ol>
+<li>机器人只能沿通道向<strong>更浅</strong>的方向移动, 且至少需要经过一条通道. 人类不能移动.</li>
+<li>机器人只能沿通道向<strong>更深</strong>的方向移动, 且至少需要经过一条通道. 人类不能移动.</li>
+<li>使一名人类从 $1$ 号节点进入矿坑(这意味着该阶段开始时 $1$ 号节点上必须没有工人). 除此之外所有工人都不能移动.</li>
+<li>使一名人类从 $1$ 号节点移出矿坑(这意味着该阶段开始时 $1$ 号节点上必须有一名人类). 除此之外所有工人都不能移动.</li>
+</ol>
+<p>在调整阶段, 限制与准备阶段相同. 在开采阶段, 所有的工人会采一单位时间的矿.</p>
+<p>问按顺序执行完所有计划之后, 你所有计划的产出之和最多可以达到多少.</p>
+<p>$n\le 300, q\le 600$</p>
+<p>PS: 移动时不能穿过有工人的点</p>
+</blockquote>
+<p>那么这不直接dp设 $f_{i, u, j, k, 0&#x2F;1}$ 表示经过了前 $i$ 步, 现在机器人在 $u$, $u$ 的两棵子树分别有 $j, k$ 个人, 机器人是否移动过, 用树上背包一样的分析状态数是 $qn^2$, 转移用前缀和可以 $O(1)$</p>
+<p>这题该过的, 只是最后榜上也只过了8个队根本不敢做.</p>
+<h3 id="I-分治乘法"><a href="#I-分治乘法" class="headerlink" title="I. 分治乘法"></a>I. 分治乘法</h3><blockquote>
+<p>小艾想要挑战分治乘法. TA 将策略抽象成了如下问题:</p>
+<p>现在给定一个目标集合 $T$, 该集合是 ${1, \dots, n}$ 的一个子集($1\leq n\leq 5\times 10^5$). 你需要通过一系列操作构造一些集合最后得到 $T$, 具体来说有以下三种操作:</p>
+<ul>
+<li>创造一个大小为一的集合 $\vert S\vert &#x3D;1$.</li>
+<li>将已经被构造出的两个不交集合 $A, B$ 并起来, 得到 $A\cup B$.</li>
+<li>将已经被构造出的一个集合 $A$ 进行平移, 也即 $A+x &#x3D; { a+x : a\in A }$.</li>
+</ul>
+<p>一个已经被构造出的集合可以在之后被使用多次. 同时你需要保证操作过程中出现的所有集合都是 ${1, \dots, n}$ 的子集.</p>
+<p>你的代价是构造出的所有集合的大小之和, 你不需要最小化代价, 只需要让代价控制不超过 $5\times 10^6$ 即可. 你用的操作数量也不应超过 $10^6$.</p>
+</blockquote>
+<p>朴素做法是直接用 $1$ 操作先把所有数拿出来然后合并, 复杂度显然是 $n\log n$, 比限制差不多正好大一倍.</p>
+<p>考虑怎么使用操作 $3$, 按照 $L$ 分块, 则一块有 $2^L$ 种可能, 然后设 $S_i$ 表示 $i$ 这种可能出现的所有下标的集合, 则 $S_i$ 大小是 $\dfrac{n}{L}$, 构造出一个 $S_i$ 的代价就是 $\dfrac{n}{L}\log n$, 然后平移覆盖, 代价是 $n$</p>
+<p>创建完之后要合并现在得到的 $L2^L$ 个集合, 直接分治复杂度是 $n\log (L2^L)&#x3D;n\log L+nL$, 于是取 $L&#x3D;\sqrt {\log n}$, 总复杂度 $n\sqrt {\log n}$</p>
+<p>很厉害啊赛时只想着把连续的 $L$ 个分块, 处理出 $L2^L$ 种, 然后平移的代价是 $n$, 合并的代价是 $n\log \dfrac{n}{L}$ 没变. . .</p>
+<p>[think]<br>题解: 先合并出 $L2^L$ 个总大小为 $\dfrac{n}{L}$ 的集合, 第二步合并 $L2^L$ 个集合.<br>我: 先合并出 $L2^L$ 个总大小为 $L2^L$ 的集合, 第二步合并 $\dfrac{n}{L}$ 个集合.<br>两步的合并是具有对称性的, 关键是把两步的复杂度平衡.</p>
+<h3 id="A-排序大师"><a href="#A-排序大师" class="headerlink" title="A. 排序大师"></a>A. 排序大师</h3><blockquote>
+<p>由于你是排序大师, 你经常被路过的游客刁难, 要求用一些奇怪的操作给序列排序.</p>
+<p>由于你是远近闻名的排序大师, 邻国的排序萌新小 I 慕名前来拜访, 留下了一个长度为 $n\le 2000$ 的排列 $a_1, a_2 \cdots, a_n$, 并要求你用以下操作将排列升序排序:</p>
+<ul>
+<li>定义 $a_{i \sim j} &#x3D; {a_i, a_{i+1}, \cdots, a_j}$. 选定 $1 \le i \le j &lt; k \le l \le n$, 交换 $a_{i \sim j}$ 和 $a_{k \sim l}$, 即交换过后序列变为 $a_{1 \sim i-1}, a_{k \sim l}, a_{j+1 \sim k-1}, a_{i \sim j}, a_{l+1 \sim n}$.</li>
+</ul>
+<p>由于你是因精益求精而远近闻名的排序大师, 你需要给出一个排序方案<strong>最小化</strong>操作次数.</p>
+</blockquote>
+<p>根本不会.</p>
+<p>考虑分析下界, 因为这个是区间操作所以建图 $p_i+1\to p_{i+1}$, 前面带上 $0$, 这样构造是为了让最后是环 $n$ 个自环, 这样最后是 $n$ 个自环, 分析环数, 则发现一次操作是相当于进行两次子操作: 交换两个点的出边, 那么每次这个子操作可以增加&#x2F;减少一个环, 于是每次操作可以改变环数 $2$, 下界有了, 开始构造.</p>
+<p>找到最小的 $a_x$ 使得存在 $a_y&gt;a_x, y&lt;x$, 拿出最大的 $y$, 则 $a_x-1$ 一定在 $a_y$ 左边, $a_y+1$ 一定在 $a_x$ 后面, 就可以交换 $x-1, y$ 和 $x, y+1$</p>
+<h3 id="L-勇闯末日塔"><a href="#L-勇闯末日塔" class="headerlink" title="L 勇闯末日塔"></a>L 勇闯末日塔</h3><blockquote>
+<p>在一个球面上有 $N$ 个点 $M$ 条弧, 保证弧无重边自环, 所有弧构成连通无向图, 且弧各不相交. 每条弧对应容量 $w_i$(需要根据弧长计算). 给出源 $s$ 和汇 $t$, 求删去恰好 $L$ 个点后从 $s$ 到 $t$ 最大流的最小值.</p>
+<p>$3 \le N \le 1000, 1 \le L \le \min{8, N −2}$</p>
+</blockquote>
+<p>弧各不相交, 则图是平面图, $M\le 3N-6$</p>
+<p>然后最大流等于最小割等于对偶图最短路等于在球上找一个最小环让 $S, T$ 分别在两边.</p>
+<p>为了在两边, 先bfs出一条 $S\to T$ 的路径, 然后要求找到的最小环经过 $S\to T$ 奇数次, 然后从一个点开始spfa dp, 状态要记录当前点和删了几个点, 而对于一个点转移次数是 $M$ 相关的, 总复杂度 $N^2L$</p>
+<p>std8. 4k的怪物.</p>
+<h3 id="F"><a href="#F" class="headerlink" title="F."></a>F.</h3><p>大模拟</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>开局想了个假B浪费时间, 然后C式子推寄了浪费时间, E调了1. 5h+wa了好几发.</p>
+<p>本来应该至少再过一个B的, 时间充足的话还有G只要仔细看了题就很有希望.</p>
+<p>主要问题是自己码力太弱, 写完了调不对, 写代码犯智障错误.</p>
+<p>% Mikefeng&amp;Harry27182 %, 最后70名还是很好的.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2022/07/02/count/" title="数数"><img class="cover" src="/img/2022-11-23-20-33-31-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">数数</div></div></a></div><div><a href="/2022/05/18/dp/" title="dp选做"><img class="cover" src="/img/2022-11-23-20-19-47-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-18</div><div class="title">dp选做</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#THUPC2024-%E9%82%AE%E5%AF%84"><span class="toc-number">1.</span> <span class="toc-text">THUPC2024 邮寄</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#THUPC2023-Pre"><span class="toc-number">1.1.</span> <span class="toc-text">THUPC2023 Pre</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P9140-THUPC-2023-%E5%88%9D%E8%B5%9B-%E8%83%8C%E5%8C%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">P9140 [THUPC 2023 初赛] 背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9143-THUPC-2023-%E5%88%9D%E8%B5%9B-%E4%BC%97%E6%95%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">P9143 [THUPC 2023 初赛] 众数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9134-THUPC-2023-%E5%88%9D%E8%B5%9B-%E6%8B%A7%E8%9E%BA%E4%B8%9D"><span class="toc-number">1.1.3.</span> <span class="toc-text">P9134 [THUPC 2023 初赛] 拧螺丝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9133-THUPC-2023-%E5%88%9D%E8%B5%9B-%E5%A4%A7%E5%AF%8C%E7%BF%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">P9133 [THUPC 2023 初赛] 大富翁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9142-THUPC-2023-%E5%88%9D%E8%B5%9B-%E6%AC%BA%E8%AF%88%E6%B8%B8%E6%88%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">P9142 [THUPC 2023 初赛] 欺诈游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9137-THUPC-2023-%E5%88%9D%E8%B5%9B-%E9%80%9F%E6%88%98%E9%80%9F%E5%86%B3"><span class="toc-number">1.1.6.</span> <span class="toc-text">P9137 [THUPC 2023 初赛] 速战速决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9138-THUPC-2023-%E5%88%9D%E8%B5%9B-%E5%85%AC%E5%B9%B3%E5%90%88%E4%BD%9C"><span class="toc-number">1.1.7.</span> <span class="toc-text">P9138 [THUPC 2023 初赛] 公平合作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9144-THUPC-2023-%E5%88%9D%E8%B5%9B-%E6%9C%80%E5%90%8E%E7%9A%84%E6%B4%BB%E5%8A%A8"><span class="toc-number">1.1.8.</span> <span class="toc-text">P9144 [THUPC 2023 初赛] 最后的活动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9135-THUPC-2023-%E5%88%9D%E8%B5%9B-%E5%BF%AB%E9%80%9F-LCM-%E5%8F%98%E6%8D%A2"><span class="toc-number">1.1.9.</span> <span class="toc-text">P9135 [THUPC 2023 初赛] 快速 LCM 变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9139-THUPC-2023-%E5%88%9D%E8%B5%9B-%E5%96%B5%E4%BA%86%E4%B8%AA%E5%96%B5-II"><span class="toc-number">1.1.10.</span> <span class="toc-text">P9139 [THUPC 2023 初赛] 喵了个喵 II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9136-THUPC-2023-%E5%88%9D%E8%B5%9B-%E7%A7%8D%E8%8B%B9%E6%9E%9C"><span class="toc-number">1.1.11.</span> <span class="toc-text">P9136 [THUPC 2023 初赛] 种苹果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#THUPC2022-Pre"><span class="toc-number">1.2.</span> <span class="toc-text">THUPC2022 Pre</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P8213-THUPC2022-%E5%88%9D%E8%B5%9B-%E6%8C%91%E6%88%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">P8213 [THUPC2022 初赛] 挑战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8207-THUPC2022-%E5%88%9D%E8%B5%9B-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%A0%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">P8207 [THUPC2022 初赛] 最小公倍树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8208-THUPC2022-%E5%88%9D%E8%B5%9B-%E9%AA%B0%E5%AD%90%E6%97%85%E8%A1%8C"><span class="toc-number">1.2.3.</span> <span class="toc-text">P8208 [THUPC2022 初赛] 骰子旅行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8211-THUPC2022-%E5%88%9D%E8%B5%9B-%E6%90%AC%E7%A0%96"><span class="toc-number">1.2.4.</span> <span class="toc-text">P8211 [THUPC2022 初赛] 搬砖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8212-THUPC2022-%E5%88%9D%E8%B5%9B-%E5%96%B5%E5%96%B5%E8%8A%B1%E5%9C%92"><span class="toc-number">1.2.5.</span> <span class="toc-text">P8212 [THUPC2022 初赛] 喵喵花園</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8215-THUPC2022-%E5%88%9D%E8%B5%9B-%E5%88%86%E7%BB%84%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.2.6.</span> <span class="toc-text">P8215 [THUPC2022 初赛] 分组作业</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#THUPC-%E4%B9%B1%E5%81%9A"><span class="toc-number">1.3.</span> <span class="toc-text">THUPC 乱做</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P7609-THUPC2021-%E6%B8%B8%E6%88%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">P7609 [THUPC2021] 游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7604-THUPC2021-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.3.2.</span> <span class="toc-text">P7604 [THUPC2021] 形式语言与自动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7605-THUPC2021-%E5%B0%8F-E-%E7%88%B1%E6%B6%88%E9%99%A4"><span class="toc-number">1.3.3.</span> <span class="toc-text">P7605 [THUPC2021] 小 E 爱消除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7606-THUPC2021-%E6%B7%B7%E4%B9%B1%E9%82%AA%E6%81%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text">P7606 [THUPC2021] 混乱邪恶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7136-THUPC2021-%E5%88%9D%E8%B5%9B-%E6%96%B9%E6%A0%BC%E6%B8%B8%E6%88%8F"><span class="toc-number">1.3.5.</span> <span class="toc-text">P7136 [THUPC2021 初赛] 方格游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7607-THUPC2021-%E5%88%9D%E8%B5%9B-%E8%B5%8C%E5%BE%92%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.6.</span> <span class="toc-text">P7607 [THUPC2021 初赛] 赌徒问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8E%E6%98%AF%E5%BC%80%E6%89%93THUPC2024-pre"><span class="toc-number">1.4.</span> <span class="toc-text">于是开打THUPC2024 pre</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#M-%E4%BD%A0%E8%AF%B4%E5%BE%97%E5%AF%B9-%E4%BD%86%E6%98%AFAIGC"><span class="toc-number">1.4.1.</span> <span class="toc-text">M. 你说得对, 但是AIGC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#H-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.4.2.</span> <span class="toc-text">H. 二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.4.3.</span> <span class="toc-text">C. 前缀和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#K-%E4%B8%89%E6%AD%A5%E6%A3%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">K. 三步棋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#J-%E5%A5%97%E5%A8%83"><span class="toc-number">1.4.5.</span> <span class="toc-text">J. 套娃</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-%E8%BD%AC%E5%8C%96"><span class="toc-number">1.4.6.</span> <span class="toc-text">E. 转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E5%A4%9A%E6%8A%98%E8%BE%83%E5%B7%AE%E9%AA%8C%E8%AF%81"><span class="toc-number">1.4.7.</span> <span class="toc-text">D. 多折较差验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E4%B8%80%E6%A3%B5%E6%A0%91"><span class="toc-number">1.4.8.</span> <span class="toc-text">B. 一棵树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G-%E9%87%87%E7%9F%BF"><span class="toc-number">1.4.9.</span> <span class="toc-text">G. 采矿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#I-%E5%88%86%E6%B2%BB%E4%B9%98%E6%B3%95"><span class="toc-number">1.4.10.</span> <span class="toc-text">I. 分治乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%8E%92%E5%BA%8F%E5%A4%A7%E5%B8%88"><span class="toc-number">1.4.11.</span> <span class="toc-text">A. 排序大师</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L-%E5%8B%87%E9%97%AF%E6%9C%AB%E6%97%A5%E5%A1%94"><span class="toc-number">1.4.12.</span> <span class="toc-text">L 勇闯末日塔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F"><span class="toc-number">1.4.13.</span> <span class="toc-text">F.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary"><span class="toc-number">1.4.14.</span> <span class="toc-text">Summary</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/11/nflssxjx/" title="南外省选集训">南外省选集训</a><time datetime="2023-12-10T16:00:00.000Z" title="Created 2023-12-11 00:00:00">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/07/thupc/" title="THUPC2024 邮寄">THUPC2024 邮寄</a><time datetime="2023-12-06T16:00:00.000Z" title="Created 2023-12-07 00:00:00">2023-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/noip2023/" title="NOIP2023游记">NOIP2023游记</a><time datetime="2023-11-17T16:00:00.000Z" title="Created 2023-11-18 00:00:00">2023-11-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
