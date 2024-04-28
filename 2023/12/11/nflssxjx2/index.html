@@ -1,0 +1,890 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>南外省选集训 | FireInIce's Blog</title><meta name="keywords" content="日志"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="文章太长,拆出一个新的 NOIP后南外省选集训NOI2024省选模拟赛20A. 网络单纯形 给定连通无向图 $Graph(n, m)$, 边有边权 $w_i$, 点有颜色 $c_i$, $q$ 次修改一个点的颜色询问所有连通不同颜色点的边的边权最小值.$n, q\le 2\times 10^5$  考虑两个颜色的答案就是给定的两个集合间的最近的一条边, 那么这条边一定在最小生成树上. 用堆维护每个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南外省选集训">
+<meta property="og:url" content="https://fireinicecode.github.io/2023/12/11/nflssxjx2/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="文章太长,拆出一个新的 NOIP后南外省选集训NOI2024省选模拟赛20A. 网络单纯形 给定连通无向图 $Graph(n, m)$, 边有边权 $w_i$, 点有颜色 $c_i$, $q$ 次修改一个点的颜色询问所有连通不同颜色点的边的边权最小值.$n, q\le 2\times 10^5$  考虑两个颜色的答案就是给定的两个集合间的最近的一条边, 那么这条边一定在最小生成树上. 用堆维护每个">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2023-12-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-27T23:50:10.439Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2023/12/11/nflssxjx2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '南外省选集训',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-04-28 07:50:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">南外省选集训</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2023-12-10T16:00:00.000Z" title="Created 2023-12-11 00:00:00">2023-12-11</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>文章太长,拆出一个新的</p>
+<h1 id="NOIP后南外省选集训"><a href="#NOIP后南外省选集训" class="headerlink" title="NOIP后南外省选集训"></a>NOIP后南外省选集训</h1><h2 id="NOI2024省选模拟赛20"><a href="#NOI2024省选模拟赛20" class="headerlink" title="NOI2024省选模拟赛20"></a>NOI2024省选模拟赛20</h2><h3 id="A-网络单纯形"><a href="#A-网络单纯形" class="headerlink" title="A. 网络单纯形"></a>A. 网络单纯形</h3><blockquote>
+<p>给定连通无向图 $Graph(n, m)$, 边有边权 $w_i$, 点有颜色 $c_i$, $q$ 次修改一个点的颜色询问所有连通不同颜色点的边的边权最小值.<br>$n, q\le 2\times 10^5$</p>
+</blockquote>
+<p>考虑两个颜色的答案就是给定的两个集合间的最近的一条边, 那么这条边一定在最小生成树上.</p>
+<p>用堆维护每个点的所有儿子的信息, 修改时更新父亲节点的数据结构即可.</p>
+<h3 id="B-原神账号"><a href="#B-原神账号" class="headerlink" title="B. 原神账号"></a>B. 原神账号</h3><blockquote>
+<p>给定 $a_n$, $m$ 次询问第 $i$ 次给定 $k_i$ 个区间和 $k_i$ 个区间 $[l_j, r_j]$ 问区间并的颜色数. 强制在线. 空间8Mb.</p>
+<p>$n, \sum k, m\le 10^5$</p>
+</blockquote>
+<p>早上刚看了跳进兔子洞就开到这个题, 容易想到bitset, 问题变成如何在8Mb下提取区间bitset.</p>
+<p>容易想到st表, 空间爆炸, 容易想到分块, 时间爆炸.</p>
+<p>但是分块是可以调块长的! 设块长为 $B$, 每 $B$ 个分一块, 块间st表, 空间时间都是 $\dfrac{n^2}{Bw}\log \dfrac{n}{B}$, 取 $B&#x3D;\dfrac{n}{w}$ 得到 $n\log w$, 过了.</p>
+<h3 id="C-肖芬途"><a href="#C-肖芬途" class="headerlink" title="C. 肖芬途"></a>C. 肖芬途</h3><blockquote>
+<p>给定 $n$ 点树, $1$ 为根, 有点权 $a_i$, 设 $i$ 的父亲为 $fa_i$, 保证 $fa_i&lt;i, fa_i\le fa_{i+1}$.</p>
+<p>$q$ 次询问给定区间求 $\sum_{x&#x3D;l}^r \sum_{y&#x3D;l}^r [l\le lca(x, y)\le r]a_xa_y$</p>
+<p>强制在线 $n, q\le 2. 5\times 10^5$</p>
+</blockquote>
+<p>首先容易想到 $fa$ 的这两个性质比较重要, 发现它是描述了像zkw线段树一样从上到下按层标号的”bfs序”.</p>
+<p>显然考虑扫描线, 扫 $r$ 的话, 对当前询问区间 $[l, r]$, 区间内的点的连通块的所有根也形成编号上一个区间, 而答案就是 $\sum_{rt} (\sum_{u\in subtree(rt), u\in [l, r]} a_u)^2$, 那么只要根号重构, 维护出子树点权和在编号维上的前缀和就可以查询整块答案, 此外散块的修改可以直接求 $k$ 级祖先看它是哪个子树里的计算贡献.</p>
+<p>然后强制在线就把扫描线可持久化也就是记录每个 $r&#x3D;kB$ 时每个点的子树大小了.</p>
+<h2 id="NOI2024省选模拟赛21"><a href="#NOI2024省选模拟赛21" class="headerlink" title="NOI2024省选模拟赛21"></a>NOI2024省选模拟赛21</h2><h3 id="A-盗梦空间"><a href="#A-盗梦空间" class="headerlink" title="A. 盗梦空间"></a>A. 盗梦空间</h3><blockquote>
+<p>给定一棵树, $q$ 次给定点集 $S$, 询问树上每个点到 $S$ 中的点的最小距离的最大值.<br>$n, \sum \vert S\vert, q\le 10^5$</p>
+</blockquote>
+<p>一眼虚树, 代码量略大, 对于虚树每条边, 每个子树, 虚树根外的答案都是显然的, 用了树剖加st表查虚树的边的答案.</p>
+<h3 id="B-偷藏女装"><a href="#B-偷藏女装" class="headerlink" title="B. 偷藏女装"></a>B. 偷藏女装</h3><blockquote>
+<p>小W摆放物品时有个习惯, 不喜欢打乱原先物品的位置, 因此小家的衣柜只能从两财开, 可以从左边放衣服进去也可以从右边放衣服进去, 并且会把之前已经在衣柜里的衣服往中间挤. 比如衣柜里面已经有 $1, 2, 3$ 三件衣服了, 现在从左边放一件 $4$ 号衣服进去就变成了 $4, 1, 2, 3$, 在右边放一件 $5$ 号衣服就变成了 $4, 1, 2, 3, 5$. 现在AlseoR带着机房人民集资为小A买的 $n$ 件衣服潜入了小A的家, 将衣服按编号从小到大放进衣柜, 每次可以任意选择左侧或者右侧放入.</p>
+<p>但是小W作为一个强迫症, 他希望可以存在一种方式从衣柜两侧不断取出衣服((取完为止), 每次可以任意选择将左似的衣服或者右侧的取出, 第 $K$ 件可以取出女装. 所以他想问问你方案的总数. 由于小A不知道衣柜里面的衣股是怎么摆放的, 所以他只关心取出的顺序字. 即对于两个方案不同, 当且仅当存在一个 $x$ 两个方案取出的第 $x$ 件衣服编号是不同的. 当然这个数可能很大, 所以小A决定从他最喜欢的三个数中选一个给你当模数.</p>
+<p>$n, m\le 10^9$</p>
+</blockquote>
+<p>考虑最后取出序列满足的条件, 衣柜里是一个单谷的中间是 $1$, 则取出序列一定满足:</p>
+<ul>
+<li>前 $k-1$ 个元素可以被划分成两个递减序列.</li>
+<li>$a_k&#x3D;1$</li>
+<li>后 $n-k$ 个序列是一个递增序列每次取头&#x2F;尾得到.</li>
+<li>前 $k-1$ 个元素划分出的序列中某个序列的最小值大于后 $n-k$ 个元素</li>
+</ul>
+<p>todo</p>
+<h3 id="C-楼梯调度"><a href="#C-楼梯调度" class="headerlink" title="C. 楼梯调度"></a>C. 楼梯调度</h3><blockquote>
+<p>对于一个序列 $a_1\ldots a_m$, 其权值为 $\sum_{i&#x3D;1}^m \max_{j&#x3D;1}^i a_i$, 现在给定 $a_n$ 求把它划分成两个序列 $b, c$ 后两个序列最小权值和.</p>
+<p>$n\le 5\times 10^5$</p>
+</blockquote>
+<p>先上来dp, 容易想到设 $f_{i, j}$ 表示前 $i$ 个人, 让序列 $b$ 的前缀 $\max$ 是序列 $a$ 的前 $i$ 个数的最大值, 此时 $c$ 的前缀 $\max$ 是 $j$ 的情况下的最小代价. 转移考虑新加的数 $a_i$, 可以放到 $b$ 序列(设 $s_i&#x3D;\max_{j&#x3D;1}^i a_i$)$f_{i, j}&#x3D;f_{i-1, j}+s_i$, 可以放到 $c$ 序列 $f_{i, j}&#x3D;f_{i-1, j}+j, \ if\ j&gt;a_i$, $f_{i, j}&#x3D;\min_{k&lt;j} f_{i-1, k}+a_i\ if\ j&#x3D;a_i$.</p>
+<p>发现转移只需要维护一个序列支持区间加, 区间加下标, 区间最小值, 单点修改, ktt秒了.</p>
+<p>然后这个题里因为每次后缀加下标不影响势能, 前缀加单点修改只影响边界的log个节点, 所以可以分析到 $\log^2$ 而不是 $\log^3n$</p>
+<h2 id="NOI2024省选模拟赛22"><a href="#NOI2024省选模拟赛22" class="headerlink" title="NOI2024省选模拟赛22"></a>NOI2024省选模拟赛22</h2><h3 id="A-染色问题"><a href="#A-染色问题" class="headerlink" title="A. 染色问题"></a>A. 染色问题</h3><blockquote>
+<p>给定一个 $n$ 个点 $m$ 条边的联通无向图, 给图上每个点染上 $k$ 种颜色中的一种, 且要求每一条边的两个端点不同色(不需要使用全部 $k$ 种颜色). 求方案数.</p>
+<p>$n\le 10^5, m\le n+5$</p>
+</blockquote>
+<p>广义串并联图说我们直接缩一度点和二度点, 即若一个点度数为 $1$ 可以删掉然后给答案乘 $k-1$, 如果度数为 $2$ 则设一条边 $(a, b)$ 表示这条边两边点颜色相同时方案数为 $a$, 不同时为 $b$, 则若原来该点连的两条边分别是 $(a, b), (c, d)$, 新的边应为 $(ac+(k-1)bd), (ac+bd+(k-2)bd)$, 缩到最后直接枚举颜色的集合划分 $B(10)$ 即可.</p>
+<h3 id="B-IOer"><a href="#B-IOer" class="headerlink" title="B. IOer"></a>B. IOer</h3><blockquote>
+<p>小Z是一个IOer, 很快就要参加IO省选了, 他可以用来刷题的时间还剩下 $n$ 天. 由于IO题非常简单, 你可以认为小Z能在一天内刷完任意数量的IO题, 且每题只会考察一个知识点.</p>
+<p>IO题的数量非常多, 你可以认为考察每个知识点的IO题都是足够多的. 在开始刷题前, 小Z只会 $v$ 个知识点.</p>
+<p>在这 $m$ 天中, 小Z会每天学习新的知识点. 在第 $i$ 天开始刷题前, 小Z会学习 $u$ 个新知识点. 即在第 $i$ 天刷题时, 小Z已经掌握了 $v+ui$ 个不同的知识点. 只有一道题所考察的知识点已被掌握时, 小Z才能刷这道题.</p>
+<p>虽然IO题非常简单, 但是小Z还是不能做到同时刷多道IO题, 因此小Z在同一天刷的题, 时间上存在先后顺序.</p>
+<p>小Z想在省选前刷恰好 $o$ 道题. 小Z不关心题目的具体内容, 只关心题目所考察的知识点. 他想知道, 共有多少种不同的刷题方案. 两种刷题方案是不同的, 当且仅当存在 $1&lt;i&lt;n$, 按时间顺序, 小Z刷第 $i$ 道题的时间在两个方案中不在同一天, 或小Z刷的第 $i$ 道题所考察的知识点不同. 但是小Z不会OI, 所以他无法求出不同的刷题方案数. 于是他找到了你, 一个能随手AK模拟赛的OIer, 希望你帮他解决这个问题.</p>
+<p>由于答案可能很大, 你只需要回答答案模 $998244353$ 的值.</p>
+<p>$n\le 10^{18}, m\le 2\times 10^5, u, v\le 10^9$</p>
+</blockquote>
+<p>显然可以列答案的生成函数: $ans&#x3D;[z^n]\prod \dfrac{1}{1-(ui+v)x}$.</p>
+<p>发现 $n$, $m$ 都很大, 直接线性递推只能做到 $m\log m\log n$ 肯定不行, 此时考虑分式分解, 也就是像我们一开始求Fib数列时, 把它的生成函数拆成 $\dfrac{1}{1-cx}$ 的形式以得到通项的方法, 显然对于多项式 $\dfrac{p}{\prod_i q_i}$, 拆成 $\sum_i \dfrac{d_i}{q_i}$ 后 $d_i$ 的系数小于 $q_i$, 得到方程 $\sum_i\dfrac{Md_i}{q_i}&#x3D;p$, 其中 $M&#x3D;\prod_i q_i$,</p>
+<p>考虑因为 $d_i$ 的次数小于 $q_i$, 所以 $d_i&#x3D;d_i\bmod q_i$, 两边都模掉 $q_i$ 后, 左边只有第 $i$ 项不为 $0$, 于是得到 $\dfrac{M}{q_i}d_i\equiv p\pmod {q_i}$, 于是只要求 $p\bmod q_i$ 和 $(\dfrac{q_i}{M})\bmod q_i$, 对于本问题 $p\bmod q_i&#x3D;1\bmod q_i&#x3D;1, \dfrac{q_i}{M}\bmod q_i&#x3D;\dfrac{q_i}{M}[\dfrac{1}{ui+v}]&#x3D;\dfrac{1}{\prod_{j\ne i}(1-\dfrac{uj+v}{ui+v})}&#x3D;\dfrac{u^{1-m}(ui+v)^{m-1}}{\prod_{j\ne i}(i-j)}$(这里用方括号表示函数求值), 化成阶乘做完了.</p>
+<p>最后复杂度 $n\log n$(快速幂).</p>
+<p>组合意义:</p>
+<p><img src="/img/2024-01-13-14-37-34-image.png" alt="picture 13">  </p>
+<h3 id="C-力脑"><a href="#C-力脑" class="headerlink" title="C. 力脑"></a>C. 力脑</h3><blockquote>
+<p>有一长度为 $n$ 的仅由<code>0</code>和<code>1</code>构成的字符串 $s$, 某些位置的字符已经给定, 其他位置的字符等概率取<code>0</code>或<code>1</code>, 求 $s$ 的后缀自动机的结点数量的期望, 答案对 $998244353$ 取模.</p>
+<p>$n\le 36$</p>
+</blockquote>
+<p>考虑SAM的节点数和parent tree的节点数是一样的而后者结构显然更好考虑, 那么对于字符集为 $2$ 的 $s$ 后缀树每个点最多有两个儿子, 设 $0&#x2F;1&#x2F;2$ 个儿子的数量分别为 $a, b, c$, 则分别求 $a, b, c$ 的期望即可. 发现叶子个数 $a&#x3D;c+1$, 于是只要求 $a, b$ 了.</p>
+<p>考虑SAM的parent tree什么时候只有 $0&#x2F;1$ 个儿子, $0$ 个儿子一定是一个前缀且全串只出现一次, $1$ 个儿子一定是一个前缀最前面加一个<code>0/1</code>恰好有一种在字符串中出现过.</p>
+<p>先考虑 $a$ 怎么算, 一个暴力是对每个前缀单独计算 $p_i$ 表示 $i$ 前缀只出现一次的概率, 则它不能是另一个前缀的后缀, 考虑容斥它是集合 $S$ 中的后缀的前缀其他任意, 则可以得到若干相等关系, 把它建图计算方案数, 复杂度是 $n^22^{n-i}$($S$ 中只有更长的前缀).</p>
+<p>那如果找到一个 $2^i$ 的东西就赢了, 于是可以直接枚举这个前缀到底是什么, 然后dp每个位置的容斥系数之和, 设 $f_j$ 表示 $j$ 是 $S$ 中最大的元素的情况下所有位置的容斥系数乘只考虑前 $j$ 个位置的方案数的和, 则对于 $f_j$, 首先如果 $f_j$ 的最后 $i$ 个位置无法和当前枚举的匹配显然是 $0$, 否则枚举当前前缀上一次出现的位置 $k$, 若 $j-k&lt; i$ 则有重叠, 要求 $j-k$ 是一个border, 如果 $j-k\ge i$ 则中间没有覆盖的没确定的位置可以任选. 这个的复杂度就是 $n^22^i$</p>
+<p>于是求 $a$ 的总复杂度是 $n^22^{\frac{n}{2}}$, 再考虑求 $b$, 直接算前缀加一个<code>0</code>出现至少一次不好算, 考虑一个点有一个儿子等价于不是叶子且它没有另一个儿子. 而没有加<code>1</code>得到的儿子就是在这个前缀前面加一个<code>1</code>不出现在字符串中, 发现正好是字符串前面添一个<code>1</code>然后跑刚才的做法得到的(实际上刚才求得不是恰好出现一次而是没在其他位置出现), 于是恰好只加<code>0</code>的儿子的概率实际上是 $p_{1, i}-p_i$, 其中 $p_{0&#x2F;1, i}$ 表示在字符串前面添加一个字符<code>0/1</code>之后跑出的答案.</p>
+<p>最终答案是 $a+b+c&#x3D;2a+b-1&#x3D;(\sum_i 2p_i+p_{0, i}-p_i+p_{1, i}-p_i)-1&#x3D;(\sum_0 p_{1, i}+p_{1, i})-1$.</p>
+<h2 id="字符串专题"><a href="#字符串专题" class="headerlink" title="字符串专题"></a>字符串专题</h2><h3 id="失配树"><a href="#失配树" class="headerlink" title="失配树"></a>失配树</h3><blockquote>
+<p>给定字符串 $s_n$, $m$ 次询问 $s_{1\ldots p}, s_{1\ldots q}$ 的最长公共border长度.</p>
+<p>$p, q, s\le 10^6, m\le 10^5$</p>
+</blockquote>
+<p>失配树说的是每个点向自己的最长border连边, 则这个题是求lca.</p>
+<h3 id="P4156-WC2016-论战捆竹竿"><a href="#P4156-WC2016-论战捆竹竿" class="headerlink" title="P4156 [WC2016] 论战捆竹竿"></a>P4156 [WC2016] 论战捆竹竿</h3><blockquote>
+<p>给定长 $n$ 的字符串 $S$, 有一个空串, 求每次可以将 $S$ 去掉一个border的部分拼上去求最后长度在 $[n, w]$ 内有多少长度可以拼出来.</p>
+<p>$n\le 5\times 10^5, w\le 10^18$</p>
+</blockquote>
+<p>考虑就是用 $S$ 所有周期长度线性组合, 先求出所有周期 $a_1\ldots a_k$. 然后接下来问题是同余最短路的形式.</p>
+<p>直接做同余最短路的转圈是 $n^2$, 考虑优化, 有结论一个串的border构成 $\log n$ 个值域不交的等差数列, 那么转圈的时候一次转移一个公差为 $d$ 长 $n$ 的等差数列, 单调队列转移即可.</p>
+<h3 id="P4548-CTSC2006-歌唱王国"><a href="#P4548-CTSC2006-歌唱王国" class="headerlink" title="P4548 [CTSC2006] 歌唱王国"></a>P4548 [CTSC2006] 歌唱王国</h3><blockquote>
+<p>求字符集为 $m$ 的情况下, $T$ 初始为空, 每次随机一个字符串追加到 $T$, 期望多少次使得 $S$ 为 $T$ 的子串.</p>
+<p>$\vert S\vert \le 10^7, m\le 10^9$</p>
+</blockquote>
+<p>列PGF, 设 $F$ 是还不包含 $S$ 的PGF, $G$ 是包含 $S$ 的PGF.</p>
+<p>给 $G$ 的情况添加整个串 $S$ 一定得到包含 $S$ 的串, 但可能加了一半就得到了, 发现此时加了一个 $S$ 的border, 于是就是<br>$$<br>m^{-\vert S\vert}x^{\vert S\vert}F&#x3D;\sum_{i\in border(S)}Gx^{\vert S\vert -i}m^{-\vert S\vert +i}<br>$$</p>
+<p>最后要求的期望步数是 $\sum f_i&#x3D;F(1)$, 于是 $F(1)&#x3D;\sum_{i\in border(S)} m^iG(1)$, 而 $G(1)$ 是最终能得到的概率之和也就是 $1$, 于是 $F(1)&#x3D;\sum_{i\in border(S)} m^i$ 了.</p>
+<h3 id="hdu6791-Tokitsukaze-CSL-and-Palindrome-Game"><a href="#hdu6791-Tokitsukaze-CSL-and-Palindrome-Game" class="headerlink" title="hdu6791 Tokitsukaze, CSL and Palindrome Game"></a>hdu6791 Tokitsukaze, CSL and Palindrome Game</h3><blockquote>
+<p>在歌唱王国的基础上, 给定字符串 $S$, 每次给定两个区间询问用上一题的方法哪个区间的答案大. 保证两个区间都是回文子串.</p>
+<p>$n, q\le 10^5$</p>
+</blockquote>
+<p>用PAM处理可以得到每个回文子串的border的若干个等差数列, 而因为等差数列值域无交, $\sum_{i\in border(T)} m^i$ 的式子中没有进位, 于是只要比较border序列字典序即可.</p>
+<h3 id="ROI-2016-DAY2二指禅"><a href="#ROI-2016-DAY2二指禅" class="headerlink" title="ROI 2016 DAY2二指禅"></a>ROI 2016 DAY2二指禅</h3><p>原题! 本篇训练赛8 C. 数据结构</p>
+<h3 id="CF1483F-EXAM"><a href="#CF1483F-EXAM" class="headerlink" title="CF1483F EXAM"></a>CF1483F EXAM</h3><blockquote>
+<p>给定互不相同的字符串 $s_1, s_2, \cdots, s_n$, 求有多少对 $(i, j)$ 满足:</p>
+<ul>
+<li>$i \neq j$</li>
+<li>$s_j$ 是 $s_i$ 的子串.</li>
+<li>不存在 $k$, $(k \neq i, k \neq j)$ 满足 $s_j$ 是 $s_k$ 的子串且 $s_k$ 是 $s_i$ 的子串.</li>
+</ul>
+<p>保证 $n, \sum \lvert s_i \rvert \leq 10^6$.</p>
+</blockquote>
+<p>考虑对于长的串考虑其对短串的贡献, 则对 $s_i$ 枚举 $s_j$ 的右端点位置, 显然每个右端点只有最长的是有用的, 对每个右端点 $r$ 处理出 $l_r$ 表示最小的 $l$ 满足 $[l, r]$ 是某个 $s_j$, 那显然被包含的区间不能贡献, 而对于不被包含的仍然可能会错, 发现一个子串不能贡献当且仅当它在这个字符串中的每一次出现中有任意一次没有被统计成 $l_x$ 或者被其他区间包含, 也就是一个子串 $s_j$ 被贡献当且仅当其在 $s_i$ 的实际出现次数等于只统计不交区间 $[l_r, r]$ 的情况下它的出现次数.</p>
+<p>统计不交区间那个次数显然扫一遍就有了, 于是要支持查 $s_j$ 在 $s_i$ 的出现次数, 可以<del>上一个SAM把所有串拼在一起统计子树endpos</del>用AC自动机. 也是子树endpos个数.</p>
+<h3 id="CF1393E2-TWILIGHT-AND-ANCIENT-SCROLL-HARDER-VERSION"><a href="#CF1393E2-TWILIGHT-AND-ANCIENT-SCROLL-HARDER-VERSION" class="headerlink" title="CF1393E2 TWILIGHT AND ANCIENT SCROLL (HARDER VERSION)"></a>CF1393E2 TWILIGHT AND ANCIENT SCROLL (HARDER VERSION)</h3><blockquote>
+<p>给定 $n$ 个串 ${s_n}$, 在每个串中删除之多 $1$ 个字符使得 $s_n$ 构成字典序递增的序列, 求方案数.</p>
+<p>$\sum \vert s_i\vert \le 3\times 10^6$</p>
+</blockquote>
+<p>显然要知道上一个串选了什么, 设 $f_{i, j}$ 表示第 $i$ 个串删了第 $j$ 个字符情况下的方案数.</p>
+<p>那么考虑如果当前字符串 $s_i$ 要删第 $j$ 个, 设 $s_{i-1}$ 删第 $k$ 个, 可以先求删了之后得到的 $s_i’$ 和 $s_{i-1}$ 的lcp设为 $p$.</p>
+<ul>
+<li>对于 $k&gt;p$ 的部分, 显然对 $s_{i-1}’$ 的前面位置没有影响, 只要 $s_{i, p+1}&gt;s_{i-1, p+1}$ 即可转移.</li>
+<li>对于 $k\le p$ 的部分, 比较 $s_{i-1}’$ 和 $s’_{i}$.<ul>
+<li>若 $s’<em>{i-1, 1: p}&#x3D;s’</em>{i, 1: p}$ 则 $s’<em>{i-1, 1: p}&#x3D;s</em>{i-1, 1: p}$, 说明 $s_{i-1}$ 在位置 $[k, p]$ 全部相等, 此时在其中的删除会得到同一个字符串 $t$, 比较它和 $s’_i$ 即可转移这个区间.</li>
+<li>否则 $s_{i-1}’$ 和 $s_i’$ 的lcp就是 $s_{i-1}’$ 和 $s_{i-1}$ 的lcp, 也是 $s_{i-1}$ 在位置 $k$ 后面第一个不等于 $s_{i-1, k}$ 的字符的位置减 $1$, 设该位置为 $p’$ 则要求 $s_{i-1, p’}&gt;s_{i-1, k}$ 即可转移, 那么这些位置与 $j$ 无关, 可以直接前缀和处理出来.</li>
+</ul>
+</li>
+</ul>
+<p>最后就只有求lcp的复杂度加线性dp.</p>
+<h3 id="CF1276F-Asterisk-Substrings"><a href="#CF1276F-Asterisk-Substrings" class="headerlink" title="CF1276F Asterisk Substrings"></a>CF1276F Asterisk Substrings</h3><blockquote>
+<p>给定一个字符集为小写字母的长度为 $n$ 的字符串 $s$, 设 $t_i$ 表示将 $s$ 中的第 $i$ 个字符替换为特殊字符 $\text{<em>}$ 时得到的字符串, 比如当 $s&#x3D;\text{abc}$ 时, $t_1&#x3D;\text{<em>bc}$, $t_2 &#x3D; \text{a</em>c}$, $t_3 &#x3D; \text{ab</em>}$.</p>
+<p>求字符串集合 ${s, t_1, t_2, t_3, . . . , t_n}$ 中本质不同的子串个数(需要计算空串).</p>
+<p>注意 $\text{*}$ 仅表示一个字符, 不表示其他含义(如通配符).</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>不包含 $\text{<em>}$ 的数量显然, 只考虑包含 $\text{</em>}$ 的子串, 则这样的子串是一个子串的所有后缀拼上 $\text{<em>}$ 拼上一个子串的所有前缀, 用 $(a, b)$ 表示, 其中 $a, b$ 分别表示 $\text{</em>}$ 前后的部分. 而字符串 $t_i$ 包含这个子串就是把字符串 $t_i$ 表示成 $(x, y)$, 要求 $a$ 是 $x$ 的后缀, $b$ 是 $y$ 的前缀.</p>
+<p>于是对 $s$ 建立正反两个SAM及后缀树, 则 $a$ 是 $x$ 的后缀可以表示成 $a$ 是 $x$ 在树上的祖先, 另一边同理. 问题转化为给定两棵树, 有 $n$ 对 $(x_i, y_i)$, 求有多少个 $a, b$ 满足 $a$ 是存在 $i$ 使得 $x_i$ 的祖先, $b$ 是 $y_i$ 的祖先.</p>
+<p>最后这个数数, 考虑枚举 $a$, 求它的子树中的 $x$ 对应的 $y$ 在另一棵树上的祖先的并集, 可以枚举一个 $a$ 给所有子树里的 $x$ 对应的 $y$ 到根路径加 $1$, 然后用重剖换根+全局平衡二叉树可以2log吧.</p>
+<p>然而因为点集到根的路径的并长度是可以直接用线段树在合并过程中维护的:</p>
+<p>[trick] 点集到根的路径的并的长度是所有点的深度减去相邻点lca的深度.</p>
+<h3 id="ICPC-2021-沈阳-M-STRING-PROBLEM"><a href="#ICPC-2021-沈阳-M-STRING-PROBLEM" class="headerlink" title="ICPC 2021 沈阳 M STRING PROBLEM"></a>ICPC 2021 沈阳 M STRING PROBLEM</h3><blockquote>
+<p>给定串 $S$ 求每个前缀字典序最大的子串.</p>
+<p>$\vert S\vert \le 10^6$</p>
+</blockquote>
+<p>建SAM, 插入过程中维护转移每次走最大的那条链.</p>
+<p>另一种方法是, 注意到答案一定当前前缀的一个后缀, 于是新增一个字符新的答案是当前答案的border加新字符.</p>
+<h3 id="P5420-CTSC2016-香山的树"><a href="#P5420-CTSC2016-香山的树" class="headerlink" title="P5420 [CTSC2016] 香山的树"></a>P5420 [CTSC2016] 香山的树</h3><blockquote>
+<p>定义一个串是好的当且仅当它是自己唯一最小的循环同构.</p>
+<p>对所有长度 $\le n$ 由小写字母构成的串 $S$ 查询一个串在好的串中的rank或者kth.</p>
+<p>$n\le 50, k\le 10^{18}$</p>
+</blockquote>
+<p>求kth也是求rank. 考虑如果是让计数所有lyndon word就是没有整周期的串除以 $n$, 因为其所有循环互不相同恰有一个是最小的.</p>
+<p>那考虑现在要计数大于字符串 $t$ 的 $s$ 的个数, 仍然假装 $s$ 无循环节, 考虑枚举两个字符串的LCP是 $p$, 那么就要求 $s$ 的循环同构都比 $t$ 大, 也就是 $s$ 任意长度为 $\vert p\vert$ 的子串都不比 $p$ 的字典序小, 且不能出现 $t$ 比 $\vert p\vert$ 更长的前缀. 注意若串中出现了 $k$ 次子串 $p$, 则它会被算 $k$ 次, 于是贡献 $\dfrac{1}{k}$</p>
+<p>于是可以dp了, 设 $f_{i, j, k}$ 表示以 $p$ 为前缀, 长度为 $i$, 当前kmp自动机上节点为 $j$, 且到当前位置 $s$ 中有 $k$ 个子串 $p$ 的方案数, 直接dp转移 $O(1)$ 复杂度 $n^3\vert \sigma\vert$ 再加上一开始枚举每一位二分就是 $n^4\vert \sigma\vert\log {\vert \sigma\vert}$</p>
+<h2 id="NOI2024省选模拟赛23"><a href="#NOI2024省选模拟赛23" class="headerlink" title="NOI2024省选模拟赛23"></a>NOI2024省选模拟赛23</h2><h3 id="A-星际逃亡"><a href="#A-星际逃亡" class="headerlink" title="A. 星际逃亡"></a>A. 星际逃亡</h3><blockquote>
+<p>有 $n$ 个三维空间中的星球, 第 $i$ 个一开始位于 $(x_i, y_i, z_i)$, 以每秒 $(vx_i, vy_i, vz_i)$ 的速度移动(连续而非离散), 你从 $0$ 号点出发前往 $1$ 号点, 每次可以从一颗星球跳到另一颗或等待, 过程中不能在一颗星球连续停留 $s$ 秒, 求最大跳跃距离最小值.</p>
+<p>$n\le 1000$</p>
+</blockquote>
+<p>显然二分答案, 问题变成给你一张图每个边有一个出现时间, 不能连续停留 $s$, 问是否连通. 而对于某时刻有边的连通块, 你总可以不断在一条边左右横条刷时间相当于没有 $s$ 的限制.</p>
+<p>那么直接扫当前时间, 维护当前所有点的度数, 维护 $v_i$ 表示点 $i$ 是否可达, 每次可能会加入一条边时bfs更新 $v$, 删除一条边时如果一边变成孤立点就记录时间, 如果某个点变成孤立点超过 $s$ 更新 $v_i$.</p>
+<p>发现 $v_i$ 的总变化次数是 $O(n)$ 的(一开始全<code>false</code>, $n$ 次删边可能把<code>true</code>变成<code>false</code>). 于是总复杂度是 $(n+m)\log n$ 的.</p>
+<h3 id="B-博弈问题"><a href="#B-博弈问题" class="headerlink" title="B. 博弈问题"></a>B. 博弈问题</h3><blockquote>
+<p>给定有根树, 点有权值 $w_i$, 定义一颗子树的权值是A先选一个点 $x$, B再选一个与 $x$ 不同的点 $y$, 得到的值 $v&#x3D;w_x\mathrm{xor}w_y$, 且A希望最大化B希望最小化, 最终得到的 $v$, 求所有子树的 $v$.</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>看到两个数异或直接上字典树, 设 $f_u$ 表示字典树上以 $u$ 为根的子树作为整棵树并从中选两个数最终的权值, 则若当前点有一边没儿子就直接 $f_u&#x3D;f_v$($v$ 是 $u$ 的某个儿子), 否则如果有一边子树内只有一个数 $x$, 则一定选择那一个数, 再从另一边子树中选和他异或起来最小的数记为 $y&#x3D;calc(x, v)$, $calc$ 是单log的, 所以一次更新当前点的操作是单log的, 用线段树的形式支持插入一个数&#x2F;合并总复杂度就是2log的.</p>
+<h3 id="C-兔子猜拳"><a href="#C-兔子猜拳" class="headerlink" title="C. 兔子猜拳"></a>C. 兔子猜拳</h3><blockquote>
+<p>有 $n$ 个 $n$ 维向量 $x_1\ldots x_n$, 初始 $x_i$ 只有第 $i$ 位为 $1$ 其他位置为 $0$, 每次任选两个向量 $u, v$(有序), 另 $u&#x3D;2u-v$ 并删除 $v$, 进行 $n-1$ 次, 求最后得到的向量可能有多少种.</p>
+<p>$n\le 500$</p>
+</blockquote>
+<p>是AGC022F Checkers加个 $0$.</p>
+<p>就是进行 $n$ 次合并每次保留一个, 考虑把合并模型建成树, 若 $u, v$ 合并保留 $u$ 则 $v$ 向 $u$ 连边最终形成根向树, 把子树按照合并的先后顺序从左到右排序, 意义是先子树内合并, 再把得到的每个儿子从左到右依次和父亲合并每次都是删除儿子对应的向量. 而考虑第 $i$ 位最终的值, 则每次第 $i$ 维有值的点 $u$ 与另一个点 $v$ 合并时, 若保留 $u$ 则这一维乘 $-1$, 保留 $v$ 则乘 $2$, 而发现在这棵树上, 保留 $v$ 的次数就是点的深度. 而保留 $u$ 的次数则是每一层左边的儿子的个数之和加上自己的儿子个数之和, 若设点 $y$ 的 $-1$ 的次数为 $c_y$, 则 $c_y&#x3D;(c_{fa_y}-s_{fa_y})+(l_y+s_y)$, 其中 $s_u$ 表示 $u$ 的儿子个数, $l_u$ 表示自己左边点的个数(以后都只在模 $2$ 意义下讨论 $c, s, l$).</p>
+<p>考虑怎么进行dp, 两种情况最后相同要求所有点对应深度相同且符号相同. 层数到底是多少无关紧要, 设 $f_i$ 表示 $i$ 点最后一层有 $j$ 个点, 每次枚举 $x, y$ 表示新的一层中最后 $c_y$ 为 $0&#x2F;1$ 的点的个数, 那么方案数就是选出这一层的点并分配奇偶.</p>
+<p>但是这不对: 加入下一层的时候会导致这一层的一些点 $u$ 的 $s_u$ 变成 $1$ 使得 $c_u$ 变化, 并且本层儿子个数为奇数的点(简称奇点&#x2F;偶点)的个数和下一层的 $x, y$ 相关. 若本层只有偶点必然要求 $x&#x3D;y$(下一层点 $fa$ 相同的点的 $s_u$ 都是 $0$, $s_{fa_u}-l_u$ 为 $01$ 交替, $c_{fa_u}$ 相同, 所以最后 $01$ 个数相同的), 而若奇点中有两个点 $a, b$ 满足 $c_a\ne c_b$, 则交换 $a, b$ 会获得等价的, 奇点数减 $2$ 的状态所以可以要求奇数点的 $c$ 全都相同(等于 $x, y$ 中个数大的那一个对应颜色).</p>
+<p>于是设有 $k$ 个点下一层子树大小为奇数, 状态为 $f_{i, j, k, 0&#x2F;1}$, 其中最后一个 $01$ 是这 $k$ 个点的 $c$ 值. 于是下一层的 $x+y&#x3D;j, \vert x-y\vert&#x3D;k, [x&gt;y]&#x3D;0&#x2F;1$, (下面以 $x&gt;y$ 为例), 枚举 $k’$, 转移系数就是组合数选出最后实际上为 $0&#x2F;1$ 的 $x-k, y+k$ 个点: $\binom{n-i}{x\mp k’, y\pm k’}$.</p>
+<p>这样做复杂度是单 $n^4$($n^3$ 状态加枚举 $k’$), 发现 $j$ 是没必要的状态(就是 $x+y$, 且不需做区分), 另外让 $k$ 带符号表示 $x-y$ 去掉01一维.</p>
+<p>喵的不会, 这是官方的 $n^3$</p>
+<p><img src="/img/2024-01-12-21-23-09-image.png" alt="picture 12"></p>
+<p>不是很懂两种做法本质区别导致一种可以优化一种不会.</p>
+<h2 id="NOI2024省选模拟赛24"><a href="#NOI2024省选模拟赛24" class="headerlink" title="NOI2024省选模拟赛24"></a>NOI2024省选模拟赛24</h2><h3 id="A-划分串"><a href="#A-划分串" class="headerlink" title="A. 划分串"></a>A. 划分串</h3><blockquote>
+<p>给定整数 $M, K$, 对于一个01串 $S$, 如果存在一个切分, 使得 $S(1, i)$ 与 $S(i+1, n)$ 的最大公共前缀长度大于等于 $K$, 那么称是 $S$ 的精准切分. 如果 $S$ 至少有 $M$ 个精准切分, 那么称 $S$ 是一个切分串. 给定 $N$, 问有多少长度为 $N$ 的切分串.</p>
+<p>$n\le 1000$</p>
+</blockquote>
+<p>简单题, 显然就是前 $k$ 位出现超过 $m$ 次, 枚举前 $k$ 位设为 $t$, 设 $f_{i, j, l}$ 表示前 $i$ 位, $t$ 出现了 $j$ 次, 匹配了 $t$ 的前 $l$ 位, 暴力转移复杂度为 $nmk2^k$. 运算量有 $10^9$</p>
+<p>看起来不太能过, 我的改进是让 $j$ 只枚举到 $\dfrac{i}{x}$, 其中 $x$ 为 $t$ 的最短循环节长度, 运算量大概 $10^7$</p>
+<p>然而还有更厉害的, 打表发现输出范围内, 对同一个 $k$, 可以把 $2^k$ 分成不超过 $10$ 种等价类, 每种的答案相同.</p>
+<h3 id="B-降落伞环"><a href="#B-降落伞环" class="headerlink" title="B. 降落伞环"></a>B. 降落伞环</h3><blockquote>
+<p>有一张图初始全是散点, $q$ 次询问, 每次加一条边, 获得问对当前的图, 有多少点满足删除这个点后剩下的所有连通块都是链(不包括环).</p>
+<p>$n\le 10^6, q\le 10^6$</p>
+</blockquote>
+<p>考虑链有两个条件: 不是环, 度数小于 $3$. 而如果有节点度数大于等于 $3$, 那么可能的答案不超过 $4$(它自己和它相连的最多 $3$ 个点, 如果它相连的点更多则那些点都不能成为答案).</p>
+<p>于是把问题分成所有点度数小于 $2$ 和有点度数大于 $2$ 两部分, 第一部分再分成没环和有环两部分, 没环时输出 $n$, 有一个环时输出 $1$, 有两个环时因为度数小于 $2$ 所以环不交答案为 $0$. 第二部分只要对 $O(1)$ 个固定点check, 于是一开始直接不加有关他们的所有边, 判断剩下的点有没有环和三度的即可.</p>
+<p>用vector建图被卡爆了, 这种每个点度数很小但总边数挺大的用vector会很慢.</p>
+<h3 id="C-螺旋"><a href="#C-螺旋" class="headerlink" title="C. 螺旋"></a>C. 螺旋</h3><blockquote>
+<p>给定 $a_n$, $q$ 次询问对于给定的区间 $[l, r]$, 最长的满足 $a_{l’}&#x3D;a_{r’}, \forall i\in [l’, r’] a_i\le a_{l’}$ 的子区间 $[l’, r’]$ 长度.</p>
+<p>$n, q\le 5\times 10^5$</p>
+</blockquote>
+<p>赛时先想了一个 $n\sqrt n$, 考虑根号分治, 对于次数大于根号的可以 $O(n)$ 直接扫一遍出答案, 对次数小于根号的颜色 $c$ 考虑枚举有序对 $(x, y)$ 满足 $a_x&#x3D;a_y&#x3D;c$, 这样的有序对有 $n\sqrt n$ 个, 每个可以看成一个2side矩形赋值为max, 而查询单点查, 只要支持 $O(1)$ 前缀取max和 $O(\sqrt n)$ 单点查, 发现是简单的(对前缀 $p$ 取max改为把值插入到位置 $p$)</p>
+<p>然后赛时又想了一个poly log, 考虑因为有 $l’, r’$ 区间不会相交, 所以可以类似建树的处理, 对于区间 $[l, r]$ 要求 $a_l&#x3D;a_r&#x3D;x$ 为该区间的最大值(非严格, 该区间可能有其他最大值, 一个包含 $cnt$ 个 $x$ 的区间对应的点相当于上面做法 $cnt^2$ 个可能的答案), $x$ 把它分成若干子区间, 点 $(l, r, x)$ 向每个子区间连边, 容易发现一共有 $O(n)$ 个 $(l, r, x)$ 的对, 那么我们查找一个询问 $L, R$ 的时候, 一定是找到最浅的点 $(l, r, x)$, 使得 $L, R$ 包含至少两个在 $[l, r]$ 中的 $x$(不一定是 $a_l$ 和 $a_r$), 则该询问的答案可能有这个点贡献, 设 $[l, r]$ 中被 $[L, R]$ 包含的最左最右的 $x$ 分别为 $p_1, p_2$, 则答案还有可能出现在 $[L, p_1], [p_2, R]$, 发现对于 $[L, p_1]$ 中的区间 $(l’, r’, x’)$, 其一定贡献一个后缀($[k, r’]$), 同理对于 $[p_2, R]$ 的一定贡献一个前缀, 于是这样的只有 $O(n)$ 个可能贡献的位置了. 于是解法就有了: 对每个 $[L, R]$ 找到对应最浅 $(l, r, x)$ 是简单的, 后面计算 $O(n)$ 个可能区间的贡献也是简单的, 总复杂度 $(n+q)\log n$.</p>
+<p>更厉害的出现了: <img src="/img/2024-01-13-17-21-15-image.png" alt="picture 14">, 很巧妙的把全局和部分的联系在了一起.</p>
+<p>更厉害的出现了: std $n\sqrt {n\log n}$ 跑 $5\times 10^5$</p>
+<h2 id="NOI2024省选模拟赛25"><a href="#NOI2024省选模拟赛25" class="headerlink" title="NOI2024省选模拟赛25"></a>NOI2024省选模拟赛25</h2><h3 id="A-Lost-Kingdom"><a href="#A-Lost-Kingdom" class="headerlink" title="A. Lost Kingdom"></a>A. Lost Kingdom</h3><blockquote>
+<p>给定 $n$ 点 $m$ 条边连通无向图, 可以选任意多个连通块, 对连通块的点集和边集分别求交最大化连通块个数.</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>在他给了样例解释之后变得毫无难度: “选 $4$ 个边集: $U-$ 环上一条边”</p>
+<p>于是注意到用 $U-{e}$ 这个边集 $E$ 可以在最后交的图中删去 $e$ 这条边, 条件是 $E$ 连通也就是 $e$ 不是割边. 而对于割边如果连通块不包含它必然要把它的一边扔了, 一定不优, 所以答案就是保留所有割边的连通块数.</p>
+<h3 id="B-Lighthouse"><a href="#B-Lighthouse" class="headerlink" title="B. Lighthouse"></a>B. Lighthouse</h3><p>原题Gym103446C</p>
+<blockquote>
+<p>有 $n\times m$ 的矩阵, 每个位置可能为 $0$, $1$, 一次于 $(i, j)$ 的操作可以覆盖同行同列且与 $(i, j)$ 之间没有 $1$ 的所有 $0$, 现在又有一些位置是 $2$ 可以任意变成 $1$ 或 $0$, 求所有情况下要让所有 $0$ 覆盖至少一次的最小操作次数.</p>
+<p>$n\times m\le 190$</p>
+</blockquote>
+<p>这个题一开始数据范围给 $n, m\le 190$ 让人很不会.</p>
+<p>容易想到 $n\times m\le 190\Rightarrow \max(n, m)\le 13$, 设 $n&gt;m$.</p>
+<p>于是直接轮廓线dp逐行做, 设状态要记录轮廓线上每个点 已经被覆盖且能提供向下面的覆盖, 被覆盖, 未被覆盖即需要向上的覆盖 $3$ 种情况, 同时一个点还可能被同行横向覆盖, 也要记录进去, 设 $f_{i, j, S, 0&#x2F;1&#x2F;2}$ 表示dp到第 $i, j$ 这个格子, $S$ 为轮廓线上格子覆盖的 $3^m$ 种情况, $0&#x2F;1&#x2F;2$ 表示这一行前面的格子 已经有提供横向覆盖的&#x2F;已经有要求横向覆盖的&#x2F;没有要求没有提供 的情况.</p>
+<p>状态数和复杂度是 $3nm3^m$, 写出来开O2跑12s.</p>
+<p>考虑优化, 极端情况当然是 $n&#x3D;14, m&#x3D;13$, 所有位置全是 $2$ 之类的($2$ 的格子要做两种转移), 考虑直接写个不优的东西乱跑一个解当最优性剪枝.</p>
+<h3 id="C-Dark-Blue"><a href="#C-Dark-Blue" class="headerlink" title="C. Dark Blue"></a>C. Dark Blue</h3><p>原题Gym102803E</p>
+<blockquote>
+<p>给定一个字符串的后缀数组sa和height数组 $h$ 的一部分(用 $-1$ 代表未知), 求字典序最小的满足条件的小写字母构成的字符串 $s$.</p>
+<p>$n\le 10^6$</p>
+</blockquote>
+<p>设 $suf_i&#x3D;s_{i\ldots n}$</p>
+<p>感觉绕到后缀树上反而远了, 直接在字符串上, 对于 $i$, 有 $suf_{sa_i}&lt;suf_{sa_{i+1}}$, 对于 $h$ 给定的情况, 就是 $\forall i, \forall j\in[0, h_i), s_{sa_{i-1}+j}&#x3D;s_{sa_i+j}, s_{sa_{i-1}+h_i}&lt;s_{sa_i+h_i}$, 那么可以用并查集把相等的元素合并起来, 小于关系只有 $O(n)$ 可以随便做了.</p>
+<p>对于有 $h_i&#x3D;-1$ 的情况, 考虑要满足 $suf_{sa_{i-1}}&lt;suf_{sa_i}$, $suf_{sa_{i-1}+1}$ 和 $suf_{sa_i+1}$, 如果前者小则 $s_{sa_{i-1}}\le s_{sa_i}$, 否则 $s_{sa_{i-1}}&lt;s_{sa_i}$.</p>
+<p>并查集合并可以用 ds里P3295 [SCOI2016]萌萌哒的做法做到 $n\log n\alpha(n)$, 然后小于和小于等于统一成小于变成差分, 得到一张图, 字典序最小对应最长路, 然后scc必须是 $0$ 权边全相等, 求完scc然后乱做了.</p>
+<blockquote>
+<p><img src="/img/2024-01-15-15-27-31-image.png" alt="picture 15">  </p>
+</blockquote>
+<h2 id="NOI2024省选模拟赛26"><a href="#NOI2024省选模拟赛26" class="headerlink" title="NOI2024省选模拟赛26"></a>NOI2024省选模拟赛26</h2><h2 id="计数专题-程思元"><a href="#计数专题-程思元" class="headerlink" title="计数专题-程思元"></a>计数专题-程思元</h2><h3 id="Gym102538H-Horrible-Cycles"><a href="#Gym102538H-Horrible-Cycles" class="headerlink" title="Gym102538H. Horrible Cycles"></a>Gym102538H. Horrible Cycles</h3><blockquote>
+<p>二分图, 每个左侧点和右边一个前缀 $1\ldots a_i$ 连边, 求简单环数量.</p>
+<p>$n\le 5000$</p>
+</blockquote>
+<p>把 $a$ 从小到大排序, 每次加入一个左侧点和若干个右侧点, 显然只考虑一部分点一个环表现为若干条链, 设考虑左边前 $i$ 个点, 组成 $j$ 条链的环数为 $f_{i, j}$, 则每次可以新增一个链&#x2F;合并两个链&#x2F;什么也不做, 最后合并到只剩一个链的方案数为 $f_{n, 1}$, 要去除单点&#x2F;单边&#x2F;交换一条链的两个端点的贡献.</p>
+<h3 id="AT-hitachi2020-f-Preserve-Diameter"><a href="#AT-hitachi2020-f-Preserve-Diameter" class="headerlink" title="AT_hitachi2020_f Preserve Diameter"></a>AT_hitachi2020_f Preserve Diameter</h3><blockquote>
+<p>给定 $n$ 点树 $G$, 要求再添加若干条边形成简单图 $H$, 满足 $H, G$ 直径相同且再添加任意一条边 $H$ 直径变小. 求 $H$ 方案数</p>
+<p>$n\le 2\times 10^5$</p>
+</blockquote>
+<p>$H$ 最后只有一个直径, 不然可以把其他直径两端连起来.</p>
+<p>只有一个直径后, 以一个端点 $s$ 当做根建bfs树, 显然要求同层点和相邻层点边全连, 其他不连, 也就是每个点的深度唯一确定这张图. 而可行的深度序列 $dep$ 要求 $dep_s&#x3D;0, \exist t, dep_t&#x3D;d, \forall u\ne t, dep_u&lt;d, \forall (u, v)\in G, \vert dep_u-dep_v\vert\le 1$, 没了.</p>
+<p>那么按照树上子树结构dp, 因为 $G$ 的直径可能很多考虑按照 $G$ 直径中点 $x$ 为根, 要求, $dep_y-dep_x&#x3D;\pm\dfrac{d}{2}$ 的恰好各一个, 设 $f_{u, 0&#x2F;1&#x2F;2, 0&#x2F;1&#x2F;2}$ 表示 $u$ 的子树, $dep_y-dep_x$ 的值分别为 $0&#x2F;1&#x2F;\ge 2$ 个的方案数即可. 复杂度线性.</p>
+<h3 id="CF1450H2-Multithreading"><a href="#CF1450H2-Multithreading" class="headerlink" title="CF1450H2 Multithreading"></a>CF1450H2 Multithreading</h3><blockquote>
+</blockquote>
+<p>考虑相邻同色点直接连不劣, 连完之后是 $\text{wb}$ 重复 $k$ 次的序列交替形式, 此时异色边相交数为 $\dfrac{k}{2}$, 问题变为求 $k$,<strong>发现 $k$ 是偶数下标与奇数下标上 $\text{w}$ 的个数之差</strong>(一次匹配删一奇一偶).</p>
+<p>设奇数, 偶数上分别有 $a$, $b$ 个 $\text{w}$, $x$, $y$ 个 $\text{? }$, 设 $x&lt;y$, 枚举 $k$ 得到答案为<br>$$<br>\begin{gathered}<br>ans &#x3D;\sum_i \sum_j \vert a-b+i-j\vert\binom{x}{i}\binom{y}{j}\<br>    let a-b&#x3D;c, i-j&#x3D;d\<br>   &#x3D;\sum_d \vert c+d\vert\sum_i \binom{x}{i}\binom{y}{i+d}\<br>   \because \sum_{i&#x3D;0}^{\infty}\binom{x}{i}\binom{y}{i+d}&#x3D;\sum_{i&#x3D;0}^{\infty}\binom{x}{x-i}\binom{y}{i+d}&#x3D;\binom{x+y}{x+d}\<br>   \therefore<br>   ans &#x3D;\sum_d \vert c+d\vert\binom{x+y}{x+d}<br>\end{gathered}<br>$$</p>
+<p>显然拆开绝对值, 现在要计算</p>
+<p>$$<br>\begin{gathered}<br>  \sum_{d&#x3D;l, d\bmod 2&#x3D;t}^r(c+d)\binom{x+y}{x+d}\<br>  &#x3D;(c-x)\sum_d\binom{x+y}{x+d}+\sum_d (x+d)\binom{x+y}{x+d}\<br>  &#x3D;(c-x)\sum_d \binom{x+y}{x+d}+(x+y)\sum_d \binom{x+y-1}{x+d-1}\<br>  \because \sum_{d&#x3D;t\bmod 2, d\bmod 2&#x3D;t}^r\binom{n}{d}&#x3D;\sum_{d&#x3D;t\bmod 2, d\bmod 2&#x3D;t}^r \binom{n-1}{d-1}+\binom{n-1}{d}&#x3D;\sum_d^r \binom{n-1}{d}<br>\end{gathered}<br>$$</p>
+<p>于是都变成了求组合数行前缀和, 可以快速维护.</p>
+<h3 id="在此之前让我们学习析合树"><a href="#在此之前让我们学习析合树" class="headerlink" title="在此之前让我们学习析合树"></a>在此之前让我们学习析合树</h3><p>对一个排列, 定义一个连续段为区间满足重排后值也是连续区间, 非平凡连续段是除了单个元素和整个序列, 而一个本原段定义为一个连续段, 且不存在另一个连续段和它相交(可以包含), 发现任意连续段都可以分解成本原段的并.</p>
+<p>本原段有包含关系可以建树, 建的时候区分子树且保留原序列顺序, 此时定义合点为儿子本原段的值域是升序&#x2F;降序, 析点为其他点</p>
+<p>上结论:</p>
+<ul>
+<li>合点的区间中任意选一段都是连续段, 析点区间任意选非平凡的一段一定不是连续段.</li>
+<li>析点儿子数量至少为 $4$.</li>
+<li>合点儿子中合点必须和父亲反向(若父亲儿子序列递增则该儿子的儿子序列递减), 合点儿子数量至少为 $2$.</li>
+<li>符合以上内容的都是合法的析合树.</li>
+</ul>
+<p>试看看</p>
+<h3 id="CF1089I-Interval-Free-Permutations-或-LOJ3397「2020-2021-集训队作业」春天-在积雪下结一成形-抽枝发芽"><a href="#CF1089I-Interval-Free-Permutations-或-LOJ3397「2020-2021-集训队作业」春天-在积雪下结一成形-抽枝发芽" class="headerlink" title="CF1089I Interval-Free Permutations 或 LOJ3397「2020-2021 集训队作业」春天, 在积雪下结一成形, 抽枝发芽"></a>CF1089I Interval-Free Permutations 或 LOJ3397「2020-2021 集训队作业」春天, 在积雪下结一成形, 抽枝发芽</h3><blockquote>
+<p>求长 $n$ 没有非平凡连续段的排列数.<br>CF题 $n\le 400$, loj3397 $n\le 100000$</p>
+</blockquote>
+<p>上析合树, 答案为析点为根且高度为 $2$ 的数量, 设其OGF为 $F$, 设根为合点且儿子递增的排列数的OGF为 $G$, 排列的OGF为 $H+1$($H$ 无常数), 则根为析点的析合树GF为 $H-(2G-x)$(对于长 $1$ 的序列正反相同减去). 同时根为析点的排列数量为 $F(H)-x$ 了.</p>
+<p>于是有方程<br>$$<br>\begin{gathered}<br>  G&#x3D;\dfrac{(H-G)^2}{1-(H-G)}\<br>  F(H)&#x3D;H-(2G-x)<br>\end{gathered}<br>$$</p>
+<p>于是有设 $H(R)&#x3D;x$, 第一个式子变形成 $G(x)&#x3D;\dfrac{H^2}{1+H}$ 则代入得 $G(R)&#x3D;\dfrac{x^2}{1+x}$, 第二个式子得到 $F&#x3D;x-2G(R)-R&#x3D;x-2\dfrac{x^2}{1+x}-R$, 现在只要求 $R$. 这个和 count 中P4566 [CTSC2018] 青蕈领主完全一样.</p>
+<h3 id="P7278-纯洁憧憬"><a href="#P7278-纯洁憧憬" class="headerlink" title="P7278 纯洁憧憬"></a>P7278 纯洁憧憬</h3><blockquote>
+<p>求长 $n$ 且至少存在一个长度大于 $k$ 的非平凡连续段的排列.</p>
+<p>$k\le n\le 400$</p>
+</blockquote>
+<p>先容斥成求没有大于 $k$ 的.</p>
+<p>析合树, 对析点要求所有儿子大不超过 $k$, 对合点要求第一个, 最后一个儿子分别大于等于 $n-k$ 且小于等于 $k$</p>
+<p>设满足限制的析点, 合点个数为 $F$, $G$, 满足不存在非平凡连续段的方案数为 $H$, 全排列为 $P$, $A&#x3D;\dfrac{1}{1-F-G}$, 则 $F&#x3D;H(P^{\le k}), g_n&#x3D;\sum_{i\ge n-k}\sum_{j\ge n-k} (f_i+g_i)(f_j+g_j)(a_{n-i-j})$, 是不是这么跑暴力就 $n^3$ 了啊.</p>
+<p>然后std是再dp一步, 对于合点有限制的儿子都是边上, 所以可以设 $p_n$ 为长 $n$ 任何前缀不是非平凡连续段的排列个数, 则 $p_n&#x3D;n! -\sum_{i&#x3D;1}^{n-1} p_i (n-i)!$(容斥类的转移), 则 $g_n&#x3D;\sum_i \sum_j p_ip_j(n-i-j)!$ 对于析点也是求出 $H$ 暴力复合.</p>
+<h2 id="NOI2024省选模拟赛27"><a href="#NOI2024省选模拟赛27" class="headerlink" title="NOI2024省选模拟赛27"></a>NOI2024省选模拟赛27</h2><h3 id="A-不休陀螺"><a href="#A-不休陀螺" class="headerlink" title="A. 不休陀螺"></a>A. 不休陀螺</h3><blockquote>
+<p>有 $n$ 张牌组成一个序列, 每张牌用一个二元组 $(a_i, b_i)$ 表示, 意味着打出这张牌需要消耗 $a_i$ 点费用, 打出后可以获得 $b_i$ 点费用. 接下来你可以选择一个区间 $l, r$ 将这个区间中的卡取出来作为你的卡组.</p>
+<p>开始时你的卡组会按照随机顺序排列并且你有 $E$ 点费用, 然后你会依次从前往后打出这个排列中的卡. 当你打完这个排列中的卡后你的卡组又会重新随机排列然后你再依次打出, 直到你无法再打出下一张牌(当前费用小于下一张牌需要消耗的费用)时停止. 如果一个卡组无论在什么情况下都能够无限打下去, 我们则称这卡组可以”陀螺无限”. 现在求有多少个区间组成的卡组能够”陀螺无限”.</p>
+<p>$n\le 10^6$</p>
+</blockquote>
+<p>简单题, 对于区间 $[l, r]$, 合法的条件是区间和大于 $0$ 且 $E+sum_{&lt;0}\ge \max_{a_i&gt; b_i} a_i \sum_{a_i&gt;b_i}$, $E+sum_{&lt;0}&gt; a_i-(b_i-a_i)$, 其中 $sum_{&lt;0}$ 为所有 $b_i-a_i&lt;0$ 的和, 于是对每个右端点找到满足后两个条件的最小左端点, 然后前缀和二维数点.</p>
+<h3 id="B-染色"><a href="#B-染色" class="headerlink" title="B. 染色"></a>B. 染色</h3><blockquote>
+<p>在 $2^n\times 2^n$ 的 $01$ 矩阵上, 每次可以选定位置让上下左右相邻位置及其本身共 $5$ 个位置取反, 认为第一列和最后一列相邻, 第一行和最后一行相邻.</p>
+<p>构造从全 $0$ 矩阵弄出指定状态方案.</p>
+<p>$n\le 11$</p>
+</blockquote>
+<p>只会暴力高消, 设前两行的推别的, 可以发现方程数和位置数相等, 所以应该都有解. 又考虑到弄出 $1$ 就行了, 然而不会弄 $1$ 于是寄了.</p>
+<p>考虑要弄一个 $1$, 一个可行的构造是对于一个当前全 $0$ 局面, 假设要构造 $(0, 0)$ 位置是 $1$, 操作 $(0, 0)$ 会出现上下左右多余的 $4$ 个 $1$, 分别操作这 $4$ 个位置会变成多余 $(0, 2), (2, 0), (0, -2), (-2, 0)$ 四个 $1$, 记集合 $S_i&#x3D;{(0, 2^i), (2^i, 0), (0, -2^i), (-2^i, 0)}$, 发现用得到 $S_i$ 的操作去操作 $S$ 中的每个点会得到 $S_{i+1}$, 而当 $i&#x3D;n$ 的时候 $S$ 重合没了, 于是就弄出一个 $1$.</p>
+<p>逐层模拟以上过程即可.</p>
+<p>更厉害的做法, 题目等价于给定 $F(x, y)$, 计算 $F(x, y)(1+x+x^{-1}+y+y^{-1})^{-1}\bmod (x^{2^n}-1) \bmod (y^{2^n}-1) \bmod 2$(设操作为 $A(x, y)$, 其中 $[x^iy^j]A\in [0, 1]$ 表示是否操作 $i, j$, 则卷上 $1+x+x^{-1}+y+y^{-1}$ 再模一下是结果, 所以要求逆. )</p>
+<p>然后有对质数 $p$ 有 $f^p(x)\equiv f(x^p)\pmod p$, 这个是考虑对于多项式系数 $\binom{p}{a_1\ldots a_k}&#x3D;\dfrac{p! }{a_1! \ldots a_k! }, (p&#x3D;\sum a_i)$ 要想没有 $p$ 因子只能是 $a_i&#x3D;p$.</p>
+<p>有 $(1+x+x^{-1}+y+y^{-1})^{2^n}&#x3D;1$, 于是要求 $F(x, y)(1+x+x^{-1}+y+y^{-1})^{2n-1}$.</p>
+<h3 id="C-计算"><a href="#C-计算" class="headerlink" title="C. 计算"></a>C. 计算</h3><blockquote>
+<p>设 $F(x, a, b)&#x3D;\gcd(x^a-1, x^b-1)+1, x&gt;0$, 特殊规定 $F(x, 0, b)&#x3D;F(x, a, 0)&#x3D;0$, 给定 $m, a, b, c, d$, 设 $L&#x3D;F(m, a, b)+1, R&#x3D;F(m, c, d)$ 求 $[L, R]$ 有多少子集是 $m$ 的倍数.</p>
+<p>$m\le 10^7, a, b, c, d\le 3000, L, R\le 10^{18}$</p>
+</blockquote>
+<p>首先把 $L, R$ 求了, 设 $a&lt;b$, 考虑要算 $\gcd(x^a-1, x^b-1)&#x3D;(x-1)\gcd(\sum_{i&#x3D;0}^a x^i, \sum_{i&#x3D;0}^b x^i)$, $\gcd(\sum_{i&#x3D;0}^a x^i, \sum_{i&#x3D;0}^b x^i)&#x3D;\gcd(\sum_{i&#x3D;0}^a x^i, \sum_{i&#x3D;a+1}^b x^i)&#x3D;\gcd(\sum_{i&#x3D;0}^a x^i, x^{a+1}\sum_{i&#x3D;0}^{b-a-1} x^i)&#x3D;\gcd(\sum_{i&#x3D;0}^a x^i, \sum_{i&#x3D;0}^{b-a-1} x^i)$, 于是可以用类似 $gcd$ 的递归简单算这个. 特殊的记住有 $F(x, a, b)&#x3D;x^k$ 的性质.</p>
+<p>那么接下来算子集和, 设 $F&#x3D;\prod_{i&#x3D;L}^R (1+x^i)&#x3D;\prod_{i&#x3D;0}^{m-1}(1+x)^{iC}$(所有东西出现次数相同, 由刚才 $R-L+1&#x3D;x^{k_1}-x^{k_2}$ 得到), 容易想到单位根反演, 于是答案写成</p>
+<p>$$<br>\begin{gathered}<br> ans&#x3D;\sum_{i}[m\vert i][x^i]F(x)&#x3D;\dfrac{1}{m}\sum_i\sum_{j&#x3D;0}^{m-1}w_m^{ij}[x^i]F(x)&#x3D;\dfrac{1}{m}\sum_{j&#x3D;0}^{m-1}F(w_m^j)\</p>
+<p> F(w_m^j)&#x3D;\prod_i (1+w_m^{ij})^{C}\<br> \because w_m^{ij\bmod m}&#x3D;w_m^{ij}<br> \therefore\ let\ d&#x3D;\gcd(m, j)\<br> F(w_m^j)&#x3D;\prod_{i&#x3D;0}^{m&#x2F;d}(1+w_{m&#x2F;d}^j)^{dC}\<br> \because \prod_{i&#x3D;0}^m (x-w_m^i)&#x3D;x^m-1\<br> \therefore<br> F(w_m^j)&#x3D;((-1)^{m&#x2F;d}\prod_{i&#x3D;0}^{m&#x2F;d}(-1-w_{m&#x2F;d}^j))^{dC}&#x3D;2^{dC}[2\vert \dfrac{m}{d}]\<br> \let\ f_d&#x3D;2^{dC}[2\vert \dfrac{m}{d}]<br> \therefore ans&#x3D;\dfrac{1}{m}\sum_{i&#x3D;1}^{m}f_{\gcd(i, m)}&#x3D;\dfrac{1}{m}\sum_{d \vert m}f_d\sum_{i}^{m&#x2F;d}[i\perp \dfrac{m}{d}]&#x3D;\dfrac{1}{m}\sum_{d\vert m}f_d\varphi(\dfrac{m}{d})<br>\end{gathered}<br>$$</p>
+<p>赛时被这个 $\prod_{i&#x3D;0}^m (1+w_{m}^{ij})^C$ 整不会了&#x2F;kk</p>
+<h3 id="D-鸡"><a href="#D-鸡" class="headerlink" title="D. 鸡"></a>D. 鸡</h3><blockquote>
+<p>对于一个非负整数序列 $a$, 定义它对应的独立集序列 $f(a)$: 假设将 $a_i$ 改为 $0$, 此时选出若干个两两不相邻的数使得它们的和最大, 则 $f(a)_i$. 表示和的最大值. 现在给定 $n, m$, 求有多少个长度为 $n$ 的非负整数序列 $b$ 满足存在至少一个长度为 $n$, 值域为 $[0, m]$ 的非负整数序列 $a$ 使得 $f(a)&#x3D;b$. 答案对给定的质数 $MOD$ 取模.</p>
+<p>$n, m\le 300$</p>
+</blockquote>
+<p>设 $B$ 为 $b$ 的全局最大值, 也就是 $a$ 的全局最大独立集, 设 $c_i&#x3D;B-b_i$, 则容易发现相邻两个 $c_i$ 至少有一个为 $0$, 把 $c_i$ 分为 $0$ 和 $&gt;0$ 两类, $c_i&gt;0$ 是全局独立集的元素而 $c_i&#x3D;0$ 的可能是. 当 $c$ 确定了 $b$ 的相对大小就确定了, 于是考虑对于每个 $c$, 另其权值为 $B$ 的取值范围大小, 则累加所有 $c$ 的权值即为答案.</p>
+<p>容易发现对于一个 $c$, $B$ 的最小值就是 $\sum c_i$, 而最大值分开考虑.</p>
+<p>对于 $c_i&#x3D;0$ 的极长连续段, 这一段在 $b$ 中的值相等, 发现如果左端点左边存在 $c_i\ne 0$, 那么左端点一定不会进入独立集, 否则会对外面造成影响同时中间不变, 右端点同理, 于是可以删掉左右端点, 设中间剩下长度为 $x$, 可填入 $\lfloor\dfrac{x}{2}\rfloor$ 个数奇数则留空一个, 数大小任取贡献即 $\lfloor\dfrac{x}{2}\rfloor m$</p>
+<p>对于 $c_i&gt;0$ 的每个数单独考虑, 一定是独立集中元素, 且不小于 $c_i$, 上界看起来是 $m$, 但存在情况不是: 对于序列 $c&#x3D;p0x0x0x0x0q$ 其中 $p, q&gt;x$ 或 $p0, 0q$ 不存在顶到序列边界, 设从第一个 $x$ 到最后一个 $x$ 的区间长 $l$, 因为删去第一个 $x$ 的最优解一定包含 $p$(根据 $p&gt;x$)同理有删去最后一个 $x$ 一定包含 $q$, 于是删去它后区间外方案不变, $p, q$ 之间显然最大是 $(l-1)m+x$($l-1$ 个位置填 $m$ 剩下一个填 $x$), 就行了.</p>
+<p>于是可以拆贡献, 一个 $c$ 序列的贡献是所有极长 $0$ 段加上所有 $c_i\ne 0$ 减去 $p0x0x0q$ 的贡献, 分别计算, 设 $f_i$ 表示一个长 $i$ 的段, 每个位置属于 $[0, m]$ 没有选到两个连续的 $0$(即 $c$ 序列方案数), $g$ 表示 $f\times f$, 就能算了.</p>
+<h2 id="NOI2024省选模拟赛28"><a href="#NOI2024省选模拟赛28" class="headerlink" title="NOI2024省选模拟赛28"></a>NOI2024省选模拟赛28</h2><h3 id="A-树的重心"><a href="#A-树的重心" class="headerlink" title="A. 树的重心"></a>A. 树的重心</h3><blockquote>
+<p>给定一棵树求有多少个连通块的重心与这棵树相同.</p>
+<p>$n\le 5000$</p>
+</blockquote>
+<p>显然容易 $n^2$ 求出以 $u$ 子树与 $u$ 连通的部分大小为 $x$ 的方案数, 设为 $f_{u, x}$, 则如果有两个重心吸纳然要求两个一条边的两个子树大小相同, 直接做复杂度就是对的. 对于只有一个重心的要求没有一棵子树大于一半, 先不管限制卷起来再容斥掉大于一半的即可, 复杂度也是 $n^2$.</p>
+<h3 id="B-匹配"><a href="#B-匹配" class="headerlink" title="B. 匹配"></a>B. 匹配</h3><blockquote>
+<p>给定一个 $2n$ 个点 $m$ 条边的二分图, 左部点编号为 $1\sim n$ 右部点编号为 $n+1\sim 2n$. 给定每条边为黑色或白色, 你需要找到一个完美匹配, 使得匹配里的黑色边数恰好为偶数.</p>
+<p>$\sum n\le 500$</p>
+</blockquote>
+<p>容易想到先随便找一个匹配调整, 则接下来要找一个有奇数条黑边的环, 容易想到把每个点拆两个最短路, 或者随机一个点为根找所有返祖边形成的环也能过.</p>
+<h3 id="C-deadline"><a href="#C-deadline" class="headerlink" title="C. deadline"></a>C. deadline</h3><blockquote>
+<p>给定二分图, 左边有 $n$ 个点, 右边有 $m$ 个点, 有 $k$ 条边, 右边点有黑&#x2F;白色, 左边点颜色任选, 求只保留同色边的情况下最大匹配的最小值.</p>
+<p>$n, m\le 2000, k\le 5000$</p>
+</blockquote>
+<p>考虑网络流, 考虑最小割, 容易想到左边每个点拆两个 $u, u’$, 连边 $s \stackrel{inf}{\rightarrow} u, u’\stackrel{inf}{\rightarrow} t, u\stackrel{inf^2}{\rightarrow} u’$ 来使得每个点恰好选一边, 对每个右边的点, 若为白色连 $s\stackrel{inf^2}{\rightarrow} v$, 若为黑色连 $v\stackrel{inf^2}{t}$, 对一条边 $x\to y$, 若 $y$ 为白色连 $x\to y$ 否则连 $y\to x’$ 边权为 $1$, 跑最大流即可.</p>
+<p>最小割的好处是, 先割了一部分后剩下的仍然是一个最小割问题使得我们可以把二分图匹配问题嵌入进去.</p>
+<h3 id="D-新本格魔法少女"><a href="#D-新本格魔法少女" class="headerlink" title="D. 新本格魔法少女"></a>D. 新本格魔法少女</h3><p>todo</p>
+<h2 id="NOI2024省选模拟赛29"><a href="#NOI2024省选模拟赛29" class="headerlink" title="NOI2024省选模拟赛29"></a>NOI2024省选模拟赛29</h2><h3 id="A-Easy"><a href="#A-Easy" class="headerlink" title="A. Easy"></a>A. Easy</h3><blockquote>
+<p>给定一个 $n$ 个点, $m$ 条边的无向联通图第 $0$ 天未尾你在结点 $1$, 并且战斗力为 $l_1$ 除了结点 $1$ 之外的 $n-1$ 个节点都有BOSS, 第 $I$ 节点BOSS的战斗力可以表示为 $l_i$. 每天你可以挑战最多一个BOSS, 到其所在结点打败他, 前提是当前结点到BOSS结点的一条路径上没有其他BOSS存活.</p>
+<p>当你的战斗力大于该BOSS时, BOSS会被消灭, 否则不能挑战该BOSS. 当击败一名BOSS, 奖励的经验值会使你的战斗力提高 $A$. 而每天的一开始, BOSS的战斗力会提高 $B$.</p>
+<p>你必须打败结点n的BOSS来获得游戏的胜利. 问是否存在这样的方案, 如果存在, 最少需要多少天?</p>
+<p>$n, m, A, B, l_i\le 21\times 10^5$</p>
+</blockquote>
+<p>容易想到当 $A-B&lt;0$ 时就是直接写dij(第一次到达一定最优), 当 $A-B&gt;0$ 时任何一个曾经能到的节点将来都能到所以维护当前能到的所有节点, 不断拓展, 当能到节点数不大于当前天数就说明无解, 当当前能到的节点包含 $n$ 时胜利.</p>
+<h3 id="B-幂"><a href="#B-幂" class="headerlink" title="B. 幂"></a>B. 幂</h3><blockquote>
+<p>对所有 $x\in [1, A], y\in [1, B]$ 求有多少种不同的 $x^y$</p>
+</blockquote>
+<p>容易想到把 $[1, A]$ 中 $a$ 相同的 $a^b$ 拿出来一起处理, 则 $b&gt;1$ 的就只有根号了, 考虑计算答案比 $AB$ 少多少(算重了多少).</p>
+<p>则钦定每个数 $a^c$ 被最小的 $b\vert c$ 的 $a^b$ 表示, 于是 $a^x$ 会表示的数就是 $c(x)&#x3D;\sum_{S\subset {1\ldots x-1}} c(S)(-1)^{\vert S\vert}$, 其中 $c(S)$ 表示能同时被 $S$ 中所有数表示的数的个数, 容易发现其为 $\dfrac{m\cdot g_S}{\mathrm{lca(S)}}$, 其中 $g_S$ 表示 $S$ 中最小元素, 直接做复杂度是 $2^29$ 过不了, 但是注意到如果新加入元素已经被 $lca(S)$ 表示则加&#x2F;不加的所有方案构成双射贡献为 $0$, 就过了.</p>
+<h3 id="C-哈夫曼回路"><a href="#C-哈夫曼回路" class="headerlink" title="C. 哈夫曼回路"></a>C. 哈夫曼回路</h3><blockquote>
+<p><img src="/img/2024-01-26-19-57-25-image.png" alt="图 0">  </p>
+<p><img src="/img/2024-01-26-19-57-45-image.png" alt="图 1">  </p>
+<p>$n, q\le 10^5, w_i, h_i\le 10^6$</p>
+</blockquote>
+<p>考虑任意两个匹配都不在边上相交否则直接交换即可, 于是容易发现匹配只会在同一个矩形中, 于是直接线段树结构分治做即可.</p>
+<h3 id="D-模拟赛"><a href="#D-模拟赛" class="headerlink" title="D. 模拟赛"></a>D. 模拟赛</h3><blockquote>
+<p>$A\times B$ 网格上有 $n$ 个点, 求矩形对数使得每个点至少被一个矩形覆盖</p>
+<p>$n, A, B\le 10^5$</p>
+</blockquote>
+<p>这种题和上一次碰到的历史研究类似, 都先考虑所有点横竖方向最大的点带来的性质. 现在设所有点的上, 下, 左, 右界分别为 $U, D, L, R$ 构成矩形 $R_0$. 考虑现在确定第一个矩形 $R_1$ 为 $u, d, l, r$, 分类考虑第二个矩形的范围. 下面包含均指严格包含(非边界覆盖)</p>
+<p>分类之后扫描线即可. 附上官方题解, 但其实不用线段树, 直接二分就能做的.</p>
+<p><a href="/res/5193rty.pdf">sol</a></p>
+<h2 id="NOI2024省选模拟赛30"><a href="#NOI2024省选模拟赛30" class="headerlink" title="NOI2024省选模拟赛30"></a>NOI2024省选模拟赛30</h2><h3 id="A-Y"><a href="#A-Y" class="headerlink" title="A. Y"></a>A. Y</h3><blockquote>
+<p>你有一个随机生成器, 每次会均匀随机地生成一个 $[0, m]$ 之间的整数. 你用这个随机生成器生成了 $2n$ 个整数, 你想知道你生成的前 $n$ 个整数的和比后 $n$ 个整数的和大的概率是多少. 你只需求出这个概率对质数 $P$ 取模后的结果即可.<br>$T, n, m\le 1000$</p>
+</blockquote>
+<p>前两天是不是刚做了一个谁比谁大相当于赢得和输的双射, 只要求平局数量的题.</p>
+<p>[trick] 输赢双射后求平局数量</p>
+<p>于是直接GF, 把后 $n$ 个数每个数求相反数相当于提取 $0$ 项</p>
+<p>$$<br>\begin{gathered}<br>  [x^0]\left(\dfrac{1-x^{m+1}}{1-x}\right)^n\left(\dfrac{1-x^{-m-1}}{1-x^{-1}}\right)^n\<br>  &#x3D;[x^m]\left(\dfrac{(x^{m+1}-1)^2}{(x-1)^2}\right)^n<br>  &#x3D;[x^m]\left(\dfrac{x^{m+1}-1}{x-1}\right)^{2n}<br>\end{gathered}<br>$$</p>
+<p>而分子和分母逆的展开式都是简单的, 于是直接线性卷就做完了.</p>
+<h3 id="B-hashit"><a href="#B-hashit" class="headerlink" title="B. hashit"></a>B. hashit</h3><blockquote>
+<p>初始为空的字符串 $S$, $q$ 次操作, 每次末尾增删字符, 每次操作后询问本质不同子串数.<br>$q\le 10^5$</p>
+</blockquote>
+<p>容易想到离线后操作树, 想到字典树, 建广义SAM, 一个操作的答案对应操作树上到根的链构成的字符串的本质不同子串, 对应字典树上到根链的本质不同子串, 对应sam上若干个节点到根的链的答案之和, 也就是要求到根的链并的权值和, 于是直接做就行了.</p>
+<h3 id="C-点点的圈圈"><a href="#C-点点的圈圈" class="headerlink" title="C. 点点的圈圈"></a>C. 点点的圈圈</h3><blockquote>
+<p>给定 $n$ 个圆的圆心 $(x_i, y_i)$ 和半径 $r_i$, 保证没有相交和相切, 第 $i$ 个圆价值为 $w_i$ 要求选出最多的互不相交的圆.</p>
+<p>$n\le 10^5$</p>
+</blockquote>
+<p>首先容易发现如果建出树就是简单题, 乱dp即可.</p>
+<p>于是只要给每个点找父亲, 这种题没有相交就是在说上下关系不变让你扫描线, 但是圆不好扫, 分成上半圆和下半圆去做即可, 注意扫描线可能不能容易的找到父亲, 此时找到一个兄弟也能知道父亲.</p>
+<h3 id="D-图上的游戏"><a href="#D-图上的游戏" class="headerlink" title="D. 图上的游戏"></a>D. 图上的游戏</h3><blockquote>
+<p>交互题, $n$ 点 $m$ 边图, 每次可以给定点集问是否连通, 要求问出图. $n, m\le 600$, 次数 $3\times 10^4$</p>
+</blockquote>
+<p>考虑对于一条链已知点集和边集怎么做, 维护加入前若干点后这些点的顺序和两点之间的边集, 每次先二分出新点应该插入在哪两个点之间再逐个判断边应该加在哪边, 后面这不期望1log所以要先打乱.</p>
+<p>考虑先求图的一棵生成树, 从 $1$ 到 $n$ 加点, 维护若干条链加点的时候可以而分出这个点在哪条链或者不在任何已有的链上, 不在任何已有的链上时可以对边集二分出这条链的边. 经过这一步之后可以得到每个链的边集和点集, 在dfs序上二分可以得到每个链的父亲节点, 然后用链的方法处理.</p>
+<p>对于图剩下的边考虑从叶子到根处理, 在dfs序上二分出每个边的另一端是谁, 然后剥掉叶子重复, 就做完了.</p>
+<h2 id="NOI2024省选模拟赛31"><a href="#NOI2024省选模拟赛31" class="headerlink" title="NOI2024省选模拟赛31"></a>NOI2024省选模拟赛31</h2><h3 id="A-X"><a href="#A-X" class="headerlink" title="A. X"></a>A. X</h3><blockquote>
+<p>JOI准高速列车的背景</p>
+<p><img src="/img/2024-02-12-18-15-40-image.png" alt="图 1">  </p>
+<p>$k\le 2500, x\le 2500, S_{i+1}-S_i&#x3D;10000$</p>
+</blockquote>
+<p>显然每段是独立的, 对于单独一段, 考虑dp怎么划分子问题, 发现一个两端点都修建站台的区间是子问题, 此外要知道两个端点各还能走多远, 于是设 $f_{i, a, b}$ 表示长 $i$ 的区间左边还能走 $a$ 步右边还能走 $b$ 步的方案数就做完了.</p>
+<h3 id="B-装饰"><a href="#B-装饰" class="headerlink" title="B. 装饰"></a>B. 装饰</h3><blockquote>
+<p>有 $2\times m$ 的矩阵, 要求用 $3$ 种颜色涂色, 满足第 $i$ 种颜色的数量恰好为 $c_i$, 相邻格子颜色不同, 任意 $2\times 2$ 区域包含所有种类的颜色. 求方案数.<br>$m\le 10^6$</p>
+</blockquote>
+<p>考虑把上下两个作为一个整体考虑, 若当前位置填 $(1, 2)$ 下一个只能填 $(2, 3)$ 或 $(3, 1)$, 而 $(2, 3)$ 下一个只能填 $(3, 1)$ 或 $(1, 2)$, $(3, 1)$ 下面只能填 $(1, 2)$ 和 $(2, 3)$, 即上下两个看起来有 $6$ 种可能, 但一种填色方案只出现 $3$ 种, 问题变成了给定 $c_1, c_2, c_3$, 要求没有两个颜色相邻的方案数.</p>
+<p>后面这个问题直接插板组合数即可, 枚举第二个颜色插到第一个颜色中时还有相邻两个都是第一个颜色的位置.</p>
+<h3 id="C-和谐宇宙"><a href="#C-和谐宇宙" class="headerlink" title="C. 和谐宇宙"></a>C. 和谐宇宙</h3><blockquote>
+<p><img src="/img/2024-02-12-15-46-41-image.png" alt="图 0">  </p>
+<p>$n\le 6\times 10^5, tp\le 2$</p>
+</blockquote>
+<p>对树的这种连通块计数. $E$ 的权值可以变成逆元做, 相当于问所有方案的连通块的边权积之和. $tp&#x3D;1$ 是直接dp, 对于 $tp&#x3D;2$ 考虑两个连通块要么有祖孙关系要么没有, 有的部分在每个节点 $u$, 统计 $u$ 子树内连通块和包含 $fa_u$ 的连通块之间的贡献. 没有祖先关系的在每个 $u$ 统计不同子树之间的贡献. 换根要维护孩子前后缀背包(背包以满足选至少三个分支)</p>
+<p>为什么不能直接待删背包? 因为这里只会维护 $g_{u, 1&#x2F;2&#x2F;3}$ 表示选 $1, 2, \ge 3$ 个分支的情况, 而删除权值为 $w$ 的物品时 $g_{u, 3}$ 要除掉 $\dfrac{1}{w+1}$, 题目只保证 $w$ 有逆元而不保证 $w+1$ 有就寄了. 只能前后缀背包合并.</p>
+<h3 id="D-黑鸭的序列"><a href="#D-黑鸭的序列" class="headerlink" title="D. 黑鸭的序列"></a>D. 黑鸭的序列</h3><p>对 $\forall i\in [1, V]$ 建树 $G$ 使得 $fa_i&#x3D;\lfloor \sqrt i\rfloor$, 设树高为 $H$, 设数 $i$ 高为 $dep_i$. 则显然我们要求区间内的数的 $lca$ 的深度 $d$, 答案即为 $(r-l+1)d-\sum_i dep_{a_i}$. 而要求lca可以考虑求dfs序最小&#x2F;最大的lca, 但是dfs序不会求, 考虑这棵树的bfs序就是数的大小顺序, 而同一层的点dfs序的大小关系和bfs序相同, 于是把每层最小最大的数拿出来暴力lca即可.</p>
+<p>于是显然要维护区间内深度和, 区间内每个深度中点的最大&#x2F;最小值. 区间赋值直接打标记, 区间加考虑如果没有数的深度变化就打标记, 否则递归到左右儿子再合并信息.</p>
+<p>定义势能 $\Phi&#x3D;H-\sum_{u\in T} c_u$, 其中 $u$ 为线段树节点, $c_u$ 为每个 $u$ 节点中存在的值 $v$ 的 $H-h_v$ 之和, 显然考虑区间赋值和初始情况总势能是 $(n+q)\log n$ 的. 每次区间加的时候如果当前节点存在某个位置深度增加则暴力递归到两边后合并, 于是单次复杂度是 $\Delta \Phi\log n\log \log V$. 可以把 $\log \log V$ 去掉, 改为只上传发生变化的层的信息, 由于势能变化一只能变两层所以就是 $\Delta \Phi \log n$ 了.</p>
+<p>然后一种常数优化是把递归改为标记下传时做而不是修改时做</p>
+<h2 id="NOI2024省选模拟赛32"><a href="#NOI2024省选模拟赛32" class="headerlink" title="NOI2024省选模拟赛32"></a>NOI2024省选模拟赛32</h2><h3 id="A-Giao-徽的烤鸭"><a href="#A-Giao-徽的烤鸭" class="headerlink" title="A. Giao 徽的烤鸭"></a>A. Giao 徽的烤鸭</h3><blockquote>
+<p>给定一棵树, 选点 $i$ 要付出代价 $w_i$, 若一个点距离 $p$ 以内的点都被选了收益 $v_p$, 最大化收益减代价.</p>
+<p>$n\le 2000$</p>
+</blockquote>
+<p>距离的限制是简单满足的, 只要直接dp, $f_{i, j}$ 表示点 $i$ 距离 $j$ 以内的点都被选了, 转移的时候到父亲到儿子限制至少为 $i-1$ 即可. 复杂度 $n^2$</p>
+<h3 id="B-apers"><a href="#B-apers" class="headerlink" title="B. apers"></a>B. apers</h3><blockquote>
+<p>给定有向图 $G$, 可以化 $c_u$ 代价选中点 $u$, 要求每条 $s\to t$ 路径上必须经过至少 $k$ 个选中的点.<br>$n\le 200, m\le 500, k\le 5$</p>
+</blockquote>
+<p>$k&#x3D;1$ 显然是最小割, 而且数据范围也很网络流, 考虑最小割拓展, 想到拆分层图.</p>
+<p>于是建 $k$ 层 $G$, $G$ 中每个点拆成 $u\stackrel{c_i}{\longrightarrow} u’$,</p>
+<h3 id="C-字符串"><a href="#C-字符串" class="headerlink" title="C. 字符串"></a>C. 字符串</h3><blockquote>
+<p>给定字符串 $a_n, b_m$, 求有多少有序对 $(i, j)$ 满足 $a_{1\ldots i}+a_{j\ldots n}$ 是 $b$ 的子串</p>
+<p>$n, m\le 5\times 10^5$</p>
+</blockquote>
+<p>相当于对 $b$ 每个本质不同子串数划分方式. 则设 $p_i$ 表示 $a_{i\ldots n}$ 与 $a$ 的lcp, $q_i$ 表示 $a_{1\ldots i}$ 与 $a$ 的最长公共后缀, 显然区间 $[l, r]$ 的划分数是 $\max(\min(l+p_l, r)-\max(r-q_r, l), 0)$.</p>
+<p>sam的等价类要求每次对 $r$ 固定, $l$ 位于一个区间的子串统计答案, 可以差分成对 $r$ 固定 $l$ 位于一个前缀, 扫描线, 然后看起来三个maxmin很难做但一拆发现三种情况都很好做, 只剩下 $(l+p_l)-(r-q_r)$ 的情况, 要求 $l+p_l\in [r-q_r, r], r-q_r\ge l, l\le L$, 发现最也只有两维数点. 复杂度单log.</p>
+<h2 id="NOI2024省选模拟赛33"><a href="#NOI2024省选模拟赛33" class="headerlink" title="NOI2024省选模拟赛33"></a>NOI2024省选模拟赛33</h2><h3 id="A-塔"><a href="#A-塔" class="headerlink" title="A. 塔"></a>A. 塔</h3><blockquote>
+<p>有长 $l$ 的数轴, 要求选编号为 $1\ldots n$ 的 $n$ 个点, 对第 $i$ 个点要求距离其 $&lt;i$ 的位置没有选点. 模 $m$<br>$n\le 100, m, l\le 10^9$</p>
+</blockquote>
+<p>$l$ 很大, 考虑如果确定了点的排列 $p$, 则 $i, i+1$ 两个点的距离要不小于 $b_i&#x3D;\max p_i, p_{i+1}$, 设 $s&#x3D;\sum b_i$, 那么对于确定的排列 $p$ 安排点的位置的方案数就是 $\binom{l-s+n-1}{n}$.</p>
+<p>于是考虑计数 $s$ 为某固定值的排列数量, 排列计数且贡献只和相邻元素有关容易想到扫值域dp, 设 $f_{i, s, j, k}$ 表示当前插入最大的 $i$ 个数, 这些数的贡献为 $s$(每个数插入时贡献), 有 $j$ 个连续段, 且有 $k$ 个端点被占用, 转移即可, 复杂度 $n^4$.</p>
+<p>然后要求若干组合数, 因为 $n$ 很小可以矩阵快速幂, 复杂度 $n^3\log n$</p>
+<h3 id="B-运输"><a href="#B-运输" class="headerlink" title="B. 运输"></a>B. 运输</h3><blockquote>
+<p>$n$ 点树, $q$ 询问子树和, 链和, 或给定 $x, y, a$, 对每个 $u\in subtree(x)$ 加上 $dis(u, y)\cdot a$</p>
+<p>$n, q\le 2\times 10^5$ </p>
+</blockquote>
+<p>容易想到按照 $y$ 是否在 $x$ 子树分类, 而 $y$ 在子树外的情况很简单, 相当于子树加 $dep\cdot v$ 和子树加.</p>
+<p>对 $y$ 在子树内的情况, 子树询问ban掉了点分树, 考虑硬拆 $dep_u+dep_y-2dep_{lca(u, y)}$, 要给 $y$ 到 $x$ 这条链第一个点加 $-2dep\cdot a$, 后面链上每个点的子树加 $2a$, 加的标记都记录在这条链上, 则一个点的值是自己记录的值加上祖先链的和, 剩下都很简单了.</p>
+<h3 id="C-麻将"><a href="#C-麻将" class="headerlink" title="C. 麻将"></a>C. 麻将</h3><blockquote>
+<p><img src="/img/2024-02-10-15-00-48-image.png" alt="图 4"><br><img src="/img/2024-02-10-15-00-59-image.png" alt="图 5">  </p>
+</blockquote>
+<p>考虑dp of dp, 对于判定问题, 显然对麻将扫值域, 设 $f_{i, 0&#x2F;1&#x2F;2, 0&#x2F;1&#x2F;2, 0&#x2F;1&#x2F;2}$, 表示考虑前 $i$ 大的数, 当前有没有将, $i-1$ 的值的个数和 $i-2, i-1$ 都有的值的个数.</p>
+<p>对于数数问题, 看起来是设 $f_{i, j, S}$ 表示扫了前 $i$ 大的值选了 $j$ 个数当前内层dp状态为 $S$ 的方案数, $S$ 很大过不了, 但是发现有用的 $S$ 个数很少($100$ 个), 于是复杂度变成 $MKS$.</p>
+<h2 id="NOI2024省选模拟赛34"><a href="#NOI2024省选模拟赛34" class="headerlink" title="NOI2024省选模拟赛34"></a>NOI2024省选模拟赛34</h2><h3 id="A-duyi-的切题树"><a href="#A-duyi-的切题树" class="headerlink" title="A. duyi 的切题树"></a>A. duyi 的切题树</h3><blockquote>
+<p>交互题, 有一棵高为 $n$ 的完全二叉树, 节点编号未知, 求根的编号, 每次可以问每个点的所有邻居的编号. 你可以问 $q$ 次.<br>$n\le 12, q\le 50$</p>
+</blockquote>
+<p>容易想到对于一个点直接可以问出一条到叶子的链, 可以先随便一个点问出三条链得到其深度.</p>
+<p>然后假设现在在点 $u$, 深度为 $h$, 假设已知另外两条链长度为 $h, l$(一定有一条是深度), 那么可以直接跳到第二条链的第 $(l-h)&#x2F;2$ 个点, 不断重复. 然后其实这两条只要随便问出一条, 如果长 $h$ 就跳 $u$ 不是这条链的那个邻居, 否则跳 $(l-h)&#x2F;2$. 这样询问次数是 $\sum_{i&#x3D;1}^12 i&#x3D;78$.</p>
+<p>容易发现最后 $k$ 步直接爆搜要用 $2^k-1$ 次, 于是平衡出最优是 $1+2\ldots +8+2^4-1&#x3D;51$</p>
+<p>最后爆搜 $2^k-2$ 个点还没搜出来, 直接排除, 于是就 $50$ 次.</p>
+<p>是CF750F New Year and Finding Roots加强版</p>
+<h3 id="B-红蓝大作战"><a href="#B-红蓝大作战" class="headerlink" title="B. 红蓝大作战"></a>B. 红蓝大作战</h3><blockquote>
+<p>给定 $(2n)\times m$ 的01矩阵, 其中 $0, 1$ 各 $nm$ 个, 给 $0, 1$ 各自两两连边构成向量($(a, b)$ 连向 $(c, d)$ 得到向量 $(c-a, d-b)$), 要求把边定向后所有向量和为 $0$. 构造方案.</p>
+<p>$nm\le 3000$</p>
+</blockquote>
+<p>$nm$ 为奇数很简单, 直接就是欧拉回路定向, 因为向量绕一圈和为 $0$.</p>
+<p>对 $nm$ 为偶数, 要发现一个结论, 保证颜色不同的两个对角点 $a, b$ 各自连向同色点可以让这些边向量和为 $0$. 证明考虑对称的两个点, 如果颜色不同显然是 $0$, 如果颜色相同则是由 $a\to b$ 或 $b\to a$ 的向量. 因为 $0, 1$ 个数相等, 两个方向的一样多所以最后是 $0$. 最后还是欧拉回路.</p>
+<p>欧拉回路直接跑好像会爆, 但完全无向图构造若干个环实在是很简单. (模几)</p>
+<h3 id="C-发讲义"><a href="#C-发讲义" class="headerlink" title="C. 发讲义"></a>C. 发讲义</h3><blockquote>
+<p>给定一棵 $n$ 点树, 两个人从根开始走, 不能走向父亲, 一个人可以在任意节点处传送到另一个人的位置, 要求所有点都必须走到, 求最短时间</p>
+<p>$n\le 5\times 10^6$</p>
+</blockquote>
+<p>上来第一个想法是一定是两个人一起往下走, 走到第一个有分叉的地方之后先清理其它分叉, 再留下最深的一个分叉, 然后两人再同时往下走, 把一个人传过来, 这是错的, 一个hack: 根引出两条链, 链靠近根处挂几个叶子, 此时应该让一个人先去叶子, 再传送回根, 然后两个人同时走两条链. 错误原因是可能先修剪掉浅处一些分叉使得最后剩下的两个分叉延伸更长.</p>
+<p>因为两个人是不区分的, 考虑一定可以看成两个人中的一个人没有传送过而另一个人不断传送到它, 于是这个人走了一条到叶子的主链, 会在若干关键点处停留, 此时另一个人去清理到下一个关键点之间链外的叶子, 当只剩一个最深的叶子时两人一起向下走.</p>
+<p>于是可以dp, $f_u$ 表示 $u$ 作为主链上的关键点时从根到 $u$ 的部分耗费的时间, 转移枚举祖先 $v$ 作为上一个关键点, 设 $u$ 深度, 子树叶子个数, 子树叶子深度和, 子树内且主链外最深的叶子深度分别为 $d_u, c_u, s_u, m_u$, 则转移为 $f_u&#x3D;f_v+(s_v-s_u)-d_v(c_v-c_u)+\max(0, (d_u-d_v)-\max_k m_k)$, 可以上复杂数据结构斜率优化.</p>
+<p>一个分叉不作为关键点一定是祖先上有一个延伸很长的叶子, 至少要比自己长, 于是点 $u$ 一定会从 $m_v\ge d_u$ 的地方转移过来. 同时发现 $m_v$ 更长且当前点更靠下的一定更优(单调), 而且长过 $u$ 的对 $u$ 来说都一样, 最后每个点只会从最近的 $m_v\ge d_u$ 转移过来即可.</p>
+<p>于是直接可撤销化单调栈 $n\log n$ 即可. 考虑普通单调栈, <code>push</code>一个点 $m_u$ 时会 <code>pop</code> 掉 $O(Height)$ 个点, 于是先进短儿子再进长儿子, 复杂度是线性的.</p>
+<p>原是[UR #7]水题走四方</p>
+<h2 id="NOI2024省选模拟赛35"><a href="#NOI2024省选模拟赛35" class="headerlink" title="NOI2024省选模拟赛35"></a>NOI2024省选模拟赛35</h2><h3 id="A-God的怒火"><a href="#A-God的怒火" class="headerlink" title="A. God的怒火"></a>A. God的怒火</h3><blockquote>
+<p>$n\times m$ 矩阵, 有 $k$ 个点有障碍, 你在 $(s, t)$, 求你走到能走到每个位置的最小代价之和. 你每次可以走到同行同列上不是障碍的一个位置(可以跨过障碍).</p>
+<p>$n, m\le 10^5, k\le 10^6$</p>
+</blockquote>
+<p>一开始往数数上想歪了, 其实是简单最短路题, 注意到格子 $(i, j)$ 的到达时间是到达第 $i$ 行或第 $j$ 列的时间取min再加一, 于是只对行bfs即可. 对行bfs可以对所有行, 所有列开并查集使得每个行列只被遍历 $1$ 次, 复杂度就对了. 之后求 $\sum_i \sum_j \min(a_i, b_j)$ 可以双指针, 也线性.</p>
+<h3 id="B-弱化的杨表"><a href="#B-弱化的杨表" class="headerlink" title="B. 弱化的杨表"></a>B. 弱化的杨表</h3><blockquote>
+<p>有 $2n$ 个数填到 $2\times n$ 的表格 $a$ 中, 要求 $a_{1, i}&lt;a_{1, i+1}$, $a_{1, i}&lt;a_{2, i}$, $i$ 填到第 $j$ 行会产生 $c_{i, j}$, 问最小代价.</p>
+<p>$n\le 3\times 10^5$</p>
+</blockquote>
+<p>容易发现表的两行都递增, 如果按照数从小到大考虑相当于要求每个放到第二行的数 $i$ 之前的数至少有 $\lfloor \dfrac{i}{2}\rfloor$ 个放到第二行. (实际上相当于括号匹配)除此之外也没啥限制.</p>
+<p>直接dp, 发现转移是 $min+$ 卷积长 $2$ 的序列和把开头删掉($\dfrac{i}{2}$ 前的不需保留), slope trick.</p>
+<h3 id="C-达拉然的废墟"><a href="#C-达拉然的废墟" class="headerlink" title="C. 达拉然的废墟"></a>C. 达拉然的废墟</h3><blockquote>
+<p>长 $2n$ 的随机好排列分成随机 $k$ 个长为偶数的段, 求权值期望. 好排列指所有偶数位置递增的排列, 排列的权值为每段的权值积, 一段的权值为段内逆序对数.</p>
+<p>$n\le 500$</p>
+</blockquote>
+<p>积和形式的东西拆贡献, 可以考虑相当于每个段选一个数对贡献的乘积, 即每段选一个数对恰好全为逆序对的方案数.</p>
+<p>如果选的都是奇数位置, 由双射贡献是 $\dfrac{1}{2}$, 两个偶数是 $0$, 奇数在前偶数在后相当于限制奇数大于偶数, 否则是限制奇数小于偶数. 限制可以看成树形拓扑序(根大)的限制, 则偶数位置串成一条链, 要求对于某偶数位置的奇数挂成叶子, 要求小于的用挂成叶子的容斥, 根据经典结论数满足树形限制的只要知道子树大小. 对于一个前缀部分的限制就是整棵树的一个子树.</p>
+<p>设 $f_{i, j, k}$ 表示前 $2i$ 个数, 分 $j$ 层, 子树大小为 $i+k$ 的方案数, 每次转移一段, 枚举当前段长度为 $i-2l$ 和选的第一个数的位置 $p$, 状态中不把子树大小倒数乘进去, 状态里存真实值除 $\dfrac{1}{(i+k)! }$:</p>
+<p>$$<br>\begin{gathered}<br>f_{i, j, k}&#x3D;\sum_{l&#x3D;0}^i \sum_{p&#x3D;1}^{i-l} \dfrac{1}{2}(p-1)f_{l, j-1, k}\<br>+\sum_{l&#x3D;0}^i \sum_{p&#x3D;1}^{i-l} (i-l-p)(l+p+k-1)f_{l, j-1, k-1}\<br>+\sum_{l&#x3D;0}^i \sum_{p&#x3D;1}^{i-l} pf_{l, j-1, k}-<br> \sum_{l&#x3D;0}^i \sum_{p&#x3D;1}^{i-l} p(l+p+k-1)f_{l, j-1, k-1}<br>\end{gathered}<br>$$</p>
+<p>第一行是奇数, 第二行是奇数在后, 第三行是奇数在前的容斥.</p>
+<p>为啥是乘 $(l+p+k-1)$? 因为全都除 $(i+k)!$, 本来 $f_{l, j-1, k-1}$ 到 $f_{i, j, k}$ 会乘上 $\dfrac{(i+k)! }{(l+k-1)! }$, 而实际上多挂了一个叶子之后, 应该去掉一个 $l+k+p-1$, 后面的都是对的.</p>
+<p>直接做复杂度是 $n^5$ 或 $n^4$, 然后前缀和优化记录 $k\in [0, 3]$ 的 $\sum_{i&#x3D;0}^v f_{i, j, k}i^k$ 即可 $n^3$</p>
+<p>卡常题没素质.</p>
+<h2 id="NOI2024省选模拟赛36"><a href="#NOI2024省选模拟赛36" class="headerlink" title="NOI2024省选模拟赛36"></a>NOI2024省选模拟赛36</h2><h3 id="A-赌徒"><a href="#A-赌徒" class="headerlink" title="A. 赌徒"></a>A. 赌徒</h3><blockquote>
+<p>萌新小H和他的$n$个好朋友玩游戏!<br>他们将要玩的游戏是抛硬币，小H 和他的对手分别抛出硬币，如果小H 抛出的数值大于等于对方的，则小H赢，否则对手赢.<br>第个好朋友有一个两面分别为 $a_i$ 和$b_i$的硬，他和小H赌 $x_i$个硬币，即如果小H 赢则他获得$x_i$ 个硬币，否则失去$x_i$ 个硬币。<br>小H 还没有硬币，它可以去邪恶工匠大D 定制一枚硬币。若小H 得到的硬币两面分别是 $a,b$，则$a,b$都需要是正整数，并且他需要支付 $ab$ 个硬币<br>他想知道，如果他选择一枚合适的硬币，他期望最多能挣到多少硬币<br>注意小H很富有，他初始有足够多的硬币，不需要考虑硬币不足以支付的情况</p>
+<p>$n\le 5\times 10^5$</p>
+</blockquote>
+<p>见到乘积想凸性相关,考虑第$i$个人的贡献是$(2[a\ge a_i]+2[b\ge b_i]-2)x_i$,于是贡献是$s_a+s_b+ab$,$s_i$为 $\sum_{j&lt;i} 2[a\ge a_i] -1$,然后上个李超树维护即可(凸包就行,但李超好写啊).</p>
+<h3 id="B-毒假强"><a href="#B-毒假强" class="headerlink" title="B. 毒假强"></a>B. 毒假强</h3><blockquote>
+<p>求第$n$个好数,好数$x$满足条件当且仅当$x(10^k-1)$在$10$进制下不包含$9$.</p>
+<p>$n\le 10^18,k\le 18$</p>
+</blockquote>
+<p>考虑显然答案是$n$级别的,可以先算$x(10^k-1)$再除,而一个数可以被$10^k-1$整除当且仅当从低到高$k$个分一段,每段的和加起来是$10^k-1$的倍数(证明考虑多项式模$x^k-1$代入$x&#x3D;10$,就是$k$个分段加起来).</p>
+<p>于是枚举这$k$段的和$s&#x3D;c(10^k-1)$,$c$是$O(\dfrac{\log n}{k})$的,然后数位dp从低到高背包即可.</p>
+<p>复杂度是$O(poly(\log n,k)$</p>
+<h3 id="C-零和"><a href="#C-零和" class="headerlink" title="C. 零和"></a>C. 零和</h3><blockquote>
+<p>给定$K$,构造长$n$的序列$a_n$满足恰好有$K$个子集和为$0$.要求$n\le 30,\vert a_i\vert \le 10^{16}$</p>
+<p>$K\le 10^6$</p>
+</blockquote>
+<p>随机化题,考虑构造正数序列$b_i$和负数序列$c_i$满足$\forall i,2c_i\ge \sum_j b_j$,也就是合法的子集一定是一个$b$配上若干$c$.</p>
+<p>然后发现$a$硬随长$22$,值域$5$的序列就过了&#x2F;kx</p>
+<h2 id="数据结构-ducati"><a href="#数据结构-ducati" class="headerlink" title="数据结构-ducati"></a>数据结构-ducati</h2><h3 id="CF464E"><a href="#CF464E" class="headerlink" title="CF464E"></a>CF464E</h3><p>数据结构维护dij,需要想办法维护到每个点的距离,距离可以用线段树维护巨大的01序列,那么每次距离更新就是在某个点的序列某个位置加$1$并进位得到另一个点的序列,主席树维护即可.比较大小就两个版本上同时线段树二分维护子树哈希值做.</p>
+<h3 id="P8860-动态图连通性"><a href="#P8860-动态图连通性" class="headerlink" title="P8860 动态图连通性"></a>P8860 动态图连通性</h3><p>容易发现每个边的第一个询问时有用的,考虑最后剩下的路径,应该是被删除时间最小值最大,在此基础上次小值最大,即一条字典序最大的路径.</p>
+<p>那么对照上一个题dij上主席树,每个版本表示一个$dis_u$就做完了.</p>
+<p>但是rqy给出更强的做法,这个题有性质边权互不相同(删除时间),容易让每条边的边权是$C^x$,$C$为常数,考虑dij要比较$d_1+C^{w_1},d_2+C^{w_2}$,设$d_1&lt;d_2$,一定有$d_1+C^{w_1}&gt;d_2$($2$先被更新),这说明比$w_1$高的位上$d_1$和$d_2$相同,那么若$w_2&gt;w_1$一定$d_2+w_2$更大,否则$d_1+w_1$更大,就比较出来了,任意时刻只要比较边权即可.</p>
+<h3 id="Qoj5421-ICPC2022-Asia-Nanjing-H-Factories-Once-More"><a href="#Qoj5421-ICPC2022-Asia-Nanjing-H-Factories-Once-More" class="headerlink" title="Qoj5421 ICPC2022 Asia Nanjing H Factories Once More"></a>Qoj5421 ICPC2022 Asia Nanjing H Factories Once More</h3><blockquote>
+<p>树上选$k$个点最大化两两之间距离和.</p>
+<p>$n,k\le 2\times 10^5$</p>
+</blockquote>
+<p>dp,$f_{u,i}$为子树$u$内选$i$个点,只考虑子树内和$u$的父边的贡献的最大值,则转移是先给所有儿子做max+闵和,再加函数$i(k-i)$,都是上凸的,做完了.</p>
+<h3 id="P6845-CEOI2019-Dynamic-Diameter"><a href="#P6845-CEOI2019-Dynamic-Diameter" class="headerlink" title="P6845 [CEOI2019] Dynamic Diameter"></a>P6845 [CEOI2019] Dynamic Diameter</h3><p>toptree 感觉赢麻了,只要建静态toptree,合并直径要维护到界点的最远距离和簇直径,rake tree,compress tree分别做即可.复杂度单log.</p>
+<p>然后不toptree的话可以线段树维护点集,但要改边,考虑维护dfs序上区间的点集,这样改一条边只有跨过它子树区间的受影响,也就是与一个区间有交的$\log n$个,总复杂度$n\log^2 n$.</p>
+<p>还可以维护欧拉序单log!维护直径关于欧拉序的式子.就是拆成$d&#x3D;\max_{a\le c\le b} d_a+d_b-2d_c$,然后线段树维护.</p>
+<h3 id="CF1458F"><a href="#CF1458F" class="headerlink" title="CF1458F"></a>CF1458F</h3><p>考虑众所周知合并点集直径是直接四个点两两跑.</p>
+<p>但实际上可以更强的合并,可以把直径看成以直径中点为圆心,长度一半为半径的圆去合并(找到最小的包含原来两个圆的圆),若合并$(c_1,r_1)$和$(c_2,r_2)$,包含的显然,否则新半径是$\dfrac{1}{2}(dis(c_1,c_2)+r_1+r_2)$,新圆心是这个的中点.</p>
+<p>于是考虑分治做,则对跨过$mid$的区间,对于一个固定的左端点,发现随$r$单调增右边圆是不断变大的,一定是先被包含,再没包含,再包含左边的,(树上圆理论在直径合并和圆合并建立映射,而圆合并显然是有这个单调的)各是一个区间,在扫$l$的时候端点单调移动可以双指针.</p>
+<p>于是只要对没包含关系的要求$\sum_{i\in l,r} dis(c_x,c_i)$,可以建点分树支持加点删点和询问,在双指针同时维护.</p>
+<h3 id="P7125-Ynoi2008-rsmemq"><a href="#P7125-Ynoi2008-rsmemq" class="headerlink" title="P7125 Ynoi2008 rsmemq"></a>P7125 Ynoi2008 rsmemq</h3><p>在sdjx1里</p>
+<h3 id="P8264-Ynoi-Easy-Round-2020-TEST-100"><a href="#P8264-Ynoi-Easy-Round-2020-TEST-100" class="headerlink" title="P8264 [Ynoi Easy Round 2020] TEST_100"></a>P8264 [Ynoi Easy Round 2020] TEST_100</h3><p>注意到值域也是$O(n)$的,对于全局询问,考虑维护$f_i$表示输入$i$最后是几,在前面复合一个绝对值$\vert x-v\vert相当于把$f_i$的$[0,v]$和$[1,V-v]$($V$是值域)拼接和翻转,是可持久化平衡树的内容,于是套个线段树支持区间.然后线段树叉变多和底层暴力可以卡常.复杂度$(n+m)\log n\log V$</p>
+<h3 id="米哈游的游戏"><a href="#米哈游的游戏" class="headerlink" title="米哈游的游戏"></a>米哈游的游戏</h3><blockquote>
+<p>给定$a_n$和常数$m$,定义$f_i(x)$&#x3D;$\sum_{j\in [i,i+m-1]} [a_j&lt;x]$,$q$次询问区间$f$最小值.</p>
+<p>$n,q\le 2\times 10^5$,要求空间线性.(30Mb)</p>
+</blockquote>
+<p>无储存处.jpg,不过有人肥节点卡过去了.</p>
+<p>考虑如果可以离线就直接按照$a$排序从小到大扫描不断区间加区间min秒完了.空间大可持久化就做完了.</p>
+<p>肯定考虑时间分块替代可持久化,每根号分一块.虽然分块,但我们甚至不能每$\sqrt n$次存下整个序列的值.但是我们可以$O(1)$知道某个时刻整个序列的差分,即$f_i-f_{i-1}&#x3D;[a_{i-m}&lt;x]-[a_i&lt;x]$,则可以线性还原序列.</p>
+<p>接下来考虑支持区间加区间min,要能$O(1)-O(\sqrt n)$,整块加直接打差分标记,维护每块最小值.查询简单.散块加不会做,但是注意修改是确定的,可以先预处理出每个修改操作对各自散块的影响,就做完了.</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/5r7px35t">code</a></p>
+<h3 id="有理有据题"><a href="#有理有据题" class="headerlink" title="有理有据题"></a>有理有据题</h3><blockquote>
+<p>$n$个炸弹每个可以炸一个2side矩形,$m$个建筑,第$i$个建筑是纵坐标为$i$的一条线段,有$q$次询问每次加一条线段(纵坐标递增),询问对于一个炸弹能炸的最长的纵坐标上连续段的长度(能炸指完全包含),不超过$20$次的询问所有炸弹答案的异或和.</p>
+<p>$n,q\le 5\times 10^4$,5s</p>
+</blockquote>
+<p>考虑每次加入一个建筑之后对所有炸弹贡献,那么每个位置只维护能炸的最长后缀长度$c$,则真实值就是这个的历史最大值,而能炸一个建筑的限制是一个矩形,于是KDT矩形赋$0$,矩形加$1$,查询单点历史最大值.对全部都要问的只要dfs整棵kdt即可.</p>
+<h3 id="Mix"><a href="#Mix" class="headerlink" title="Mix"></a>Mix</h3><blockquote>
+<p>给定序列,$q$次询问给定$[l,r]$问所有子区间的mix之和,一个区间的mix定义为次小的没有出现的数.</p>
+<p>$n\le 2\times 10^5,q\le 2\times 10^6$</p>
+</blockquote>
+<p>先如果只有mex,扫描线,考虑每个值的最后一次出现位置$p_i$,则$p_i$的前缀min将序列划分成若干个mex相同的区间,每次会把一个位置改大,使得若干元素成为前缀min,一个元素只能成为前缀min$O(1)$次所以均摊是对的.</p>
+<p>加上mix会在mex相同的区间再拆出若干个,发现是$p_i$的前缀次小值的区间,把一个数改大会暴露一些数成为最小一些数成为次小,而每个数这么变的次数还是$O(1)$的.</p>
+<p>子区间就是区间历史和的问题.</p>
+<h3 id="P5284-十二省联考-2019-字符串问题"><a href="#P5284-十二省联考-2019-字符串问题" class="headerlink" title="P5284 [十二省联考 2019] 字符串问题"></a>P5284 [十二省联考 2019] 字符串问题</h3><p>如果把A类串,B类串当成点建图,最后答案就是判个环或者DAG上最长路,简单的.</p>
+<p>于是只要想优化建图,一个暴力是建出所有串的字典树,用字典树优化,注意到后缀树是对所有后缀的字典树进行压缩(连续只有一条出边的链压缩成单点),于是后缀树是天然符合条件的,做完了吗?</p>
+<p>发现不对,压缩后可能会有长度不同的$A,B$全都在同一个点上,它们的关系是乱的,可以把在同一个点上的字符串串成一条链,就做完了啊.</p>
+<p>然后要根据区间再在SAM上定位节点,倍增跳即可,总复杂度$n\log n$</p>
+<h2 id="NOI2024省选模拟赛36-1"><a href="#NOI2024省选模拟赛36-1" class="headerlink" title="NOI2024省选模拟赛36"></a>NOI2024省选模拟赛36</h2><h3 id="A-A-Dance-of-Fire-and-Ice"><a href="#A-A-Dance-of-Fire-and-Ice" class="headerlink" title="A. A Dance of Fire and Ice"></a>A. A Dance of Fire and Ice</h3><blockquote>
+<p>你有一个数$val&#x3D;1$,有$n$个操作$(t,a),t\in {0,1}$,$t&#x3D;0$表示赋值为$a$,$t&#x3D;1$表示乘$v$.你可以按任意顺序执行操作的任意子集,求可能得到的$val$种数.</p>
+<p>$2\times 10^5,x_i&lt;p$</p>
+</blockquote>
+<p>乘法,容易想到原根,现在变成了循环可行背包问题.</p>
+<p>然后赛时以为背包是不能平凡的做的去考虑模$x^n-1$的多项式了…</p>
+<p>但实际上循环可行性背包是好做的,一个位只会变成$1$一次,考虑怎么快速搞这个事,每次二分下一个$f_i\ne f_{i+x}$的位置,则BIT维护哈希做完了.</p>
+<h3 id="B-最短路"><a href="#B-最短路" class="headerlink" title="B. 最短路"></a>B. 最短路</h3><blockquote>
+<p>对于$10^5\times 10^5$的网格图把每个点替换成一个菱形(如图),$T$次求图上$(0,0)$上第$c$个点到$(a,b)$上第$d$个点最短路和最短路数量,($a,b$为$a$行$b$列)</p>
+<p> <img src="/img/2024-02-19-23-50-00-image.png" alt="graph"></p>
+</blockquote>
+<p>垃圾分类讨论.</p>
+<p>对于两者都是$0$的情况是容易的,可以先翻转一下默认$a&lt;b$,最短路就是斜着走再横着走,方案数就是横着走的步数可以从上面&#x2F;下面任意再乘上选横着走的步的组合数.</p>
+<p>然后其他的也都直接讨论,表示成$O(1)$个$(a,b,0,0)$的答案的和,$a&#x3D;b$和$a\ne b$需要分类.</p>
+<h3 id="C-字符串-1"><a href="#C-字符串-1" class="headerlink" title="C. 字符串"></a>C. 字符串</h3><blockquote>
+<p><img src="/img/2024-02-19-23-55-00-image.png.png" alt="alt text"></p>
+<p>$k\le 5$</p>
+</blockquote>
+<p>考虑给定$p$如何判定,不妨右移一下使得每个位置$i$和$[i,i+2k]$相关,只要扫一下记录$s$表示当前这$k$位的数值和$c$表示已经扫过的位置中$1$的数量变化,若下一个为$x$,则$s’&#x3D;(2s+x)\operatorname{and} (2^{2k+1}-1),c’&#x3D;c+x-p_{s’}$.而满足条件要求最后$c&#x3D;0$,也就是从$(0,0)$出发,当$s&#x3D;0$时$c&#x3D;0$</p>
+<p>于是建图,$s\stackrel{c’-c}{\longrightarrow} s’$,则满足答案的条件为所有包含$0$的环权值都是$0$,因为图强连通相当于要求所有环都是$0$,应该可以从这里看到Johnson标号和差分约束的味道,即有一组$d_i$使得$u\to v$的边权为$d_v-d_u$,于是真的跑差分约束可以判定一个.</p>
+<p>现在要求答案要判断$p$有若干位确定若干位不确定的情况的答案,则相当于有若干边可以任选${0,1}$,有若干边可以任选${-1,0}$且选择独立.于是差分约束.</p>
+<p>然后现在的复杂度是$2^{3(2k+1)}$(外面逐位确定,里面$nm$跑spfa),但实际上注意到可以在$O(k)$步走到图上任意一个点,则$mk$个点入队后每个点最短路都不超过$k$,再这之后每次更新一个点都会让$dis$至少减少$1$,于是更新$O(mk)$个点一定能找到一个$d_u&lt;0$判断无解,复杂度变成$2^{2(2k+1)}$</p>
+<h2 id="NOI2024省选模拟赛38"><a href="#NOI2024省选模拟赛38" class="headerlink" title="NOI2024省选模拟赛38"></a>NOI2024省选模拟赛38</h2><h3 id="A-nnntxdy"><a href="#A-nnntxdy" class="headerlink" title="A. nnntxdy"></a>A. nnntxdy</h3><blockquote>
+<p>$n$个变量,初始第$i$个为$a_i$,$m$次随机一个大于$0$的变量减$1$,问最后期望有几个为$0$.模$998244353$</p>
+<p>$n\le 15,m\le 200$</p>
+</blockquote>
+<p>想到 通用评测号 和 猎人杀.则相当于每次随机一个变量,跳过小于等于$0$的.但是这个题特殊的是要计算有效步数,于是$x,z$分别记录有效步数和总步数.过程需要有一个终点(停时)不然概率不对,于是拆期望,对每个$k$计算成为$0$的概率之和,则答案为</p>
+<p>$$<br>\begin{gathered}<br>  ans&#x3D;\sum_k [x^m] \dfrac{x}{1-x} L_z \left(<br>    \dfrac{x^{a_i-1}z^{a_i-1}}{n^{a_i-1}(a_i-1)!}<br>    \prod_{i\ne k} \left(<br>        \sum_{i&lt;a_k} \dfrac{x^iz^i}{n^ii!}+<br>        \sum_{i\ge a_k} \dfrac{x^{a_i}z^i}{n^ii!}<br>    \right)<br>  \right)\Bigg|<em>{z&#x3D;1}\<br>  &#x3D;\sum_k [x^m] \dfrac{x}{1-x} L_z \left(<br>    \dfrac{x^{a_i-1}z^{a_i-1}}{n^{a_i-1}(a_i-1)!}<br>    \prod</em>{i\ne k} \left(<br>        \sum_{i&lt;a_k} \dfrac{z^i(x^i-x^{a_i})}{n^ii!}+<br>        x^{a_i}e^{\frac{z}{n}}<br>    \right)<br>  \right)\Bigg|_{z&#x3D;1}\<br>\end{gathered}<br>$$</p>
+<p>其中$L_z$表示关于$z$的拉普拉斯算子.</p>
+<p>其中$e^{\frac{z}{n}}$是收敛到关于$e$的无限求和,但$L_z(z^ae^{\frac{n}{b}})$是简单的:</p>
+<p>$$<br>L_z(z^a e^{\frac{n}{b}})\<br>&#x3D;z^a\sum_{i&#x3D;0} \dfrac{(i+a)!z^ib^i}{i!}\<br>&#x3D;z^aa!\sum_{i&#x3D;0} \binom{i+a}{i}z^ib^i\<br>&#x3D;\dfrac{z^aa!}{(1-\dfrac{z}{n})^{a+1}}<br>$$</p>
+<p>于是复杂度是$n^2m^3$.</p>
+<p>赛时没拆贡献,引入了新的元$y$记录选到$x^n$后的部分复杂度就多$n$了.</p>
+<p>可以作为今年叶开论文的补充例题(</p>
+<p>来个dp做法,感觉很不会贡献延迟计算的dp,于是把它转成了一个不延迟的:</p>
+<p>不是裸EGF题的原因是概率和当前为正的个数有关,于是考虑对于一个$m$步操作的$\vert S\vert$的序列$s_m$,最后的概率.设第$i$步操作了变量$b_i$,发现$s_m$确定的情况下填出的每种$b$的概率是相等的,如果再确定每个变量变成$0$的时间,$t_i$,则第$t_i$步之前必须有$a_i$个对$j,b_j&#x3D;i$,于是总方案数是$\prod_i s_i \prod \binom{t_i}{a_i}G(n-s_m,\sum_{i\in S} a_i)$,后面的$G$是对当前还活着的元素可以在里面任意分配.于是dp确定$s$和$t$的过程中算答案,最后乘一个$G$,设$f_{i,S}$表示前减了$i$次,$S$种的变量已经变成$0$,复杂度$n^2m$</p>
+<h3 id="B-集合"><a href="#B-集合" class="headerlink" title="B. 集合"></a>B. 集合</h3><blockquote>
+<p>给定$a_n,b_n,c_n$,求$a$权值最大的线性基,权值定义为$(\sum b_i)(\sum c_i)$.</p>
+<p>$n\le 1000$</p>
+</blockquote>
+<p>看到乘积想凸包,最优解一定在凸包上可以用权值为$b_i+kc_i$的线切到.</p>
+<p>对于只有一个权值的,注意到线性基和Kru本质都是拟阵问题,会得到加入顺序下时间最早的一组解,所以排序就行了.</p>
+<p>于是可以用类似ZJOI那个醉熏熏的幻想乡的分治方法求得凸包,即现在要求$[l,r]$的凸包,把$l,r$连起来得到一条线用这条线去切,切到的点一定在凸包上,然后左右递归下去.复杂度是$n^2\log n$</p>
+<p>或者考虑扫描$k$,则过程中$b_i+kc_i$的相对大小改变$O(n^2)$次,考虑交换相邻两项时快速得到答案,若两项本来都在或都不在线性基中答案不变,否则说明这两项和前面的元素可以线性相关,那么用一个替换另一个直接删除再添加即可.</p>
+<p>因为线性基和mst都是拟阵独立集问题,所以这个题和最小乘积生成树惊人的相似.</p>
+<h3 id="C-PolarSea-与遗忘的森林"><a href="#C-PolarSea-与遗忘的森林" class="headerlink" title="C. PolarSea 与遗忘的森林"></a>C. PolarSea 与遗忘的森林</h3><blockquote>
+<p>有一个未知的基环树森林,给定每个点的$(h_i,l_i)$表示点$i$到环的距离和环长,若$h_i$或$l_i$等于$-1$表示不知道.构造方案或判断无解.</p>
+<p>$n\le 500$</p>
+</blockquote>
+<p>考虑如果已知所有$h_i,l_i$,则所有$(0,x)$是在环上的,要求每个$(0,x)$的个数是$x$的倍数.同时要求所有$(y,x),y\ne 0$存在$(y-1,x)$.如果满足构造很显然.</p>
+<p>现在有一些$-1$,分成$(-1,-1),(-1,x),(y,-1),(y,x)$四种,$(-1,-1)$处理是简单的,要填数满足上面两个要求,对于倍数要求只要统计对每个$x$,$(0,x)$的个数$c_x$,只要要求数量恰好为($\lceil\dfrac{c_x}{x}\rceil$).对于第二个要求,只要考虑$y$最大的$(y,-1)$填到谁,多余的$(z,-1)$都可以挂和它一起.</p>
+<p>于是限制都可以写成需要$c$个$(x,y)$,于是网络流跑匹配,网络流.做完了.</p>
+<p>注意这里连边的时候$(0,x)$的限制是恰好,不能有多的没匹配,所以应该强制匹配$(0,x)$.数组要开够.</p>
+<h2 id="数学相关-Alex-Wei"><a href="#数学相关-Alex-Wei" class="headerlink" title="数学相关-Alex_Wei"></a>数学相关-Alex_Wei</h2><h3 id="在线-O-1-逆元"><a href="#在线-O-1-逆元" class="headerlink" title="在线$O(1)$逆元"></a>在线$O(1)$逆元</h3><p>TODO</p>
+<h3 id="P7325-斐波那契"><a href="#P7325-斐波那契" class="headerlink" title="P7325 斐波那契"></a>P7325 斐波那契</h3><p>两个重要结论:$f_i$在模$m$意义下纯循环,循环节长度$O(m)$.$f_i,f_{i+1}$互质.</p>
+<p>考虑题目中的数列第$n$项可以表示为$af_i+bf_{i-1}&#x3D;0$,于是如果$m$是质数,只要变成$-\dfrac{b}{a}&#x3D;\dfrac{f_i}{f_{i-1}}$然后$O(m)$预处理$\dfrac{f_i}{f_{i-1}}$对应的$i$.</p>
+<p>那么现在$m$不为质数,显然可以先除掉$d&#x3D;\gcd(m,a,b)$变成,$a’f_i+b’f_{i-1}&#x3D;0\pmod {m’}$,考虑现在仍然可能有$\gcd(a’,m’)&#x3D;e\ne 1$,$a’f_i+b’f_{i-1}&#x3D;0\pmod {m’}$,则$f_{i-1}$也要是$e$的倍数,此时可以得到$f_i&#x3D;-b’\dfrac{f_{i-1}}{e}(\dfrac{a}{e})^{-1}$,此时若$f_{i-1}&#x2F;e$和$m$有公因数,因为$f_i\bot f_{i-1}$则方程不成立,于是一定可以有$f_i(\dfrac{f_{i-1}}{e})^{-1}&#x3D;\dfrac{-b}{e}(\dfrac{a}{e})^{-1}$.同时$e$若要满足$\dfrac{f_{i-1}}{e}\bot m,e\vert f_{i-1}$,也就是$e&#x3D;\gcd(f_{i-1},m)$.</p>
+<p>于是只要枚举$d$预处理,复杂度是$\sum_{d\vert m} d&#x3D;O(m\log \log m)$.</p>
+<h3 id="P3543-POI2012-WYR-Leveling-Ground"><a href="#P3543-POI2012-WYR-Leveling-Ground" class="headerlink" title="P3543 [POI2012] WYR-Leveling Ground"></a>P3543 [POI2012] WYR-Leveling Ground</h3><blockquote>
+<p>给定 $n$ 个数和 $a,b$。每次可以选择一段区间 $+a,-a,+b$ 或 $-b$，问最少操作几次能把它们都变成 $0$。如果无解请输出 $-1$。</p>
+<p>$n\le 10^5,a,b\le 10^9$</p>
+</blockquote>
+<p>考虑差分数组$c_n$,对于第$i$个位置求出$c_i&#x3D;ax+by$的一组特解$x_0,y_0$,则$x&#x3D;x_0+t\dfrac{b}{\gcd(a,b)},y&#x3D;y_0-t\dfrac{a}{\gcd(a,b)}$,那么最后要满足在$\sum x&#x3D;\sum y&#x3D;0$的情况最小化$\sum \vert x\vert+\sum \vert y\vert$.</p>
+<p>若$\sum x&#x3D;0$,$\sum y&#x3D;\sum y_0-(x-x_0)\dfrac{a}{b}&#x3D;0+\dfrac{1}{b} \sum by_0+ax_0&#x3D;\dfrac{1}{b}\sum c_i&#x3D;0$,于是只要满足$\sum x&#x3D;0$,考虑贪心调整,每个位置贡献是绝对值里面一个一次函数,全是下凸,所以直接贪心就是对的.此外可以证明最多调$n$次,因为没有限制的时候$\vert x\vert+\vert y\vert$最小一定是$x$为最大负整数解或者最小正整数解,于是$x&lt;b$,于是最多调$O(n)$次.</p>
+<p>这个题不从差分视角看也很好(qyc题解),考虑原数组,假设已知第$i$个位置$ax_i+by_i$,那么只看$a$的操作就是每次可以区间加减$1$,全变成$0$的经典问题,答案是差分数组绝对值之和的一半.于是问题等价于有$n$条斜率相同的直线,在上面选$n$个点,最小化从$(0,0)$出发按顺序把每个点遍历一遍的曼哈顿距离最小值.那么考虑先忽略最后一个点回到$(0,0)$的代价算一个答案,就直接贪心即可,然后再进行调整,每次可以把一个后缀整体沿着线移动,只影响当前位置和最后一个位置,这部分贪心和上面是一样的,因为每个点和上一个点尽可能接近,也是最多$n$次调整.</p>
+<p>后一个做法上来强制满足了所有限制.</p>
+<h3 id="CF516E-Drazil-and-His-Happy-Friends"><a href="#CF516E-Drazil-and-His-Happy-Friends" class="headerlink" title="CF516E Drazil and His Happy Friends"></a>CF516E Drazil and His Happy Friends</h3><p>考虑首先可以分成独立的$d&#x3D;\gcd(n,m)$类,最后合并是简单的.对于每一类变成长$n’,m’,n’\bot m’$的两个环.</p>
+<p>单独考虑B环每个人快乐的时间,发现一个性质:若A环上$i$快乐了,则$i+m’$一定在$m’$时间后快乐,且这个是充要的,于是一个暴力是建图跑最短路,但点数是$10^9$的.</p>
+<p>发现边把$A$环上的点按新的顺序串成一个环,于是只要考虑$O(b+g)$个初始快乐的点第一次被B环快乐的点,中间点的最短路是容易快速处理的,就做完了.</p>
+<h3 id="P4621-COCI2012-2013-6-BAKTERIJE"><a href="#P4621-COCI2012-2013-6-BAKTERIJE" class="headerlink" title="P4621 [COCI2012-2013#6] BAKTERIJE"></a>P4621 [COCI2012-2013#6] BAKTERIJE</h3><p>对于单独一个细菌,状态$(n,m,d)$表示,$d\le 4$表示方向,显然最多$4nm$个循环,于是这个点到每个陷阱状态(不同方向一共四个)的时间要么是$t_0$(入环前),要么是$t_0+tx,x\in N*$(入环后),枚举每个点最终状态用exgcd合并即可.</p>
+<h3 id="P3747-六省联考-2017-相逢是问候"><a href="#P3747-六省联考-2017-相逢是问候" class="headerlink" title="P3747 [六省联考 2017] 相逢是问候"></a>P3747 [六省联考 2017] 相逢是问候</h3><p>如果做过炸脖龙I应该很显然,一个指数塔只要考虑前$\log V$层,于是只要做到一个位置只更新$\log V$次就赢了,维护线段树节点内被更新次数的最小值即可,总复杂度$n\log n\log V$.</p>
+<h3 id="P6730-WC2020-猜数游戏"><a href="#P6730-WC2020-猜数游戏" class="headerlink" title="P6730 [WC2020] 猜数游戏"></a>P6730 [WC2020] 猜数游戏</h3><p>拆贡献!一个数被选当且仅当所有能生成它的数都没被选.看到这种题肯定考虑原根.但没有保证$a_i\bot p$,即有些数可能没原根.分开考虑有原根和没原根的数,容易发现两者能生成的集合是不交的.</p>
+<p>对于没原根的数$u$(即$p^k$),只有$\log p$个,直接暴力check每个数就是$n\log p$.否则$v$能生成$u$当且仅当$\mathrm{ord}(v) \vert \mathrm{ord}(u)$,暴力求原根即可(预处理$\varphi(p)$的因数)</p>
+<h3 id="loj6056-最大团"><a href="#loj6056-最大团" class="headerlink" title="loj6056 最大团"></a>loj6056 最大团</h3><p>枚举团大小$d$分配标号可得答案为</p>
+<p>$$<br>\sum_{d\vert n} \dfrac{n!}{(d!)^{n&#x2F;d}(n&#x2F;d)!}<br>$$</p>
+<p>考虑exlucas的求阶乘,$n!\mod p&#x3D;p^k\dfrac{n}{p}!(n!)_p$,而后面的$(n!)_p$这次不能预处理,</p>
+<h3 id="P5233-JSOI2012-爱之项链"><a href="#P5233-JSOI2012-爱之项链" class="headerlink" title="P5233 [JSOI2012] 爱之项链"></a>P5233 [JSOI2012] 爱之项链</h3><p>先数戒指,是经典ploya,现在要数一个序列,每个位置可以是$1\ldots k$任意相邻两个位置不同的方案数,并且认为$1$和$n$相邻.设$f_n$为答案,则$f_n&#x3D;k(k-1)^{n-1}-f_{n-1}$(先忽略$1$和$n$不能相邻,相邻则把它俩缩成,一个去数方案数为$f_{n-1}$),不断展开$f_1&#x3D;1$</p>
+<p>$$<br>\begin{gathered}<br>  f_n&#x3D;1+\sum_{i&#x3D;2}^n k(k-1)^{i-1}(-1)^{n-i}\<br>  &#x3D;1+(-1)^{n+1}k\sum_{i&#x3D;2}^n (1-k)^i<br>\end{gathered}<br>$$</p>
+<p>等比数列求和,做完了.</p>
+<h3 id="CmdOI2019-简单的数论题"><a href="#CmdOI2019-简单的数论题" class="headerlink" title="[CmdOI2019] 简单的数论题"></a>[CmdOI2019] 简单的数论题</h3><p>$$<br>\begin{gathered}<br>\sum_{i&#x3D;1}^n \sum_{j&#x3D;1}^m \varphi(\dfrac{lcm(i,j)}{\gcd(i,j)})\<br>&#x3D;\sum_{i&#x3D;1}^n \sum_{j&#x3D;1}^m \varphi(\dfrac{i}{\gcd(i,j)})\varphi(\dfrac{j}{\gcd(i,j)})\<br>&#x3D;\sum_d\sum_{i&#x3D;1}^{n&#x2F;d}\varphi(i)\sum_{j&#x3D;1}^{m&#x2F;d} \varphi(j) \sum_{k\vert i,k\vert j} \mu(k)\<br>&#x3D;\sum_d \sum_k \mu(k) \sum_{i&#x3D;1}^{n&#x2F;kd}\sum_{j&#x3D;1}^{m&#x2F;kd} \varphi(ik)\varphi(jk)\<br>&#x3D;\sum_T \sum_{k\vert T}\mu(k)\sum_{i&#x3D;1}^{n&#x2F;T}\sum_{j&#x3D;1}^{m&#x2F;T} \varphi(ik)\varphi(jk)<br>\end{gathered}<br>$$</p>
+<p>预处理$f_{a,k}&#x3D;\sum_{i&#x3D;1}^n \varphi(ik)$(固定$k$,只有$n&#x2F;k$个可能得$a$,一共只有$n\ln n$个可以预处理)</p>
+<p>对$T$根号分治,当$T$小于根号时暴力枚举$k$复杂度是$\sqrt n\log n$,当$T$大于根号时$n&#x2F;T$不会很大,考虑预处理$g(a,b,T)&#x3D;\sum_{k\vert T} \mu(k)f(a,k)f(b,k)$,注意$a$有根号种,$(b,T)$有$n$种,一共$n\sqrt n$种,时间复杂度$n\sqrt n\log n$.做完了!</p>
+<h3 id="P5518-MtOI2019-幽灵乐团-x2F-莫比乌斯反演基础练习题"><a href="#P5518-MtOI2019-幽灵乐团-x2F-莫比乌斯反演基础练习题" class="headerlink" title="P5518 [MtOI2019] 幽灵乐团 &#x2F; 莫比乌斯反演基础练习题"></a>P5518 [MtOI2019] 幽灵乐团 &#x2F; 莫比乌斯反演基础练习题</h3><p>感觉三合一很没素质.只留第三问不好吗.</p>
+<p>而且解题过程中还有个陷阱,很容易推到$Tn\log \log n$然后不会,需要大力卡常才能过,但实际上一开始路就走错了.也就是第三问再算式子$\prod \prod \prod \gcd(i,j)^{\gcd(i,j,k)}$的时候如果先枚举$g&#x3D;\gcd(i,j)$再算$\sum_k \gcd(g,k)$的复杂度.而应该直接枚举$\gcd(i,j,k)$.</p>
+<p>式子懒得抄了.</p>
+<h3 id="CF1796F-Strange-Triples"><a href="#CF1796F-Strange-Triples" class="headerlink" title="CF1796F Strange Triples"></a>CF1796F Strange Triples</h3><p>设$l(x)&#x3D;\log_{10}(x)+1$,枚举$x&#x3D;l(n),y&#x3D;l(b)$可以拆开,$n$很大不能枚举,进行分参,要求$n&#x3D;\dfrac{ab(10^x-1)}{a10^y-b}$,要求满足$n$的范围限制和整除.</p>
+<p>考虑要去除$a$对整除性的影响,设分母上$\gcd(a10^y-b,a)&#x3D;k$,左边辗转相减一下得到$k&#x3D;\gcd(a,b)$,那么设$kd&#x3D;a10^y-b$,$d$要是$b(10^x-1)$的因数,如果枚举$x,y,b,d$,总枚举量是$\sum_b \sum_y d(b(10^x-1))$,$d$是因数个数函数,算出来是$185B\ln B$刚好.</p>
+<p>现在确定了$d$,由$kd&#x3D;a10^y-b$得$\dfrac{b}{k}&#x3D;\dfrac{a10^y}{k}-d$,注意$\dfrac{b}{k}&lt;10^{y}$,于是得到最多只有一个合法的$k$,直接解方程求出这个$k$,又可以得到$a$,于是就能check了.</p>
+<h3 id="SP422-TRANSP2-Transposing-is-Even-More-Fun"><a href="#SP422-TRANSP2-Transposing-is-Even-More-Fun" class="headerlink" title="SP422 TRANSP2 - Transposing is Even More Fun"></a>SP422 TRANSP2 - Transposing is Even More Fun</h3><p>这个题好厉害.</p>
+<p>首先分析转置,$(i,j)\to (j,i)$,$2^bi+j\to 2^bj+i$,设一开始为$x$,发现是把$x$从低到高的第$b$位分开,前后交换,相当于把下标在二进制数下循环左移$a$位.</p>
+<p>这下找到方向了,也就是若$i$的目标位置是$p_i$,现在已经知道$p_i$构成了若干个环,答案是所有环的大小减$1$,那么只要求环数.转化成,长$a+b$的序列每个位置填$0&#x2F;1$,求转$a$下的操作下的本质不同环数.</p>
+<p>考虑这样一个环可以分成长$l&#x3D;\dfrac{(a+b)}{\gcd(a,b)}$个小环的$g&#x3D;\gcd(a,b)$个环,于是转$i$格的不动点方案是$2^{\gcd(l,i)\gcd(a,b)}$.上一个burnside再上一个莫反就做完了.</p>
+<h2 id="NOI2024省选模拟赛44"><a href="#NOI2024省选模拟赛44" class="headerlink" title="NOI2024省选模拟赛44"></a>NOI2024省选模拟赛44</h2><h3 id="A-小-Z-与函数"><a href="#A-小-Z-与函数" class="headerlink" title="A. 小 Z 与函数"></a>A. 小 Z 与函数</h3><blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> vs=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=n;j++)</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;a[j])</span><br><span class="line">				<span class="built_in">swap</span>(a[i],a[j]),res++,vs=<span class="number">1</span>;</span><br><span class="line">		res+=vs;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>显然最后变成递减序列.注意到对互不相同<code>res++</code>的总和是逆序对数,因为交换时一定交换两个前缀max,恰好让逆序对数减$1$.对有相同的情况它是每个数前面比它小的数的颜色数之和(每次会换到同颜色的第一个).</p>
+<p>对于<code>vs</code>,进行到第$i$位,前面一定是$1\ldots i-1$大,第$i$位是原序列前缀min(发现前缀min一定没被交换出前$i$个),只要判断序列第$i$大和前缀min的大小.</p>
+<p>对于所有前缀,问题变成有多少个位置$i$满足$m_i&gt;k_i$,$k_i$为第$i$大.不断在最后插入一个数,每次会对$k$移位,注意$m$单减,$k$单增,做完了.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/10/21/lyh/" title="LYHDP选做"><img class="cover" src="/img/2022-11-15-20-37-07-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-21</div><div class="title">LYHDP选做</div></div></a></div><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2022/07/02/count/" title="数数"><img class="cover" src="/img/2022-11-23-20-33-31-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">数数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NOIP%E5%90%8E%E5%8D%97%E5%A4%96%E7%9C%81%E9%80%89%E9%9B%86%E8%AE%AD"><span class="toc-number">1.</span> <span class="toc-text">NOIP后南外省选集训</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B20"><span class="toc-number">1.1.</span> <span class="toc-text">NOI2024省选模拟赛20</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text">A. 网络单纯形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%8E%9F%E7%A5%9E%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.1.2.</span> <span class="toc-text">B. 原神账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E8%82%96%E8%8A%AC%E9%80%94"><span class="toc-number">1.1.3.</span> <span class="toc-text">C. 肖芬途</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B21"><span class="toc-number">1.2.</span> <span class="toc-text">NOI2024省选模拟赛21</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E7%9B%97%E6%A2%A6%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.1.</span> <span class="toc-text">A. 盗梦空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%81%B7%E8%97%8F%E5%A5%B3%E8%A3%85"><span class="toc-number">1.2.2.</span> <span class="toc-text">B. 偷藏女装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E6%A5%BC%E6%A2%AF%E8%B0%83%E5%BA%A6"><span class="toc-number">1.2.3.</span> <span class="toc-text">C. 楼梯调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B22"><span class="toc-number">1.3.</span> <span class="toc-text">NOI2024省选模拟赛22</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.1.</span> <span class="toc-text">A. 染色问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-IOer"><span class="toc-number">1.3.2.</span> <span class="toc-text">B. IOer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%8A%9B%E8%84%91"><span class="toc-number">1.3.3.</span> <span class="toc-text">C. 力脑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%93%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">字符串专题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B1%E9%85%8D%E6%A0%91"><span class="toc-number">1.4.1.</span> <span class="toc-text">失配树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4156-WC2016-%E8%AE%BA%E6%88%98%E6%8D%86%E7%AB%B9%E7%AB%BF"><span class="toc-number">1.4.2.</span> <span class="toc-text">P4156 [WC2016] 论战捆竹竿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4548-CTSC2006-%E6%AD%8C%E5%94%B1%E7%8E%8B%E5%9B%BD"><span class="toc-number">1.4.3.</span> <span class="toc-text">P4548 [CTSC2006] 歌唱王国</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hdu6791-Tokitsukaze-CSL-and-Palindrome-Game"><span class="toc-number">1.4.4.</span> <span class="toc-text">hdu6791 Tokitsukaze, CSL and Palindrome Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROI-2016-DAY2%E4%BA%8C%E6%8C%87%E7%A6%85"><span class="toc-number">1.4.5.</span> <span class="toc-text">ROI 2016 DAY2二指禅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1483F-EXAM"><span class="toc-number">1.4.6.</span> <span class="toc-text">CF1483F EXAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1393E2-TWILIGHT-AND-ANCIENT-SCROLL-HARDER-VERSION"><span class="toc-number">1.4.7.</span> <span class="toc-text">CF1393E2 TWILIGHT AND ANCIENT SCROLL (HARDER VERSION)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1276F-Asterisk-Substrings"><span class="toc-number">1.4.8.</span> <span class="toc-text">CF1276F Asterisk Substrings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ICPC-2021-%E6%B2%88%E9%98%B3-M-STRING-PROBLEM"><span class="toc-number">1.4.9.</span> <span class="toc-text">ICPC 2021 沈阳 M STRING PROBLEM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5420-CTSC2016-%E9%A6%99%E5%B1%B1%E7%9A%84%E6%A0%91"><span class="toc-number">1.4.10.</span> <span class="toc-text">P5420 [CTSC2016] 香山的树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B23"><span class="toc-number">1.5.</span> <span class="toc-text">NOI2024省选模拟赛23</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%98%9F%E9%99%85%E9%80%83%E4%BA%A1"><span class="toc-number">1.5.1.</span> <span class="toc-text">A. 星际逃亡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%8D%9A%E5%BC%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.2.</span> <span class="toc-text">B. 博弈问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%85%94%E5%AD%90%E7%8C%9C%E6%8B%B3"><span class="toc-number">1.5.3.</span> <span class="toc-text">C. 兔子猜拳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B24"><span class="toc-number">1.6.</span> <span class="toc-text">NOI2024省选模拟赛24</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E5%88%92%E5%88%86%E4%B8%B2"><span class="toc-number">1.6.1.</span> <span class="toc-text">A. 划分串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E9%99%8D%E8%90%BD%E4%BC%9E%E7%8E%AF"><span class="toc-number">1.6.2.</span> <span class="toc-text">B. 降落伞环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E8%9E%BA%E6%97%8B"><span class="toc-number">1.6.3.</span> <span class="toc-text">C. 螺旋</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B25"><span class="toc-number">1.7.</span> <span class="toc-text">NOI2024省选模拟赛25</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Lost-Kingdom"><span class="toc-number">1.7.1.</span> <span class="toc-text">A. Lost Kingdom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Lighthouse"><span class="toc-number">1.7.2.</span> <span class="toc-text">B. Lighthouse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Dark-Blue"><span class="toc-number">1.7.3.</span> <span class="toc-text">C. Dark Blue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B26"><span class="toc-number">1.8.</span> <span class="toc-text">NOI2024省选模拟赛26</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98-%E7%A8%8B%E6%80%9D%E5%85%83"><span class="toc-number">1.9.</span> <span class="toc-text">计数专题-程思元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gym102538H-Horrible-Cycles"><span class="toc-number">1.9.1.</span> <span class="toc-text">Gym102538H. Horrible Cycles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AT-hitachi2020-f-Preserve-Diameter"><span class="toc-number">1.9.2.</span> <span class="toc-text">AT_hitachi2020_f Preserve Diameter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1450H2-Multithreading"><span class="toc-number">1.9.3.</span> <span class="toc-text">CF1450H2 Multithreading</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%AD%A4%E4%B9%8B%E5%89%8D%E8%AE%A9%E6%88%91%E4%BB%AC%E5%AD%A6%E4%B9%A0%E6%9E%90%E5%90%88%E6%A0%91"><span class="toc-number">1.9.4.</span> <span class="toc-text">在此之前让我们学习析合树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1089I-Interval-Free-Permutations-%E6%88%96-LOJ3397%E3%80%8C2020-2021-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A%E3%80%8D%E6%98%A5%E5%A4%A9-%E5%9C%A8%E7%A7%AF%E9%9B%AA%E4%B8%8B%E7%BB%93%E4%B8%80%E6%88%90%E5%BD%A2-%E6%8A%BD%E6%9E%9D%E5%8F%91%E8%8A%BD"><span class="toc-number">1.9.5.</span> <span class="toc-text">CF1089I Interval-Free Permutations 或 LOJ3397「2020-2021 集训队作业」春天, 在积雪下结一成形, 抽枝发芽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7278-%E7%BA%AF%E6%B4%81%E6%86%A7%E6%86%AC"><span class="toc-number">1.9.6.</span> <span class="toc-text">P7278 纯洁憧憬</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B27"><span class="toc-number">1.10.</span> <span class="toc-text">NOI2024省选模拟赛27</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E4%B8%8D%E4%BC%91%E9%99%80%E8%9E%BA"><span class="toc-number">1.10.1.</span> <span class="toc-text">A. 不休陀螺</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%9F%93%E8%89%B2"><span class="toc-number">1.10.2.</span> <span class="toc-text">B. 染色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E8%AE%A1%E7%AE%97"><span class="toc-number">1.10.3.</span> <span class="toc-text">C. 计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E9%B8%A1"><span class="toc-number">1.10.4.</span> <span class="toc-text">D. 鸡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B28"><span class="toc-number">1.11.</span> <span class="toc-text">NOI2024省选模拟赛28</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83"><span class="toc-number">1.11.1.</span> <span class="toc-text">A. 树的重心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%8C%B9%E9%85%8D"><span class="toc-number">1.11.2.</span> <span class="toc-text">B. 匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-deadline"><span class="toc-number">1.11.3.</span> <span class="toc-text">C. deadline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E6%96%B0%E6%9C%AC%E6%A0%BC%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3"><span class="toc-number">1.11.4.</span> <span class="toc-text">D. 新本格魔法少女</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B29"><span class="toc-number">1.12.</span> <span class="toc-text">NOI2024省选模拟赛29</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Easy"><span class="toc-number">1.12.1.</span> <span class="toc-text">A. Easy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%B9%82"><span class="toc-number">1.12.2.</span> <span class="toc-text">B. 幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%93%88%E5%A4%AB%E6%9B%BC%E5%9B%9E%E8%B7%AF"><span class="toc-number">1.12.3.</span> <span class="toc-text">C. 哈夫曼回路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E6%A8%A1%E6%8B%9F%E8%B5%9B"><span class="toc-number">1.12.4.</span> <span class="toc-text">D. 模拟赛</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B30"><span class="toc-number">1.13.</span> <span class="toc-text">NOI2024省选模拟赛30</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Y"><span class="toc-number">1.13.1.</span> <span class="toc-text">A. Y</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-hashit"><span class="toc-number">1.13.2.</span> <span class="toc-text">B. hashit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%82%B9%E7%82%B9%E7%9A%84%E5%9C%88%E5%9C%88"><span class="toc-number">1.13.3.</span> <span class="toc-text">C. 点点的圈圈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E5%9B%BE%E4%B8%8A%E7%9A%84%E6%B8%B8%E6%88%8F"><span class="toc-number">1.13.4.</span> <span class="toc-text">D. 图上的游戏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B31"><span class="toc-number">1.14.</span> <span class="toc-text">NOI2024省选模拟赛31</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-X"><span class="toc-number">1.14.1.</span> <span class="toc-text">A. X</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E8%A3%85%E9%A5%B0"><span class="toc-number">1.14.2.</span> <span class="toc-text">B. 装饰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%92%8C%E8%B0%90%E5%AE%87%E5%AE%99"><span class="toc-number">1.14.3.</span> <span class="toc-text">C. 和谐宇宙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-%E9%BB%91%E9%B8%AD%E7%9A%84%E5%BA%8F%E5%88%97"><span class="toc-number">1.14.4.</span> <span class="toc-text">D. 黑鸭的序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B32"><span class="toc-number">1.15.</span> <span class="toc-text">NOI2024省选模拟赛32</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Giao-%E5%BE%BD%E7%9A%84%E7%83%A4%E9%B8%AD"><span class="toc-number">1.15.1.</span> <span class="toc-text">A. Giao 徽的烤鸭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-apers"><span class="toc-number">1.15.2.</span> <span class="toc-text">B. apers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.15.3.</span> <span class="toc-text">C. 字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B33"><span class="toc-number">1.16.</span> <span class="toc-text">NOI2024省选模拟赛33</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E5%A1%94"><span class="toc-number">1.16.1.</span> <span class="toc-text">A. 塔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E8%BF%90%E8%BE%93"><span class="toc-number">1.16.2.</span> <span class="toc-text">B. 运输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E9%BA%BB%E5%B0%86"><span class="toc-number">1.16.3.</span> <span class="toc-text">C. 麻将</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B34"><span class="toc-number">1.17.</span> <span class="toc-text">NOI2024省选模拟赛34</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-duyi-%E7%9A%84%E5%88%87%E9%A2%98%E6%A0%91"><span class="toc-number">1.17.1.</span> <span class="toc-text">A. duyi 的切题树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E7%BA%A2%E8%93%9D%E5%A4%A7%E4%BD%9C%E6%88%98"><span class="toc-number">1.17.2.</span> <span class="toc-text">B. 红蓝大作战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%8F%91%E8%AE%B2%E4%B9%89"><span class="toc-number">1.17.3.</span> <span class="toc-text">C. 发讲义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B35"><span class="toc-number">1.18.</span> <span class="toc-text">NOI2024省选模拟赛35</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-God%E7%9A%84%E6%80%92%E7%81%AB"><span class="toc-number">1.18.1.</span> <span class="toc-text">A. God的怒火</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%BC%B1%E5%8C%96%E7%9A%84%E6%9D%A8%E8%A1%A8"><span class="toc-number">1.18.2.</span> <span class="toc-text">B. 弱化的杨表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E8%BE%BE%E6%8B%89%E7%84%B6%E7%9A%84%E5%BA%9F%E5%A2%9F"><span class="toc-number">1.18.3.</span> <span class="toc-text">C. 达拉然的废墟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B36"><span class="toc-number">1.19.</span> <span class="toc-text">NOI2024省选模拟赛36</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E8%B5%8C%E5%BE%92"><span class="toc-number">1.19.1.</span> <span class="toc-text">A. 赌徒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%AF%92%E5%81%87%E5%BC%BA"><span class="toc-number">1.19.2.</span> <span class="toc-text">B. 毒假强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E9%9B%B6%E5%92%8C"><span class="toc-number">1.19.3.</span> <span class="toc-text">C. 零和</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-ducati"><span class="toc-number">1.20.</span> <span class="toc-text">数据结构-ducati</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF464E"><span class="toc-number">1.20.1.</span> <span class="toc-text">CF464E</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8860-%E5%8A%A8%E6%80%81%E5%9B%BE%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">1.20.2.</span> <span class="toc-text">P8860 动态图连通性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qoj5421-ICPC2022-Asia-Nanjing-H-Factories-Once-More"><span class="toc-number">1.20.3.</span> <span class="toc-text">Qoj5421 ICPC2022 Asia Nanjing H Factories Once More</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6845-CEOI2019-Dynamic-Diameter"><span class="toc-number">1.20.4.</span> <span class="toc-text">P6845 [CEOI2019] Dynamic Diameter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1458F"><span class="toc-number">1.20.5.</span> <span class="toc-text">CF1458F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7125-Ynoi2008-rsmemq"><span class="toc-number">1.20.6.</span> <span class="toc-text">P7125 Ynoi2008 rsmemq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8264-Ynoi-Easy-Round-2020-TEST-100"><span class="toc-number">1.20.7.</span> <span class="toc-text">P8264 [Ynoi Easy Round 2020] TEST_100</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%B3%E5%93%88%E6%B8%B8%E7%9A%84%E6%B8%B8%E6%88%8F"><span class="toc-number">1.20.8.</span> <span class="toc-text">米哈游的游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E7%90%86%E6%9C%89%E6%8D%AE%E9%A2%98"><span class="toc-number">1.20.9.</span> <span class="toc-text">有理有据题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mix"><span class="toc-number">1.20.10.</span> <span class="toc-text">Mix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5284-%E5%8D%81%E4%BA%8C%E7%9C%81%E8%81%94%E8%80%83-2019-%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98"><span class="toc-number">1.20.11.</span> <span class="toc-text">P5284 [十二省联考 2019] 字符串问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B36-1"><span class="toc-number">1.21.</span> <span class="toc-text">NOI2024省选模拟赛36</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-A-Dance-of-Fire-and-Ice"><span class="toc-number">1.21.1.</span> <span class="toc-text">A. A Dance of Fire and Ice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="toc-number">1.21.2.</span> <span class="toc-text">B. 最短路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AD%97%E7%AC%A6%E4%B8%B2-1"><span class="toc-number">1.21.3.</span> <span class="toc-text">C. 字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B38"><span class="toc-number">1.22.</span> <span class="toc-text">NOI2024省选模拟赛38</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-nnntxdy"><span class="toc-number">1.22.1.</span> <span class="toc-text">A. nnntxdy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E9%9B%86%E5%90%88"><span class="toc-number">1.22.2.</span> <span class="toc-text">B. 集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-PolarSea-%E4%B8%8E%E9%81%97%E5%BF%98%E7%9A%84%E6%A3%AE%E6%9E%97"><span class="toc-number">1.22.3.</span> <span class="toc-text">C. PolarSea 与遗忘的森林</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3-Alex-Wei"><span class="toc-number">1.23.</span> <span class="toc-text">数学相关-Alex_Wei</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF-O-1-%E9%80%86%E5%85%83"><span class="toc-number">1.23.1.</span> <span class="toc-text">在线$O(1)$逆元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7325-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="toc-number">1.23.2.</span> <span class="toc-text">P7325 斐波那契</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3543-POI2012-WYR-Leveling-Ground"><span class="toc-number">1.23.3.</span> <span class="toc-text">P3543 [POI2012] WYR-Leveling Ground</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF516E-Drazil-and-His-Happy-Friends"><span class="toc-number">1.23.4.</span> <span class="toc-text">CF516E Drazil and His Happy Friends</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4621-COCI2012-2013-6-BAKTERIJE"><span class="toc-number">1.23.5.</span> <span class="toc-text">P4621 [COCI2012-2013#6] BAKTERIJE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3747-%E5%85%AD%E7%9C%81%E8%81%94%E8%80%83-2017-%E7%9B%B8%E9%80%A2%E6%98%AF%E9%97%AE%E5%80%99"><span class="toc-number">1.23.6.</span> <span class="toc-text">P3747 [六省联考 2017] 相逢是问候</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P6730-WC2020-%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F"><span class="toc-number">1.23.7.</span> <span class="toc-text">P6730 [WC2020] 猜数游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loj6056-%E6%9C%80%E5%A4%A7%E5%9B%A2"><span class="toc-number">1.23.8.</span> <span class="toc-text">loj6056 最大团</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5233-JSOI2012-%E7%88%B1%E4%B9%8B%E9%A1%B9%E9%93%BE"><span class="toc-number">1.23.9.</span> <span class="toc-text">P5233 [JSOI2012] 爱之项链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CmdOI2019-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E8%AE%BA%E9%A2%98"><span class="toc-number">1.23.10.</span> <span class="toc-text">[CmdOI2019] 简单的数论题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5518-MtOI2019-%E5%B9%BD%E7%81%B5%E4%B9%90%E5%9B%A2-x2F-%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-number">1.23.11.</span> <span class="toc-text">P5518 [MtOI2019] 幽灵乐团 &#x2F; 莫比乌斯反演基础练习题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1796F-Strange-Triples"><span class="toc-number">1.23.12.</span> <span class="toc-text">CF1796F Strange Triples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SP422-TRANSP2-Transposing-is-Even-More-Fun"><span class="toc-number">1.23.13.</span> <span class="toc-text">SP422 TRANSP2 - Transposing is Even More Fun</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOI2024%E7%9C%81%E9%80%89%E6%A8%A1%E6%8B%9F%E8%B5%9B44"><span class="toc-number">1.24.</span> <span class="toc-text">NOI2024省选模拟赛44</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E5%B0%8F-Z-%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-number">1.24.1.</span> <span class="toc-text">A. 小 Z 与函数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/28/sdptt1/" title="省队集训">省队集训</a><time datetime="2024-04-27T16:00:00.000Z" title="Created 2024-04-28 00:00:00">2024-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/17/toptree/" title="Top Tree">Top Tree</a><time datetime="2024-02-16T16:00:00.000Z" title="Created 2024-02-17 00:00:00">2024-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/30/noiwc2024/" title="NOIWC">NOIWC</a><time datetime="2024-01-29T16:00:00.000Z" title="Created 2024-01-30 00:00:00">2024-01-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

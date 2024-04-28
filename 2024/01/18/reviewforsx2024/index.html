@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2024省选准备 | FireInIce's Blog</title><meta name="keywords" content="日志,杂题"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="省选准备?P3726 [AH2017&#x2F;HNOI2017] 抛硬币要求 $$\sum_i \sum_j [j&lt;i] \binom{a}{i}\binom{b}{j}$$ 这就不会了, 然而这是双射题, 考虑 $a&#x3D;b$ 的时候赢的翻转能映输的, 就只需要求平局的 $\sum_i \binom{a}{i}^2$ 是经典问题. 现在 $a&gt;b$, 设实际各证明 $x, y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024省选准备">
+<meta property="og:url" content="https://fireinicecode.github.io/2024/01/18/reviewforsx2024/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="省选准备?P3726 [AH2017&#x2F;HNOI2017] 抛硬币要求 $$\sum_i \sum_j [j&lt;i] \binom{a}{i}\binom{b}{j}$$ 这就不会了, 然而这是双射题, 考虑 $a&#x3D;b$ 的时候赢的翻转能映输的, 就只需要求平局的 $\sum_i \binom{a}{i}^2$ 是经典问题. 现在 $a&gt;b$, 设实际各证明 $x, y">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2024-01-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-27T23:50:10.439Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="杂题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2024/01/18/reviewforsx2024/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024省选准备',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-04-28 07:50:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2024省选准备</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2024-01-17T16:00:00.000Z" title="Created 2024-01-18 00:00:00">2024-01-18</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="省选准备"><a href="#省选准备" class="headerlink" title="省选准备?"></a>省选准备?</h1><h3 id="P3726-AH2017-x2F-HNOI2017-抛硬币"><a href="#P3726-AH2017-x2F-HNOI2017-抛硬币" class="headerlink" title="P3726 [AH2017&#x2F;HNOI2017] 抛硬币"></a>P3726 [AH2017&#x2F;HNOI2017] 抛硬币</h3><p>要求</p>
+<p>$$<br>\sum_i \sum_j [j&lt;i] \binom{a}{i}\binom{b}{j}<br>$$</p>
+<p>这就不会了, 然而这是双射题, 考虑 $a&#x3D;b$ 的时候赢的翻转能映输的, 就只需要求平局的 $\sum_i \binom{a}{i}^2$ 是经典问题.</p>
+<p>现在 $a&gt;b$, 设实际各证明 $x, y$ 次, 则 $a$ 输&#x2F;平的翻转都会变成赢($x\le y, a-x&gt;b-y$), 而问题就是A赢的可能仍然是赢, 这种情况要求 $a-x&gt;b-y, x&gt;y$, 于是 $x-y\in [0, a-b]$, 而 $a-b$ 很小, 枚举个差, 就是 $\sum_d \sum_i \binom{a}{i+d}\binom{b}{i}&#x3D;\sum_d \sum_i \binom{a}{i+d}\binom{b}{b-i}&#x3D;\sum_d \binom{a+b}{b+d}$ 暴力算就行了.</p>
+<p>最后你需要用exlucas算组合数</p>
+<h3 id="P5279-ZJOI2019-麻将"><a href="#P5279-ZJOI2019-麻将" class="headerlink" title="P5279 [ZJOI2019] 麻将"></a>P5279 [ZJOI2019] 麻将</h3><p>dpofdp, 先考虑如何判定是否胡牌, 那么顺子这种性质肯定是扫值域, 从小到大, 设 $f_{i, j, 0&#x2F;1}$ 表示前 $i$ 种牌, 形成 $j$ 个 $i, i-1$ 的对, 是否已经出现刻字, 转移显然, 可以对着转移建自动机.</p>
+<p>发现节点并不对, $S\approx 2000$ 个</p>
+<p>然后求期望可以累加前缀 $1\ldots i$ 加入之后还没胡的概率, 于是 $f_{i, j, k}$ 表示前 $i$ 种牌, 一共加入了 $j$ 张牌, 走到自动机的节点 $k$ 的期望步数.</p>
+<p>转移是枚举当前种牌加了多少张, 复杂度是 $n^2S$ 的.</p>
+<h3 id="P3307-SDOI2013-项链"><a href="#P3307-SDOI2013-项链" class="headerlink" title="P3307 [SDOI2013] 项链"></a>P3307 [SDOI2013] 项链</h3><p>先数珠子有几种, 正三棱柱的置换包括3种, 横着转一&#x2F;二下和左右翻转, 只要数互质数对个数, 莫反板子.</p>
+<p>然后数项链是模板ploya吧?</p>
+<h3 id="P4916-MtOI2018-魔力环"><a href="#P4916-MtOI2018-魔力环" class="headerlink" title="P4916 [MtOI2018] 魔力环"></a>P4916 [MtOI2018] 魔力环</h3><p>先上一套burnside, 现在变成要求对每个 $d$, 设 $l&#x3D;gcd(d, n)$, 求 $f_l$ 表示长 $l$ 的环(不可旋转), 有 $\dfrac{mn}{l}$ 个黑色珠子, 不能连续出 $k$ 个黑色的方案数.</p>
+<p>先把白色放好开始插入黑色, 枚举插入的空隙数, 设黑色个数为 $b$, 得到</p>
+<p>$$<br>\sum_i \binom{l-b}{i}g(b, i)<br>$$<br>于是求 $g(n, c)$ 表示把 $n$ 个不区分的球分成 $c$ 个区分的盒子每份大小不超过 $k$ 的方案数, 于是</p>
+<p>$$<br>g(n, c)&#x3D;<a href="%5Cdfrac%7B1-x%5E%7Bk+1%7D%7D%7B1-x%7D">x^n</a>^c&#x3D;(1-x^{k+1})^c(1-x)^{-c}&#x3D;(\sum_i \binom{c}{i}x^{ik+i})(\sum_i \binom{c+i-1}{i}x^i)<br>$$</p>
+<p>于是可以 $\dfrac{n}{k}$ 算一项, 而枚举插入的空隙数是 $O(k)$ 的, 所以算一次是 $O(m)$, 于是算所有 $f$ 的复杂度是关于 $n$ 约数和线性, 而约数和最大是 $n\log n$ 的(根号为界分开分析), 于是总复杂度是单log的.</p>
+<h3 id="ARC120F-Wine-Thief"><a href="#ARC120F-Wine-Thief" class="headerlink" title="[ARC120F] Wine Thief"></a>[ARC120F] Wine Thief</h3><p>考虑对每个元素计算贡献, 要算挖去一个区间后两边选 $k-1$ 个元素的方案数. 是两边的方案卷起来, 不可做.</p>
+<p>考虑设从 $n$ 个中选 $i$ 个且满足限制的方案数为 $f_{n, i}$, 从 $n$ 个中选 $i$ 个且第 $j$ 个强制选的方案数为 $g_{n, i, j}$, 则对于 $i\in [D, n-D+1]$, $g_{n, i, j}$ 就是先选一个 $j$, 然后要求 $[j-D+1, j+D-1]$ 这块不能选, 相当于挖掉这块添加一个长 $d$ 的空段(使得两边互不影响), 那么你不能选到空段上, 于是 $g_{n, i, j}&#x3D;f_{n-D, i-1}-\sum_{k\in [i, i+D-1]} g_{n-D, i-1, k}$.</p>
+<p>这可以看成卷积: $G_{n, i}(x)&#x3D;\sum_j x^j g_{n, i, j}$, 则 $G_{n, i}&#x3D;\dfrac{1}{1-x}f_{n-D, i-1}-G_{n-D, i-1}*(\sum_{j&#x3D;0}^d -x^{-j})$</p>
+<p>而初始状态应该是 $G_{n-kD, 0}&#x3D;0$, 每次区间加并卷上一个平移的多项式, 对于变换 $m$ 次的多项式, 发现满足性质前 $mD$ 项和后 $mD$ 项对称相等而中间全部相等, 于是直接卷起来复杂度就从 $n^2\log n\log k$ 变为 $n\log n\log k$</p>
+<h3 id="P4500-ZJOI2018-树"><a href="#P4500-ZJOI2018-树" class="headerlink" title="P4500 [ZJOI2018] 树"></a>P4500 [ZJOI2018] 树</h3><p>考虑要求 $\sum_{a\in A} s^k(a)$, 其中 $s(a)$ 为 $a$ 这一无根树对应有标号树个数, 则要设出乘法&#x2F;加法复合意义的GF, 设 $a$ 的GF为 $F_k(a)&#x3D;\dfrac{s(a)^k x^{\vert a\vert}}{(\vert a\vert! )^k}$, 容易发现满足条件, 而一个组合类的GF自然是 $F_k(A)&#x3D;\sum F_k(a)&#x3D;\sum_i \dfrac{f_ix^i}{(i! )^k}$.</p>
+<p>则现在建立树形方程, 有 $\mathrm{xD}F&#x3D;\mathrm{MSET} F$, 其中 $\mathrm{xD}, \mathrm{MSET}$ 分别是使组合类大小减少 $1$ 和多重集构造.</p>
+<p>考虑推出这个特殊GF的 $\mathrm{MSET}$, 则显然是</p>
+<p>$$<br>\begin{gathered}<br>    \mathrm{MSET}(A)<br>    &#x3D;\prod_{a\in A} \sum_{i&#x3D;0} \dfrac{s(a)^{ki}x^{\vert a\vert i}}{(i! )^k(\vert a\vert! )^i}<br>    &#x3D;\exp \sum_{a\in A} \ln  \sum_{i&#x3D;0} \dfrac{s(a)^{ki}x^{\vert a\vert i}}{(i! )^k(\vert a\vert! )^i}\<br>    let\ G(x)<br>    &#x3D;\ln \sum_{i&#x3D;1} \dfrac{x^i}{(i! )^k}<br>    \<br>    \mathrm{MSET}(A)<br>    &#x3D;\exp \sum_a G(\dfrac{s(a)^{k}x^{\vert a\vert}}{(\vert a\vert! )})\<br>    &#x3D;\exp \sum_a \sum_{i&#x3D;1} g_i \dfrac{s(a)^{ki}x^{\vert a\vert i}}{(\vert a\vert! )^i}\<br>    &#x3D;\exp \sum_{i&#x3D;1} g_i \sum_a \dfrac{s(a)^{ki}x^{\vert a\vert i}}{(\vert a\vert! )^i}\<br>    &#x3D;\exp \sum_{i&#x3D;1} g_i F_{ki}(x^i)<br>\end{gathered}<br>$$</p>
+<p>于是有</p>
+<p>$$<br>\mathrm{xD} F&#x3D;\exp \sum_{i&#x3D;1} g_{i} F(x^i)\<br>\ln (\mathrm{xD} F)-g_1F(x)&#x3D;\exp \sum_{i&#x3D;2} g_{i} F_{ki}(x^i)<br>$$</p>
+<p>于是可以提取系数递推了, $F_i$ 从大到小推, 则推 $F_{i}$ 时, $F$ 只用推到第 $\dfrac ni$ 项, 于是等号左边推 $\exp$ 和右边算 $\ln$ 得到 $g$ 的复杂度是 $\sum_i \dfrac{n^2}{i^2}&#x3D;O(n^2)$, 而右边的求和只求 $\sum_i \dfrac{n}{i}\ln \dfrac{n}{i}&#x3D;n\ln^2 n$ 项即可.</p>
+<p>总复杂度 $n^2$</p>
+<p>重点应该是构造满足乘法性质的特殊GF并整出对应运算.</p>
+<h3 id="ARC154F-Dice-Game"><a href="#ARC154F-Dice-Game" class="headerlink" title="[ARC154F] Dice Game"></a>[ARC154F] Dice Game</h3><p>应该想到叶开WC的论文选讲!</p>
+<p>列GF, 设 $F(x)$ 为 $PGF$, 所求即 $F(e^x)$, $F(x)$ 应该枚举最后一次是几得到, 除了最后这次其他的元素用EGF分配时间轴上标号, $L$ 为拉普拉斯变换:</p>
+<p>$$<br>\begin{gathered}<br>    F(x)&#x3D;L(x(e^{\frac{x}{n}}-1)^{n-1})\<br>    &#x3D;L\left(<br>        \sum_{i&#x3D;0} \binom{n-1}{i}(-1)^ix\exp(\frac{ix}{n})<br>    \right)\<br>    \because L(x\exp(\frac{ix}{n}))&#x3D;L\left(\sum_{j&#x3D;0} (\dfrac{i}{n})^j\dfrac{x^{j+1}}{j! }\right)\<br>    &#x3D;\sum_{j&#x3D;0} (\dfrac{i}{n})^j(j+1)x^{j+1}\<br>    &#x3D;\dfrac{n}{i}\sum_{j&#x3D;1}j(\dfrac{ix}{n})^j\<br>    &#x3D;\dfrac{nx}{i(1-\dfrac{ix}{n})^2}\<br>    \therefore<br>    F(x)&#x3D;\sum_{i&#x3D;0} \binom{n-1}{i}(-1)^i\dfrac{nx}{i(1-\dfrac{ix}{n})^2}<br>\end{gathered}<br>$$</p>
+<p>我们要求 $F(e^x)$, 这里不能先求 $F$ 再复合 $e^x$ 因为 $F$ 其实是无限项 $H&#x2F;G$ 的形式, $e^x$ 有常数项 $1$ 使得后面的项有贡献, 应该先求 $H$ 和 $G$, 分别复合之后再求逆.</p>
+<p>先求 $F$ 的话, 可以考虑求 $F(x+1)$ 的系数, 复合 $e^x-1$, 就没有刚才的问题了.</p>
+<p>复合 $e^x$ 怎么做?</p>
+<p>$$<br>F(e^x)&#x3D;\sum_{i&#x3D;0} f_ie^{ix}&#x3D;\sum_i f_i\sum_{j&#x3D;0} \dfrac{(ix)^j}{j! }<br>$$</p>
+<p>$j!$ 可以最后除, 去掉之后就简单了:</p>
+<p>$$<br>\sum_i f_i\sum_{j&#x3D;0}(ix)^j&#x3D;\sum_i \dfrac{f_i}{1-ix}<br>$$</p>
+<p>分治FFT!</p>
+<h3 id="ARC117E-Zero-Sum-Ranges-2"><a href="#ARC117E-Zero-Sum-Ranges-2" class="headerlink" title="[ARC117E] Zero-Sum Ranges 2"></a>[ARC117E] Zero-Sum Ranges 2</h3><p>考虑前缀和, 折线模型, 相等元素个数, dp扫序列不行自然扫值域, 则从上往下不断插入数, 插入规则是相等相邻的两个数之间必须插入至少一个, 设当前已经用了 $i$ 个数, 已经有 $j$ 对相等, 当前能插入的位置有 $k$ 个, 转移时这一层插入几个数 $c$, 则 $f_{i, j, k}\to f_{i+c, j+\binom{c}{2}, c-k-2}$($-2$ 是序列两端必须插入一个), 转移系数是 $c$ 个数放到 $k+2$ 个盒子中, 即 $\binom{c-1}{k+1}$.</p>
+<p>然后这样求出的是所有值都在某条线上的, 于是按照 $\ge 0, &lt;0$ 部分合并即可: $\sum_{i, j, k} f_{i, j, k}f_{2n-i, K-j, k-1}$</p>
+<p>复杂度是 $n^5$</p>
+<h3 id="ARC096E-Everything-on-It"><a href="#ARC096E-Everything-on-It" class="headerlink" title="[ARC096E] Everything on It"></a>[ARC096E] Everything on It</h3><p>$\ge 2$ 这个 $2$ 很小, 考虑容斥, 先容斥没有选恰好一次的数的方案数:</p>
+<p>$$<br>f_n&#x3D;\sum_c \binom{n}{c}(-1)^c \cdot 2^{2^{n-c}}\sum_i {c\brace i} 2^{(n-c)i}<br>$$</p>
+<p>再容斥没有不选的</p>
+<p>$$<br>\begin{gathered}<br>ans&#x3D;\sum_k \binom{n}{k}f_k (-1)^{n-k} \<br>&#x3D;\sum_{k&#x3D;0}^n \binom{n}{k} (-1)^{n-k} \sum_{c&#x3D;0}^k \binom{k}{c}(-1)^c \cdot 2^{2^{k-c}}\sum_{i&#x3D;0}^c {c\brace i} 2^{(k-c)i}\<br>a&#x3D;n-k+c\<br>ans&#x3D;\sum_{a&#x3D;0}^n (-1)^a \sum_{c&#x3D;0}^a \binom{n}{a}\binom{a}{c}2^{2^{n-a}}\sum_{i&#x3D;0}^c {c\brace i}2^{(n-a)i}\<br>&#x3D;\sum_{a&#x3D;0}^n(-1)^a2^{2^{n-a}}\binom{n}{a}\sum_{i&#x3D;0}^n2^{(n-a)i}\sum_{c&#x3D;i}^n\binom{a}{c}{c\brace i}<br>\end{gathered}<br>$$</p>
+<p>注意$\binom{a}{c}{c\brace i}$的组合意义,即选择$c$个元素再划分成$i$组,那么剩下的元素划分成一组,再添加一个元素用来标识这个组,即这个式子等于${a+1\brace c+1}$于是做完了.</p>
+<h3 id="ARC119F-AtCoder-Express-3"><a href="#ARC119F-AtCoder-Express-3" class="headerlink" title="[ARC119F] AtCoder Express 3"></a>[ARC119F] AtCoder Express 3</h3><p>走的过程一定最多往回走一格切换颜色方便往后跳.考虑已知划分的话怎么求最短路,可以记录前$i$个点中最后一个$A&#x2F;B$类点(包括自己)到起点距离$d_0,d_1$,设当前点为$A$类,若下个点为$A$类则$d_0’&#x3D;d_0+1,d_1’&#x3D;d_1$,否则$d_0’&#x3D;\min(d_0,d_1+2),d_1’&#x3D;\min(d_0+1,d_1+1)$.于是dpofdp思想可以得到一个$n^3$的状态:$f_{i,j,k,c}$表示填到第$i$个位置,$d_0,d_1$和当前点颜色.</p>
+<p>感觉可能这种题都跑dfa最小化能赢.接下来两种走法,一种是人脑出等价且更小的自动机,一种是发现性质,对于一个$A$类点首先总有$d_0\ge d_1-1$因为当前点是由这个$B$点后一格格走的.而如果$d_1&lt;d_0-2$,那么以后一定直接用这个$d_1$的B类点跳过去更好,所以这样的都和$d_&#x3D;d_0-2$的等价,于是就只有$n^2$状态了.</p>
+<p>后面这个分析感觉很像小N的独立集?但是树上问题显然不能搞dfa.</p>
+<h3 id="P5206-WC2019-数树"><a href="#P5206-WC2019-数树" class="headerlink" title="P5206 [WC2019] 数树"></a>P5206 [WC2019] 数树</h3><p>好强的题.</p>
+<p>想到容斥,此时能想到对两棵树的集合容斥,但系数不好确定,不如对两棵树的边的交集大小容斥.</p>
+<p>然后因为是交集求$\sum_A\sum_B f(A\cap B)$,我们希望有一种容斥是$f(S)&#x3D;\sum_{T\subseteq S} f(T)c(T)$.</p>
+<h4 id="trick"><a href="#trick" class="headerlink" title="[trick]"></a>[trick]</h4><p>$f(S)&#x3D;\sum_{T\subseteq S}\sum_{P\subseteq T}f(P)(-1)^{\vert T\vert-\vert P\vert}$.</p>
+<p>证明:<br>$$<br>\begin{gathered}<br>&#x3D;\sum_{P\subseteq S} f(P)\sum_{T\supseteq P}(-1)^{\vert T\vert-\vert P\vert}\<br>&#x3D;\sum_{P\subseteq S} f(P)\sum_{i&#x3D;0}^{\vert S\vert-\vert P\vert} \binom{\vert S\vert-\vert P\vert}{i}(-1)^i\&#x3D;f(S)<br>\end{gathered}<br>$$</p>
+<p>有了这个的话会很好,比如对于subtask3:</p>
+<p>$$<br>\begin{gathered}<br>    ans&#x3D;\sum_A \sum_B \sum_{S\subseteq A\cap B}\sum_{T\subseteq S} (-1)^{\vert S\vert-\vert T\vert}y^{n-\vert T\vert}\<br>    &#x3D;\sum_S \sum_{T\subseteq S} y^{n-\vert T\vert}(-1)^{\vert S\vert-\vert T\vert}\sum_{A\supseteq S}\sum_{B\supseteq S}\<br>    &#x3D;\sum_S F(S)^2 \sum_{T\subseteq S} y^{n-\vert T\vert}(-1)^{\vert S\vert-\vert T\vert}\<br>    &#x3D;y^{n}\sum_S F(S)^2 y^{-\vert S\vert}\sum_{T\subseteq S} (-y)^{\vert S\vert-\vert T\vert}\<br>    &#x3D;y^{n}\sum_S F(S)^2 y^{-\vert S\vert}\sum_i \binom{\vert S\vert}{i}(-y)^{\vert S\vert-i}\<br>    &#x3D;y^{n}\sum_S F(S)^2 (\dfrac{1}{y}-1)^{\vert S\vert}\<br>    let\ K&#x3D;\dfrac{1}{y}-1\<br>    ans&#x3D;y^nn^{-4}K^{n}\sum_P K^{-\vert P\vert} n^{2\vert P\vert} \prod_i p_i^2<br>\end{gathered}<br>$$</p>
+<p>$P$是枚举划分,则大小为$i$的集合贡献$\dfrac{n^2}{K}i^i$(一个有$i^{i-2}$种方式组成连通块),exp即可.</p>
+<p>对Subtask2,把上面的转化式子抄一份下来:</p>
+<p>$$<br>ans&#x3D;y^{n}\sum_{S\subseteq A} F(S) K^{\vert S\vert}\<br>&#x3D;y^n K^nn^{-2}\sum_{P\subseteq P_A}K^{-\vert P\vert}n^{\vert P\vert}\prod_{p_i}p_i<br>$$</p>
+<p>树上选连通块,大小为$i$的连通块贡献$w&#x3D;K^{-1}ni$.考虑dpGF,设考虑点$u$子树,$u$所在连通块为$i$的方案数为$[x^i]H_u$(常数为$0$)转移是$H_u:&#x3D;H_uH_v+KH_v’(1)H_u$(第一个是并入连通块,第二个是这里断开乘上贡献),对这个式子求导带入1得到:</p>
+<p>$$<br>H_u’(1)&#x3D;H_u’(1)H_v(1)+H_v’(1)H_u(1)+KH_v’(1)H_u’(1)<br>$$</p>
+<p>答案只要用到$H_1(1)$,于是只要维护$H’_u(1)$和$H_u(1)$即可做到线性.可以用来维护转移是GF,最后要点值的dp.</p>
+<h3 id="AGC058D-Yet-Another-ABC-String"><a href="#AGC058D-Yet-Another-ABC-String" class="headerlink" title="[AGC058D] Yet Another ABC String"></a>[AGC058D] Yet Another ABC String</h3><p>GF熟练题,容斥好题.</p>
+<p>首先最好想的做法是,建出一个简单的DFA去匹配这$3$个串,每个点设一个$3$元GF$F_i(x,y,z)$,可以简化到$3$个GF方程,转移很好写,就是要解一个很麻烦的GF方程再很麻烦的提取系数.</p>
+<p>更简单的做法是直接GF凑容斥系数,题目相当于可以用若干个长度不超过$2$的连续段拼出这个序列,设长$i$的段系数为$a_i$,我们希望$\dfrac{1}{1-(\sum_i a_ix^i)}&#x3D;1+x+x^2$,设$a_i$的GF为$A$.然后是求$\dfrac{1}{1-B(x,y,z)}$,$[x^iy^jz^k]B&#x3D;[x^{i+j+k}]a$.</p>
+<p>更简单的容斥,容易想到对极长的段$l,r$容斥,其中$[l,r]$是$abc$不断循环的区间,但只对这样的段的个数容斥的话,其实方案数很好求,因为只要确保段长大于等于$3$,可以直接组合数.</p>
+<h3 id="ARC100F-Colorful-Sequences"><a href="#ARC100F-Colorful-Sequences" class="headerlink" title="[ARC100F] Colorful Sequences"></a>[ARC100F] Colorful Sequences</h3><p>拆贡献!考虑$[p,p+M]$恰为$A$的满足第一个限制的序列数量.那么分类:</p>
+<ul>
+<li>$A$包含长$k$两两不同的子区间:显然.</li>
+<li>$A$中有相同元素,设极长无相同元素的前缀,后缀为$a,b$,容斥求不合法的,设$f_{i,j,0&#x2F;1}$表示从$p+M+1$或$p-1$开始,长$j$的区间包含$j$种不同的元素,且不出现长$k$的互不相同段的方案数,初始状态$(0,p)&#x3D;1,(0,q)&#x3D;1$,是否已经存在满足要求的区间,dp完了卷起来即可.</li>
+<li>$A$中无相同元素但长度不足$k$,此时所有长度相同的$A$本质相同,此时发现不如不钦定位置,直接算一个序列长度等于$m$的合法区间的个数的期望,设$f_{i,j},g_{i,j}$分别表示方案数和期望即可.</li>
+</ul>
+<h3 id="CF1086F-Forest-Fires"><a href="#CF1086F-Forest-Fires" class="headerlink" title="CF1086F Forest Fires"></a>CF1086F Forest Fires</h3><p>应该是典的了,考虑矩形并可以写成容斥的式子,而任意个矩形的交也是一个不断扩散变大的矩形,随时间也是二次函数,于是某个时刻$t$的格子个数就会了,而最后答案就是对这个时间区间求和,也就变成三次函数,做完了,拉插即可.分段函数当且仅当两个矩形出现交的$n^2$个时间点变化.</p>
+<h3 id="P7468-NOI-Online-2021-提高组-愤怒的小-N"><a href="#P7468-NOI-Online-2021-提高组-愤怒的小-N" class="headerlink" title="P7468 [NOI Online 2021 提高组] 愤怒的小 N"></a>P7468 [NOI Online 2021 提高组] 愤怒的小 N</h3><p>感觉这个作差推式子的思路不太熟.</p>
+<p>容易想到dp,设$A_i(x)$表示迭代$i$次后,设$a$位置集合为$S$,$\sum_{i\in A}f(i+x)$的值,同理设$B_i(x)$,有$A_{i+1}(x)&#x3D;A_i(x)+B_i(x+2^i),B_{i+1}(x)&#x3D;B_i(x)+A_i(x+2^i)$,但是直接做是$nk^2$(最多大常数$nk\log n$)的.</p>
+<p>此时,因为式子形式对称又线性,考虑作差,$C_{i+1}(x)&#x3D;A_{i+1}(x)-B_{i+1}(x)&#x3D;A_i(x)-B_i(x)-A_i(x+2^i)+B_i(x+2^i)&#x3D;D_i(x)-D_i(x+2^i)$,而重点是,这样做一定会消掉最高次项,于是迭代$k$次后就$D(x)&#x3D;0$.</p>
+<p>可以$n^3$算出所有$D$,而我们要求的是若干段$A$的值,我们知道$A_i(x)+B_i(x)&#x3D;\sum_j^{2^i}f(x+j)$,$A+\dfrac{A+B+D}{2}$,$D$已经解决,只要求$A+B$,简答画式子得到就是$\sum_{i&#x3D;0}^N f(i)$,于是拉插做完了.</p>
+<p>[trick] 作差是关键一步,对形式对称的递推式考虑其和,差式子的递推式.</p>
+<h3 id="ARC142D-Deterministic-Placing"><a href="#ARC142D-Deterministic-Placing" class="headerlink" title="[ARC142D] Deterministic Placing"></a>[ARC142D] Deterministic Placing</h3><h3 id="ARC111F-Do-you-like-query-problems"><a href="#ARC111F-Do-you-like-query-problems" class="headerlink" title="[ARC111F] Do you like query problems?"></a>[ARC111F] Do you like query problems?</h3><p>[think] 既想着序列上拆期望贡献,值域上拆期望也别忘了.</p>
+<p>困难是某次求和可能和前面一个遥远的位置有关,考虑拆贡献,每个位置单独计算,且按值域拆成是否大于$i$,然后写式子就行了.</p>
+<h3 id="ABC241Ex-Card-Deck-Score"><a href="#ABC241Ex-Card-Deck-Score" class="headerlink" title="[ABC241Ex] Card Deck Score"></a>[ABC241Ex] Card Deck Score</h3><p>简单题,显然多项式是</p>
+<p>$$<br>\prod_i \dfrac{1-(a_ix_i)^{b_i+1}}{1-(a_ix_i)}<br>$$</p>
+<p>于是分子分母乘起来,分子只有$2^16$项,每项要想贡献到$[x^m]$对应的分母那项是确定的,也就是$2^16$个对$\prod_i \dfrac{1}{1-(a_ix_i)}$求远处系数的询问,显然部分分式做完了.</p>
+<h3 id="ARC135E-Sequence-of-Multiples"><a href="#ARC135E-Sequence-of-Multiples" class="headerlink" title="[ARC135E] Sequence of Multiples"></a>[ARC135E] Sequence of Multiples</h3><p>显然$a_i&#x3D;\lfloor \dfrac{a_{i-1}}{i}\rfloor i+i$考虑$b_i&#x3D;\dfrac{a_i}{i}$,则$b_i&#x3D;1+\lfloor \dfrac{b_{i-1}(i-1)}{i}\rfloor&#x3D;b_{i-1}+1-\lceil \dfrac{b_{i-1}}{i}\rceil$,于是$b_{i-1}-b_i&#x3D;\dfrac{b_{i-1}}{i}-1$,是不增的(上取整).分析$b$的上界,$a_i\le x+\sum_{j&#x3D;2}^i j\le x+i^2$,$b_i\le \dfrac{x}{i}+i$,于是$b_i-i$是有根号分治的,但数据范围看起来要整到$\sqrt[3] n$.</p>
+<p>结论,$\dfrac{x}{i-1}-\dfrac{x}{i}$的不同值的个数是$\sqrt[3] n$的,通分一下和$\dfrac{x}{i^2}$是同级的,于是就做完了.</p>
+<p>见到这种玩意打表找规律就对了&#x2F;fn另外就是没规律就差分.</p>
+<h3 id="ARC093F-Dark-Horse"><a href="#ARC093F-Dark-Horse" class="headerlink" title="[ARC093F] Dark Horse"></a>[ARC093F] Dark Horse</h3><p>显然每个位置概率相等,钦定你在$1$,$1$的祖先上会进行$N$次比赛,而且这些点之中编号小的胜利,也就是剩下的点大小为$1\ldots 2^{n-1}$的组,每组的最小值不为$A_i$.考虑容斥,钦定一个最小值相当于一个值域限制.从小到大填数,$f_{i,S}$表示填前$i$大的数,$S$中的组填过数(最小值确定),问题是不能把剩余大小设进去,于是想每次填满一整组,于是从大往小dp,每次可以选择把当前$A_i$填到一个组中并把剩下元素选了,或者什么也不做等着被更小的$A$塞到组里.</p>
+<p>复杂度$2^nnm$</p>
+<h3 id="AGC058F-Authentic-Tree-DP"><a href="#AGC058F-Authentic-Tree-DP" class="headerlink" title="[AGC058F] Authentic Tree DP"></a>[AGC058F] Authentic Tree DP</h3><p>很神奇的东西啊</p>
+<p>给奇怪的式子找一个组合意义,乘法看成概率,则它描述了删一条边,剩余两个连通块分别满足性质的概率,区别是分母应该是$n-1$,若是则答案是$1$,(把一棵树删空的概率).两边的问题是独立的,</p>
+<p>于是考虑给点&#x2F;边赋权让系数总和是$n$且仍然有组合意义,改成删点,每个点有$1$的权重,每个边建一个点有$1$的权重,边点挂一个点有$-1$的权重,满足了权重和是$n$.显然原图上一组删边方案等价于在新图上每次删一个边点的方案,只要保证边点比相邻的点先删.所以答案就是这个条件(边点比周围点先删)的概率.</p>
+<p>树上双向边拓扑序计数,容斥典题.</p>
+<h3 id="ABC236Ex-Distinct-Multiples"><a href="#ABC236Ex-Distinct-Multiples" class="headerlink" title="[ABC236Ex] Distinct Multiples"></a>[ABC236Ex] Distinct Multiples</h3><p>考虑容斥,钦定若干集合相等,考虑容斥系数.</p>
+<p>一个集合可能被小集合任意组合得到,而最后只有大小为$0$和$1$的系数是$1$其他的是$0$,所以大小为$i$的集合系数是$[x^i]\ln(1+x)&#x3D;(-1)^{i-1}(i-1)!$.</p>
+<p>则可以算出每个相等集合的方案数,再集合幂级数exp一下就好了.</p>
+<h3 id="P5576-CmdOI2019-口头禅"><a href="#P5576-CmdOI2019-口头禅" class="headerlink" title="P5576 [CmdOI2019] 口头禅"></a>P5576 [CmdOI2019] 口头禅</h3><p>建广义SAM,则一个点的endpos出现的串形成若干连续段,一开始连续段数显然$O(n)$,用set维护,启发式合并连续段复杂度是$n\log n\log v$,每次合并出新连续段($O(n)$次)$更新答案(显然只有每个连续段第一次合并出来的时候有贡献因为越浅越短).</p>
+<p>另一个做法基于一个结论:</p>
+<p>[trick] 广义SAM中设点$i$出现的字符串的集合为$S_i$,则$\sum_i \vert S_i\vert&#x3D;O(n\sqrt n)$.</p>
+<p>于是扫描线,维护当前$r$的每个向左的连续段,暴力更新所有含有$r$的端点即可.</p>
+<h3 id="P9167-省选联考-2023-城市建造"><a href="#P9167-省选联考-2023-城市建造" class="headerlink" title="P9167 [省选联考 2023] 城市建造"></a>P9167 [省选联考 2023] 城市建造</h3><p>我怎么会没写过这个的题解?</p>
+<p>选出点集使得删掉这些点之间的边后每个点恰在一个连通块且限制连通块大小.</p>
+<p>考虑性质,原来的一个连通块只有一个点向外连边,这个点一定是割点,一个点双一定属于同一个连通块,割点所在的所有点双中只有一个中全是连通块中点,其他的不能是当前连通块的点,得到结论其他的每个都是一个割点.即被删的点集也恰好是若干完整点双.</p>
+<p>于是建圆方树,要求删若干方点使得剩下的圆点构成连通块,连通块大小满足限制.</p>
+<p>发现重心一定会被删,考虑如果不删重心一定有一棵子树大于一半,所以以它为根,这样每个连通块都是一个子树,这就很好.</p>
+<p>于是对于$k&#x3D;0$,枚举子树大小$s$,对当前$u$的某个儿子子树$\ge s$一定要删,儿子子树小于$s$则一定不能删,方案唯一.</p>
+<p>对$k&#x3D;1$枚举子树大小$s,s+1$,同理有$&lt;s$一定不删$&gt;s$一定删,但如果$&#x3D;s$可以留着让连通块大小是$t+1$,只能留一个,枚举留哪个等于$s$的儿子剩下的也都要删.</p>
+<p>现在单次复杂度线性,$k&#x3D;0$复杂度$nd(n)$,$k&#x3D;1$复杂度$n\sqrt n$.</p>
+<p>todo</p>
+<h3 id="P8571-JRKSJ-R6-Dedicatus545"><a href="#P8571-JRKSJ-R6-Dedicatus545" class="headerlink" title="P8571 [JRKSJ R6] Dedicatus545"></a>P8571 [JRKSJ R6] Dedicatus545</h3><p>AC机可以$O(\vert s\vert+\sum \vert t\vert)$的算匹配,具体的,不断跳转移边,则当前点parent tree上祖先中的终止节点都会被匹配.</p>
+<p>长于根号的串直接每个跑一遍匹配+建线段树</p>
+<p>短于根号的串,ac机上会标$\sqrt n$个节点,相当于$\sqrt n$个询问到根的链上编号在$[l,r]$的终止节点个数,那么再转到dfs序上,就是矩形加单点和,用$O(\sqrt n)-O(1)$的分块秒了.</p>
+<p>然后这个复杂度看起来很爆炸?但设块长为$B$,其实是平衡$\dfrac{l}{B}n+qB$,平均起来2e5的样子.</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a><a class="post-meta__tags" href="/tags/%E6%9D%82%E9%A2%98/">杂题</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/10/21/lyh/" title="LYHDP选做"><img class="cover" src="/img/2022-11-15-20-37-07-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-21</div><div class="title">LYHDP选做</div></div></a></div><div><a href="/2022/05/17/unsorted_problems/" title="杂题(tricks)"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">杂题(tricks)</div></div></a></div><div><a href="/2023/05/18/cf/" title="CF"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-18</div><div class="title">CF</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%81%E9%80%89%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">省选准备?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P3726-AH2017-x2F-HNOI2017-%E6%8A%9B%E7%A1%AC%E5%B8%81"><span class="toc-number">1.0.1.</span> <span class="toc-text">P3726 [AH2017&#x2F;HNOI2017] 抛硬币</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5279-ZJOI2019-%E9%BA%BB%E5%B0%86"><span class="toc-number">1.0.2.</span> <span class="toc-text">P5279 [ZJOI2019] 麻将</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P3307-SDOI2013-%E9%A1%B9%E9%93%BE"><span class="toc-number">1.0.3.</span> <span class="toc-text">P3307 [SDOI2013] 项链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4916-MtOI2018-%E9%AD%94%E5%8A%9B%E7%8E%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text">P4916 [MtOI2018] 魔力环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC120F-Wine-Thief"><span class="toc-number">1.0.5.</span> <span class="toc-text">[ARC120F] Wine Thief</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P4500-ZJOI2018-%E6%A0%91"><span class="toc-number">1.0.6.</span> <span class="toc-text">P4500 [ZJOI2018] 树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC154F-Dice-Game"><span class="toc-number">1.0.7.</span> <span class="toc-text">[ARC154F] Dice Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC117E-Zero-Sum-Ranges-2"><span class="toc-number">1.0.8.</span> <span class="toc-text">[ARC117E] Zero-Sum Ranges 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC096E-Everything-on-It"><span class="toc-number">1.0.9.</span> <span class="toc-text">[ARC096E] Everything on It</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC119F-AtCoder-Express-3"><span class="toc-number">1.0.10.</span> <span class="toc-text">[ARC119F] AtCoder Express 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5206-WC2019-%E6%95%B0%E6%A0%91"><span class="toc-number">1.0.11.</span> <span class="toc-text">P5206 [WC2019] 数树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#trick"><span class="toc-number">1.0.11.1.</span> <span class="toc-text">[trick]</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AGC058D-Yet-Another-ABC-String"><span class="toc-number">1.0.12.</span> <span class="toc-text">[AGC058D] Yet Another ABC String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC100F-Colorful-Sequences"><span class="toc-number">1.0.13.</span> <span class="toc-text">[ARC100F] Colorful Sequences</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1086F-Forest-Fires"><span class="toc-number">1.0.14.</span> <span class="toc-text">CF1086F Forest Fires</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P7468-NOI-Online-2021-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F-N"><span class="toc-number">1.0.15.</span> <span class="toc-text">P7468 [NOI Online 2021 提高组] 愤怒的小 N</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC142D-Deterministic-Placing"><span class="toc-number">1.0.16.</span> <span class="toc-text">[ARC142D] Deterministic Placing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC111F-Do-you-like-query-problems"><span class="toc-number">1.0.17.</span> <span class="toc-text">[ARC111F] Do you like query problems?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC241Ex-Card-Deck-Score"><span class="toc-number">1.0.18.</span> <span class="toc-text">[ABC241Ex] Card Deck Score</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC135E-Sequence-of-Multiples"><span class="toc-number">1.0.19.</span> <span class="toc-text">[ARC135E] Sequence of Multiples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC093F-Dark-Horse"><span class="toc-number">1.0.20.</span> <span class="toc-text">[ARC093F] Dark Horse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AGC058F-Authentic-Tree-DP"><span class="toc-number">1.0.21.</span> <span class="toc-text">[AGC058F] Authentic Tree DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC236Ex-Distinct-Multiples"><span class="toc-number">1.0.22.</span> <span class="toc-text">[ABC236Ex] Distinct Multiples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P5576-CmdOI2019-%E5%8F%A3%E5%A4%B4%E7%A6%85"><span class="toc-number">1.0.23.</span> <span class="toc-text">P5576 [CmdOI2019] 口头禅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P9167-%E7%9C%81%E9%80%89%E8%81%94%E8%80%83-2023-%E5%9F%8E%E5%B8%82%E5%BB%BA%E9%80%A0"><span class="toc-number">1.0.24.</span> <span class="toc-text">P9167 [省选联考 2023] 城市建造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P8571-JRKSJ-R6-Dedicatus545"><span class="toc-number">1.0.25.</span> <span class="toc-text">P8571 [JRKSJ R6] Dedicatus545</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/28/sdptt1/" title="省队集训">省队集训</a><time datetime="2024-04-27T16:00:00.000Z" title="Created 2024-04-28 00:00:00">2024-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/17/toptree/" title="Top Tree">Top Tree</a><time datetime="2024-02-16T16:00:00.000Z" title="Created 2024-02-17 00:00:00">2024-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/30/noiwc2024/" title="NOIWC">NOIWC</a><time datetime="2024-01-29T16:00:00.000Z" title="Created 2024-01-30 00:00:00">2024-01-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
