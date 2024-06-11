@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>APIO | FireInIce's Blog</title><meta name="keywords" content="日志"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="APIO2024Day1-概率论AGC060C考虑拿出最左边和最右边两条链共 $2(n-1)$ 个点, 归并它们, 然后以钦定顺序得到一棵新树(合并成一条链), 于是设 $f_{i, j}$ 为左边链到第 $i$ 个右边到第 $j$ 个答案, 看起来贡献计算简单. 复杂度 $n^2$. Pro数据范围都是 $10^7$ 首先原问题你直接就会了, 枚举最大值个数和最大值的值然后上一个二项式反演. 但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APIO">
+<meta property="og:url" content="https://fireinicecode.github.io/2024/05/17/apio/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="APIO2024Day1-概率论AGC060C考虑拿出最左边和最右边两条链共 $2(n-1)$ 个点, 归并它们, 然后以钦定顺序得到一棵新树(合并成一条链), 于是设 $f_{i, j}$ 为左边链到第 $i$ 个右边到第 $j$ 个答案, 看起来贡献计算简单. 复杂度 $n^2$. Pro数据范围都是 $10^7$ 首先原问题你直接就会了, 枚举最大值个数和最大值的值然后上一个二项式反演. 但">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj">
+<meta property="article:published_time" content="2024-05-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-08T05:56:28.612Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2024/05/17/apio/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'APIO',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-06-08 13:56:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://t.mwm.moe/fj')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">APIO</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2024-05-16T16:00:00.000Z" title="Created 2024-05-17 00:00:00">2024-05-17</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="APIO2024"><a href="#APIO2024" class="headerlink" title="APIO2024"></a>APIO2024</h1><h2 id="Day1-概率论"><a href="#Day1-概率论" class="headerlink" title="Day1-概率论"></a>Day1-概率论</h2><h3 id="AGC060C"><a href="#AGC060C" class="headerlink" title="AGC060C"></a>AGC060C</h3><p>考虑拿出最左边和最右边两条链共 $2(n-1)$ 个点, 归并它们, 然后以钦定顺序得到一棵新树(合并成一条链), 于是设 $f_{i, j}$ 为左边链到第 $i$ 个右边到第 $j$ 个答案, 看起来贡献计算简单.</p>
+<p>复杂度 $n^2$.</p>
+<h3 id="Pro"><a href="#Pro" class="headerlink" title="Pro"></a>Pro</h3><p>数据范围都是 $10^7$</p>
+<p>首先原问题你直接就会了, 枚举最大值个数和最大值的值然后上一个二项式反演.</p>
+<p>但是重点是怎么处理从最大值中等概率选一个这件事, 设最大值位置随机选一个选到 $1$, 问题相当于算 $\dfrac{P(x&#x3D;1, a_1\ge r, sum_i a_i&#x3D;s)}{P(a_1\ge r, sum_i&#x3D;s)}&#x3D;\dfrac{P(x&#x3D;1, \max a_i\ge r, sum_i a_i&#x3D;s)}{P(a_1\ge r, sum_i&#x3D;s)}$, 发现此时分子对每个元素是等价的, 于是直接分子等于 $\dfrac{1}{p}P(\max a_i\ge r, \sum_i a_i&#x3D;s)$, 剩下部分简单线性.</p>
+<h3 id="ARC150D"><a href="#ARC150D" class="headerlink" title="ARC150D"></a>ARC150D</h3><p>考虑每个点被选的次数之和, 先认为是从所有点中选且跳过不合法的, 那么对于一个点 $u$, 从根到 $u$ 上这 $d$ 个点每个点概率相等, 所以对于任意时刻这 $d$ 个点被选的期望次数相等, 于是只要求总次数, 然后设前 $i$ 个已经被选过(剩下的可能选过), 于是选到下一个的概率是 $\dfrac{1}{d-i}$</p>
+<h3 id="ABC270Ex"><a href="#ABC270Ex" class="headerlink" title="ABC270Ex"></a>ABC270Ex</h3><p>操作可以转化成, $T$ 时给一个位置 $i$ 打一个时间标记 $e_i&#x3D;T$, 要求 $T-e_i\ge a_i$ 时可以结束. 则对于长度为考虑一个位置可以结束的限制就是 $\forall i$, $(T-a_i, T]$ 不能选 $i$.</p>
+<p>考虑设答案PGF是 $F(x)&#x3D;\sum_i p_ix^i$, 但问题是一个前缀 $1\ldots i$ 有若干可能成为结束的前缀, 所以容斥, 答案是 $\sum_{S, a_n\le s_1&lt;s_2\ldots &lt;s_n} (-1)^{S} \prod_i g_{s_i-s_{i-1}}$(看上一段的限制, 发现一段的答案只和长度相关, 且长度大于 $a_n$ 时都和 $a_n$ 一样).</p>
+<p>于是写GF就好了:</p>
+<p>$$<br>\begin{gathered}<br>Q(x)&#x3D;\sum_i x^i g_i\<br>G(x)&#x3D;Q(x)+g_{a_n}\dfrac{x^{a_n+1}}{1-x}\<br>F(x)&#x3D;\dfrac{1}{1-x}-\dfrac{1}{1-x}\cdot g_{a_n}\dfrac{x^{a_n}}{1-x}\dfrac{1}{1+G(x)}\<br>F(1)<br>&#x3D;\dfrac{1}{1-x}(1-\dfrac{g_{a_n}x^{a_n}}{1-x}\dfrac{1}{1+G(x)})\<br>&#x3D;\dfrac{1}{1-x}(1-g_{a_n}x^{a_n}\dfrac{1}{(1+Q(x))(1-x)+g_{a_n}x^{a_n+1}})\<br>&#x3D;\dfrac{1}{1-x}(\dfrac{(1+Q(1))(1-x)+g_{a_n}x^{a_n}(x-1)}{(1+Q(1))(1-x)+g_{a_n}x^{a_n+1}})\<br>&#x3D;\dfrac{1+Q(1)-g_{a_n}}{g_{a_n}}<br>\end{gathered}<br>$$</p>
+<p>注意只要算 $F(1)$, 则只要算 $g_{a_n}$ 和 $Q(1)$. 这两部分是平凡的.</p>
+<p>但是这题有直接dp的做法啊! 发现对于任意状态, 答案只和 $s&#x3D;\max a_i-b_i$ 有关, 然后调下顺序发现dp式子是线性递推就做完了.</p>
+<h3 id="ARC113F"><a href="#ARC113F" class="headerlink" title="ARC113F"></a>ARC113F</h3><p>考虑把概率拆分成 $f(m)$ 表示最小值大于等于 $m$ 的概率, 则对 $f$ 积分就是期望.</p>
+<p>考虑求 $f$, 要求任意两个间距大于 $m$ 的概率, 相当于 $a_i-mi$ 递增的概率, 于是转化成有若干个区间, 每个变量在区间内均匀随机, 要求递增的概率, 则设二元函数 $g_i(m, x)$, 表示前 $i$ 个, 最后一个数值为 $x$ 的概率, 然后这个是关于 $m$ 有 $n^2$ 段, 关于 $x$ 有 $n$ 段的函数, 看起来可以直接维护!</p>
+<h3 id="qoj6413"><a href="#qoj6413" class="headerlink" title="qoj6413"></a>qoj6413</h3><p>todo</p>
+<h3 id="寻找图的包含至少一半边的二分子图"><a href="#寻找图的包含至少一半边的二分子图" class="headerlink" title="寻找图的包含至少一半边的二分子图"></a>寻找图的包含至少一半边的二分子图</h3><p>随机黑白染色. todo</p>
+<h2 id="Day1-组合计数"><a href="#Day1-组合计数" class="headerlink" title="Day1-组合计数"></a>Day1-组合计数</h2><h3 id="LOJ177-生成子群计数"><a href="#LOJ177-生成子群计数" class="headerlink" title="LOJ177 生成子群计数"></a>LOJ177 生成子群计数</h3><p>考虑 $a_1&#x3D;x$, 那么只考虑这个可以对每个置换 $p$ 让 $i\to p_i$ 连无向边(复合若干次一定能得到 $p^{-1}$ 所以有反向边), 于是一种复合方案对应一个 $1\to x$ 的路径, 而任意拿出图一个生成树, $1\to x$ 路径一定可以拆分成一个树上路径和一个经过 $1$ 的可能非简单圈(可能重复走边), 而对于一条非树边可以唯一确定一个简单环, 发现这些圈又可以由简单环生成, 把每个环依次复合应该可以得到一个首位是 $1$ 的排列, 而就要求这些排列任意复合的结果数, 于是问题到了 $n-1$ 规模.</p>
+<p>但是直接做的话 $m$ 上升很快</p>
+<p>[trick] $n$ 阶置换群最多取 $n$ 个排列使得不能各自复合出, 于是只保留 $n$ 个即可.</p>
+<p>一个智慧法说的是随机 $n$ 种对当前 $k$ 个排列的复合方式, 把它们作为生成元做下去.</p>
+<h3 id="CF1909I"><a href="#CF1909I" class="headerlink" title="CF1909I"></a>CF1909I</h3><p>对每个 $m$ 分别做.</p>
+<p>对 $k&#x3D;n-1$ 的情况, 考虑把所有数按 $\min(i, m-i)$ 排序, 则有任意两个数和大于 $m$ 只取决于前面那个数的位置, 这个条件让你想到插入连续段的方式dp排列, 于是从小到大扫值, 一开始有 $t&#x3D;1$ 空, 插入大于 $m$ 的数时 $T$ 每次加 $1$, 然后空交替减 $1$ 加 $1$, 而方案数就是过程中 $t$ 的乘积.</p>
+<p>对 $k\ne n-1$ 的时候, 二项式反演, 钦定有 $i$ 个位置满足条件, 则剩下 $n-i$ 满足条件, 相当于最后插入出 $t$ 个连续段不需要合并. 然后需要再次容斥避免空段.</p>
+<p>两个反演直接做复杂度是 $n^2$, 需要NTT加速是经典的, 最后复杂度 $n^2\log n$</p>
+<h3 id="CF1896H"><a href="#CF1896H" class="headerlink" title="CF1896H"></a>CF1896H</h3><p>令 $n$ 是题目中的 $2^n$</p>
+<p>若要求两个串是好的, 即对每个循环为恰好相等的 $1$ 数量都少于 $\dfrac{n}{2}$(恰好相等的 $0$ 数量与 $1$ 相等).</p>
+<p>用多项式刻画 $f$, 设 $A(x)&#x3D;\sum_{i&#x3D;0}^{2n-1} a_ix^i$, $B(x)&#x3D;\sum_{i&#x3D;0}^{2n-1} b_{2n-1-i} x^i$, $I(x)&#x3D;\sum_{i&#x3D;0}^{2n-1} x^i$, 则 $(a, b)$ 为好的当且仅当 $A(I-B)+B(I-A)&#x3D;2^nI$, 即 $AB&#x3D;2^{n-1}I$. 注意到右边DFT后为全 $0$, 则左边DFT后为全 $0$.</p>
+<p>喵的啥? todo</p>
+<h3 id="CF1774G"><a href="#CF1774G" class="headerlink" title="CF1774G"></a>CF1774G</h3><p>先考虑一次怎么做</p>
+<p>容斥, 钦定 $k$ 个关键点未被覆盖, 则一个区间包含至少一个关键点则不可选, 而若存在一个区间不包含关键点则这个区间变一下会更改区间数奇偶性, 对答案贡献 $0$, 所以变成要求每个区间包含至少一个关键点, 贡献 $(-1)^{k}$</p>
+<p>于是考虑dp, 设 $f_i$ 为考虑 $1\ldots i$, $i$ 必须选的情况下, 前 $i$ 个的带系数方案和, 则 $f_i&#x3D;\sum_{j\ge p_i} -f_j$, $p_i$ 为右端点小于 $i$ 的区间中左端点最大值. 因为是简单求和形式于是令 $s_i&#x3D;\sum_{j&#x3D;0}^i f_j$, 有 $s_i-s_{i-1}&#x3D;-(s_{i-1}-s_{p_i-2})$, 即 $s_i&#x3D;s_{p_i-2}$.</p>
+<p>于是直接倍增处理每个 $i$ 往前跳的位置求 $s$ 即可处理多次询问.</p>
+<h3 id="CF1889E"><a href="#CF1889E" class="headerlink" title="CF1889E"></a>CF1889E</h3><p>考虑限制是, 若 $T_1$ 上 $e_1&#x3D;(u, v)$, 若 $e_1$ 选则所有 $T_2$ 上的边 $e_2$ 满足 $u\to v$ 经过 $e_2$ 也要被选.</p>
+<p>于是建立新图, 若存在限制”若选 $T_1$ 上 $e_1$ 则选 $T_2$ 上 $e_2$”则连边 $e_1\to e_2$, 然后缩点得到一个DAG, 每次可以选择一个点及其所有可达点交换. 而一次交换边集后, $e_1\to e_2$ 的边会反转成 $e_2\to e_1$, 但这种操作并不影响缩点结构. 发现我们可以得到DAG的任意局面, 即答案是 $2^{\text{SCC个数}}$, 然后需要特殊处理一些原边集和新边集完全相同的SCC, 换&#x2F;不换是一种方案.</p>
+<h3 id="Qoj8049"><a href="#Qoj8049" class="headerlink" title="Qoj8049"></a>Qoj8049</h3><p>见sdptt1</p>
+<h3 id="Qoj5016"><a href="#Qoj5016" class="headerlink" title="Qoj5016"></a>Qoj5016</h3><p>考虑如果给定一个 $b$, 可以按值从小到大, 每次把当前值填入所有当前值能填的位置, 则可以唯一生成一个 $a$, 形成双射.</p>
+<p>那么考虑这样的 $a$ 的特点, 对于 $a$ 一个极长的, 值 $\ge v$ 的段 $[l, r]$, 必然要满足所有被 $[l, r]$ 包含的区间的并恰好为 $[l, r]$, 于是预处理所有这样的区间, 然后dp设 $f_{l, r, i}$ 表示 $[l, r]$ 的值都要 $\ge i$ 的情况下对应合法 $a$ 数量, 转移考虑枚举 $i$ 第一次出现位置 $x$ 要求 $[l, x-1]$ 要求合法然后两边拼, 复杂度 $n^3c$</p>
+<p>容易发现答案是 $n$ 次多项式, 于是拉格朗日插值做完了.</p>
+<h3 id="Qoj7759"><a href="#Qoj7759" class="headerlink" title="Qoj7759"></a>Qoj7759</h3><p>考虑把 上升 和 上升段 对应起来, 显然若有 $c$ 个上升则有 $n-c$ 个极长上升段.</p>
+<p>那么容斥, 钦定 $p, p^{-1}$ 排列分别有 $a, b$ 个上升段, 但这里容斥系数得用上升推(按照上升段的话, 真正的上升段可能是已有的上升段向两边延伸, 还可能合并等, 但按照上升推的话直接是二项式反演).</p>
+<p>考虑从左到右加入 $p^{-1}$ 的上升段, 那么在 $p$ 中相当于按值域从小到大插入, 每个上升段会被填一个前缀. 容易发现若设 $a\times b$ 的矩阵 $w_{i, j}$ 表示插入 $p^{-1}$ 中第 $i$ 段上升段时在 $p$ 的第 $j$ 个上升段插入了 $w_{i, j}$ 个数, 则可以唯一确定排列 $p$, 而对 $w$ 的限制为, 不存在一行&#x2F;一列全为 $0$ 且总和为 $n$.</p>
+<p>于是只要数 $w$, 再二项式反演有 $i$ 行 $j$ 列全为 $0$ 即可.</p>
+<p>复杂度 $n^3$</p>
+<h3 id="Agc061F"><a href="#Agc061F" class="headerlink" title="Agc061F"></a>Agc061F</h3><p>建模到图上, 相当于下标取模的情况下不能碰到重复点且最后回到原点.</p>
+<p>令发生取模后到的点(左下角为 $(0, 0)$, 左边和下边上的点)为关键点, 则能对应出右上方边角处的点, 此时要数互不相交路径数, 想到LGV, 但发现此时可能会连出多个环. 然后分析出只有一个环当且仅当左边和下边上关键点数量互质.</p>
+<p>于是问题变成有 $n+m$ 阶方阵, 前 $n$ 个表示下边, 后 $m$ 个表示左边, 则要求选 $k_1+k_2$ 阶子方阵, 其中 $k_1, k_2$ 分别为前 $n$ 个, 后 $m$ 个中选的行列数量, 要求 $\gcd(k_1, k_2)&#x3D;1$.</p>
+<p>于是在对角线前 $n$ 个元素加 $x$, 后 $m$ 个元素加 $y$, 行列式变成二元多项式最后提取系数就是答案, 插值做到 $n^5$, 特征多项式做到 $n^4$.</p>
+<h2 id="Contest"><a href="#Contest" class="headerlink" title="Contest"></a>Contest</h2><h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>模拟.</p>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><p>赛时想了一个单根号但一直T, 赛后过了.</p>
+<p>肯定考虑点边互换, 容易发现 $(u_i, v_i, a_i, b_i, c_i)$ 要想更新 $(u_j, v_j, a_j, b_j, c_j)$ 会满足 $a_i\lt b_i\lt a_j\lt b_j$, 于是可以扫时间去更新. 同时饭肯定尽量在车上吃, 所以设到第 $i$ 条边终点的花费为 $w_i$, 转移是 $w_j&#x3D;w_i+c_j+\mathrm{cost}(b_i, c_j)\cdot T_{b_i}$, $\mathrm{cost}(l, r)$ 表示被 $l, r$ 完全包含的吃饭区间数量.</p>
+<p>于是扫描线扫边的起点时间 $a$, 则每次会:</p>
+<ul>
+<li>插入一条边, 即单点修改某个 $w_i$.</li>
+<li>加入一个新的吃饭区间 $[l, r] (r\lt a)$ 的贡献, 即所有 $b_i&lt;l$ 的区间 $\mathrm{cost}$ 值加一.</li>
+<li>算当前边的答案, 即给定 $k$ 查 $\min_{b_i&#x3D;k} w_i+\mathrm{cost}(b_i+c_j)T_{b_i}$.</li>
+</ul>
+<p>没有 $k$ 的限制的话是KTT板子, 即可以把每个 $i$ 的贡献看成 $T_{b_i}x+w_i$ 的一次函数, 要支持单点修改和区间对函数平移, 查询最小值. 有的话看着很难Poly log考虑分块, 对序列分块, 仿照KTT对每个块维护每个 $k$ 的答案和这个块发生线段切换的时间, 单点修改直接重构, 区间加如果超过切换时间暴力重构, 就是对的.</p>
+<p>诶但这个势能怎么分析? 显然对一个颜色, 答案关于平移的值 $x$ 是一个下凸壳, 最多有 $O(n)$ 段, 再发现每次修改都是把函数向下平移, 不可能露出新的段, 所以一个块最多切换 $\sqrt n$ 次, 复杂度 $n\sqrt n$.</p>
+<p>如果可能向上平移呢? 相当于再支持删线段, 发现相当于每个线段有一个 $x&lt;lim_i$ 的范围限制. 由上包络线结论切换次数仍然是线性的.</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>考虑exCRT, $i\to i+j$ 连边表示模 $i$ 余 $j$, 再加上一些随机化即可.</p>
+<h2 id="Day2-网络流"><a href="#Day2-网络流" class="headerlink" title="Day2-网络流"></a>Day2-网络流</h2><h3 id="CF1662J"><a href="#CF1662J" class="headerlink" title="CF1662J"></a>CF1662J</h3><p>让 $(i, j)$ 向同行&#x2F;同列所有比自己小的位置连边, 题目转化为选择 $n$ 个点使得不存在一个被选的点可以走一步&#x2F;两步到另一个被选的点.</p>
+<p>注意到你不会连续走两次横着&#x2F;竖着的边, 于是实际上相当于不存在一个可以到另一个, 即选一个长 $n$ 的反链要求价值最大.</p>
+<p>然后dilworth说的是不带权的情况, 你发现我把一个点直接复制点权份就是带权情况(若你可选这个点, 那么拆出来的点一定都可选, 所以一定一起选&#x2F;不选), 于是变成带权最小链覆盖, 你发现就是最小链覆盖改改边权就结束了吧.</p>
+<h3 id="CF1630F"><a href="#CF1630F" class="headerlink" title="CF1630F"></a>CF1630F</h3><p>首先注意到图是偏序集, 二分图等价于不存在三元环, 于是每个点要么没有入度要么没有出度.</p>
+<p>拆点, 令 $x, x’$ 分别表示 $x$ 被选入无入度集合或无出度集合. 若 $x\to y$($y\vert x$), 要求 $(x, x’), (x, y), (x’, y’), (x’, y)$ 不同时出现, 于是是最大独立集问题.</p>
+<p>可以把边定向让它变成偏序集, 定向 $x’\to x, x\to y’, x\to y, x’\to y$, 于是求最小链覆盖.</p>
+<h3 id="CF1416F"><a href="#CF1416F" class="headerlink" title="CF1416F"></a>CF1416F</h3><p>一定会连成内向基环树, 环上点 $S$ 值必须一样, 其他位置父亲必须比自己小.</p>
+<p>一个位置周围存在一个位置比自己小则可以在树上, 否则必须在环上.</p>
+<p>发现一个大环不如若干个小环, 于是直接拆成若干个长度为 $2$ 的偶环, 于是成了求匹配.</p>
+<p>这就能做了! 黑白染色, 若一个点必须在环上, 根据黑白连向S&#x2F;T连 $[1, 1]$(流量上下界)的边, 否则连 $[0, 1]$, 就做完了.</p>
+<h3 id="CF513F2"><a href="#CF513F2" class="headerlink" title="CF513F2"></a>CF513F2</h3><p>考虑通配符没有用, 可以直接知道红蓝都有 $k$ 个.</p>
+<p>二分答案, 考虑让红子匹配和它最后在一个点的蓝子, 于是每个红子连到能在时间内走到的点, 每个篮子能在时间内走到的点连到篮子, 而这些中间被走到的点拆成流量为 $1$ 的边即可.</p>
+<h3 id="CF1835F"><a href="#CF1835F" class="headerlink" title="CF1835F"></a>CF1835F</h3><p>图好是有完美匹配, 紧指对于图的一个完美匹配 $i\to p_i$, 集合 ${p_i\vert i\in S}$</p>
+<h3 id="CF1383F"><a href="#CF1383F" class="headerlink" title="CF1383F"></a>CF1383F</h3><p>最大流的局部性质不好, 考虑最小割, 考虑处理出 $2^k$ 种特殊边割掉的集合对应的其他边代价.</p>
+<p>暴力跑流复杂度比较爆炸, 考虑先跑出一个解, 然后剩下每种状态都是在一个已有状态下加一条边, 加边复杂度是FF的 $O(mw)$, 总复杂度 $q2^k+2^kwm$</p>
+<h3 id="CF704D"><a href="#CF704D" class="headerlink" title="CF704D"></a>CF704D</h3><p>容易想到网格图行列匹配的套路, 而数量相差不超过相当于限制这一行的红点个数在 $[l_i, r_i]$ 之间, 也就是流量限制, 然后根据 $r&gt;d$ 还是 $r&lt;d$ 做有源汇上下界可行最大流或最小流.</p>
+<h3 id="CF925F"><a href="#CF925F" class="headerlink" title="CF925F"></a>CF925F</h3><p>上下界可行流可以通过补流转化成最大流, 存在可行解的条件是最大流满流, 满流的值是一个一次函数, 最大流可以转化到最小割, 最小割一定是关于 $t$ 的下凸分段一次函数.</p>
+<h2 id="Day3-构造"><a href="#Day3-构造" class="headerlink" title="Day3-构造"></a>Day3-构造</h2><h3 id="Eg-1"><a href="#Eg-1" class="headerlink" title="Eg. 1"></a>Eg. 1</h3><blockquote>
+<p>n个点完全图划分成边集不交的生成树</p>
+</blockquote>
+<p>之字形, 旋转</p>
+<h3 id="Eg-2"><a href="#Eg-2" class="headerlink" title="Eg. 2"></a>Eg. 2</h3><blockquote>
+<p>2n个点划分成边集不交的匹配</p>
+</blockquote>
+<p>一个点放中间, 对称着连, 旋转</p>
+<h3 id="Eg-3"><a href="#Eg-3" class="headerlink" title="Eg. 3"></a>Eg. 3</h3><blockquote>
+<p>完全图边的排列, 使得任意连续 $n-1$ 条边是一棵生成树</p>
+</blockquote>
+<p>奇数时, 用Eg. 1的做法, 发现可以做到把一个之字形逐条边的转化成一个旁边的之</p>
+<p>偶数时, 用Eg. 2的做法, 相邻两个匹配是一个生成树, 发现也可以</p>
+<h3 id=""><a href="#" class="headerlink" title=". . ."></a>. . .</h3><p>不懂</p>
+<h2 id="试机赛T1"><a href="#试机赛T1" class="headerlink" title="试机赛T1"></a>试机赛T1</h2><p>tocheck: 转化成后缀minmax段数上单侧递归线段树</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2024/05/30/preparefornoi/" title="2024NOI准备"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-30</div><div class="title">2024NOI准备</div></div></a></div><div><a href="/2024/05/02/sdptt2/" title="二轮省集"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-02</div><div class="title">二轮省集</div></div></a></div><div><a href="/2024/04/28/sdptt1/" title="省队集训"><img class="cover" src="https://t.mwm.moe/fj" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-28</div><div class="title">省队集训</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#APIO2024"><span class="toc-number">1.</span> <span class="toc-text">APIO2024</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Day1-%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">Day1-概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AGC060C"><span class="toc-number">1.1.1.</span> <span class="toc-text">AGC060C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pro"><span class="toc-number">1.1.2.</span> <span class="toc-text">Pro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC150D"><span class="toc-number">1.1.3.</span> <span class="toc-text">ARC150D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC270Ex"><span class="toc-number">1.1.4.</span> <span class="toc-text">ABC270Ex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARC113F"><span class="toc-number">1.1.5.</span> <span class="toc-text">ARC113F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qoj6413"><span class="toc-number">1.1.6.</span> <span class="toc-text">qoj6413</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E5%9B%BE%E7%9A%84%E5%8C%85%E5%90%AB%E8%87%B3%E5%B0%91%E4%B8%80%E5%8D%8A%E8%BE%B9%E7%9A%84%E4%BA%8C%E5%88%86%E5%AD%90%E5%9B%BE"><span class="toc-number">1.1.7.</span> <span class="toc-text">寻找图的包含至少一半边的二分子图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day1-%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">Day1-组合计数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LOJ177-%E7%94%9F%E6%88%90%E5%AD%90%E7%BE%A4%E8%AE%A1%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">LOJ177 生成子群计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1909I"><span class="toc-number">1.2.2.</span> <span class="toc-text">CF1909I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1896H"><span class="toc-number">1.2.3.</span> <span class="toc-text">CF1896H</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1774G"><span class="toc-number">1.2.4.</span> <span class="toc-text">CF1774G</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1889E"><span class="toc-number">1.2.5.</span> <span class="toc-text">CF1889E</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qoj8049"><span class="toc-number">1.2.6.</span> <span class="toc-text">Qoj8049</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qoj5016"><span class="toc-number">1.2.7.</span> <span class="toc-text">Qoj5016</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qoj7759"><span class="toc-number">1.2.8.</span> <span class="toc-text">Qoj7759</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agc061F"><span class="toc-number">1.2.9.</span> <span class="toc-text">Agc061F</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contest"><span class="toc-number">1.3.</span> <span class="toc-text">Contest</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A"><span class="toc-number">1.3.1.</span> <span class="toc-text">A</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B"><span class="toc-number">1.3.2.</span> <span class="toc-text">B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">1.3.3.</span> <span class="toc-text">C</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day2-%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="toc-number">1.4.</span> <span class="toc-text">Day2-网络流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1662J"><span class="toc-number">1.4.1.</span> <span class="toc-text">CF1662J</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1630F"><span class="toc-number">1.4.2.</span> <span class="toc-text">CF1630F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1416F"><span class="toc-number">1.4.3.</span> <span class="toc-text">CF1416F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF513F2"><span class="toc-number">1.4.4.</span> <span class="toc-text">CF513F2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1835F"><span class="toc-number">1.4.5.</span> <span class="toc-text">CF1835F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF1383F"><span class="toc-number">1.4.6.</span> <span class="toc-text">CF1383F</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF704D"><span class="toc-number">1.4.7.</span> <span class="toc-text">CF704D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CF925F"><span class="toc-number">1.4.8.</span> <span class="toc-text">CF925F</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day3-%E6%9E%84%E9%80%A0"><span class="toc-number">1.5.</span> <span class="toc-text">Day3-构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Eg-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">Eg. 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eg-2"><span class="toc-number">1.5.2.</span> <span class="toc-text">Eg. 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eg-3"><span class="toc-number">1.5.3.</span> <span class="toc-text">Eg. 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.4.</span> <span class="toc-text">. . .</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%95%E6%9C%BA%E8%B5%9BT1"><span class="toc-number">1.6.</span> <span class="toc-text">试机赛T1</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/30/preparefornoi/" title="2024NOI准备">2024NOI准备</a><time datetime="2024-05-29T16:00:00.000Z" title="Created 2024-05-30 00:00:00">2024-05-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/17/apio/" title="APIO">APIO</a><time datetime="2024-05-16T16:00:00.000Z" title="Created 2024-05-17 00:00:00">2024-05-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/02/sdptt2/" title="二轮省集">二轮省集</a><time datetime="2024-05-01T16:00:00.000Z" title="Created 2024-05-02 00:00:00">2024-05-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
